@@ -1,4 +1,4 @@
-package PKW.Breadcrumbs.QC_1255_BreadCrumbsBlockInListing;
+package PKW.Breadcrumbs.QC_1975_Breadcrumbs;
 
 import PKW.Car_parts_motoroil_page_Logic;
 import PKW.Motoroil_viscosity_brand_page_Logic;

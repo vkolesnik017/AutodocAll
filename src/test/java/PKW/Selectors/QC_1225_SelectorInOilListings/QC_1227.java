@@ -1,4 +1,4 @@
-package PKW.Section_Oil.QC_1225_SelectorInOilListings;
+package PKW.Selectors.QC_1225_SelectorInOilListings;
 
 import PKW.Motoroil_Maker_page_Logic;
 import PKW.Motoroil_Release_page_Logic;

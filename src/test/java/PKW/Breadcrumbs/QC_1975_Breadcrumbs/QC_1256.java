@@ -1,6 +1,6 @@
-package PKW.Section_Oil.QC_958_SpecificationBlockOnMainPage;
+package PKW.Breadcrumbs.QC_1975_Breadcrumbs;
 
-import PKW.Motoroil_page_Logic;
+import PKW.Motoroil_viscosity_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,27 +15,28 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_959 {
+public class QC_1256 {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0",false);
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,car_parts_motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test check presence of specification block on main Oil page")
-    public void testChecksPresenceOfSpecificationBlockOnMainOilPage(String route) {
+    @Description(value = "Test checks presence of breadcrumbs block in listing")
+    public void testChecksPresenceOfBreadCrumbsBlockInListing(String route) throws SQLException {
         openPage(route);
 
-        new Motoroil_page_Logic()
-                .presenceOfSpecificationBlock();
+        new Motoroil_viscosity_page_Logic()
+                .presenceOfBreadCrumbsBlock()
+                .checkToPresenceOfTextInFirstLinkOfBreadCrumbs();
     }
 
     @AfterMethod

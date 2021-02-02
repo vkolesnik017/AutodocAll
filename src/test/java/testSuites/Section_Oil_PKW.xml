@@ -6,43 +6,10 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1255_BreadCrumbsBlockInListing">
-        <classes>
-            <class name="PKW.Breadcrumbs.QC_1255_BreadCrumbsBlockInListing.QC_1256"/>
-            <class name="PKW.Breadcrumbs.QC_1255_BreadCrumbsBlockInListing.QC_1257"/>
-            <class name="PKW.Breadcrumbs.QC_1255_BreadCrumbsBlockInListing.QC_1259"/>
-        </classes>
-    </test>
-
-    <test name="QC_1243_AdvantagesBlockInOilListings">
-        <classes>
-            <class name="PKW.Advantages.QC_1410_LeibsAndBlocks.QC_1244"/>
-            <class name="PKW.Advantages.QC_1410_LeibsAndBlocks.QC_1246"/>
-            <class name="PKW.Advantages.QC_1410_LeibsAndBlocks.QC_1247"/>
-        </classes>
-    </test>
-
-    <test name="QC_1249_MainHeadlineBlockInListings">
-        <classes>
-            <class name="PKW.Titles.QC_3200_MainTitlesOnPage.QC_1250"/>
-            <class name="PKW.Titles.QC_3200_MainTitlesOnPage.QC_1251"/>
-            <class name="PKW.Titles.QC_3200_MainTitlesOnPage.QC_1252"/>
-        </classes>
-    </test>
-
     <test name="QC_1269_RelinkingBlockInListings">
         <classes>
             <class name="PKW.Section_Oil.QC_1269_RelinkingBlockInListings.QC_1270"/>
             <class name="PKW.Section_Oil.QC_1269_RelinkingBlockInListings.QC_1279"/>
-        </classes>
-    </test>
-
-    <test name="QC_1225_SelectorInOilListings">
-        <classes>
-            <class name="PKW.Section_Oil.QC_1225_SelectorInOilListings.QC_1226"/>
-            <class name="PKW.Section_Oil.QC_1225_SelectorInOilListings.QC_1227"/>
-            <class name="PKW.Section_Oil.QC_1225_SelectorInOilListings.QC_1228"/>
-            <class name="PKW.Section_Oil.QC_1225_SelectorInOilListings.QC_1229"/>
         </classes>
     </test>
 
@@ -57,20 +24,6 @@
         <classes>
             <class name="PKW.Section_Oil.QC_952_ToleranceBlockOfBrandsOnMainPage.QC_954"/>
             <class name="PKW.Section_Oil.QC_952_ToleranceBlockOfBrandsOnMainPage.QC_955"/>
-        </classes>
-    </test>
-
-    <test name="QC_943_ViscosityBlockOnOilMainPage">
-        <classes>
-            <class name="PKW.Section_Oil.QC_943_ViscosityBlockOnOilMainPage.QC_945"/>
-            <class name="PKW.Section_Oil.QC_943_ViscosityBlockOnOilMainPage.QC_946"/>
-        </classes>
-    </test>
-
-    <test name="QC_958_SpecificationBlockOnMainPage">
-        <classes>
-            <class name="PKW.Section_Oil.QC_958_SpecificationBlockOnMainPage.QC_959"/>
-            <class name="PKW.Section_Oil.QC_958_SpecificationBlockOnMainPage.QC_960"/>
         </classes>
     </test>
 

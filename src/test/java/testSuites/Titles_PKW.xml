@@ -6,4 +6,13 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
+
+    <test name="QC_3200_MainTitlesOnPage">
+        <classes>
+            <class name="PKW.Titles.QC_3200_MainTitlesOnPage.QC_1250"/>
+            <class name="PKW.Titles.QC_3200_MainTitlesOnPage.QC_1251"/>
+            <class name="PKW.Titles.QC_3200_MainTitlesOnPage.QC_1252"/>
+        </classes>
+    </test>
+
 </suite>

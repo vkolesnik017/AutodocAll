@@ -1,4 +1,4 @@
-package PKW.Breadcrumbs.QC_1255_BreadCrumbsBlockInListing;
+package PKW.Breadcrumbs.QC_1975_Breadcrumbs;
 
 import PKW.*;
 import io.qameta.allure.Description;

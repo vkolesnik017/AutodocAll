@@ -6,10 +6,10 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_723_SelectorsVertical">
+    <test name="QC_2489_CarSelectorsOnTyresRoute">
         <classes>
-            <class name="PKW.Selectors.QC_723_SelectorsVertical.QC_2698"/>
-            <class name="PKW.Selectors.QC_723_SelectorsVertical.QC_2701"/>
+            <class name="PKW.Selectors.QC_2489_CarSelectorsOnTyresRoute.QC_2698"/>
+            <class name="PKW.Selectors.QC_2489_CarSelectorsOnTyresRoute.QC_2701"/>
         </classes>
     </test>
 
@@ -27,6 +27,16 @@
     <test name="QC_2968_Selectors_Car">
         <classes>
             <class name="PKW.Selectors.QC_2968_Selectors_Car.QC_724"/>
+        </classes>
+    </test>
+
+
+    <test name="QC_1225_SelectorInOilListings">
+        <classes>
+            <class name="PKW.Selectors.QC_1225_SelectorInOilListings.QC_1226"/>
+            <class name="PKW.Selectors.QC_1225_SelectorInOilListings.QC_1227"/>
+            <class name="PKW.Selectors.QC_1225_SelectorInOilListings.QC_1228"/>
+            <class name="PKW.Selectors.QC_1225_SelectorInOilListings.QC_1229"/>
         </classes>
     </test>
 

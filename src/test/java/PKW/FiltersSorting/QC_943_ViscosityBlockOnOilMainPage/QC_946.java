@@ -1,6 +1,6 @@
-package PKW.Breadcrumbs.QC_1255_BreadCrumbsBlockInListing;
+package PKW.FiltersSorting.QC_943_ViscosityBlockOnOilMainPage;
 
-import PKW.Motoroil_viscosity_page_Logic;
+import PKW.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,8 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1256 {
-
+public class QC_946 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,19 +23,21 @@ public class QC_1256 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of breadcrumbs block in listing")
-    public void testChecksPresenceOfBreadCrumbsBlockInListing(String route) throws SQLException {
+    @Description(value = "Test checks transition to listing with selected Viscosity")
+    public void testChecksTransitionToListingWithSelectedViscosity(String route) {
         openPage(route);
 
-        new Motoroil_viscosity_page_Logic()
-                .presenceOfBreadCrumbsBlock()
-                .checkToPresenceOfTextInFirstLinkOfBreadCrumbs();
+        new Motoroil_page_Logic()
+                .presenceOfViscosityBlock()
+                .selectViscosityInBlock(1)
+                .checkViscosityGradeFieldInSelector("sae-10w-40")
+                .visibilityOfSelectedViscosityInBlock("SAE 10W-40");
     }
 
     @AfterMethod

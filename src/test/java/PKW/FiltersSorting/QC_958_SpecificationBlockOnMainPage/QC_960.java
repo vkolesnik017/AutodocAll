@@ -1,4 +1,4 @@
-package PKW.Section_Oil.QC_943_ViscosityBlockOnOilMainPage;
+package PKW.FiltersSorting.QC_958_SpecificationBlockOnMainPage;
 
 import PKW.Motoroil_page_Logic;
 import io.qameta.allure.Description;
@@ -15,7 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_946 {
+public class QC_960 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -29,15 +29,16 @@ public class QC_946 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition to listing with selected Viscosity")
-    public void testChecksTransitionToListingWithSelectedViscosity(String route) {
+    @Description(value = "Test check transition to listing by click on Specification link")
+    public void testChecksTransitionToListingByClickOnSpecificationLink(String route) {
         openPage(route);
 
         new Motoroil_page_Logic()
-                .presenceOfViscosityBlock()
-                .selectViscosityInBlock(1)
-                .checkViscosityGradeFieldInSelector("sae-10w-40")
-                .visibilityOfSelectedViscosityInBlock("SAE 10W-40");
+                .presenceOfSpecificationBlock()
+                .clickOnSpecificationLink(3)
+                .checkListingWithSelectedToleranceFilter("ACEA A5")
+                .checkSelectorWithSelectedSpecification("acea-a5")
+                .checkSelectedSpecificationInSideBar("ACEA A5");
     }
 
     @AfterMethod

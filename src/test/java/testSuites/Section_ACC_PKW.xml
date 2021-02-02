@@ -57,22 +57,6 @@
         </classes>
     </test>
 
-    <test name="QC_1611_BlockTopProductsOnMainChemistry">
-        <classes>
-            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1612"/>
-            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1613"/>
-            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1614"/>
-        </classes>
-    </test>
-
-    <test name="QC_1805_BlockFilterByGenericsOnChemistryListing">
-        <classes>
-            <class name="PKW.Section_ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1806"/>
-            <class name="PKW.Section_ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1807"/>
-            <class name="PKW.Section_ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1808"/>
-        </classes>
-    </test>
-
     <test name="QC_3011_ToolsListing">
         <classes>
             <class name="PKW.Section_ACC.QC_3011_ToolsListing.QC_2284"/>

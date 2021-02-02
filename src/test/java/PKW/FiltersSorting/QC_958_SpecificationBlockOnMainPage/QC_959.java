@@ -1,6 +1,6 @@
-package PKW.Section_Oil.QC_1225_SelectorInOilListings;
+package PKW.FiltersSorting.QC_958_SpecificationBlockOnMainPage;
 
-import PKW.Motoroil_Release_page_Logic;
+import PKW.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,26 +15,27 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1226 {
+public class QC_959 {
+
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release,motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,motoroel-search,car_parts_motoroil,motoroil,motoroil_brand");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of selector in Oil listings")
-    public void testChecksPresenceOfSelectorInOilListings(String route) throws SQLException {
+    @Description(value = "Test check presence of specification block on main Oil page")
+    public void testChecksPresenceOfSpecificationBlockOnMainOilPage(String route) {
         openPage(route);
 
-        new Motoroil_Release_page_Logic()
-                .presenceOfSelector();
+        new Motoroil_page_Logic()
+                .presenceOfSpecificationBlock();
     }
 
     @AfterMethod

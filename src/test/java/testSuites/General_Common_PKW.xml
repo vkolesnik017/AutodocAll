@@ -36,6 +36,7 @@
             <class name="PKW.General_Common.QC_2321_StaticPages.QC_249"/>
             <class name="PKW.General_Common.QC_2321_StaticPages.QC_2752"/>
             <class name="PKW.General_Common.QC_2321_StaticPages.QC_2353"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_236"/>
         </classes>
     </test>
 

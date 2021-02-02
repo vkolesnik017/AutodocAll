@@ -26,7 +26,7 @@ public class QC_236 {
         return new SetUp("PKW").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) //TODO не ранится в связи с багом  SITES-9624.
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Test checks elements on the Datenschultz page")
     public void testStaticPage_Datenschultz(String route) throws IOException {
