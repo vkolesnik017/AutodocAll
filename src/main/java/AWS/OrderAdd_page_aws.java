@@ -128,6 +128,10 @@ public class OrderAdd_page_aws {
         return $(".contains-suppliers");
     }
 
+    private SelenideElement appendBlock() {
+        return $x("//div[@class='w-box append-block']");
+    }
+
     private SelenideElement radioBtnSuppliers() {
         return $x("//input[@value='suppliers']");
     }
@@ -260,14 +264,14 @@ public class OrderAdd_page_aws {
         if (preLoader().isDisplayed()) {
             preLoader().waitUntil(attribute("style", "display: none;"), 30000);
         }
-        tableOfSuppliers().waitUntil(visible, 3000);
+        appendBlock().waitUntil(visible, 3000);
         if (tableOfStock().isDisplayed()){
             radioBtnStorage().click();
         } else {
             tableOfSuppliers().shouldBe(visible);
             radioBtnSuppliers().click();
         }
-        btnSelect().scrollIntoView(true).click();
+        btnSelect().scrollIntoView("{block: \"center\"}").click();
         return this;
     }
 
