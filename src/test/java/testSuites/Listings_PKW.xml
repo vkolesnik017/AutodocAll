@@ -6,4 +6,11 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
+    <test name="QC_1162_MainIssueBlockOfListing">
+        <classes>
+            <class name="PKW.Listings.QC_1162_MainIssueBlockOfListing.QC_1163"/>
+            <class name="PKW.Listings.QC_1162_MainIssueBlockOfListing.QC_1164"/>
+        </classes>
+    </test>
+
 </suite>

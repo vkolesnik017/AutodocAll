@@ -36,6 +36,13 @@
             <class name="PKW.General_Common.QC_2321_StaticPages.QC_249"/>
             <class name="PKW.General_Common.QC_2321_StaticPages.QC_2752"/>
             <class name="PKW.General_Common.QC_2321_StaticPages.QC_2353"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_236"/>
+        </classes>
+    </test>
+
+    <test name="QC_1241_PaymentMethodsBlockInListing" enabled="true">
+        <classes>
+            <class name="PKW.General_Common.QC_1241_PaymentMethodsBlockInListing.QC_1242"/>
         </classes>
     </test>
 </suite>

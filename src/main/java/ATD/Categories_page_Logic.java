@@ -39,7 +39,7 @@ public class Categories_page_Logic extends Categories_page {
 
     @Step("Click oil filter category link. Categories_page")
     Categories_page_Logic clickOilFilterCategoryLink() {
-        linkForCategoryOilFilter().click();
+        linkForCategoryOilFilter().shouldBe(visible).click();
         return page(Categories_page_Logic.class);
     }
 
