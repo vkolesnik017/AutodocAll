@@ -1,17 +1,19 @@
 package ATD;
 
 
+import Common.DataBase;
+import PKW.Tyres_season_page_Logic;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.getTextFromUnVisibleElement;
-import static ATD.CommonMethods.waitWhileRouteContainsExpectedCondition;
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -645,5 +647,31 @@ public class Tyres_page_Logic extends Tyres_page {
             waitWhileRouteContainsExpectedCondition(currentUrlSite);
         }
         return this;
+    }
+
+    @Step("check Transition To Tyres Season Listing. Tyres_page")
+    public Tyres_page_Logic checkTransitionToTyresSeasonListing() throws SQLException {
+        DataBase db = new DataBase("ATD");
+        clickSeasonButtonAndCheckTransition();
+        checkingContainsUrl(db.getRouteByRouteName("DE", "tyres_season6"));
+        back();
+        clickOnSummerSeason();
+        checkingContainsUrl(db.getRouteByRouteName("DE", "tyres_season2"));
+        back();
+        clickOnAllSeason();
+        checkingContainsUrl(db.getRouteByRouteName("DE", "tyres_season7"));
+        return this;
+    }
+
+    @Step("Click on summer season. Tyres_page")
+    public Tyres_season_page_Logic clickOnSummerSeason() {
+        summerButtonInSeasonBlock().shouldBe(visible).click();
+        return page(Tyres_season_page_Logic.class);
+    }
+
+    @Step("Click on all season. Tyres_page")
+    public Tyres_season_page_Logic clickOnAllSeason() {
+        allSeason().shouldBe(visible).click();
+        return page(Tyres_season_page_Logic.class);
     }
 }

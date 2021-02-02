@@ -1754,4 +1754,10 @@ public class Main_page_Logic extends Main_page {
         }
         return categories;
     }
+
+    @Step("click on Tyres Category. Main_page")
+    public Tyres_page_Logic clickOnTyresCategory() {
+        tyresCategory().shouldBe(visible).click();
+        return page(Tyres_page_Logic.class);
+    }
 }
