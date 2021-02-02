@@ -146,7 +146,6 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return exactDeliveryPrice;
     }
 
-
     @Step("Get delivery price for current country for a user with a subscription plus pro. Versand_static_page")
     public float getDeliveryPriceForCurrentCountryForUserWithSubscriptionPlusPro(String country, String mail) throws Exception {
         float deliveryPriceCurrentCountry = getDeliveryPriceOfCurrentCountry(country);
@@ -158,8 +157,6 @@ public class Versand_static_page_Logic extends Versand_static_page {
         }
         return exactDeliveryPrice;
     }
-
-
 
     @Step("Get Safe Order price discount with any subscription or without subscription. Versand_static_page")
     public float getSafeOrderPriceWithAnyDiscountAndSubscription(String mail) throws SQLException {
@@ -177,8 +174,6 @@ public class Versand_static_page_Logic extends Versand_static_page {
         }
         return safeOrderPriceWithDiscount;
     }
-
-
 
     @Step("Get delivery price for AWS. Versand_static_page")
     public Float getDeliveryPriceForAWS(String country) throws Exception {
@@ -229,5 +224,10 @@ public class Versand_static_page_Logic extends Versand_static_page {
             deliveryPrice = Float.parseFloat(deliveryPriceLocatorWithNameShop(shop).getText().replaceAll("[^0-9,]", "").replace(",", "."));
         }
         return deliveryPrice;
+    }
+
+    @Step("Get safe order price. Versand_static_page")
+    public String getSafeOrderPrice() {
+        return safeOrderPrice().getText().replaceAll("[^0-9,]", "").replaceAll(",",".");
     }
 }

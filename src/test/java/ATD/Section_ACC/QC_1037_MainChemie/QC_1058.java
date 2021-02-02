@@ -1,7 +1,6 @@
-package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
+package ATD.Section_ACC.QC_1037_MainChemie;
 
-
-import ATD.Listing_page_Logic;
+import ATD.Index_chemicals_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,33 +9,30 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_254 {
+public class QC_1058 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list6");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Romanuta")
-    @Description(value = "Test checks helping press block")
-    public void testChecksHelpingPressBlock(String route) {
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checks Hover Logical Union")
+    public void testCheckingHoverLogicalUnion(String route) {
         openPage(route);
-        new Listing_page_Logic().clickFirstBrandNameInFilter()
-                .waitUntilPreloaderDisappear()
-                .checkAddToBasketButtonsSorting();
+        new Index_chemicals_page_Logic().checkLogicalUnion();
     }
 
     @AfterMethod
