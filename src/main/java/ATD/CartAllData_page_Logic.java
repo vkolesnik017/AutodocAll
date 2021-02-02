@@ -421,7 +421,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Get regular product price. CartAllData_page")
     public Float getRegularProductPriceFormAllDataPage() {
-        String regularProductPrice = productPrice().getText().replaceAll("[^0-9,]", "");
+        String regularProductPrice = productPrice().shouldBe(visible).getText().replaceAll("[^0-9,]", "");
         regularProductPrice = regularProductPrice.replaceAll(",", ".");
         return Float.parseFloat(regularProductPrice);
     }
