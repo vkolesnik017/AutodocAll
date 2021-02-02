@@ -75,4 +75,11 @@
         </classes>
     </test>
 
+    <test name="QC_2873_PressPage">
+        <classes>
+            <class name="ATD.General_Common.QC_2873_PressPage.QC_2797"/>
+        </classes>
+    </test>
+
+
 </suite>
