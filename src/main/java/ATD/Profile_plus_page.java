@@ -116,6 +116,7 @@ public class Profile_plus_page {
     SelenideElement btnToCatalogRouteInPopUp() {
         return $x("//div[@class='header-garage__logged-check']//a");
     }
+
     SelenideElement unsubscribeButton() {
         return $x("//a[@data-ga-action='unsubscribe_click']");
     }
