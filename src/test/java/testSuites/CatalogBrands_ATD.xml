@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Catalog_Brands_ATD" parallel="methods" thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_33_BrandPageAndBlocks">
+        <classes>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_2628"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_2629"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_2630"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_2631"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3175"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_34"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_37"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_38"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_40"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_362"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_363"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_1235"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_1236"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_1363"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_1364"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_1365"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3176"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3089"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3273"/>
+        </classes>
+    </test>
+
+</suite>

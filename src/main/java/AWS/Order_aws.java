@@ -589,6 +589,10 @@ public class Order_aws {
         return $x("//input[@id='form_Order[rFiscalCode]']");
     }
 
+    private SelenideElement fiscalCodeFieldForShipping() {
+        return $x("//input[@id='form_Order[lFiscalCode]']");
+    }
+
 
 
 
@@ -600,6 +604,43 @@ public class Order_aws {
         }else if (visibleText == false) {
             Assert.assertTrue(fiscalCodeFieldForBilling().getValue().isEmpty());
         }
+        return this;
+    }
+
+    @Step ("Check presence text in Fiscal code field Shipping block . Order_aws")
+    public Order_aws checkPresenceTextInFiscalCodeFieldForShipping(boolean visibleText) {
+        fiscalCodeFieldForShipping().shouldBe(visible);
+        if (visibleText == true) {
+            Assert.assertFalse(fiscalCodeFieldForShipping().getValue().isEmpty());
+        }else if (visibleText == false) {
+            Assert.assertTrue(fiscalCodeFieldForShipping().getValue().isEmpty());
+        }
+        return this;
+    }
+
+    @Step("Set value in Fiscal code field for Billing. Order_aws")
+    public Order_aws setValueInFiscalCodeForBilling(String text) {
+        fiscalCodeFieldForBilling().shouldBe(visible);
+        fiscalCodeFieldForBilling().setValue(text);
+        return this;
+    }
+
+    @Step("Set value in Fiscal code field for Shipping. Order_aws")
+    public Order_aws setValueInFiscalCodeForShipping(String text) {
+        fiscalCodeFieldForShipping().shouldBe(visible);
+        fiscalCodeFieldForShipping().setValue(text);
+        return this;
+    }
+
+    @Step("Clear Fiscal Code field for Billing. Order_aws")
+    public Order_aws clearFiscalCodeFieldForBilling() {
+        fiscalCodeFieldForBilling().shouldBe(visible).clear();
+        return this;
+    }
+
+    @Step("Clear Fiscal Code field for Shipping. Order_aws")
+    public Order_aws clearFiscalCodeFieldForShipping() {
+        fiscalCodeFieldForShipping().shouldBe(visible).clear();
         return this;
     }
 
