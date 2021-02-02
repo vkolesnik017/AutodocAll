@@ -35,7 +35,7 @@ public class QC_1836 {
     @Description(value = "Test checking the text of the pop-up at the 14 days checkout")
     public void testCheckingTextOnPopUpAtCheckoutAfter_14_days(String route) {
         openPage(route);
-        String andDataOfPremiumAccount = new Main_page_Logic().loginFromHeader("Dopeltest@autodoc.de", "2020100216")
+        String andDataOfPremiumAccount = new Main_page_Logic().loginFromHeader("QC_1836_autotest@mailinator.com", "atdtest")
                 .goToPageAutodocPlus()
                 .getEndDateOfPremiumAccount();
         String customerID = new Profile_plus_page_Logic().clickBtnUnsubscribeButton()
