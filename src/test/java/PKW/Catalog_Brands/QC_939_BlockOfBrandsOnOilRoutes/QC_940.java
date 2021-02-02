@@ -1,6 +1,6 @@
-package PKW.Section_Oil.QC_1162_MainIssueBlockOfListing;
+package PKW.Catalog_Brands.QC_939_BlockOfBrandsOnOilRoutes;
 
-import PKW.Motoroil_viscosity_page_Logic;
+import PKW.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,7 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1163 {
+public class QC_940 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -23,19 +23,18 @@ public class QC_1163 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,motoroil-search,car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of Products listing block")
-    public void testChecksPresenceOfProductsListingBlock(String route) {
+    @Description(value = "Test checks presence of popular brands on main oil page")
+    public void testChecksPresenceOfPopularBrandsOnMainPage(String route) {
         openPage(route);
 
-        new Motoroil_viscosity_page_Logic()
-                .presenceOfMainListingOfProducts();
-
+        new Motoroil_page_Logic()
+                .presenceOfBrandsBlock();
     }
 
     @AfterMethod

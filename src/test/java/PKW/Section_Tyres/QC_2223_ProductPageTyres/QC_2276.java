@@ -1,4 +1,4 @@
-package PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres;
+package PKW.Section_Tyres.QC_2223_ProductPageTyres;
 
 import Common.SetUp;
 import PKW.Tyres_item_page_Logic;

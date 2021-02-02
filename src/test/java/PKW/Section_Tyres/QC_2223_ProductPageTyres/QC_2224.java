@@ -1,4 +1,4 @@
-package PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres;
+package PKW.Section_Tyres.QC_2223_ProductPageTyres;
 
 import Common.SetUp;
 import PKW.Tyres_item_page_Logic;
@@ -10,14 +10,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2273 {
+public class QC_2224 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,16 +24,16 @@ public class QC_2273 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyre_item1");
+        return new SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyre_item1,tyre_item2,tyre_item3,tyre_item4");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test Checks Presence of Tyres Photo On Tyres Product Page")
-    public void testTyresPhotoPresence(String route) throws IOException {
+    @Description(value = "Test Checks Return Tyres Block Presence On Tyres Product Page")
+    public void testReturnBlockPresenceOnTyresProductPage(String route) {
         openPage(route);
-        new Tyres_item_page_Logic().presenceTyresPhoto();
+        new Tyres_item_page_Logic().presenceOfReturnBlock();
     }
 
     @AfterMethod

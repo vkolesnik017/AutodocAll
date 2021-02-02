@@ -1,4 +1,4 @@
-package PKW.Section_Tyres_PKW.QC_2898_CheckingRelinkingBlockBySeasonsOnTireRoutes;
+package PKW.Section_Tyres.QC_2898_CheckingRelinkingBlockBySeasonsOnTireRoutes;
 
 import Common.SetUp;
 import PKW.Tyres_page_Logic;

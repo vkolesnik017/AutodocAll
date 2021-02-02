@@ -1,4 +1,4 @@
-package PKW.Section_Tyres_PKW.QC_2892_CheckingLinkingBlockBySizeOnTireRoutes;
+package PKW.Section_Tyres.QC_2892_CheckingLinkingBlockBySizeOnTireRoutes;
 
 import Common.SetUp;
 import PKW.Tyres_maker_page_Logic;

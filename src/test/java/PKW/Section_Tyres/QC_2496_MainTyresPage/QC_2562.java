@@ -1,7 +1,6 @@
-package PKW.Section_Oil.QC_939_BlockOfPopularBrandsOnMainPage;
+package PKW.Section_Tyres.QC_2496_MainTyresPage;
 
-import Common.DataBase;
-import PKW.Motoroil_page_Logic;
+import PKW.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,10 +13,10 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
-import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_941 {
+public class QC_2562 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,19 +24,16 @@ public class QC_941 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyres,tyres2");  //,tyres3
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition to Listing with selected brand")
-    public void testChecksTransitionToListingWithSelectedBrand(String route) throws SQLException {
+    @Description(value = "Test checking a selection of products in the TOP tires block")
+    public void testCheckLinkingBlockByBrands(String route) {
         openPage(route);
-
-        new Motoroil_page_Logic()
-                .selectBrandInBlock(21);
-        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_brand3"));
+        new Tyres_page_Logic().presenceOfTopProductBlock().checkUniquenessOfBrandsInTopProductBlock(3).checkUniqueSizeInTopProductBlock(3);
     }
 
     @AfterMethod

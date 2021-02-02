@@ -1,6 +1,7 @@
-package PKW.Section_Oil.QC_939_BlockOfPopularBrandsOnMainPage;
+package PKW.Section_Tyres.QC_2223_ProductPageTyres;
 
-import PKW.Motoroil_page_Logic;
+import Common.SetUp;
+import PKW.Tyres_item_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,11 +12,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
+import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_940 {
+public class QC_2275 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -23,18 +24,16 @@ public class QC_940 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyre_item1");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of popular brands on main oil page")
-    public void testChecksPresenceOfPopularBrandsOnMainPage(String route) {
+    @Owner(value = "OlhaLavrynenko")
+    @Description(value = "Test Checks Presence of Characteristic Block On Tyres Product Page")
+    public void testCharacteristicBlockPresence(String route) {
         openPage(route);
-
-        new Motoroil_page_Logic()
-                .presenceOfBrandsBlock();
+        new Tyres_item_page_Logic().presenceOfCharacteristicsBlock();
     }
 
     @AfterMethod

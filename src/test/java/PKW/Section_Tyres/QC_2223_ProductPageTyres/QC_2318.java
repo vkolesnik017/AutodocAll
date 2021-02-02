@@ -1,4 +1,4 @@
-package PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres;
+package PKW.Section_Tyres.QC_2223_ProductPageTyres;
 
 import Common.SetUp;
 import PKW.Tyres_item_page_Logic;
@@ -16,7 +16,8 @@ import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2315 {
+public class QC_2318 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -30,10 +31,10 @@ public class QC_2315 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test Checks Presence of Analogs Block On Tyres Product Page")
-    public void testAnalogsBlockPresence(String route) {
+    @Description(value = "Test Checks Presence of Reviews Block On Tyres Product Page")
+    public void testReviewsBlockPresence(String route) {
         openPage(route);
-        new Tyres_item_page_Logic().presenceOfAnalogsBlock();
+        new Tyres_item_page_Logic().presenceOfReviewsBlock();
     }
 
     @AfterMethod

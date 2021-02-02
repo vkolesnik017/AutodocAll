@@ -1,4 +1,4 @@
-package PKW.Section_Tyres_PKW.QC_2900_LinkingBlockOfBrands;
+package PKW.Catalog_Brands.QC_2900_LinkingBlockOfBrands;
 
 import Common.DataBase;
 import PKW.Tyres_maker_page_Logic;

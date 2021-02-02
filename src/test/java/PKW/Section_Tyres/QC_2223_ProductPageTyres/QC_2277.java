@@ -1,4 +1,4 @@
-package PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres;
+package PKW.Section_Tyres.QC_2223_ProductPageTyres;
 
 import Common.SetUp;
 import PKW.Tyres_item_page_Logic;
@@ -12,11 +12,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
+import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2278 {
+public class QC_2277 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -30,12 +31,10 @@ public class QC_2278 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test Checks Add Tyres To Basket From Product Page")
-    public void testAddTyresToBasketFromProductPage(String route) {
+    @Description(value = "Test Checks Presence of Tyres Price On Tyres Product Page")
+    public void testPricePresence(String route) {
         openPage(route);
-        new Tyres_item_page_Logic().checkAddingTyresToBasket()
-                .cartClick()
-                .checkOfIdAddedProductInBasket("12736245");
+        new Tyres_item_page_Logic().presenceOfTyresPrice();
     }
 
     @AfterMethod

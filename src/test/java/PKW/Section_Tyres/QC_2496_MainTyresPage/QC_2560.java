@@ -1,4 +1,4 @@
-package PKW.Section_Tyres_PKW.QC_2496_MainTyresPage;
+package PKW.Section_Tyres.QC_2496_MainTyresPage;
 
 import PKW.Tyres_page_Logic;
 import io.qameta.allure.Description;

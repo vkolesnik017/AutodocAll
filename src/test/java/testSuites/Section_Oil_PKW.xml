@@ -13,24 +13,10 @@
         </classes>
     </test>
 
-    <test name="QC_939_BlockOfPopularBrandsOnMainPage">
-        <classes>
-            <class name="PKW.Section_Oil.QC_939_BlockOfPopularBrandsOnMainPage.QC_940"/>
-            <class name="PKW.Section_Oil.QC_939_BlockOfPopularBrandsOnMainPage.QC_941"/>
-        </classes>
-    </test>
-
     <test name="QC_952_ToleranceBlockOfBrandsOnMainPage">
         <classes>
             <class name="PKW.Section_Oil.QC_952_ToleranceBlockOfBrandsOnMainPage.QC_954"/>
             <class name="PKW.Section_Oil.QC_952_ToleranceBlockOfBrandsOnMainPage.QC_955"/>
-        </classes>
-    </test>
-
-    <test name="QC_1162_MainIssueBlockOfListing">
-        <classes>
-            <class name="PKW.Section_Oil.QC_1162_MainIssueBlockOfListing.QC_1163"/>
-            <class name="PKW.Section_Oil.QC_1162_MainIssueBlockOfListing.QC_1164"/>
         </classes>
     </test>
 

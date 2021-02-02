@@ -1,4 +1,4 @@
-package PKW.Section_Tyres_PKW.QC_2894_LinkingBlockByGroupsCarsOnTiresRoutes;
+package PKW.Section_Tyres.QC_3227_RelinkingBlocksOnTyresRoutes;
 
 import Common.SetUp;
 import PKW.Tyres_maker_group_page_Logic;
