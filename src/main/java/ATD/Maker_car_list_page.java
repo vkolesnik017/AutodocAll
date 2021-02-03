@@ -12,7 +12,9 @@ public class Maker_car_list_page {
         return $(".page_search_title");
     }
 
-    SelenideElement blockWithSelectedVehicle() {return $x("//div[@class='catalog-title__block']");}
+    SelenideElement blockWithSelectedVehicle() {
+        return $x("//div[@class='catalog-title__block']");
+    }
 
     SelenideElement selectorInCloseCondition() {
         return $(".catalog-title__change-car");
@@ -50,21 +52,37 @@ public class Maker_car_list_page {
         return $$x("//div[contains(@class,'header-garage__notlogged')]//a[contains(@class,'history-cars-rows__link')]");
     }
 
-    SelenideElement btnClearVehicleListInPopUpOfGarageIcon() {return $x("//div[@class='header-garage__logged-clear js-clear-recent-car']/span");}
+    SelenideElement btnClearVehicleListInPopUpOfGarageIcon() {
+        return $x("//div[@class='header-garage__logged-clear js-clear-recent-car']/span");
+    }
 
-    ElementsCollection urlsOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//div[@class='header-garage__logged-check']//a");}
+    ElementsCollection urlsOfAddedVehicleInPopUpOfGarageFromSelector() {
+        return $$x("//div[@class='header-garage__logged-check']//a");
+    }
 
-    ElementsCollection radioBtnOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//input[@name='radio-car']");}
+    ElementsCollection radioBtnOfAddedVehicleInPopUpOfGarageFromSelector() {
+        return $$x("//input[@name='radio-car']");
+    }
 
-    ElementsCollection mainCategoriesInHeader() {return $$x("//ul[@class='header__nav-list']/li/a");}
+    ElementsCollection mainCategoriesInHeader() {
+        return $$x("//ul[@class='header__nav-list']/li/a");
+    }
 
-    ElementsCollection urlsOfAddedVehicleInPopUpOfGarageWithOutAuthorization() {return $$x("//div[@class='history-cars-rows']//a[2]");}
+    ElementsCollection urlsOfAddedVehicleInPopUpOfGarageWithOutAuthorization() {
+        return $$x("//div[@class='history-cars-rows']//a[2]");
+    }
 
-    SelenideElement garageIconInHeaderActive() {return $x("//div[@class='header-garage js-header-garage active']");}
+    SelenideElement garageIconInHeaderActive() {
+        return $x("//div[@class='header-garage js-header-garage active']");
+    }
 
-    SelenideElement btnAddedVehicleOfMyGaragePopUp() {return $x("//div[@class='header-garage__history-button js-selector-add-car']/button");}
+    SelenideElement btnAddedVehicleOfMyGaragePopUp() {
+        return $x("//div[@class='header-garage__history-button js-selector-add-car']/button");
+    }
 
-    SelenideElement selectorFromMyGarageBlock() {return $(byId("selector-my-garage"));}
+    SelenideElement selectorFromMyGarageBlock() {
+        return $(byId("selector-my-garage"));
+    }
 
 
     SelenideElement trucksTab() {
@@ -83,17 +101,29 @@ public class Maker_car_list_page {
         return $x("//div[@class='block-select-car tooltip-block tooltip-block--left']/div[4]/select");
     }
 
-    SelenideElement btnSearchOfSelectorFromMyGarage() {return $x("//a[@class='truck_submit js--lkw_selector-btn-submit-garage']");}
+    SelenideElement btnSearchOfSelectorFromMyGarage() {
+        return $x("//a[@class='truck_submit js--lkw_selector-btn-submit-garage']");
+    }
 
-    SelenideElement tecDocCatalog() {return $x("//div[@class='list_ersats_n list-ersatz-n--catalog']");}
+    SelenideElement tecDocCatalog() {
+        return $x("//div[@class='list_ersats_n list-ersatz-n--catalog']");
+    }
 
-    ElementsCollection titleOfParentCategories() { return $$x("//span[@class='name']");    }
+    ElementsCollection titleOfParentCategories() {
+        return $$x("//span[@class='name']");
+    }
 
-    SelenideElement iconOfWishList() { return $x("//span[@class='header__wishes link']"); }
+    SelenideElement iconOfWishList() {
+        return $x("//span[@class='header__wishes link']");
+    }
 
-     SelenideElement searchBar() { return $(byId("search"));  }
+    SelenideElement searchBar() {
+        return $(byId("search"));
+    }
 
-    ElementsCollection productsList() {return $$x("//ul[@class='list_products']/li");}
+    ElementsCollection productsList() {
+        return $$x("//ul[@class='list_products']/li");
+    }
 
     SelenideElement btnAddToBasketFromTopProductsBlock() {
         return $x("//a[@class='ga-click button add_basket']");
@@ -103,13 +133,21 @@ public class Maker_car_list_page {
         return $x("//div[@class='cart-items-block ']");
     }
 
-    SelenideElement topProductsBlock() {return $x("//div[@class='top-small-products top-small-products--shortened']");}
+    SelenideElement topProductsBlock() {
+        return $x("//div[@class='top-small-products top-small-products--shortened']");
+    }
 
-    ElementsCollection allTitlesOfTopProducts() {return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-prod-title']/span");}
+    ElementsCollection allTitlesOfTopProducts() {
+        return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-prod-title']/span");
+    }
 
-    ElementsCollection allBtnAddToBasketOfTopProducts() {return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box ']/a");}
+    ElementsCollection allBtnAddToBasketOfTopProducts() {
+        return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box ']/a");
+    }
 
-    ElementsCollection genericsOfTopProducts() {return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box ']");}
+    ElementsCollection genericsOfTopProducts() {
+        return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box ']");
+    }
 
     SelenideElement topCategoriesBlock() {
         return $x("//div[@class='list blocks']");
@@ -131,7 +169,20 @@ public class Maker_car_list_page {
         return $$x("//div[@class='slick-list draggable']//span[@class='link ga-click']");
     }
 
-    ElementsCollection imagesOfTopProducts() {return $$x("//div[@class='small-prod-image']/a");}
+    ElementsCollection imagesOfTopProducts() {
+        return $$x("//div[@class='small-prod-image']/a");
+    }
 
-    ElementsCollection genericOfTopProducts() {return $$x("//div[@class='small-prod-title']/span");}
+    ElementsCollection genericOfTopProducts() {
+        return $$x("//div[@class='small-prod-title']/span");
+    }
+
+    ElementsCollection allChildCategories() {
+        return $$x("//ul[@class='expand list_ersats_row']/li/div[2]//li/*[self::a or self::span]/span");
+    }
+
+    ElementsCollection childFromFront(String parent) {
+        return $$x("//span[@class='name'][contains(text(),'" + parent + "')]/ancestor::li/div[2]//li/*[self::a or self::span]/span");
+    }
+
 }
