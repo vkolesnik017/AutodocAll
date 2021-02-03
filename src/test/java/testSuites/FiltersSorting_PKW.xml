@@ -24,4 +24,19 @@
         </classes>
     </test>
 
+
+    <test name="QC_943_ViscosityBlockOnOilMainPage">
+        <classes>
+            <class name="PKW.FiltersSorting.QC_943_ViscosityBlockOnOilMainPage.QC_945"/>
+            <class name="PKW.FiltersSorting.QC_943_ViscosityBlockOnOilMainPage.QC_946"/>
+        </classes>
+    </test>
+
+    <test name="QC_958_SpecificationBlockOnMainPage">
+        <classes>
+            <class name="PKW.FiltersSorting.QC_958_SpecificationBlockOnMainPage.QC_959"/>
+            <class name="PKW.FiltersSorting.QC_958_SpecificationBlockOnMainPage.QC_960"/>
+        </classes>
+    </test>
+
 </suite>

@@ -32,7 +32,7 @@ public class QC_2975 {
         return new SetUp("ATD").setUpShopsWithSubroute("prod", "IT,RO,PT", "main", "product32");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)  //TODO Disabled due to a bug BSK-1611
     @Flaky
     @Owner(value = "Sergey_QA")
     @Description(value = "The \"Fiscal code\" field is filled in, if you re-check the selection box in the \"Fiscal code\" checkbox (the field was previously filled in)")

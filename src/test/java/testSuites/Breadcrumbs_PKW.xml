@@ -6,4 +6,12 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
+    <test name="QC_1975_Breadcrumbs">
+        <classes>
+            <class name="PKW.Breadcrumbs.QC_1975_Breadcrumbs.QC_1256"/>
+            <class name="PKW.Breadcrumbs.QC_1975_Breadcrumbs.QC_1257"/>
+            <class name="PKW.Breadcrumbs.QC_1975_Breadcrumbs.QC_1259"/>
+        </classes>
+    </test>
+
 </suite>
