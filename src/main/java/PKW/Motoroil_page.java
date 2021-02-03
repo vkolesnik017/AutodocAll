@@ -87,4 +87,6 @@ public class Motoroil_page {
 
    SelenideElement btnSearchOfKbaSelectorInErrorPopUp() {return $x("//div[@class='popup-box-selector']//a[@class='submit kba_submit ripple-out']");}
 
+   SelenideElement brand(String title) {return $x("//ul[@class='featured_manufacturers_image']/li/a[@data-ga-action='"+title+"']");}
+
 }

@@ -92,6 +92,8 @@
     <test name="QC_3304_SafeOrder_AWS">
         <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_3304_SafeOrder_AWS.QC_2731"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_3304_SafeOrder_AWS.QC_2732"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_3304_SafeOrder_AWS.QC_2736"/>
         </classes>
     </test>
 

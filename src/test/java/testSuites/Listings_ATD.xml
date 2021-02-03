@@ -82,12 +82,12 @@
     </test>
 
 
-    <test name="QC_2412_ListingOfProductListing">
+ <!--   <test name="QC_2412_ListingOfProductListing">
         <classes>
             <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2403"/>
             <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2674"/>
         </classes>
-    </test>
+    </test>-->
 
     <test name="QC_2187_TyresListing">
         <classes>

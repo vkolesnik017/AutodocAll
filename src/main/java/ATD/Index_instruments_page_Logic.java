@@ -98,11 +98,21 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
-    @Step("Checks presence VAT postscript {expectedVatPostscript} in mini-cards. Index_instruments_page")
-    public Index_instruments_page_Logic checkPresenceVatPostscriptInMiniCards(String expectedVatPostscript) {
+    @Step("Checks presence VAT postscript {expectedVatPostscript} in mini-cards in top-6 products. Index_instruments_page")
+    public Index_instruments_page_Logic checkPresenceVatPostscriptInMiniCardsInTop6(String expectedVatPostscript) {
         By vatPostscriptInMiniCards = (byCssSelector(".product-list__item__info"));
         for (SelenideElement miniCardFirsSlide : miniCardsInTopProductsBlock()) {
-            miniCardFirsSlide.scrollTo();
+            miniCardFirsSlide.scrollIntoView("{block: \"center\"}");
+            miniCardFirsSlide.$(vatPostscriptInMiniCards).shouldHave(text(expectedVatPostscript));
+        }
+        return this;
+    }
+
+    @Step("Checks presence VAT postscript {expectedVatPostscript} in mini-cards in top-10 products. Index_instruments_page")
+    public Index_instruments_page_Logic checkPresenceVatPostscriptInMiniCardsInTop10(String expectedVatPostscript) {
+        By vatPostscriptInMiniCards = (byCssSelector(".price_vat"));
+        for (SelenideElement miniCardFirsSlide : miniCardsInTop10ProductsBlock()) {
+            miniCardFirsSlide.scrollIntoView("{block: \"center\"}");
             miniCardFirsSlide.$(vatPostscriptInMiniCards).shouldHave(text(expectedVatPostscript));
         }
         return this;
@@ -128,7 +138,7 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
 
     @Step("Click on first button Add to basket in top-6 products block. Index_instruments_page")
     public Index_instruments_page_Logic clickOnFirstBtnAddToBasketInTop6ProductsBlock() {
-        firstBtnAddToBasketInTop6ProductsBlock().click();
+        firstBtnAddToBasketInTop6ProductsBlock().scrollIntoView("{block: \"center\"}").click();
         sleep(2000);
         return this;
     }

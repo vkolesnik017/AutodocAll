@@ -228,6 +228,6 @@ public class Versand_static_page_Logic extends Versand_static_page {
 
     @Step("Get safe order price. Versand_static_page")
     public String getSafeOrderPrice() {
-        return safeOrderPrice().getText().replaceAll("[^0-9,]", "").replaceAll(",",".");
+        return safeOrderPrice().scrollIntoView("{block: \"center\"}").getText().replaceAll("[^0-9,]", "").replaceAll(",",".");
     }
 }

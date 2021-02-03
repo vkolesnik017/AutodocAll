@@ -6,4 +6,12 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
+    <test name="QC_1410_LeibsAndBlocks">
+        <classes>
+            <class name="PKW.Advantages.QC_1410_LeibsAndBlocks.QC_1244"/>
+            <class name="PKW.Advantages.QC_1410_LeibsAndBlocks.QC_1246"/>
+            <class name="PKW.Advantages.QC_1410_LeibsAndBlocks.QC_1247"/>
+        </classes>
+    </test>
+
 </suite>

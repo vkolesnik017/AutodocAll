@@ -609,15 +609,15 @@ public class Main_page {
 
     //Car selector popup
     SelenideElement firstFieldKBAInPopup() {
-        return $x("//div[7]/form[1]//div[1]/input");
+        return $x("//div[contains(@class,'popup-kba-error')]//input[@id='kba1']");
     }
 
     SelenideElement secondFieldKBAInPopup() {
-        return $x("//div[7]/form[1]//div[2]/input");
+        return $x("//div[contains(@class,'popup-kba-error')]//input[@id='kba2']");
     }
 
     SelenideElement selectorKbaBtnInPopup() {
-        return $x("//div[7]//div[3]//div[3]//span");
+        return $x("//div[contains(@class,'popup-kba-error')]//a[contains(@class,'submit kba_submit')]");
     }
 
     SelenideElement selectorPopup() {

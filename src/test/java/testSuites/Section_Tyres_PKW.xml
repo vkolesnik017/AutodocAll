@@ -6,56 +6,45 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_2900_LinkingBlockOfBrands">
-        <classes>
-            <class name="PKW.Section_Tyres_PKW.QC_2900_LinkingBlockOfBrands.QC_2901"/>
-        </classes>
-    </test>
-
     <test name="QC_2898_CheckingRelinkingBlockBySeasonsOnTireRoutes">
         <classes>
-            <class name="PKW.Section_Tyres_PKW.QC_2898_CheckingRelinkingBlockBySeasonsOnTireRoutes.QC_2899"/>
+            <class name="PKW.Section_Tyres.QC_2898_CheckingRelinkingBlockBySeasonsOnTireRoutes.QC_2899"/>
         </classes>
     </test>
 
-    <test name="QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts">
+    <test name="QC_3227_RelinkingBlocksOnTyresRoutes">
         <classes>
-            <class name="PKW.Section_Tyres_PKW.QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts.QC_2897"/>
+            <class name="PKW.Section_Tyres.QC_3227_RelinkingBlocksOnTyresRoutes.QC_2897"/>
+            <class name="PKW.Section_Tyres.QC_3227_RelinkingBlocksOnTyresRoutes.QC_2895"/>
         </classes>
     </test>
 
     <test name="QC_2892_CheckingLinkingBlockBySizeOnTireRoutes">
         <classes>
-            <class name="PKW.Section_Tyres_PKW.QC_2892_CheckingLinkingBlockBySizeOnTireRoutes.QC_2893"/>
-        </classes>
-    </test>
-
-    <test name="QC_2894_LinkingBlockByGroupsCarsOnTiresRoutes">
-        <classes>
-            <class name="PKW.Section_Tyres_PKW.QC_2894_LinkingBlockByGroupsCarsOnTiresRoutes.QC_2895"/>
+            <class name="PKW.Section_Tyres.QC_2892_CheckingLinkingBlockBySizeOnTireRoutes.QC_2893"/>
         </classes>
     </test>
 
     <test name="QC_2496_MainTyresPage">
         <classes>
-            <class name="PKW.Section_Tyres_PKW.QC_2496_MainTyresPage.QC_2562"/>
-            <class name="PKW.Section_Tyres_PKW.QC_2496_MainTyresPage.QC_2560"/>
+            <class name="PKW.Section_Tyres.QC_2496_MainTyresPage.QC_2562"/>
+            <class name="PKW.Section_Tyres.QC_2496_MainTyresPage.QC_2560"/>
         </classes>
     </test>
 
     <test name="QC_2223_ProductTyresPage">
         <classes>
-            <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2273"/>
-            <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2274"/>
-            <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2275"/>
-            <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2276"/>
-            <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2277"/>
+            <class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2273"/>
+            <class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2274"/>
+            <class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2275"/>
+            <class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2276"/>
+            <class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2277"/>
             <!--temporary disabled, refactor test QC-2278-->
-            <!--<class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2278"/>-->
-            <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2313"/>
-            <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2315"/>
-            <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2318"/>
-            <!--<class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2224"/>-->
+            <!--<class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2278"/>-->
+            <class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2313"/>
+            <class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2315"/>
+            <class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2318"/>
+            <!--<class name="PKW.Section_Tyres.QC_2223_ProductPageTyres.QC_2224"/>-->
         </classes>
     </test>
 

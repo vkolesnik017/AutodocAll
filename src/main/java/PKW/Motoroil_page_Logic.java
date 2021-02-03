@@ -16,9 +16,9 @@ public class Motoroil_page_Logic extends Motoroil_page {
     }
 
     @Step("select brand in block. Motoroil_page")
-    public Motoroil_page_Logic selectBrandInBlock(int positionOfBrands) {
+    public Motoroil_page_Logic selectBrandInBlock(String titleOfBrand) {
         brandsBlock().shouldBe(visible);
-        brandLinks().get(positionOfBrands).click();
+        brand(titleOfBrand).click();
         return this;
     }
 
