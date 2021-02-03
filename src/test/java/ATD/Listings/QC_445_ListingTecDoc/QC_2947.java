@@ -45,8 +45,10 @@ public class QC_2947 {
     @Description(value = "test Checking the display of the generic alternative name in the product name")
     public void testCheckingDisplayOfGenericAlternativeNameInProductName(String route) {
         catAlternativePage.openAlternativeCategoriesInAwsWithLogin()
-                .presenceAlternativeTitleForGeneric("135", "atd", "de")
-                .presenceAlternativeTitleForGeneric("215", "atd", "de");
+                .setGenericId("215")
+                .presenceAlternativeTitleForGeneric("215", "atd", "de")
+                .setGenericId("135")
+                .presenceAlternativeTitleForGeneric("135", "atd", "de");
         String alternativeTitle = catAlternativePage.getAlternativeTitle("135", "atd", "de");
         String titleOfFirstProduct = productSearchAwsPage.openProductSearchPage().getTitleOfFirstProduct(0);
         productSearchAwsPage.openProductSearchPage()
