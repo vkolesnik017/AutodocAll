@@ -23,7 +23,7 @@ import static mailinator.WebMail.passwordForMail;
 
 public class QC_3033 {
 
-    private String mail = "romanchelombitko@gamil.com";
+    private String mail = "QC_3033_autotest@autodoc.si";
     private DataBase dB = new DataBase("ATD");
 
     @BeforeClass
@@ -51,8 +51,8 @@ public class QC_3033 {
                 .clickFirstProductOnListing()
                 .checkPresenceVatPostscript(vatForCH);
         openPage(dB.getFullRouteByRouteAndSubroute("prod", "CH", "main", "index_instruments"));
-        String orderID = new Index_instruments_page_Logic().checkPresenceVatPostscriptInMiniCards(vatForCH)
-                .hoverAndClickOnFirstBtnAddToBasketInTop10ProductsBlock()
+        String orderID = new Index_instruments_page_Logic().checkPresenceVatPostscriptInMiniCardsInTop6(vatForCH)
+                .checkPresenceVatPostscriptInMiniCardsInTop10(vatForCH)
                 .clickOnFirstBtnAddToBasketInTop6ProductsBlock()
                 .clickOnBtnGoToBasket()
                 .nextButtonClick()

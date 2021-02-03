@@ -9,6 +9,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Listing_accessories_page {
 
+    SelenideElement logoAutodoc() {
+        return $x("//a[@class='header__logo-main']");
+    }
+
     SelenideElement listingTitle() {
         return $x("//div[@class='cont']//h2[text()]");
     }

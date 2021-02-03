@@ -286,4 +286,10 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         titleNameProductFromListing().click();
         return page(Product_page_Logic.class);
     }
+
+    @Step("Click logo Autodoc . Listing_accessories_page")
+    public Main_page_Logic clickLogoAutodoc() {
+        logoAutodoc().shouldBe(visible).click();
+        return page(Main_page_Logic.class);
+    }
 }

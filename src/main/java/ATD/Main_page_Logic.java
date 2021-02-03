@@ -364,7 +364,6 @@ public class Main_page_Logic extends Main_page {
     // This method only for DE
     @Step("Fill in KBA fields in popup. Main_page")
     public Main_page_Logic fillNumberKbaInPopup(String numberForFirstField, String numberForSecondField) {
-        bluePromptEmptyFieldSelector().shouldBe(visible);
         firstFieldKBAInPopup().shouldBe(visible).setValue(numberForFirstField);
         secondFieldKBAInPopup().shouldBe(visible).setValue(numberForSecondField);
         sleep(4000);
@@ -1753,5 +1752,11 @@ public class Main_page_Logic extends Main_page {
             categories.add(topParentCategory().get(i).getText());
         }
         return categories;
+    }
+
+    @Step("click on Tyres Category. Main_page")
+    public Tyres_page_Logic clickOnTyresCategory() {
+        tyresCategory().shouldBe(visible).click();
+        return page(Tyres_page_Logic.class);
     }
 }

@@ -123,7 +123,7 @@ public class QC_3039 {
         float actualDeliveryCostForRegion = new CurrencyRatesPage_aws().exchangeAmountAtDesiredRate(deliveryCostForRegion, "CHF");
         float actualDeliveryCostForCountry = new CurrencyRatesPage_aws().exchangeAmountAtDesiredRate(deliveryCostForCountry, "CHF");
         openPage(addOrderPageURL);
-        String orderID = new OrderAdd_page_aws().fillsInFieldCustomerID(customerID)
+        String orderID = new OrderAdd_page_aws().fillsInFieldCustomerID(customerID_DE_LI)
                 .chooseSkinInSelector("auto-doc.ch (CH)")
                 .fillingPostalCodeInBlockDeliveryAddress("78266")
                 .chooseDeliveryCountry(deliveryShop)
@@ -137,7 +137,7 @@ public class QC_3039 {
 
         executeJavaScript("window.open('about:blank', '-blank')");
         switchTo().window(1);
-        new WebMail().openMail(mail, passwordForMail)
+        new WebMail().openMail(mailDE_LI, passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderID)
                 .checkTextContainingVatPercentageInEmail("inkl. " + vatForCH + "% MwST")
                 .checkDeliveryCostForCountryOrRegion(actualDeliveryCostForRegion, actualDeliveryCostForCountry, deliveryShop);
