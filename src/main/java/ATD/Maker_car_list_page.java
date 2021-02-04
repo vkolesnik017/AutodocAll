@@ -182,7 +182,7 @@ public class Maker_car_list_page {
     }
 
     ElementsCollection childFromFront(String parent) {
-        return $$x("//span[@class='name'][contains(text(),'" + parent + "')]/ancestor::li/div[2]//li/*[self::a or self::span]/span");
+        return $$x("//span[@class='name'][text()='" + parent + "' or text()='" + parent + " ']/ancestor::li/div[2]//li/*[self::a or self::span]/span");
     }
 
 }

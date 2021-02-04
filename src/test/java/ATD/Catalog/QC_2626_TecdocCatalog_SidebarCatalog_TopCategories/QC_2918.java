@@ -37,7 +37,7 @@ public class QC_2918 {
     @Description(value = "Test checking prioritizing child by sales on catalog page with top car")
     public void testPrioritizingChildBySalesOnCatalogPageWithTopCar(String route) {
         openPage(route);
-        List<String> notUsedCategories = Arrays.asList("Reifen", "Autopflege", "Werkzeuge & Werkstattausrüstung");
+        List<String> notUsedCategories = Arrays.asList("Reifen", "Autopflege", "Werkzeuge & Werkstattausrüstung","Autozubehör");
         new Maker_car_list_page_Logic().presenceOfTecDocCatalog().compareDisplayOrderOfChildCategoriesWithFile(dataFile, notUsedCategories);
     }
 
