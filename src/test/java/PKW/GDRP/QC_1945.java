@@ -32,7 +32,7 @@ public class QC_1945 {
         return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "shop_reviews");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) //TODO Change of logic. Changes to the task SALES-2345
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test verify working GDPR in popup Answer on review page")
