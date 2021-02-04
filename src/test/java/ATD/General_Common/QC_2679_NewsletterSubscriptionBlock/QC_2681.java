@@ -37,9 +37,14 @@ public class QC_2681 {
     public void testChecksSubscribeToNewLetterInRegFormPopUp(String route) {
         openPage(route);
 
-        new Main_page_Logic().openRegistrationPopup().checkTextBlockInRegForm()
-                .fillRequiredFieldsForRegistration(firstNameRandom(), secondNameRandom(), email, true).fillPasswordFieldsAndClickRegistration().checkingAppearingNameOfClient();
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(email);
+        new Main_page_Logic().openRegistrationPopup()
+                .checkTextBlockInRegForm()
+                .fillRequiredFieldsForRegistration(firstNameRandom(), secondNameRandom(), email, true)
+                .fillPasswordFieldsAndClickRegistration()
+                .checkingAppearingNameOfClient();
+        new PrivacyPolicySubscription_aws()
+                .openPolicySubscriptionWithLogin()
+                .checkingPolicyAndSubscribeForMail(email);
     }
 
     @AfterMethod
