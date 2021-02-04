@@ -127,7 +127,7 @@ public class Main_page_Logic extends Main_page {
         subscriptionMailField().setValue(mail);
         subscriptionMailCheckbox().click();
         subscriptionButton().click();
-        subscriptionSuccessPopup().shouldHave(text("Viel Spaß beim Shoppen!"));
+        subscriptionSuccessPopup().shouldHave(text("Wir haben eine E-Mail zur Bestätigung Ihres Abonnements an Ihre E-Mail-Adresse gesendet."));
         subscriptionPopupClose().click();
         return mail;
     }
