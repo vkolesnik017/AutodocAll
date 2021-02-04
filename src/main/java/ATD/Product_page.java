@@ -129,7 +129,7 @@ public class Product_page {
     }
 
     public SelenideElement closeFullImagePreview() {
-        return $(".fancybox-button--close");
+        return $x("//div[@class='fancybox-skin']/a[@title='Close']");
     }
 
     public SelenideElement fullProductImage() {

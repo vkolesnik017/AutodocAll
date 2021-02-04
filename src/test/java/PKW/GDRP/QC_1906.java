@@ -33,7 +33,7 @@ public class QC_1906 {
         return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "shop_reviews");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test Gdpr verify working of reviews form on review page")
@@ -48,7 +48,7 @@ public class QC_1906 {
     }
 
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)   //TODO Change of logic. Changes to the task SALES-2345
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test Gdpr verify working of rating form on review page")
