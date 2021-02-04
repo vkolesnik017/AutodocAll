@@ -31,7 +31,7 @@ public class QC_1947 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "staticVersand");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test verify working of send ship form on Versand page")

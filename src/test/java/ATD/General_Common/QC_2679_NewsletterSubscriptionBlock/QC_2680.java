@@ -37,9 +37,16 @@ public class QC_2680 {
     @Description(value = "Test checks subscribe to news letter by registering in basket")
     public void testChecksSubscribeToNewsLetterByRegisteringInBasket(String route) {
         openPage(route);
-        new Search_page_Logic().addFirstProductAndGoToCart().nextButtonClick().checkAndClickTextBlockInRegForm().registrationFromCart(email)
-                .fillAllFields("DE").nextBtnClick();
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(email);
+        new Search_page_Logic()
+                .addFirstProductAndGoToCart()
+                .nextButtonClick()
+                .checkAndClickTextBlockInRegForm()
+                .registrationFromCart(email)
+                .fillAllFields("DE")
+                .nextBtnClick();
+        new PrivacyPolicySubscription_aws()
+                .openPolicySubscriptionWithLogin()
+                .checkingPolicyAndSubscribeForMail(email);
     }
 
     @AfterMethod
