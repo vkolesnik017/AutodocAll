@@ -34,7 +34,12 @@ public class QC_2121 {
     @Description(value = "Test checking of adding out of stock tyres to WishList and the impossibility of adding a product to the cart is not in stock")
     public void testCheckingOfAddingOutOfStockTyresToWishList(String route) {
         openPage(route);
-        new Tyre_form_page_Logic().addedOutOfStockProductToWishList(1).goToWishListPage().clickOnGrayBtnOfProduct().clickOnGrayBtnOfProduct().presenceOfAvailablePopUp();
+        new Tyre_form_page_Logic()
+                .addedOutOfStockProductToWishList(1)
+                .goToWishListPage()
+                .clickOnGrayBtnOfProduct()
+                .clickOnGrayBtnOfProduct()
+                .presenceOfAvailablePopUp();
     }
 
     @AfterMethod

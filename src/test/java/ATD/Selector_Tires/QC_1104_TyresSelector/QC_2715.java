@@ -39,12 +39,23 @@ public class QC_2715 {
     @Description(value = "Test Checking the correct size in the tire selector for the selected season")
     public void testCheckingCorrectSizeInTyreSelectorForSelectedSeason(String route) {
         openPage(route);
-        List<String> allSeasons = tyresPage.selectSeasonInSelector("allwetter").checkVisibleTopTyres().getAllWidthValuesFromSelector();
-        List<String> summerSeason = tyresPage.selectSeasonInSelector("sommer").checkVisibleTopTyres().getAllWidthValuesFromSelector();
+        List<String> allSeasons = tyresPage.
+                selectSeasonInSelector("allwetter")
+                .checkVisibleTopTyres()
+                .getAllWidthValuesFromSelector();
+        List<String> summerSeason = tyresPage
+                .selectSeasonInSelector("sommer")
+                .checkVisibleTopTyres()
+                .getAllWidthValuesFromSelector();
         tyresPage.mismatchComparisonOfSeasons(allSeasons, summerSeason);
-        List<String> winterSeason = tyresPage.selectSeasonInSelector("winter").checkVisibleTopTyres().getAllWidthValuesFromSelector();
+        List<String> winterSeason = tyresPage
+                .selectSeasonInSelector("winter")
+                .checkVisibleTopTyres()
+                .getAllWidthValuesFromSelector();
         tyresPage.mismatchComparisonOfSeasons(winterSeason, summerSeason)
-                .mismatchComparisonOfSeasons(winterSeason, allSeasons).selectSeasonInSelector("0").checkVisibleTopTyres()
+                .mismatchComparisonOfSeasons(winterSeason, allSeasons)
+                .selectSeasonInSelector("0")
+                .checkVisibleTopTyres()
                 .checkOfAllWidthValues(allSeasons, summerSeason, winterSeason);
     }
 
@@ -70,7 +81,8 @@ public class QC_2715 {
         makerPage.displayingVehicleLinksInSelector();
         List<String> winterSeason = tyresPage.getAllWidthValuesFromSelector();
         tyresPage.mismatchComparisonOfSeasons(winterSeason, summerSeason)
-                .mismatchComparisonOfSeasons(winterSeason, allSeasons).selectSeasonInSelector("0");
+                .mismatchComparisonOfSeasons(winterSeason, allSeasons
+                ).selectSeasonInSelector("0");
         makerPage.displayingVehicleLinksInSelector();
         tyresPage.checkOfAllWidthValues(allSeasons, summerSeason, winterSeason);
     }
