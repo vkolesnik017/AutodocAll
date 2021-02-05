@@ -29,7 +29,7 @@ public class QC_1013 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) //TODO Change of logic. Changes to the task SALES-2345
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify working GDPR checkbox in profile desktop and profile mobile")
