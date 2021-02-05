@@ -85,8 +85,7 @@ public class QC_1393 {
         Assert.assertEquals(totalPriceBE, totalPriceAWSOrderBE);
         sellingPriceAWSOrderBE = order_aws.getSellingProductPriceOrderAWS();
 
-        // TODO включу данный асерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(sellingPriceAWSOrderGB, priceProductInAllDat);*/
+        Assert.assertEquals(sellingPriceAWSOrderBE, priceProductInAllDat, 0.03f);
         order_aws.clickCustomerId();
         switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
@@ -151,8 +150,7 @@ public class QC_1393 {
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         sellingPriceAWSOrderDE = order_aws.getSellingProductPriceOrderAWS();
 
-        // TODO включу данный асерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(sellingPriceAWSOrderDE, regularProductPricePerAllDataPageDE);*/
+        Assert.assertEquals(sellingPriceAWSOrderDE, regularProductPricePerAllDataPageDE, 0.03f);
         order_aws.clickCustomerId();
         switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()

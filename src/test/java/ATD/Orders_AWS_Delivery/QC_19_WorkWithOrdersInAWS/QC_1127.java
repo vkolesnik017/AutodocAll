@@ -70,8 +70,7 @@ public class QC_1127 {
         productQuantity = order_aws.getProductQuantity();
         sellingCostInOrder = order_aws.getSellingPriceOfCertainProduct(productArticleID);
         amountOfGoods = order_aws.dividingPriceByQuantity(sumProductColumnAfterIncreasingAmount, productQuantity, sellingCostInOrder);
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(amountOfGoods, sellingCostInOrder);*/
+        Assert.assertEquals(amountOfGoods, sellingCostInOrder, 0.03f);
         Assert.assertNotEquals(sumProductColumn, sumProductColumnAfterIncreasingAmount);
         totalSumIncomeWithoutVatForTwoProduct = order_aws.getTotalSumIncomeWithoutVAT();
         Assert.assertNotEquals(totalSumIncomeWithoutVat, totalSumIncomeWithoutVatForTwoProduct);
@@ -79,8 +78,7 @@ public class QC_1127 {
                 .reSaveOrder()
                 .getTotalPriceOrderAWS();
         totalSumIncludingDelivery = order_aws.multiplyPriceByQuantityAndPlusDeliveryCost(sellingCostInOrder, productQuantity, deliveryCost);
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(totalCostInOrder, totalSumIncludingDelivery);*/
+        Assert.assertEquals(totalCostInOrder, totalSumIncludingDelivery, 0.03f);
         order_aws.clickRefundBtn()
                 .checkPresenceOfGoodsInRefundTable(articleNum)
                 .checksQuantityOfGoodsInRefundTable("2");
