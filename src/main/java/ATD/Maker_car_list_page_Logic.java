@@ -399,4 +399,28 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         Assert.assertEquals(uniqueGenerics.size(), generics.size());
         return this;
     }
+
+    @Step("compare Display Order Of Child Categories With File. Maker_car_list_page")
+    public Maker_car_list_page_Logic compareDisplayOrderOfChildCategoriesWithFile(String file, List<String> notUsedChild) {
+        List<String> parentsFromFile = new Excel().readFromExcel(file, 1);
+        List<String> childFromExcel = new Excel().readFromExcel(file, 3);
+        List<String> childFromFile = new ArrayList<>();
+        for (int i = 0; i < titleOfParentCategories().size() - 1; i++) {
+            if (notUsedChild.contains(titleOfParentCategories().get(i).getText())) {
+                continue;
+            }
+            List<String> childFromFront = childFromFront(titleOfParentCategories().get(i).getText()).stream().map(n -> getTextFromUnVisibleElement(n)).collect(Collectors.toList());
+            System.out.println();
+            int currentParentCategory = parentsFromFile.indexOf(titleOfParentCategories().get(i).getText());
+            int nextParentCategory = parentsFromFile.indexOf(titleOfParentCategories().get(i + 1).getText());
+            System.out.println();
+            for (int j = currentParentCategory; j < nextParentCategory; j++) {
+                childFromFile.add(childFromExcel.get(j));
+            }
+            Assert.assertEquals(childFromFront, childFromFile, String.format("list of child not equals in %s - parent category", titleOfParentCategories().get(i).getText()));
+            childFromFront.clear();
+            childFromFile.clear();
+        }
+        return this;
+    }
 }
