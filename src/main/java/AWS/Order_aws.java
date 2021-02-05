@@ -597,7 +597,7 @@ public class Order_aws {
 
 
     @Step ("Check presence text in Fiscal code field Billing block . Order_aws")
-    public Order_aws checkPresenceTextInFiscalCodeField(boolean visibleText) {
+    public Order_aws checkPresenceTextInFiscalCodeFieldForBilling(boolean visibleText) {
         fiscalCodeFieldForBilling().shouldBe(visible);
         if (visibleText == true) {
             Assert.assertFalse(fiscalCodeFieldForBilling().getValue().isEmpty());

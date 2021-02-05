@@ -93,8 +93,8 @@ public class QC_562 {
                 //.comparePriceOfAddedProductWithPricesOnSites(allProductCost)
                 .getTotalPriceOrderAWS();
         productPriceIncludingDeliveryAndSafeOrder = order_aws.getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(deliveryCost, safeOrderCost);
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(totalProductCostInOrder, productPriceIncludingDeliveryAndSafeOrder);*/
+
+        Assert.assertEquals(totalProductCostInOrder, productPriceIncludingDeliveryAndSafeOrder, 0.03f);
         order_aws.reSaveOrder()
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
@@ -109,8 +109,7 @@ public class QC_562 {
                 //.comparePriceOfAddedProductWithPricesOnSites(allProductCost)
                 .getTotalPriceOrderAWS();
         productPriceIncludingDeliveryAndSafeOrder = order_aws.getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(deliveryCost, safeOrderCost);
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(totalProductCostInOrder, productPriceIncludingDeliveryAndSafeOrder);*/
+        Assert.assertEquals(totalProductCostInOrder, productPriceIncludingDeliveryAndSafeOrder, 0.03f);
     }
 
     @AfterMethod

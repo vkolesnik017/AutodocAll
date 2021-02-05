@@ -46,7 +46,7 @@ public class QC_169 {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks creating order in AWS with heavy loads")
-    public void testCreatingOrderInAwsWithWithHeavyLoads(String route) throws SQLException {
+    public void testCreatingOrderInAwsWithWithHeavyLoads(String route) {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
         productCost = product_page_logic.getProductPrice();
@@ -76,14 +76,12 @@ public class QC_169 {
         Assert.assertEquals(deliveryCost, deliveryCostInOrder);
         sellingCostInOrder = order_aws.getSellingProductPriceOrderAWS();
 
-        //TODO отключил данный ассерт из за дефекта AWS-2830
-        //Assert.assertEquals(productCost, sellingCostInOrder);
+        Assert.assertEquals(productCost, sellingCostInOrder, 0.03f);
         deliveryCostOfHeavyLoads = order_aws.getDeliveryCostOfHeavyLoads();
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
         costIncludingDeliveryInOrder = order_aws.getTotalCostIncludingDeliveryAndDeliveryCostOfHeavyLoads(sellingCostInOrder, deliveryCost, deliveryCostOfHeavyLoads);
 
-        //TODO отключил данный ассерт из за дефекта AWS-2830
-        //Assert.assertEquals(totalCostInOrder, costIncludingDeliveryInOrder);
+        Assert.assertEquals(totalCostInOrder, costIncludingDeliveryInOrder, 0.03f);
         order_aws.reSaveOrder()
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
@@ -96,14 +94,11 @@ public class QC_169 {
         Assert.assertEquals(deliveryCost, deliveryCostInOrder);
         sellingCostInOrder = order_aws.getSellingProductPriceOrderAWS();
 
-        //TODO отключил данный ассерт из за дефекта AWS-2830
-        //Assert.assertEquals(productCost, sellingCostInOrder);
+        Assert.assertEquals(productCost, sellingCostInOrder, 0.03f);
         deliveryCostOfHeavyLoads = order_aws.getDeliveryCostOfHeavyLoads();
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
         costIncludingDeliveryInOrder = order_aws.getTotalCostIncludingDeliveryAndDeliveryCostOfHeavyLoads(sellingCostInOrder, deliveryCost, deliveryCostOfHeavyLoads);
-
-        //TODO отключил данный ассерт из за дефекта AWS-2830
-        //Assert.assertEquals(totalCostInOrder, costIncludingDeliveryInOrder);
+        Assert.assertEquals(totalCostInOrder, costIncludingDeliveryInOrder, 0.03f);
     }
 
     @AfterMethod
