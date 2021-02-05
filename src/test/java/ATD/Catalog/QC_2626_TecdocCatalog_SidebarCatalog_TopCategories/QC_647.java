@@ -28,6 +28,7 @@ public class QC_647 {
     private ArrayList<String> parentCategoriesInDropdownMenu;
     private ArrayList<String> childCategoriesInAWS;
     private ArrayList<String> parentCategoriesInAWS;
+    private ArrayList<String> parentIdException;
 
     public QC_647() throws SQLException {
     }
@@ -51,8 +52,9 @@ public class QC_647 {
         childCategoriesInDropdownMenu = categoriesPageLogic.getAllChildCategoriesFromCatalogDropdownMenu();
         parentCategoriesInDropdownMenu = categoriesPageLogic.getAllParentCategoriesFromCatalogDropdownMenu();
 
+        parentIdException = catalogCategoriesAws.exceptionsParentId();
         childCategoriesInAWS = catalogCategoriesAws.getAllChildCategoriesFromAWS();
-        parentCategoriesInAWS = catalogCategoriesAws.getAllParentCategoriesFromAWS();
+        parentCategoriesInAWS = catalogCategoriesAws.getAllParentCategoriesFromAWSThenRemoveParentIdExceptions(parentIdException);
 
         categoriesPageLogic.compareCategoriesFromCatalogAndAWS(childCategoriesInDropdownMenu, childCategoriesInAWS)
                 .compareCategoriesFromCatalogAndAWS(parentCategoriesInDropdownMenu, parentCategoriesInAWS);

@@ -32,7 +32,7 @@ public class QC_1895 {
         return new SetUp("PKW").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = false) //TODO Change of logic. Changes to the task SALES-2345
+    @Test(dataProvider = "route", enabled = false) //TODO Change of logic. Changes to the task SALES-2345 and Bug SALES-3203
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test verify working GDPR form in footer on Main Page ")

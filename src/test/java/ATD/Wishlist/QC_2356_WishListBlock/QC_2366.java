@@ -41,7 +41,10 @@ public class QC_2366 {
         String urlOfImageProduct = searchPage.getUrlOfProductImageBrand(0);
         String amountQuantityOfProduct = searchPage.getAmountQuantityOfProduct(0);
         List<String> listOfProductCharacteristics = searchPage.getAllProductCharacteristics(0);
-        searchPage.addedProductToWishList(1).goToWishListPage().presenceOfProductList().compareElementsFromListingInWishList(0, urlOfImageProduct, priceBox, listOfProductCharacteristics, amountQuantityOfProduct);
+        searchPage.addedProductToWishList(1)
+                .goToWishListPage()
+                .presenceOfProductList()
+                .compareElementsFromListingInWishList(0, urlOfImageProduct, priceBox, listOfProductCharacteristics, amountQuantityOfProduct);
     }
 
     @AfterMethod

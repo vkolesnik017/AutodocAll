@@ -51,6 +51,7 @@ public class QC_528 {
         openPage(route);
         new Category_car_list_page_Logic().presenceRefurbishedCharacteristic("Zustand  Wiederaufbereitet");
     }
+
     @DataProvider(name = "routesProduct", parallel = true)
     Object[] dataProviderProduct() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product41");
@@ -106,6 +107,7 @@ public class QC_528 {
         openPage(route);
         new Product_page_Logic().presenceRefurbishedCharacteristicWithArticle("Henkel Parts", "Zustand  Wiederaufbereitet", "R");
     }
+
     @DataProvider(name = "routesCarListWithCharacteristic", parallel = true)
     Object[] dataProviderCarListWithCharacteristic() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list50,category_oen24");
@@ -117,7 +119,7 @@ public class QC_528 {
     @Description(value = "Test checks presence Refurbished characteristic in listings and product page")
     public void testChecksPresenceRefurbishedCharacteristicInListingsAndProductPageCarListWithCharacteristic(String route) {
         openPage(route);
-        new Category_car_list_page_Logic().presenceRefurbishedCharacteristicInListingProductWithCharacteristic("Zustand  Wiederaufbereitet", "DELCO REMY","Ergänzende Info:Remy Remanufactured");
+        new Category_car_list_page_Logic().presenceRefurbishedCharacteristicInListingProductWithCharacteristic("Zustand  Wiederaufbereitet", "DELCO REMY", "Ergänzende Info:Remy Remanufactured");
     }
 
     @DataProvider(name = "routesWithCharacteristic", parallel = true)
@@ -131,7 +133,7 @@ public class QC_528 {
     @Description(value = "Test checks presence Refurbished characteristic in listings and product page")
     public void testChecksPresenceRefurbishedCharacteristicInListingsAndProductPageWithCharacteristic(String route) {
         openPage(route);
-        new Search_page_Logic().presenceRefurbishedCharacteristicInListingWithCharacteristic("Zustand  Wiederaufbereitet", "DELCO REMY","Ergänzende Info:Remy Remanufactured");
+        new Search_page_Logic().presenceRefurbishedCharacteristicInListingWithCharacteristic("Zustand  Wiederaufbereitet", "DELCO REMY", "Ergänzende Info:Remy Remanufactured");
     }
 
     @AfterMethod
