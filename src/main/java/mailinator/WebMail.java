@@ -102,11 +102,11 @@ public class WebMail {
     }
 
     private SelenideElement linkToDeliveryPage() {
-        return $x("//table[@class='content']//a[1]");
+        return $x("//td[@style='padding: 0']//a[@target='_blank']");
     }
 
     private ElementsCollection allLinkToDeliveryPage() {
-        return $$x("//table[@class='content']//a");
+        return $$x("//td[@style='padding: 0']//a[@target='_blank']");
     }
 
     private SelenideElement trackingNumber() {

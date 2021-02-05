@@ -330,6 +330,6 @@ public class Search_page {
 
     ElementsCollection countInputsTwo() {return $$x(" //input[@value='2']/ancestor::div[@class='add_info']/preceding-sibling::div[@class='product-quantity']/span[2]/span");}
 
-    ElementsCollection titleOfProducts() {return $$x("//li[@class='ovVisLi item_in_stock   item visible']//div[@class='name']/*[self::a or self::span][1]");}
+    ElementsCollection titleOfProducts() {return $$x("//div[@class='name']/*[self::a or self::span][1]");}
 }
 

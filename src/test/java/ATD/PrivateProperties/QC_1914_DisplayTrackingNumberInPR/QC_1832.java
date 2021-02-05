@@ -80,7 +80,7 @@ public class QC_1832 {
         Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl);
 
         listTrackingNumberFromMail = webMail.openMail(mail, passwordForMail)
-                .checkAndOpenLetterInfoText("Auftrags- / Versandbestätigung, Bestellnummer", firstOrderNumber)
+                .checkAndOpenLetterInfoText("Versandbestätigung, Bestellnummer", firstOrderNumber)
                 .transitionToDeliveryPageAndGetTrackingNumFromUrlInMail();
         switchTo().window(0);
         webMail.exitOfMail();
@@ -122,7 +122,7 @@ public class QC_1832 {
         Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl);
 
         listTrackingNumberFromMail = webMail.openMail(mail, passwordForMail)
-                .checkAndOpenLetterInfoText("Auftrags- / Versandbestätigung, Bestellnummer", secondOrderNumber)
+                .checkAndOpenLetterInfoText("Versandbestätigung, Bestellnummer", secondOrderNumber)
                 .transitionToDeliveryPageAndGetTrackingNumFromUrlInMail();
         Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromMail);
 

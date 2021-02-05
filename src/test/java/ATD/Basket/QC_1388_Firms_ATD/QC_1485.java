@@ -28,7 +28,7 @@ import static mailinator.WebMail.passwordForMail;
 public class QC_1485 {
 
     private Float regularProductPricePerAllDataPage, priceWithVatPerAllDataPage, priceProductPerProductPage,
-            totalPrice, totalPriceAWSOrder, totalPriceInEmail, sellingPriceAWSOrder, prunedProductPrice, prunedPriceWithVat, unitPrice;
+            totalPrice, totalPriceAWSOrder, totalPriceInEmail, sellingPriceAWSOrder, unitPrice;
     private String email = "QC_1485_autotestEN@autodoc.si", vatForEN, orderNumber;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -70,12 +70,10 @@ public class QC_1485 {
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()
                 .getPriceIncludingVat(vatForEN);
-        prunedPriceWithVat = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPage);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
         priceProductPerProductPage = product_page_logic.getProductPrice();
-        prunedProductPrice = cutPriceToFirstDecimalPlace(priceProductPerProductPage);
-        Assert.assertEquals(prunedPriceWithVat, prunedProductPrice);
+        Assert.assertEquals(priceWithVatPerAllDataPage, priceProductPerProductPage, 0.02f);
         product_page_logic.cartClick();
         totalPrice = cartAllData_page_logic.getTotalPriceAllDataPageForEnShop();
         orderNumber = cartAllData_page_logic.nextBtnClick().getOrderNumber();
@@ -93,9 +91,7 @@ public class QC_1485 {
         sellingPriceAWSOrder = order_aws.getSellingProductPriceOrderAWS();
         switchTo().window(0);
         regularProductPricePerAllDataPage = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
-
-        //TODO отключил данный ассерт из за дефекта AWS-2830
-        //Assert.assertEquals(sellingPriceAWSOrder, regularProductPricePerAllDataPage);
+        Assert.assertEquals(sellingPriceAWSOrder, regularProductPricePerAllDataPage, 0.03f);
 
         switchTo().window(1);
         order_aws.clickCustomerId();

@@ -1001,5 +1001,8 @@ public class Listing_page {
     SelenideElement timeBlockFromFooter() {
         return $x("//div[@class='work-time']");
     }
-}
 
+    SelenideElement logoAutodoc() {
+        return $x("//a[@class='header__logo-main']");
+    }
+}
