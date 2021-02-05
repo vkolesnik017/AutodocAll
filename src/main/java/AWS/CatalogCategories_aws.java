@@ -188,8 +188,30 @@ public class CatalogCategories_aws {
         return allActiveChildCategoriesAWS;
     }
 
-    @Step("Get All Parent Categories From AWS. CatalogCategories_aws")
-    public ArrayList<String> getAllParentCategoriesFromAWS() {
+    @Step(" Parents id Exceptions from AWS")  //TODO this exceptions need for task QC-647
+    public ArrayList<String> exceptionsParentId() {
+        ArrayList<String> parentIdException = new ArrayList<>();
+        parentIdException.add("35319");
+        parentIdException.add("35301");
+        parentIdException.add("35302");
+        parentIdException.add("35303");
+        parentIdException.add("35304");
+        parentIdException.add("35305");
+        parentIdException.add("35306");
+        parentIdException.add("35307");
+        parentIdException.add("35308");
+        parentIdException.add("35309");
+        parentIdException.add("35310");
+        parentIdException.add("35311");
+        parentIdException.add("35312");
+        parentIdException.add("35313");
+        parentIdException.add("35314");
+        parentIdException.add("35315");
+        return parentIdException;
+    }
+
+    @Step("Get All Parent id Categories From AWS then removes which are in the exceptions. CatalogCategories_aws")  //TODO For example task QC-647
+    public ArrayList<String> getAllParentCategoriesFromAWSThenRemoveParentIdExceptions(List<String> listExceptions) {
         ArrayList<String> allActiveParentCategoriesAWS = new ArrayList<>();
         for (int i = 0; i < parentIdInAws().size(); i++) {
             if (!parentIdInAws().get(i).text().isEmpty()) {
@@ -206,6 +228,7 @@ public class CatalogCategories_aws {
 
         Collections.sort(allActiveParentCategoriesAWS);
         allActiveParentCategoriesAWS.removeAll(notActiveParentCategories);
+        allActiveParentCategoriesAWS.removeAll(listExceptions);
         System.out.println(allActiveParentCategoriesAWS.size());
         return allActiveParentCategoriesAWS;
     }

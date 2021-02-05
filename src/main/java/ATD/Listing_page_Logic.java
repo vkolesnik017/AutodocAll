@@ -1440,7 +1440,7 @@ public class Listing_page_Logic extends Listing_page {
         scrollProgressBar().shouldHave(cssValue("width", "0px"));
         timeBlockFromFooter().scrollIntoView(true).shouldBe(visible);
         scrollProgressBar().shouldHave(cssValue("width", "1903px"));
-        firstProductTitleOnListing().scrollIntoView(false).shouldBe(visible);
+        logoAutodoc().scrollIntoView(false).shouldBe(visible);
         scrollProgressBar().shouldHave(cssValue("width", "0px"));
         return this;
     }
