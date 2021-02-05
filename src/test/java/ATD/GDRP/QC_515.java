@@ -31,7 +31,7 @@ public class QC_515 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "info_section_index");
     }
 
-    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345
+    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345 and Bug SALES-3203
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify working of send ship form on Blog page")

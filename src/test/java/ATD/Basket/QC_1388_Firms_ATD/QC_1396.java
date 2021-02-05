@@ -86,9 +86,7 @@ public class QC_1396 {
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceBE, totalPriceAWSOrderBE);
         sellingPriceAWSOrderBE = order_aws.getSellingProductPriceOrderAWS();
-
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(sellingPriceAWSOrderBE, priceProductInAllData);*/
+        Assert.assertEquals(sellingPriceAWSOrderBE, priceProductInAllData, 0.03f);
         order_aws.clickCustomerId();
         switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
@@ -109,7 +107,7 @@ public class QC_1396 {
 
     private Float regularProductPricePerAllDataPageDE,
             totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE, sellingPriceAWSOrderDE, unitPriceDE;
-    private String emailDE = "QC_1396_autotestDE@autodoc.si", vatForDE, orderNumberDE;
+    private String emailDE = "QC_1396_autotestDE@autodoc.si", orderNumberDE;
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
@@ -156,8 +154,7 @@ public class QC_1396 {
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         sellingPriceAWSOrderDE = order_aws.getSellingProductPriceOrderAWS();
 
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(sellingPriceAWSOrderDE, regularProductPricePerAllDataPageDE);*/
+        Assert.assertEquals(sellingPriceAWSOrderDE, regularProductPricePerAllDataPageDE, 0.03f);
         order_aws.clickCustomerId();
         switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()

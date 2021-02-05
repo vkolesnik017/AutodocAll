@@ -82,8 +82,7 @@ public class QC_1126 {
         Assert.assertNotEquals(totalSumIncomeWithoutVat, totalSumIncomeWithoutVatAfterRemove);
         totalCostWithoutOneItem = order_aws.subtractsRemovedProductCostFromTotalOrderCost(totalCostOrder, sellingCostInOrder);
         totalCostOrder = order_aws.getTotalPriceOrderAWS();
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(totalCostWithoutOneItem, totalCostOrder);*/
+        Assert.assertEquals(totalCostWithoutOneItem, totalCostOrder, 0.03f);
         order_aws.clickRefundBtn()
                 .checkAbsenceOfGoodsInRefundTable(firstArticleNum);
     }

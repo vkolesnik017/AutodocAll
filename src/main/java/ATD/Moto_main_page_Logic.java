@@ -1,11 +1,13 @@
 package ATD;
 
 import Common.DataBase;
+import Common.Excel;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.waitWhileRouteContainsExpected;
@@ -62,7 +64,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-   @Step("availability of delivery block  . Moto_main_page")
+    @Step("availability of delivery block  . Moto_main_page")
     public Moto_main_page_Logic availabilityOfDeliveryBlock() {
         deliveryBlock().shouldBe(visible);
         return this;
@@ -730,11 +732,11 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("set Value In Main Search. Moto_main_page")
     public Moto_main_page_Logic setValueInMainSearch(List<String> expectedValues) {
-       for (int i=0;i<expectedValues.size();i++) {
-           inputValueInMainSearchField(expectedValues.get(i));
-           waitWhileRouteContainsExpected("moto_search");
-           back();
-       }
+        for (int i = 0; i < expectedValues.size(); i++) {
+            inputValueInMainSearchField(expectedValues.get(i));
+            waitWhileRouteContainsExpected("moto_search");
+            back();
+        }
         return this;
     }
 
@@ -742,5 +744,35 @@ public class Moto_main_page_Logic extends Moto_main_page {
     public Search_page_Logic inputValueInMainSearchField(String titleOfBrand) {
         mainSearchField().setValue(titleOfBrand).pressEnter();
         return page(Search_page_Logic.class);
+    }
+
+    @Step("get TOP Moto Brands From Selector. Moto_main_page")
+    public List<String> getTopMotoBrandsFromSelector() {
+        markeOfHorizontalMotoSelector().shouldBe(visible);
+        List<String> topMarke = topMarkeValuesFromSelector().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return topMarke;
+    }
+
+    @Step("presence TOP brands and models in selector. Moto_main_page")
+    public Moto_main_page_Logic presenceTopBrandsAndModelsInSelector(List<String> topBrandsFront, String file, String language) {
+        List<String> allMotoBrands = new Excel().readFromExcel(file, language, 6);
+        List<String> topBrandsFile = allMotoBrands.stream().filter(title -> !title.equals("")).skip(1).limit(10).collect(Collectors.toList());
+        Assert.assertEquals(topBrandsFront, topBrandsFile);
+        markeOfHorizontalMotoSelector().selectOption(topBrandsFront.get(0));
+        Wait().until(webDriver -> markeOfHorizontalMotoSelector().getSelectedText().equals(topBrandsFront.get(0)));
+        checkVisibleTopBrands();
+        List<String> allMotoModels = new Excel().readFromExcel(file, language, 7);
+        List<String> topModelsFile = allMotoModels.stream().filter(title -> !title.equals("")).skip(1).limit(10).map(title -> title.replaceAll("\\s\\(.+", "")).collect(Collectors.toList());
+        List<String> topModelsFront = topModelValuesFromSelector().stream().map(n -> n.getText().replaceAll("\\s\\(.+", "")).collect(Collectors.toList());
+        Assert.assertEquals(topModelsFront, topModelsFile);
+        return this;
+    }
+
+    @Step("check Visible TOP brands. Moto_main_page")
+    public Moto_main_page_Logic checkVisibleTopBrands() {
+        for (int i = 0; i < listOfVisibleTopBrands().size(); i++) {
+            listOfVisibleTopBrands().get(i).shouldBe(visible);
+        }
+        return this;
     }
 }

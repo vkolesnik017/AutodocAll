@@ -83,8 +83,7 @@ public class QC_563 {
         sellingPriceAWSOrder = order_aws.getSellingProductPriceOrderAWS();
         totalCostIncludingSellingAndDeliveryCost = order_aws.getTotalCostIncludingSellingCostAndDeliveryCost(deliveryCost, sellingPriceAWSOrder);
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(totalCostInOrder, totalCostIncludingSellingAndDeliveryCost);*/
+        Assert.assertEquals(totalCostInOrder, totalCostIncludingSellingAndDeliveryCost, 0.03f);
         order_aws.reSaveOrder()
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
@@ -97,8 +96,7 @@ public class QC_563 {
         Assert.assertEquals(deliveryCostInOrder, deliveryCost);
         sellingPriceAWSOrder = order_aws.getSellingProductPriceOrderAWS();
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(totalCostInOrder, totalCostIncludingSellingAndDeliveryCost);*/
+        Assert.assertEquals(totalCostInOrder, totalCostIncludingSellingAndDeliveryCost, 0.03f);
     }
 
     @AfterMethod

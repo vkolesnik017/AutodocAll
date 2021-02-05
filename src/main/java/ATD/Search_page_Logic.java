@@ -435,11 +435,8 @@ public class Search_page_Logic extends Search_page {
         List<String> characteristics = new ArrayList<>();
 
         for (int i = 0; i < visibleArtNumOfProduct().size(); i++) {
-
             String titleOfBrandImage = titleOfProducts().get(i).getText();
             String artNumOfProduct = visibleArtNumOfProduct().get(i).getText().replace("Artikelnummer: ", "");
-
-
             if (titleOfBrandImage.contains("Henkel Parts") && artNumOfProduct.contains(symbol)) {
                 for (int j = 0; j < visibleCharacteristicsOfProducts(i + 1).size(); j++) {
                     characteristics.add(getTextFromUnVisibleElement(visibleCharacteristicsOfProducts(i + 1).get(j)).replaceAll("\n ", "").replace(" ", ""));

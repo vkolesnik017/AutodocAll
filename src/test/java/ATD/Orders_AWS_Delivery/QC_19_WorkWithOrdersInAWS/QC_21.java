@@ -79,12 +79,10 @@ public class QC_21 {
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
 
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(productCost, productCostInOrder);*/
+        Assert.assertEquals(productCost, productCostInOrder, 0.03f);
         totalProductCostIncludingDeliveryAndSafeOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder);*/
+        Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder, 0.03f);
         order_aws.reSaveOrder();
         userDataInOrder = order_aws.checkOrderHasTestStatus()
                 .getUserDataInOrder();
@@ -96,13 +94,10 @@ public class QC_21 {
         productCostInOrder = order_aws.checkDeliveryPriceOrderAWS(totalDeliveryAmountAndSafeOrder)
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
-
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(productCost, productCostInOrder);*/
+        Assert.assertEquals(productCost, productCostInOrder, 0.03f);
         totalProductCostIncludingDeliveryAndSafeOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder);*/
+        Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder, 0.03f);
     }
 
     @AfterMethod

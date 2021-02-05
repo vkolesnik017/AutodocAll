@@ -26,9 +26,9 @@ public class QC_1564 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
+    @Test(dataProvider = "route", enabled = false) //TODO логика теста была изменена, авто тест требует переработки
     @Flaky
     @Owner(value = "Chelombitko")
-    @Test(dataProvider = "route", enabled = true)
     @Description(value = "Test successful newsletter subscription")
     public void checkingSuccessfulSubscription(String route) {
         openPage(route);

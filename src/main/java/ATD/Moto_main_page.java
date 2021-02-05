@@ -321,4 +321,12 @@ class Moto_main_page {
     ElementsCollection visibleArtNumOfTopProducts() {
         return $$x("//div[@class='product-list__item__nummer']").filter(visible);
     }
+
+    ElementsCollection topMarkeValuesFromSelector() {return $$x("//select[@id='form_maker_id']/*[2]/option");}
+
+    ElementsCollection topModelValuesFromSelector() {return $$x("//select[@id='form_model_id']/*[2]/option");}
+
+    ElementsCollection listOfVisibleTopBrands() {
+        return $$x("//ul[@class='moto-manufactures__list']//a").filter(visible);
+    }
 }
