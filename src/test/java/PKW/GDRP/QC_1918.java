@@ -32,7 +32,7 @@ public class QC_1918 {
         return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "static_versand");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test verify working GDPR form in footer on Versand static page ")
