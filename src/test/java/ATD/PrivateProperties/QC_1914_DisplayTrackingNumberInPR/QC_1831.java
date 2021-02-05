@@ -85,11 +85,9 @@ public class QC_1831 {
         String deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1)
                 .transitionToDeliveryPageAndGetURL();
 
-        String trackingNumFromMail = webMail.openMail(mail, passwordForMail)
-                .checkAndOpenLetterInfoText("Auftrags- / Versandbestätigung, Bestellnummer", orderNumber)
-                .getTrackingNumberFromMail();
+        webMail.openMail(mail, passwordForMail)
+                .checkAndOpenLetterInfoText("Versandbestätigung, Bestellnummer", orderNumber);
         String deliveryPageUrlFromMail = webMail.transitionToDeliveryPageAndGetUrlFromMail();
-        Assert.assertEquals(trackingNumFromAWS, trackingNumFromMail);
         Assert.assertEquals(deliveryPageURL, deliveryPageUrlFromMail);
         order_aws.openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
