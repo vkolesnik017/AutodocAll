@@ -26,7 +26,7 @@ public class QC_1559 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Owner(value = "Chelombitko")
     @Flaky
     @Description(value = "Test checks elements on vacancies page")
