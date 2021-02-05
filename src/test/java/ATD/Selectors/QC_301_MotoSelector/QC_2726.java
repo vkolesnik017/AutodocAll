@@ -27,7 +27,7 @@ public class QC_2726 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() {
-        return new SetUp("ATD").setUpShopsWithMainRoute("subprod", "DE", "moto_main");
+        return new SetUp("ATD").setUpShopsWithMainRoute("subprod", "DE,AT,BG,CH,CZ,DK,EE,FI,EN,GR,HU,LD,LT,LV,NL,NO,PL,RO,SE,SI,SK", "moto_main");
     }
 
     @Test(dataProvider = "routes")

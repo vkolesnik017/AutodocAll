@@ -127,6 +127,13 @@ public class CommonMethods {
         return "autotest" + random + "@mailinator.com";
     }
 
+    @Step("get random mail")
+    public static String randomMail() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "autotest" + random;
+    }
+
     @Step("Generates random password")
     public static String passRandom() {
         Random randomGenerator = new Random();
@@ -346,7 +353,9 @@ public class CommonMethods {
         ElementsCollection miniCardsOfProducts = null;
         if (routeName.equals("supplier_brand_line")) {
             miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(6);
-        } else {miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);}
+        } else {
+            miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);
+        }
         for (SelenideElement miniCardFirsSlide : miniCardsOfProducts) {
             miniCardFirsSlide.$(sticker).should(visible);
             miniCardFirsSlide.$(image).should(visible);
@@ -538,7 +547,7 @@ public class CommonMethods {
     public static ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
         ArrayList<String> allCategoriesCatalog = new ArrayList<>();
         for (SelenideElement element : categories) {
-            if( element.has(attribute("href"))) {
+            if (element.has(attribute("href"))) {
                 String hrefCategory = element.getAttribute("href");
                 allCategoriesCatalog.add(hrefCategory);
             } else if (element.has(attribute("url"))) {
@@ -546,21 +555,21 @@ public class CommonMethods {
                 allCategoriesCatalog.add(urlCategory);
             }
         }
-        System.out.println(allCategoriesCatalog.size() + " url = " + allCategoriesCatalog );
+        System.out.println(allCategoriesCatalog.size() + " url = " + allCategoriesCatalog);
         return allCategoriesCatalog;
     }
 
     @Step("Check categories for server responses 200.")
-    public static void checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+    public static void checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
         for (int i = 0; i < allCategories.size(); i++) {
             URL url = new URL(allCategories.get(i));
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             http.setInstanceFollowRedirects(true);
             int responseCode = http.getResponseCode();
             if (responseCode != 200) {
-                System.out.println("ResponseCode " + allCategories.get(i) + " = " + responseCode );
+                System.out.println("ResponseCode " + allCategories.get(i) + " = " + responseCode);
             }
-            assertEquals(responseCode + " " + allCategories.get(i) , 200 + " " + allCategories.get(i));
+            assertEquals(responseCode + " " + allCategories.get(i), 200 + " " + allCategories.get(i));
         }
     }
 
@@ -595,5 +604,8 @@ public class CommonMethods {
         Wait().until(webDriver -> executeJavaScript("return document.readyState").equals("complete"));
     }
 
-
+    @Step("create a new browser window.")
+    public static void createNewBrowserWindow() {
+        executeJavaScript("window.open('about:blank', '-blank')");
+    }
 }
