@@ -188,7 +188,7 @@ public class CatalogCategories_aws {
         return allActiveChildCategoriesAWS;
     }
 
-    @Step(" Parents id Exceptions from AWS")  //TODO this exceptions need for task QC-647
+    @Step(" Parents id Exceptions from AWS. CatalogCategories_aws")  //TODO this exceptions need for task QC-647
     public ArrayList<String> exceptionsParentId() {
         ArrayList<String> parentIdException = new ArrayList<>();
         parentIdException.add("35319");
