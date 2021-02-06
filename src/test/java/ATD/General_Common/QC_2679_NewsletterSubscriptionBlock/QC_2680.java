@@ -3,6 +3,7 @@ package ATD.General_Common.QC_2679_NewsletterSubscriptionBlock;
 import ATD.Search_page_Logic;
 import AWS.PrivacyPolicySubscription_aws;
 import Common.SetUp;
+import Tempinbox.TempinboxWebMail;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,13 +14,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.mailRandom;
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_2680 {
-    String email = "QC_2680" + mailRandom();
+    String email = "qc_2680" + randomMail();
+    TempinboxWebMail tempEmail = new TempinboxWebMail();
 
     @BeforeClass
     void setUp() {
@@ -36,17 +37,29 @@ public class QC_2680 {
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks subscribe to news letter by registering in basket")
     public void testChecksSubscribeToNewsLetterByRegisteringInBasket(String route) {
+
+        String randomEmail = tempEmail.openTempWebMail()
+                .setEmail(email)
+                .clickOnCreateEmail()
+                .getGeneratedEmail();
+        createNewBrowserWindow();
+        switchTo().window(1);
         openPage(route);
         new Search_page_Logic()
                 .addFirstProductAndGoToCart()
                 .nextButtonClick()
                 .checkAndClickTextBlockInRegForm()
-                .registrationFromCart(email)
+                .registrationFromCart(randomEmail)
                 .fillAllFields("DE")
                 .nextBtnClick();
+        switchTo().window(0);
+        tempEmail.clickOnSubscriptionLetter()
+                .clickOnConfirmSubscription();
+        closeWindow();
+        switchTo().window(0);
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
-                .checkingPolicyAndSubscribeForMail(email);
+                .checkingPolicyAndSubscribeForMail(randomEmail);
     }
 
     @AfterMethod

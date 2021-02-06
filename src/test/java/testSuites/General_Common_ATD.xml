@@ -36,12 +36,12 @@
         </classes>
     </test>
 
- <!--   <test name="QC_2679_NewsletterSubscriptionBlock">
+    <test name="QC_2679_NewsletterSubscriptionBlock">
         <classes>
             <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2680"/>
-            <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2681"/>
+          <!--  <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2681"/>-->
         </classes>
-    </test>-->
+    </test>
 
     <test name="QC_2774_CheckTopSectionsBlockOnMainPage">
         <classes>
