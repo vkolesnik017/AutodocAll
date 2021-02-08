@@ -30,7 +30,7 @@ public class QC_1009 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345
+    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345 and Bug SALES-3203
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify form soft 404 from Search Bar in header")

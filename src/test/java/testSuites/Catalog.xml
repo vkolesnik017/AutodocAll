@@ -43,7 +43,7 @@
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_628"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_629"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_630"/>
-<!--            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_647"/>-->
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_647"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_654"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_746"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_748"/>
@@ -75,6 +75,7 @@
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_3216"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_3009"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_3215"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2918"/>
         </classes>
     </test>
 

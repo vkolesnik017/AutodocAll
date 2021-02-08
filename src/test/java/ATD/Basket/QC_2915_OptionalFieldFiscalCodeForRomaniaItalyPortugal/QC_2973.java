@@ -58,7 +58,7 @@ public class QC_2973 {
                 .nextBtnClick()
                 .getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin()
-                .checkPresenceTextInFiscalCodeField(false)
+                .checkPresenceTextInFiscalCodeFieldForBilling(false)
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
     }
@@ -96,7 +96,7 @@ public class QC_2973 {
                 .nextBtnClick()
                 .getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin()
-                .checkPresenceTextInFiscalCodeField(false)
+                .checkPresenceTextInFiscalCodeFieldForBilling(false)
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
     }

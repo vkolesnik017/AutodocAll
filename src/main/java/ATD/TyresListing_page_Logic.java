@@ -319,16 +319,16 @@ public class TyresListing_page_Logic extends TyresListing_page {
     @Step("Click all sizes button and check redirect. TyresListing_page")
     public TyresListing_page_Logic clickAllSizesButtonAndCheckRedirect() {
         if (url().contains("reifen/offroad-suv")) {
-            allSizesButton().scrollIntoView(false).shouldBe(appear).click();
+            allSizesButton().scrollIntoView("{block: \"center\"}").shouldBe(appear).click();
             checkingContainsUrl("reifen/type_list/offroad-suv");
         } else if (url().contains("reifen/llkw")) {
-            allSizesButton().scrollIntoView(false).shouldBe(appear).click();
+            allSizesButton().scrollIntoView("{block: \"center\"}").shouldBe(appear).click();
             checkingContainsUrl("reifen/type_list/llkw");
         } else if (url().contains("reifen/motorrad")) {
-            allSizesButton().scrollIntoView(false).shouldBe(appear).click();
+            allSizesButton().scrollIntoView("{block: \"center\"}").shouldBe(appear).click();
             checkingContainsUrl("reifen/type_list/motorrad");
         } else {
-            allSizesButton().scrollIntoView(false).shouldBe(appear).click();
+            allSizesButton().scrollIntoView("{block: \"center\"}").shouldBe(appear).click();
             checkingContainsUrl("reifen/type_list");
         }
         return this;

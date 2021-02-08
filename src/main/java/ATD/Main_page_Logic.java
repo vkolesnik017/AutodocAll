@@ -65,11 +65,11 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Login in header with mail {mail} and transition to profile plus page. Main_page")
     public Profile_plus_page_Logic loginAndTransitionToProfilePlusPage(String mail) {
-        loginBtnInHeader().click();
+        loginBtnInHeader().shouldBe(visible).click();
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
-        new Profile_page().nameOfClient().shouldBe(visible);
+        new Profile_page().nameOfClient().waitUntil(visible,5000);
         return page(Profile_plus_page_Logic.class);
     }
 
