@@ -61,7 +61,7 @@ public class QC_784 {
             .fillInFormForMessageReture()
             .clickSaveReclamationButton();
     webMail.openMail(mail)
-            .letterInfo(1).shouldHave(text("just now ago")).shouldHave(text("Ihre Reklamation zur Bestellnummer: ".concat(orderNumber)));
+            .letterInfo(1).shouldHave(text("just now")).shouldHave(text("Ihre Reklamation zur Bestellnummer: ".concat(orderNumber)));
   }
 
   @AfterMethod

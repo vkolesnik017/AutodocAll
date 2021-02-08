@@ -128,7 +128,7 @@ public class WebMail {
 
     //Locators for old mail service Mailinator
     public SelenideElement letterInfo(int numberLetter) {
-        return $(byXpath("//*[contains(@class,'pointer')]/../tr[" + numberLetter + "]"));
+        return $(byXpath("//*[contains(@class,'ng-scope')]/../tr[" + numberLetter + "]"));
     }
 
     private ElementsCollection countOfLetters() {
