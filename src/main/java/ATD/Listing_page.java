@@ -899,7 +899,7 @@ public class Listing_page {
     }
 
     SelenideElement nextButtonInBrandFilter() {
-        return $(".next.slick-arrow");
+        return $x("//a[@class='next slick-arrow']");
     }
 
     SelenideElement productArticleOnListing() {

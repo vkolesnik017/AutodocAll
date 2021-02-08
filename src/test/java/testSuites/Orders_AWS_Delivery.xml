@@ -98,4 +98,10 @@
         </classes>
     </test>
 
+    <test name="QC_3347_OptionalFiscalCodeFieldForItalyRomaniaPortugalAWS">
+        <classes>
+            <class name="ATD.Orders_AWS_Delivery.QC_3347_OptionalFiscalCodeFieldForItalyRomaniaPortugalAWS.QC_2979"/>
+        </classes>
+    </test>
+
 </suite>
