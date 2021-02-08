@@ -41,7 +41,6 @@ public class QC_891 {
 
         new Moto_main_page_Logic()
                 .setValueInMainSearch(values);
-
     }
 
     @AfterMethod
