@@ -33,7 +33,7 @@ public class QC_1680 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks negative purchase of a heavy loads in FR / Basket")
