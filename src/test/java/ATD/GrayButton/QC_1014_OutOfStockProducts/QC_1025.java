@@ -47,7 +47,7 @@ public class QC_1025 {
         product_page.openProductPageById(route, idProduct)
                 .sendRequestByGrayButtonFromProductPage(email);
         webMail.openMail(email)
-                .checkLetterInfoText(1, "just now ago", "Wir bearbeiten");
+                .checkLetterInfoText(1, "just now", "Wir bearbeiten");
         open(wishlistReminderAvailability.urlWithCurrentDate);
         wishlistReminderAvailability.checkAfterCountRequest(beforeCountRequests, idProduct);
     }
