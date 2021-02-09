@@ -13,7 +13,8 @@ public class ForTest extends SetUp {
 
     @Test()
     public void test() throws SQLException {
-        List<String> test = new DataBase().getNameRequisitesMethod("bank_requisites_atd", "other", "Owner", "Bank", "IBAN", "Sort Code");
+       String nameFirm = new DataBase("ATD").getFirmData("firm_atd", "NL", "Name");
+        System.out.println(nameFirm);
     }
 
 

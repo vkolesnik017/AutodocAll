@@ -345,6 +345,29 @@ public class DataBase {
         return finalList;
     }
 
+    //Get firm date of BD
+    public String getFirmData(String dbName, String shop, String expectedFirmData) throws SQLException {
+        Statement statement = null;
+        Connection conn = coonectionDB(dbName);
+        String expectedData = null;
+            String query = "SELECT ".concat(shop) + " FROM autodoc.".concat(dbName) + " where dataFirm=" + "\"".concat(expectedFirmData) + "\"";
+            try {
+                statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    expectedData = resultSet.getString(1);
+                }
+                statement.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (statement != null) statement.close();
+                if (conn != null) conn.close();
+            }
+        return expectedData;
+    }
+
 
     public String getMail(String value) throws SQLException {
         Statement statement = null;
