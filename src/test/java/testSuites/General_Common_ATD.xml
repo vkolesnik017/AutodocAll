@@ -33,6 +33,7 @@
             <class name="ATD.General_Common.QC_1571_Header.QC_1604"/>
             <class name="ATD.General_Common.QC_1571_Header.QC_1605"/>
             <class name="ATD.General_Common.QC_1571_Header.QC_1606"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_3220"/>
         </classes>
     </test>
 

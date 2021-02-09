@@ -27,9 +27,9 @@ public class QC_437 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route")
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search6");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search6,lkw_search6");
     }
 
     @Test(dataProvider = "route")
