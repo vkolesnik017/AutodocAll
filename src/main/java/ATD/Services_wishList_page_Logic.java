@@ -261,4 +261,11 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
         return this;
     }
 
+    @Step("Click btn 360 functionality and check presence popup 360 Functionality. Services_wishList_page")
+    public Services_wishList_page_Logic clickBtn360FunctionalityAndCheckPresencePopup() {
+        btn360Functionality().shouldBe(visible).click();
+        popup360Functionality().shouldBe(visible);
+        return this;
+    }
+
 }

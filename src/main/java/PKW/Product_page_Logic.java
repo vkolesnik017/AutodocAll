@@ -235,7 +235,7 @@ public class Product_page_Logic extends Product_page {
         Assert.assertFalse(moreItemsBlock().text().isEmpty());
         pkwPaymentsItem().shouldBe(visible);
         moreItemsBlockFirstLink().click();
-        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "product3"));
+        checkingContainsUrl("ridex/7999378");
         back();
         return this;
     }

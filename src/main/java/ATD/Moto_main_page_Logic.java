@@ -729,13 +729,15 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step("set Value In Main Search. Moto_main_page")
     public Moto_main_page_Logic setValueInMainSearch(List<String> expectedValues) {
         for (int i = 0; i < expectedValues.size(); i++) {
+            String mainUrl = url();
             inputValueInMainSearchField(expectedValues.get(i));
+            Assert.assertFalse(url().equals(mainUrl));
             waitWhileRouteContainsExpected("moto_search");
             back();
+            Assert.assertTrue(mainUrl.equals(url()));
         }
         return this;
     }
