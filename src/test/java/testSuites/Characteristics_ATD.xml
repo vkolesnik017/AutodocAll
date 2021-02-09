@@ -22,7 +22,7 @@
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_511"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_512"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_513"/>
-            <!--<class name="ATD.Characteristics.QC_506_Characteristics.QC_1901"/>-->
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_1901"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_2422"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_2423"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_2424"/>

@@ -30,10 +30,10 @@ public class QC_1680 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct1");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks negative purchase of a heavy loads in FR / Basket")
@@ -49,7 +49,7 @@ public class QC_1680 {
                 .closePopUpDeliveryLimitCartPage()
                 .checkAbsenceGoodInCartPage("7037462")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
