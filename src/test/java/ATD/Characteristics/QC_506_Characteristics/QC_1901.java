@@ -35,7 +35,7 @@ public class QC_1901 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list24,search25,category_oen11");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) //TODO disabled for a reason bug SHOP-2624
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Checks Characteristics Do Not Hide After Brand Filter Applying")

@@ -49,7 +49,7 @@ public class MobileApp_static_page_Logic extends MobileApp_static_page {
                 .shouldHave(attribute("href", "https://itunes.apple.com/app/id1014949597"))
                 .click();
         switchTo().window(1);
-        applePageTitle().shouldHave(text("Autodoc — Quality Auto Parts"));
+        applePageTitle().shouldHave(text("Autodoc — Quality Auto Part"));
         WebDriverRunner.getWebDriver().close();
         switchTo().window(0);
         googlePlayButton()

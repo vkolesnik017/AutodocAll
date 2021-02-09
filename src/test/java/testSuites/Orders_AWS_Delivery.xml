@@ -94,6 +94,13 @@
             <class name="ATD.Orders_AWS_Delivery.QC_3304_SafeOrder_AWS.QC_2731"/>
             <class name="ATD.Orders_AWS_Delivery.QC_3304_SafeOrder_AWS.QC_2732"/>
             <class name="ATD.Orders_AWS_Delivery.QC_3304_SafeOrder_AWS.QC_2736"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_3304_SafeOrder_AWS.QC_2738"/>
+        </classes>
+    </test>
+
+    <test name="QC_3347_OptionalFiscalCodeFieldForItalyRomaniaPortugalAWS">
+        <classes>
+            <class name="ATD.Orders_AWS_Delivery.QC_3347_OptionalFiscalCodeFieldForItalyRomaniaPortugalAWS.QC_2979"/>
         </classes>
     </test>
 

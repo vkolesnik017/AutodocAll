@@ -1,4 +1,4 @@
-package ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal;
+package ATD.Orders_AWS_Delivery.QC_3347_OptionalFiscalCodeFieldForItalyRomaniaPortugalAWS;
 
 import AWS.Order_aws;
 import io.qameta.allure.Description;

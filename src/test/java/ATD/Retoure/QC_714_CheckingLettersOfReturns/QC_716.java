@@ -68,7 +68,7 @@ public class QC_716 {
             .addFileIfIsDisplayedFileBlock()
             .clickSendenButtonWithCorrectData();
     webMail.openMail(mail)
-            .letterInfo(1).shouldHave(text("just now ago")).shouldHave(text("Ihre Reklamation zur Bestellnummer: ".concat(orderNumber)));
+            .letterInfo(1).shouldHave(text("just now")).shouldHave(text("Ihre Reklamation zur Bestellnummer: ".concat(orderNumber)));
   }
 
   @AfterMethod

@@ -100,4 +100,13 @@ public class Services_wishList_page {
     SelenideElement btnOutOfStockProduct() {return $x("//div[@class='button not_active']/a");}
 
     SelenideElement availablePopUp() {return $x("//div[@class='popup-available']");}
+
+    SelenideElement btn360Functionality() {
+        return $x("//a[contains(@class,'photos360-popup')]");
+    }
+
+    SelenideElement popup360Functionality() {
+        return $x("//div[@id='wr360container_f8097571']");
+    }
+
 }
