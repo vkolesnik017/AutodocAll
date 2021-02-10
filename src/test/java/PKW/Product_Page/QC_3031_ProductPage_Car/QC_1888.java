@@ -23,7 +23,7 @@ public class QC_1888 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product3");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product13");
     }
 
     @Test(dataProvider = "routes")
