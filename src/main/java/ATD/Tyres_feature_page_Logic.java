@@ -335,7 +335,7 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     @Step("Check popular brands block visibility. Tyres_feature_page")
     public Tyres_feature_page_Logic checkPopularBrandsBlockVisibility() {
         brandTopBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
-        brandTopBlockTitle().shouldHave(exactText("Hochwertige Reifenmarken zur Auswahl"));
+        brandTopBlockTitle().shouldHave(or("condition", exactText("Hochwertige Reifenmarken zur Auswahl"), exactText(" Hochwertige Reifenmarken für BMW zur Auswahl")));
         return this;
     }
 
