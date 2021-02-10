@@ -69,7 +69,7 @@ public class Main_page_Logic extends Main_page {
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
-        new Profile_page().nameOfClient().waitUntil(visible,5000);
+        new Profile_page().nameOfClient().waitUntil(visible, 5000);
         return page(Profile_plus_page_Logic.class);
     }
 
@@ -1758,5 +1758,23 @@ public class Main_page_Logic extends Main_page {
     public Tyres_page_Logic clickOnTyresCategory() {
         tyresCategory().shouldBe(visible).click();
         return page(Tyres_page_Logic.class);
+    }
+
+    @Step("presence Of Covid_19 icon. Main_page")
+    public Main_page_Logic presenceOfCovidIcon(String covidText) {
+        covidIcon().shouldBe(visible).shouldHave(text(covidText));
+        return this;
+    }
+
+    @Step("close Covid_19 icon. Main_page")
+    public Main_page_Logic closeCovidIcon() {
+        btnCloseCovidIcon().click();
+        return this;
+    }
+
+    @Step("absence of Covid_19 icon. Main_page")
+    public Main_page_Logic absenceOfCovidIcon() {
+        covidIcon().shouldNotBe(visible);
+        return this;
     }
 }

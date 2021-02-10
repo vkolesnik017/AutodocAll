@@ -34,7 +34,7 @@ public class QC_679 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks news letter consent checkbox")
