@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static PKW.CommonMethods.checkingContainsUrl;
+import static PKW.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -141,6 +143,14 @@ public class WebMail {
 
     private SelenideElement tableOfLetters() {
         return $(byId("messagelistcontainer"));
+    }
+
+    public SelenideElement letterMailinator(int numberLetter) {
+        return $x("(//tr[@class='ng-scope'])[" + numberLetter + "]");
+    }
+
+    public SelenideElement btnConfirmSubscriptions() {
+        return $x("//td[@class='es-footer-body-text']/a");
     }
 
 
@@ -359,17 +369,24 @@ public class WebMail {
 
     @Step("Open letter in old mail service Mailinator. WebMail")
     public WebMail openLetterInOldMailServiceMailinator(int numberLetter) {
-        sleep(5000);
-        letter(numberLetter).shouldBe(appear);
-        letter(numberLetter).click();
-        switchTo().frame("msg_body");
-        sleep(5000);
+        letterMailinator(numberLetter).shouldBe(appear);
+        letterMailinator(numberLetter).click();
+        switchTo().frame("html_msg_body");
         return this;
     }
 
     @Step("Check letter info text in old mail service Mailinator. WebMail")
     public WebMail checkLetterInfoText(int letterNumber, String expectedText1, String expectedText2) {
         letterInfo(letterNumber).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
+        return this;
+    }
+
+    @Step("Click btn Confirm Subscriptions in letter Mailinator. WebMail")
+    public WebMail clickBtnConfirmSubscriptions() {
+        btnConfirmSubscriptions().shouldBe(visible).click();
+        switchTo().window(1);
+        checkingContainsUrl("confirm_promo_subscription");
+        waitWhileRouteBecomeExpected("main");
         return this;
     }
 

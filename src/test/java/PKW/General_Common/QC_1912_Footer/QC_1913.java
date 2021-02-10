@@ -1,5 +1,6 @@
 package PKW.General_Common.QC_1912_Footer;
 
+import AWS.Customer_search_aws;
 import Common.SetUp;
 import PKW.Main_page_Logic;
 import io.qameta.allure.Description;
@@ -10,7 +11,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -39,15 +39,18 @@ public class QC_1913 {
         openPage(route);
         String mail = mainPageLogic.openRegistrationFormInHeader()
                 .fillingRegistrationFields("qc_1913_");
-        mainPageLogic.clickBtnToPRFromPopupAuthorizationSuccessfully()
-                .checkingPresenceIdUser();
+        String userId = mainPageLogic.clickBtnToPRFromPopupAuthorizationSuccessfully()
+                .getIdUser();
         mainPageLogic.positiveSendingSubscribeForm(mail);
         new WebMail().openMail(mail)
                 .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
-                .openLetter(1);
-
-
-
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
+        new Customer_search_aws().openSearchInAwsWithLogin()
+                .enterIdAndClickSearch(userId)
+                .transitionOnCustomerViewPage()
+                .verifiesMailUser(mail)
+                .checkStatusOKInSubscriptionsTable();
     }
 
     @AfterMethod
