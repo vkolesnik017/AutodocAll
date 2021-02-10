@@ -948,4 +948,10 @@ public class Product_page {
 
     SelenideElement currentIdVideo() {return $x("//div[@class='slider-video-block']//div[@class='item slick-slide slick-current slick-active']/div/div");}
 
+    SelenideElement btnPlayOfVideoFile()  {return $x("//div[@class='slick-list draggable']//div[@class='play']");}
+
+    SelenideElement questionFaqBlock() {return $x("//p[@class='question']/..");}
+
+    SelenideElement locationOfPaymentBlockToFaq() {return $x("//div[@class='product-versand']/preceding-sibling::div");}
+
   }
