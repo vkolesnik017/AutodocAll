@@ -1358,9 +1358,7 @@ public class Order_aws {
             float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
-        Float sum = (sumOfAllGoods + costDeliveryAndSafeOrder);
-        float actualTotalCost = getTotalPriceOrderAWS();
-        return roundOfTheCost(sum, actualTotalCost);
+        return sumOfAllGoods + costDeliveryAndSafeOrder;
     }
 
     @Step("Plus the selling price of all added items including delivery. Order_aws")

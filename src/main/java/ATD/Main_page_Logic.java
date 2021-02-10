@@ -596,10 +596,10 @@ public class Main_page_Logic extends Main_page {
     }
 
 
-    @Step("Click Vacancies link in the footer. Main_page")
-    public Vacancies_static_page_Logic clickVacancies() {
-        vacanciesLink().click();
-        return page(Vacancies_static_page_Logic.class);
+    @Step("Click Job link in the footer. Main_page")
+    public Job_static_page_Logic clickJob() {
+        jobLink().click();
+        return page(Job_static_page_Logic.class);
     }
 
     @Step("Click Bonusprogramm link in the footer. Main_page")
@@ -803,8 +803,8 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAboutUs"));
         clickImpressum();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticImpressum"));
-        clickVacancies();
-        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "vacancies"));
+        clickJob();
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "job"));
         clickBonusprogramm();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "bonus_system"));
         clickPartnership();
