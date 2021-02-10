@@ -73,6 +73,7 @@ public class QC_2947 {
         pageReload();
         productPage.presenceOfCarMatchBlock()
                 .clickOnThirdBreadCrumbLink(2)
+                .presenceOfTecDocListing()
                 .checkAlternativeTitleOfProductThroughArticle(artNum, alternativeTitle);
     }
 
