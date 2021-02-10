@@ -1511,4 +1511,40 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("presence of Video Block. Product_page")
+    public Product_page_Logic presenceVideoBlock() {
+        videoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("display Of Navigation Arrows Of Video Block. Product_page")
+    public Product_page_Logic displayOfNavigationArrowsOfVideoBlock() {
+        upNavigationArrowOfVideoBlock().shouldBe(visible);
+        downNavigationArrowOfVideoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("display Of video files. Product_page")
+    public Product_page_Logic displayOfVideoFiles() {
+        allVideoFiles().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("click On Down Navigation Arrow. Product_page")
+    public Product_page_Logic clickOnDownNavigationArrow() {
+        videoBlock().scrollTo();
+        String idOfSecondVisibleVideoFile = idOfVisibleVideoFiles().get(1).attr("data-id");
+        downNavigationArrowOfVideoBlock().click();
+        currentIdVideo().shouldHave(attribute("data-id", idOfSecondVisibleVideoFile));
+        return this;
+    }
+
+    @Step("click On Up Navigation Arrow. Product_page")
+    public Product_page_Logic clickOnUpNavigationArrow() {
+        videoBlock().scrollTo();
+        upNavigationArrowOfVideoBlock().click();
+        String idOfFirstVisibleVideoFile = idOfVisibleVideoFiles().get(0).attr("data-id");
+        currentIdVideo().shouldHave(attribute("data-id", idOfFirstVisibleVideoFile));
+        return this;
+    }
 }

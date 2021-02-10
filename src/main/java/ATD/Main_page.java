@@ -879,4 +879,8 @@ public class Main_page {
     SelenideElement tyresCategory() {return $x("//ul[@class='ersats_listing']//span[contains(text(),'Reifen')]/ancestor::li");}
 
     ElementsCollection topParentCategory() {return $$x("//span[@class='head_autopart head_autopart_href link']");}
+
+    SelenideElement covidIcon() {return $(".header-covid__text");}
+
+    SelenideElement btnCloseCovidIcon() {return $(".js-close-header_alert");}
 }
