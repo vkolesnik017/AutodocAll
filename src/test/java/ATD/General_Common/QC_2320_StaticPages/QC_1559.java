@@ -32,7 +32,7 @@ public class QC_1559 {
     @Description(value = "Test checks elements on vacancies page")
     public void checkVacanciesPageElements(String route) {
         openPage(route);
-        new Main_page_Logic().clickVacancies()
+        new Main_page_Logic().clickJob()
                 .checkItemsFromPage()
                 .checkForPdfFilesByLink();
     }
