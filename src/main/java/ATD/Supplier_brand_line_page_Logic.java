@@ -7,7 +7,7 @@ import org.testng.Assert;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.waitWhileRouteContainsExpected;
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
@@ -78,14 +78,15 @@ public class Supplier_brand_line_page_Logic extends Supplier_brand_line_page {
 
     @Step("check Transition To Product Page.  Supplier_brand_line_page")
     public Supplier_brand_line_page_Logic checkTransitionToProductPage(int position) {
+        String idOfProduct = getIdOfTopProduct(position);
         clickOnImageOfTopProduct(position);
-        waitWhileRouteContainsExpected("product");
+        checkingContainsUrl(idOfProduct);
         back();
         clickOnTitleOfTopProduct(position);
-        waitWhileRouteContainsExpected("product");
+        checkingContainsUrl(idOfProduct);
         back();
         clickOnDetailsOfTopProduct(position);
-        waitWhileRouteContainsExpected("product");
+        checkingContainsUrl(idOfProduct);
         return this;
     }
 
