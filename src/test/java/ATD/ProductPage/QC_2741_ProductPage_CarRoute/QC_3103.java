@@ -1,6 +1,6 @@
 package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
 
-import ATD.Category_car_list_page_Logic;
+import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3102 {
+public class QC_3103 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,25 +26,18 @@ public class QC_3102 {
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
 
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list67");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "test checking the slider block with video on product page")
-    public void testCheckSliderBlockWithVideo(String route) {
+    public void testCheckSkiderBlockWithVideo(String route) {
         openPage(route);
-        new Category_car_list_page_Logic().presenceOfTecDocListing()
-                .clickOnProductInTecDocListing(1)
-                .presenceVideoBlock()
-                .displayOfNavigationArrowsOfVideoBlock()
-                .displayOfVideoFiles()
-                .clickOnDownNavigationArrow()
-                .presenceOfVisibleVideoFile()
-                .clickOnUpNavigationArrow()
-                .clickOnCurrentVideoFile()
-                .clickOnDownNavigationArrow();
+        new Product_page_Logic()
+        .presenceFaqBlock()
+        .locationOfFaqElements();
     }
 
     @AfterMethod

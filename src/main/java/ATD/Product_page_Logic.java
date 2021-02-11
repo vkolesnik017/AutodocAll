@@ -1547,4 +1547,39 @@ public class Product_page_Logic extends Product_page {
         currentIdVideo().shouldHave(attribute("data-id", idOfFirstVisibleVideoFile));
         return this;
     }
+
+    @Step(" presence Of Visible Video File. Product_page")
+    public Product_page_Logic presenceOfVisibleVideoFile() {
+        for (int i = 0; i < idOfVisibleVideoFiles().size(); i++) {
+            idOfVisibleVideoFiles().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("click On Current Video File. Product_page")
+    public Product_page_Logic clickOnCurrentVideoFile() {
+        btnPlayOfVideoFile().click();
+        return this;
+    }
+
+    @Step("presence of Faq Block. Product_page")
+    public Product_page_Logic presenceFaqBlock() {
+        faqForm().shouldBe(visible);
+        return this;
+    }
+
+    @Step("location Of Faq Elements. Product_page")
+    public Product_page_Logic locationOfFaqElements() {
+        if (questionFaqBlock().isDisplayed()) {
+            locationOfPaymentBlockToFaq().shouldBe(visible).shouldHave(attribute("id", "faq"));
+        }
+        return this;
+    }
+
+    @Step("check Id Of Video File. Product_page")
+    public Product_page_Logic checkIdOfVideoFile(String expectedVideoId) {
+        currentIdVideo().shouldBe(visible).shouldHave(attribute("data-id", expectedVideoId));
+        return this;
+    }
+
 }
