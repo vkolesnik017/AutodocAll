@@ -73,14 +73,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Make and check limit price for free delivery. CartAllData_page")
     public CartAllData_page_Logic makeAndCheckLimitPriceForFreeDelivery(float deliveryLimit) {
         // An increase in the quantity of products for checking the limit of free delivery
-        float totalPrice = getPriceFromElement(totalProductPrice());
+        float totalPrice = getPriceFromElement(totalPrice());
         while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
-            String beforeClickPrice = totalProductPrice().text();
+            String beforeClickPrice = totalPrice().text();
             sleep(1000);
             counterPlusBtn().click();
             sleep(3000);
-            totalProductPrice().shouldHave(not(text(beforeClickPrice)));
-            totalPrice = getPriceFromElement(totalProductPrice());
+            totalPrice().shouldHave(not(text(beforeClickPrice)));
+            totalPrice = getPriceFromElement(totalPrice());
             if (totalPrice < deliveryLimit) {
                 freeDeliveryIcon().shouldBe(not(visible));
             } else if (totalPrice > deliveryLimit) {
@@ -93,15 +93,15 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Checks free delivery absence in case raising the delivery limit. CartAllData_page")
     public CartAllData_page_Logic checkNoFreeDelivery (float deliveryLimit) {
-        float totalPrice = getPriceFromElement(totalProductPrice());
+        float totalPrice = getPriceFromElement(totalPrice());
         if (totalPrice < deliveryLimit) {
             while (totalPrice < deliveryLimit) {
-                String beforeClickPrice = totalProductPrice().text();
+                String beforeClickPrice = totalPrice().text();
                 sleep(1000);
                 counterPlusBtn().click();
                 sleep(3000);
-                totalProductPrice().shouldHave(not(text(beforeClickPrice)));
-                totalPrice = getPriceFromElement(totalProductPrice());
+                totalPrice().shouldHave(not(text(beforeClickPrice)));
+                totalPrice = getPriceFromElement(totalPrice());
                 if (totalPrice > deliveryLimit) {
                     checkAbsenceFreeDeliveryPriceCartAllDataPage();
                     break;
@@ -239,7 +239,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         String expectedCurrency = new DataBase("ATD").getCurrency(shop);
         getCurrencyAndVerify(totalOrderPriceInHead(), "totalOrderPriceInHead", shop, expectedCurrency);
         getCurrencyAndVerify(productPrice(), "productPrice", shop, expectedCurrency);
-        getCurrencyAndVerify(totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(totalPrice(), "totalProductPrice", shop, expectedCurrency);
         getCurrencyAndVerify(priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
         getCurrencyAndVerify(deliveryPrice(), "deliveryPrice", shop, expectedCurrency);
         getCurrencyAndVerify(totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
@@ -255,7 +255,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         String expectedCurrency = new DataBase("ATD").getCurrency(shop);
         getCurrencyAndVerify(totalOrderPriceInHead(), "totalOrderPriceInHead", shop, expectedCurrency);
         getCurrencyAndVerify(productPrice(), "productPrice", shop, expectedCurrency);
-        getCurrencyAndVerify(totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(totalPrice(), "totalProductPrice", shop, expectedCurrency);
         getCurrencyAndVerify(priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
         getCurrencyAndVerify(freeDeliveryIconForTyres(), "deliveryPrice", shop, expectedCurrency);
         getCurrencyAndVerify(totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
@@ -426,6 +426,36 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return Float.parseFloat(regularProductPrice);
     }
 
+    @Step("Get total product price. CartAllData_page")
+    public Float getTotalProductPrice(String idProduct) {
+        String productPrice = totalProductPrice(idProduct).shouldBe(visible).getText().replaceAll("[^0-9,]", "").replaceAll(",", ".");
+        return Float.parseFloat(productPrice);
+    }
+
+    @Step("Checks the total price for a specific quantity {quantity} of goods {priceOneUnitOfGoods}. CartAllData_page")
+    public CartAllData_page_Logic checkTotalPriceForSpecificQuantityOfGoods(float priceOneUnitOfGoods, int quantity, String idProduct) {
+        float totalProductPrice = getTotalProductPrice(idProduct);
+        float sum = priceOneUnitOfGoods * quantity;
+        Assert.assertEquals(totalProductPrice, sum, 0.01f);
+        return this;
+    }
+
+    @Step("Check presence of VAT in the total price of product{idProduct}. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceVAT_inTotalPriceOfGoods(String idProduct) {
+        vatFromTotalProductPrice(idProduct).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get the amount of VAT percentage from the product{idProduct}. CartAllData_page")
+    public String getAmountVatPercentage(String idProduct) {
+        return vatFromTotalProductPrice(idProduct).getText().replaceAll("[^0-9,]", "");
+    }
+
+    @Step("Check absence of VAT in the total price of goods{idProduct}. CartAllData_page")
+    public CartAllData_page_Logic checkAbsenceVAT_inTotalPriceOfGoods(String idProduct) {
+        vatFromTotalProductPrice(idProduct).shouldNot(visible);
+        return this;
+    }
 
     @Step(": on CartAllData_page")
     public CartAllData_page_Logic checkAbsenceGoodInCartPage(String idProduct) {
