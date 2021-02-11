@@ -367,7 +367,7 @@ public class Main_page {
     //ÜBER AUTODOC
 
     SelenideElement hilfeCenterLink() {
-        return $x("(//div[@class='footer__links-block']//span[@target='_blank'])[2]");
+        return $x("(//div[@class='footer__links-block']//span[@target='_blank'])[3]");
     }
 
     SelenideElement aboutUsLink() {
@@ -378,8 +378,8 @@ public class Main_page {
         return $x("//a[@data-ga-action='imprint']");
     }
 
-    SelenideElement vacanciesLink() {
-        return $x("//a[@data-ga-action='vacancies']");
+    SelenideElement jobLink() {
+        return $x("//span[@data-ga-action='job']");
     }
 
     SelenideElement bonusprogrammLink() {
