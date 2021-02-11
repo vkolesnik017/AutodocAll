@@ -54,7 +54,7 @@ public class Group_list_page_Logic extends Group_list_page {
 
     @Step("Checks downloads of the manuals. Group_list_page")
     public Group_list_page_Logic checkDownloadsOfManuals() throws IOException {
-        pdfManualBlock().shouldBe(visible);
+        pdfManualBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         for (int i = 0; i < downloadLinkOfManuals().size(); i++) {
             downloadLinkOfManuals().get(i).click();
             sleep(5000);
