@@ -47,6 +47,7 @@
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3076"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3102"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3103"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3131"/>
 
         </classes>
     </test>
