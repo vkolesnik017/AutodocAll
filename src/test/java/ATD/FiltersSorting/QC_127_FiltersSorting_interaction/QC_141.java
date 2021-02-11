@@ -56,13 +56,13 @@ public class QC_141 {
     @Description(value = "Test checks by side, brand and side filters interaction LKW route model")
     public void testBySideAndBrandAndSideFilterInteractionLKWmodel(String route) throws Exception {
         openPage(route);
-        String bremsscheibenartValue = listingPage.getTextFromElement(listingPage.bremsscheibenartSideFilterButton());
-        listingPage.clickFilterButton(listingPage.bremsscheibenartSideFilterButton())
+        String bremsscheibenartValue = listingPage.getTextFromElement(listingPage.secondBremsscheibenartSideFilterButton());
+        listingPage.clickFilterButton(listingPage.secondBremsscheibenartSideFilterButton())
                 .waitUntilPreloaderDisappear()
                 .clickFilterBySideBack()
                 .waitUntilPreloaderDisappear();
-        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(), "alt");
-        listingPage.clickFilterButton(listingPage.firstBrandButtonOemListing())
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
+        listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
                 .waitUntilPreloaderDisappear()
                 .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
                 .checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute())
