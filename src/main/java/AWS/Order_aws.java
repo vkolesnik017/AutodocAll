@@ -1231,9 +1231,7 @@ public class Order_aws {
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost, Float safeOrderCost) {
-        Float cost = sellingCost + deliveryCost + safeOrderCost;
-        float actualTotalCost = getTotalPriceOrderAWS();
-        return roundOfTheCost(cost, actualTotalCost);
+        return sellingCost + deliveryCost + safeOrderCost;
     }
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
