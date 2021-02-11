@@ -132,7 +132,15 @@ public class CartAllData_page {
         return $x("//tr[@data-article_id='" + idProduct + "']//td[@class='price'][2]");
     }
 
-    public SelenideElement totalProductPrice() {
+    public SelenideElement totalProductPrice(String idProduct) {
+     return $x("//tr[@data-article_id='" + idProduct + "']//td[@class='total-price']");
+    }
+
+    public SelenideElement vatFromTotalProductPrice(String idProduct) {
+        return $x("//tr[@data-article_id='" + idProduct + "']//div[@class='inkl']");
+    }
+
+    public SelenideElement totalPrice() {
         return $(byCssSelector(".total-price"));
     }
 

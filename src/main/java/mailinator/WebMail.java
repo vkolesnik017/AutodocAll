@@ -196,15 +196,18 @@ public class WebMail {
     @Step("Checks and opens a letter with specific specified parameters{expectedTextNameLetter}, {orderNumber}. WebMail")
     public WebMail checkAndOpenLetterInfoText(String expectedTextNameLetter, String orderNumber) {
         sleep(3000);
+        String textNameLetter = null;
         for (int i = 0; i < collectionSubjectLetter().size(); i++) {
-            String textNameLetter = collectionSubjectLetter().get(i).getText();
+            textNameLetter = collectionSubjectLetter().get(i).getText();
             if (textNameLetter.equals(expectedTextNameLetter + " " + orderNumber)) {
                 collectionSubjectLetter().get(i).click();
                 switchTo().frame("messagecontframe");
                 break;
-            } else {
-                Assert.fail("Letter not found");
             }
+        }
+        assert textNameLetter != null;
+        if (!textNameLetter.equals(expectedTextNameLetter + " " + orderNumber)) {
+            Assert.fail("Letter not found");
         }
         return this;
     }

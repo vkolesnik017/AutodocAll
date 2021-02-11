@@ -33,7 +33,7 @@ public class Customer_view_aws {
     }
 
     private SelenideElement columnResponse(String status) {
-        return $x("//div[@class='mt-20']//tbody//tr//td[text()='" + status + "                    ']");
+        return $x("(//div[@class='mt-20']//tbody//tr//td[text()='" + status + "                    '])[1]");
     }
 
     private SelenideElement columnBillingOrShipping(String billingOrShipping) {
@@ -268,7 +268,7 @@ public class Customer_view_aws {
 
     @Step("Checks response in block logs company numbers. Customer_view_aws")
     public Customer_view_aws checkResponseInBlockLogsCompanyNumbers(String status) {
-        columnResponse(status).shouldBe(visible);
+        columnResponse(status).scrollTo().shouldBe(visible);
         return this;
     }
 
