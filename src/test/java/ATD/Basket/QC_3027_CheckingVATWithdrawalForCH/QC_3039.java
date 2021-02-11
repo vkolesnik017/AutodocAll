@@ -28,7 +28,7 @@ public class QC_3039 {
     private String customerID = "21893836";
     private String mailDE_LI = "QC_3039_autotestDE@autodoc.si";
     private String customerID_DE_LI = "21894072";
-    private String illiquidProduct = "50364";
+    private String illiquidProduct = "VKJA 5561";
     private String productWithDeposit = "24.3481-8515.5";
     private String heavyLoad = "6504-03-2509591P";
 
@@ -68,7 +68,7 @@ public class QC_3039 {
         closeWindow();
         switchTo().window(0);
         order_aws.addProductInOrder(illiquidProduct, "1")
-                .confirmationAddingGoodsToOrder("8037880")
+                .confirmationAddingGoodsToOrder("")
 
                 .addProductInOrder(productWithDeposit, "1")
                 .confirmationAddingGoodsToOrder("")
@@ -78,7 +78,7 @@ public class QC_3039 {
 
         float depositSum = order_aws.reSaveOrder()
                 .getPfandSumInAddedProductTabel(productWithDeposit);
-        order_aws.checkTextInLabelDanger("50364", "Неликвид")
+        order_aws.checkTextInLabelDanger(illiquidProduct, "Неликвид")
                 .checkOrderHasExpectedPfandPrice(depositSum)
                 .compereActualDeliveryCostWithExpected(deliveryCost);
         float heavyLoadsSum = order_aws.getHeavyLoads(heavyLoad);
@@ -144,7 +144,7 @@ public class QC_3039 {
         closeWindow();
         switchTo().window(0);
         order_aws.addProductInOrder(illiquidProduct, "1")
-                .confirmationAddingGoodsToOrder("8037880")
+                .confirmationAddingGoodsToOrder("")
 
                 .addProductInOrder(productWithDeposit, "1")
                 .confirmationAddingGoodsToOrder("")
@@ -155,7 +155,7 @@ public class QC_3039 {
 
         float depositSum = order_aws.reSaveOrder()
                 .getPfandSumInAddedProductTabel(productWithDeposit);
-        order_aws.checkTextInLabelDanger("50364", "Неликвид")
+        order_aws.checkTextInLabelDanger(illiquidProduct, "Неликвид")
                 .checkOrderHasExpectedPfandPrice(depositSum)
                 .checkDeliveryCostForCountryOrRegion(actualDeliveryCostForRegion, actualDeliveryCostForCountry, deliveryShop);
         order_aws.checkHeavyLoadsDeliveryPriceOrderAWS("0");
