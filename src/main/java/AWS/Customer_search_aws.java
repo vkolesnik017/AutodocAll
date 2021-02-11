@@ -40,6 +40,7 @@ public class Customer_search_aws {
         return this;
     }
 
+    @Step("Enter id user and click search. Customer_search_aws")
     public Customer_search_aws enterIdAndClickSearch(String Id){
         idClientFieldForEnter().setValue(Id);
         searchBtn().click();
