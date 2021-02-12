@@ -37,7 +37,7 @@ public class QC_1831 {
     Object[] dataProviderProducts() {
         return new Object[][]{
                 {"GLS"},
-                /*{"DHL"},*/ //TODO временно отключена проверка данного сервиса из за дефекта SHOP-1494
+                {"DHL"},
                 {"NOX"},
                 {"POSTNORD"},
                 {"DPDPL"},
@@ -83,11 +83,11 @@ public class QC_1831 {
                 .getTrackingNum();
         Assert.assertEquals(trackingNumFromAWS, trackingNumFromPR);
         String deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1)
-                .transitionToDeliveryPageAndGetURL();
+                .transitionToDeliveryPageAndGetURL(deliveryService);
 
         webMail.openMail(mail, passwordForMail)
                 .checkAndOpenLetterInfoText("Versandbestätigung, Bestellnummer", orderNumber);
-        String deliveryPageUrlFromMail = webMail.transitionToDeliveryPageAndGetUrlFromMail();
+        String deliveryPageUrlFromMail = webMail.transitionToDeliveryPageAndGetUrlFromMail(deliveryService);
         Assert.assertEquals(deliveryPageURL, deliveryPageUrlFromMail);
         order_aws.openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
