@@ -54,7 +54,7 @@ public class QC_1488 {
                 .nextBtnClick()
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .checkRegularDeliveryPrice("165,00")
                 .checkAbsenceSafeOrderBlock();
         totalPrice = new CartAllData_page_Logic().clickBtnReturnToCartAddressPage()
