@@ -72,12 +72,11 @@ public class Motoroil_specification_page_Logic extends Motoroil_specification_pa
     }
 
     @Step("check transition by click in Relinking block. Motoroil_specification_page")
-    public Motoroil_specification_page_Logic checkTransitionByClickInRelinkingBlock() throws SQLException {
-        String firstBlock = getAttributeFromLink(linksOfRelinkingBlocks(1), 0);
+    public Motoroil_specification_page_Logic checkTransitionByClickInRelinkingBlock() {
+        String firstBlock = getAttributeFromLink(linksOfRelinkingBlocks(1), 1);
         String secondBlock = getAttributeFromLink(linksOfRelinkingBlocks(2), 0);
         String thirdBlock = getAttributeFromLink(linksOfRelinkingBlocks(3), 0);
-        String currentMainHeadline = mainHeadline().getText();
-        clickOnValueFromFirstRelinkingBlock(0);
+        clickOnValueFromFirstRelinkingBlock(1);
         checkingContainsUrl(firstBlock);
         waitWhileRouteContainsExpectedCondition(firstBlock);
         back();
