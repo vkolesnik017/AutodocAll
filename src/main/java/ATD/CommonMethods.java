@@ -28,6 +28,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static java.lang.String.format;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -352,9 +353,9 @@ public class CommonMethods {
 
         ElementsCollection miniCardsOfProducts = null;
         if (routeName.equals("supplier_brand_line")) {
-            miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(6);
+            miniCardsOfProducts = miniCardsOfProducts().filterBy(visible);
         } else {
-            miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);
+            miniCardsOfProducts = miniCardsOfProducts().filterBy(visible);
         }
         for (SelenideElement miniCardFirsSlide : miniCardsOfProducts) {
             miniCardFirsSlide.$(sticker).should(visible);

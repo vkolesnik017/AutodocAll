@@ -367,7 +367,7 @@ public class Main_page {
     //ÜBER AUTODOC
 
     SelenideElement hilfeCenterLink() {
-        return $x("(//div[@class='footer__links-block']//span[@target='_blank'])[2]");
+        return $x("(//div[@class='footer__links-block']//span[@target='_blank'])[3]");
     }
 
     SelenideElement aboutUsLink() {
@@ -378,8 +378,8 @@ public class Main_page {
         return $x("//a[@data-ga-action='imprint']");
     }
 
-    SelenideElement vacanciesLink() {
-        return $x("//a[@data-ga-action='vacancies']");
+    SelenideElement jobLink() {
+        return $x("//span[@data-ga-action='job']");
     }
 
     SelenideElement bonusprogrammLink() {
@@ -879,4 +879,8 @@ public class Main_page {
     SelenideElement tyresCategory() {return $x("//ul[@class='ersats_listing']//span[contains(text(),'Reifen')]/ancestor::li");}
 
     ElementsCollection topParentCategory() {return $$x("//span[@class='head_autopart head_autopart_href link']");}
+
+    SelenideElement covidIcon() {return $(".header-covid__text");}
+
+    SelenideElement btnCloseCovidIcon() {return $(".js-close-header_alert");}
 }

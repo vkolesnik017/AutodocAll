@@ -168,6 +168,10 @@ public class Listing_page {
         return $x("//*[contains(@class,'filter-criteria_232')]//li");
     }
 
+    public SelenideElement secondBremsscheibenartSideFilterButton() {
+        return $x("//*[contains(@class,'filter-criteria_232')]//li[2]");
+    }
+
     public SelenideElement durchmesserSideFilterButton() {
         return $x("//*[contains(@class,'filter-criteria_200')]//li[4]");
     }

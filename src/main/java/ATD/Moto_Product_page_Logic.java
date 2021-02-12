@@ -65,7 +65,6 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
         return page(Moto_Catalog_page_Logic.class);
     }
 
-
     @Step(" get brand and model Of motorcycle .Moto_Product_page")
     public String getBrandAndModelOfMoto() {
         String brandOfMoto = getBrandOfMoto();

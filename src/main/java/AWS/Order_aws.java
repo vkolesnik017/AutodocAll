@@ -217,6 +217,10 @@ public class Order_aws {
         return $x("//li[@class='search-choice']//span");
     }
 
+    SelenideElement vatPercentageInOrder(String serialNumber) {
+        return $x("(//li[@class='search-choice']//span)["+ serialNumber +"]");
+    }
+
     SelenideElement sellingPrice() {
         return $x("//a[@class='payment-in-order']//abbr");
     }
@@ -1155,6 +1159,12 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Checks VAT status {statusVatOrder} in order. Order_aws")
+    public Order_aws checkVatStatusInOrder(String statusVatOrder, String serialNumber) {
+        vatPercentageInOrder(serialNumber).shouldHave(text(statusVatOrder));
+        return this;
+    }
+
     @Step("Checks payment method {PaymentMethod} in order. Order_aws")
     public Order_aws checkPaymentMethodInOrder(String PaymentMethod) {
         paymentMethod().shouldHave(text(PaymentMethod));
@@ -1231,9 +1241,7 @@ public class Order_aws {
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost, Float safeOrderCost) {
-        Float cost = sellingCost + deliveryCost + safeOrderCost;
-        float actualTotalCost = getTotalPriceOrderAWS();
-        return roundOfTheCost(cost, actualTotalCost);
+        return sellingCost + deliveryCost + safeOrderCost;
     }
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
@@ -1358,9 +1366,7 @@ public class Order_aws {
             float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
-        Float sum = (sumOfAllGoods + costDeliveryAndSafeOrder);
-        float actualTotalCost = getTotalPriceOrderAWS();
-        return roundOfTheCost(sum, actualTotalCost);
+        return sumOfAllGoods + costDeliveryAndSafeOrder;
     }
 
     @Step("Plus the selling price of all added items including delivery. Order_aws")

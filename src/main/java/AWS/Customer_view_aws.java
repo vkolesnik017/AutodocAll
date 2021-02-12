@@ -33,7 +33,7 @@ public class Customer_view_aws {
     }
 
     private SelenideElement columnResponse(String status) {
-        return $x("//div[@class='mt-20']//tbody//tr//td[text()='" + status + "                    ']");
+        return $x("(//div[@class='mt-20']//tbody//tr//td[text()='" + status + "                    '])[1]");
     }
 
     private SelenideElement columnBillingOrShipping(String billingOrShipping) {
@@ -152,6 +152,10 @@ public class Customer_view_aws {
         return $x("//select[@class='customer-subscription-update']");
     }
 
+    private SelenideElement statusOkInSubscriptionTable() {
+        return $x("//table[contains(@class,'subscriptions_table')]//tr[1]//i[@class='splashy-okay']");
+    }
+
 
     @Step("Get deposit balance after the last crediting . Customer_view_aws")
     public Float getDepositBalanceAfterLastCrediting() {
@@ -264,7 +268,7 @@ public class Customer_view_aws {
 
     @Step("Checks response in block logs company numbers. Customer_view_aws")
     public Customer_view_aws checkResponseInBlockLogsCompanyNumbers(String status) {
-        columnResponse(status).shouldBe(visible);
+        columnResponse(status).scrollTo().shouldBe(visible);
         return this;
     }
 
@@ -298,4 +302,19 @@ public class Customer_view_aws {
         customerSubscriptionSelector().shouldHave(text(expectedText));
         return this;
     }
+
+    @Step(" Verifies mail user from billing. Customer_view_aws")
+    public Customer_view_aws verifiesMailUser(String mail) {
+        fieldMailInBilling().shouldBe(visible).shouldHave(exactValue(mail));
+        return this;
+    }
+
+    @Step(" Check status OK in subscriptions table. Customer_view_aws")
+    public Customer_view_aws checkStatusOKInSubscriptionsTable() {
+        statusOkInSubscriptionTable().shouldBe(visible);
+        return this;
+    }
+
+
+
 }

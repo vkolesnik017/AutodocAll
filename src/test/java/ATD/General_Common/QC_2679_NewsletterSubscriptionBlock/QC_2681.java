@@ -6,6 +6,7 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -42,6 +43,10 @@ public class QC_2681 {
                 .fillRequiredFieldsForRegistration(firstNameRandom(), secondNameRandom(), email, true)
                 .fillPasswordFieldsAndClickRegistration()
                 .checkingAppearingNameOfClient();
+        new WebMail().openMail(email)
+                .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(email);

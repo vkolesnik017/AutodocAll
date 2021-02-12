@@ -29,7 +29,7 @@ public class QC_1556 {
     }
 
     @Flaky
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Description(value = "Test transition the link and check url")
     public void checkingLinksInFooter(String route) throws SQLException {

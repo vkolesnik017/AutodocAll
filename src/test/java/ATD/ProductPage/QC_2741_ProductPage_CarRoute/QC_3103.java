@@ -1,6 +1,6 @@
-package ATD.Listings.QC_433_ListingSearch;
+package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
 
-import ATD.Search_page_Logic;
+import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,34 +13,31 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class QC_437 {
-
-    private Search_page_Logic searchPageLogic = new Search_page_Logic();
+public class QC_3103 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search6,lkw_search6");
+
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product");
     }
 
     @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Evlentiev")
-    @Description(value = "Use pagination on search page")
-    public void testUsePaginationOnSearchPage(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "test checking the slider block with video on product page")
+    public void testCheckSkiderBlockWithVideo(String route) {
         openPage(route);
-        String url = url();
-        searchPageLogic.switchOnSecondPage();
-        waitingWhileLinkBecomeExpected(url.concat("&page=2"));
+        new Product_page_Logic()
+        .presenceFaqBlock()
+        .locationOfFaqElements();
     }
 
     @AfterMethod

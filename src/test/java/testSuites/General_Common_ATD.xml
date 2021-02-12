@@ -33,15 +33,16 @@
             <class name="ATD.General_Common.QC_1571_Header.QC_1604"/>
             <class name="ATD.General_Common.QC_1571_Header.QC_1605"/>
             <class name="ATD.General_Common.QC_1571_Header.QC_1606"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_3220"/>
         </classes>
     </test>
 
-  <!--  <test name="QC_2679_NewsletterSubscriptionBlock">
+    <test name="QC_2679_NewsletterSubscriptionBlock">
         <classes>
             <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2680"/>
             <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2681"/>
         </classes>
-    </test>-->
+    </test>
 
     <test name="QC_2774_CheckTopSectionsBlockOnMainPage">
         <classes>

@@ -938,4 +938,20 @@ public class Product_page {
 
     ElementsCollection interestingArticleLinks() {return $$x("//div[@class='product-anchor-links']//a").filter(visible);}
 
+    SelenideElement upNavigationArrowOfVideoBlock() {return $x("//div[@class='slider-video-block']//button[1]");}
+
+    SelenideElement downNavigationArrowOfVideoBlock() {return $x("//div[@class='slider-video-block']//button[2]");}
+
+    ElementsCollection allVideoFiles() {return $$x("//div[@class='slick-list draggable']/div/div");}
+
+    ElementsCollection idOfVisibleVideoFiles() {return $$x("//*[self::div[@class='slider-item slick-slide slick-current slick-active'] or self::div[@class='slider-item slick-slide slick-active']]/div/div");}
+
+    SelenideElement currentIdVideo() {return $x("//div[@class='slider-video-block']//div[@class='item slick-slide slick-current slick-active']/div/div");}
+
+    SelenideElement btnPlayOfVideoFile()  {return $x("//div[@class='slick-list draggable']//div[@class='play']");}
+
+    SelenideElement questionFaqBlock() {return $x("//p[@class='question']/..");}
+
+    SelenideElement locationOfPaymentBlockToFaq() {return $x("//div[@class='product-versand']/preceding-sibling::div");}
+
   }

@@ -44,7 +44,7 @@ public class QC_1012 {
         openPage("https://m.autodoc.de/?force=mobile");//TODO url add in database
         new Main_page_mob_Logic().closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile").clickSignInInMenu()
                 .closePopupAfterTransitionOnLoginPageMob("apps.apple.com", "https://m.autodoc.de/login")
-                .closeFooterPopup().signIn(mail)
+                .signIn(mail)
                 .goToProfilePage().clickAddresseBtn().clickBillingAddress()
                 .checkingCheckedCheckbox().clickCheckbox()
                 .fillingFieldsInBillingAddress().fillingFieldsInShippingAddress().fillingNameVornameField()

@@ -1511,4 +1511,85 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("presence of Video Block. Product_page")
+    public Product_page_Logic presenceVideoBlock() {
+        videoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("display Of Navigation Arrows Of Video Block. Product_page")
+    public Product_page_Logic displayOfNavigationArrowsOfVideoBlock() {
+        upNavigationArrowOfVideoBlock().shouldBe(visible);
+        downNavigationArrowOfVideoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("display Of video files. Product_page")
+    public Product_page_Logic displayOfVideoFiles() {
+        allVideoFiles().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("click On Down Navigation Arrow. Product_page")
+    public Product_page_Logic clickOnDownNavigationArrow() {
+        videoBlock().scrollTo();
+        String idOfSecondVisibleVideoFile = idOfVisibleVideoFiles().get(1).attr("data-id");
+        downNavigationArrowOfVideoBlock().click();
+        currentIdVideo().shouldHave(attribute("data-id", idOfSecondVisibleVideoFile));
+        return this;
+    }
+
+    @Step("click On Up Navigation Arrow. Product_page")
+    public Product_page_Logic clickOnUpNavigationArrow() {
+        videoBlock().scrollTo();
+        upNavigationArrowOfVideoBlock().click();
+        String idOfFirstVisibleVideoFile = idOfVisibleVideoFiles().get(0).attr("data-id");
+        currentIdVideo().shouldHave(attribute("data-id", idOfFirstVisibleVideoFile));
+        return this;
+    }
+
+    @Step(" presence Of Visible Video File. Product_page")
+    public Product_page_Logic presenceOfVisibleVideoFile() {
+        for (int i = 0; i < idOfVisibleVideoFiles().size(); i++) {
+            idOfVisibleVideoFiles().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("click On Current Video File. Product_page")
+    public Product_page_Logic clickOnCurrentVideoFile() {
+        btnPlayOfVideoFile().click();
+        return this;
+    }
+
+    @Step("presence of Faq Block. Product_page")
+    public Product_page_Logic presenceFaqBlock() {
+        faqForm().shouldBe(visible);
+        return this;
+    }
+
+    @Step("location Of Faq Elements. Product_page")
+    public Product_page_Logic locationOfFaqElements() {
+        if (questionFaqBlock().isDisplayed()) {
+            locationOfPaymentBlockToFaq().shouldBe(visible).shouldHave(attribute("id", "faq"));
+        }
+        return this;
+    }
+
+    @Step("check Id Of Video File. Product_page")
+    public Product_page_Logic checkIdOfVideoFile(String expectedVideoId) {
+        currentIdVideo().shouldBe(visible).shouldHave(attribute("data-id", expectedVideoId));
+        return this;
+    }
+
+    @Step("get id of current video file. Product_page")
+    public String getIdOfCurrentVideoFile() {
+        return currentIdVideo().getAttribute("data-id");
+    }
+
+    @Step("checking the change of the current video. Product_page")
+    public Product_page_Logic checkChangeOfCurrentVideo(String id) {
+        currentIdVideo().shouldBe(visible).shouldNotHave(attribute("data-id", id));
+        return this;
+    }
 }

@@ -29,7 +29,7 @@ public class QC_3042 {
 
     private String mail = "QC_3042_autotest@mailinator.com";
     private String mailDE = "QC_3042_autotestDE@mailinator.com";
-    private String illiquidProduct = "50364";
+    private String illiquidProduct = "VKJA 5561";
     private String productWithDeposit = "24.3481-8515.5";
     private String heavyLoad = "6504-03-2509591P";
 
@@ -74,7 +74,7 @@ public class QC_3042 {
                 .checkVatStatusInOrder("Mit MwSt " + vatForCH + "%")
 
                 .addProductInOrder(illiquidProduct, "1")
-                .confirmationAddingGoodsToOrder("8037880")
+                .confirmationAddingGoodsToOrder("8")
 
                 .addProductInOrder(productWithDeposit, "1")
                 .confirmationAddingGoodsToOrder("")
@@ -84,7 +84,7 @@ public class QC_3042 {
 
         float depositSum = order_aws.reSaveOrder()
                 .getPfandSumInAddedProductTabel(productWithDeposit);
-        order_aws.checkTextInLabelDanger("50364", "Неликвид")
+        order_aws.checkTextInLabelDanger("VKJA 5561", "Неликвид")
                 .checkOrderHasExpectedPfandPrice(depositSum)
                 .compereActualDeliveryCostWithExpected(deliveryPrice);
         float heavyLoadsSum = order_aws.getHeavyLoads(heavyLoad);
@@ -149,14 +149,14 @@ public class QC_3042 {
                 .checkVatStatusInOrder("Mit MwSt " + vatForCH + "%")
 
                 .addProductInOrder(illiquidProduct, "1")
-                .confirmationAddingGoodsToOrder("8037880")
+                .confirmationAddingGoodsToOrder("")
 
                 .addProductInOrder(productWithDeposit, "1")
                 .confirmationAddingGoodsToOrder("");
 
         float depositSum = order_aws.reSaveOrder()
                 .getPfandSumInAddedProductTabel(productWithDeposit);
-        order_aws.checkTextInLabelDanger("50364", "Неликвид")
+        order_aws.checkTextInLabelDanger("VKJA 5561", "Неликвид")
                 .checkOrderHasExpectedPfandPrice(depositSum)
                 .checkDeliveryCostForCountryOrRegion(actualDeliveryCostForRegion, actualDeliveryCostForCountry, deliveryShop)
                 .checkHeavyLoadsDeliveryPriceOrderAWS("0");
