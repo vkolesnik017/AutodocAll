@@ -44,8 +44,9 @@ public class Moto_Category_car_list_page {
     SelenideElement lastForwardOfPagination() {
         return $x("//span[@class='last']/a");
     }
+
     SelenideElement lastForwardLinkOfPagination() {
-        return $x("//div[@class='pagination']//span[@class='next'][2]/a");
+        return $x("//div[@class='pagination']//span[@class='last']/a");
     }
 
     SelenideElement nextForwardOfPagination() {
@@ -53,7 +54,7 @@ public class Moto_Category_car_list_page {
     }
 
     ElementsCollection productsAtTecDocListing() {
-        return $$x("//ul[@class='list_products']/li");
+        return $$x("//*[self::ul[@class='list_products'] or self::ul[@class='list_products ']]/li");
     }
 
     ElementsCollection btnOutOfStockProducts() {
@@ -113,7 +114,7 @@ public class Moto_Category_car_list_page {
     }
 
     SelenideElement btnShowReplacement(String artOfProduct) {
-        return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi item_not_available ']//div[contains(@class,'show_alternative__btn')]");
+        return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi  item_not_available']//div[contains(@class,'show_alternative__btn')]");
     }
 
     SelenideElement analogBlockMessage() {
