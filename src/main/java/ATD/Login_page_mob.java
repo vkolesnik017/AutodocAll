@@ -45,7 +45,7 @@ class Login_page_mob {
     }
 
     SelenideElement popupOnLoginPage() {
-        return $x("//div[@class='cps_app hidden ']/a/img");
+        return $x("//div[@class='cps_app position_bottom']/a/img");
     }
 
 
