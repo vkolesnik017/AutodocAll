@@ -85,12 +85,26 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
     }
 
     @Step("Transition to delivery page and get URL. Profile_orders_page")
-    public String transitionToDeliveryPageAndGetURL() {
-        oneTrackingNumber().click();
-        switchTo().window(1);
-        String deliveryPageURL = url();
-        closeWindow();
-        switchTo().window(0);
+    public String transitionToDeliveryPageAndGetURL(String deliveryService) {
+        String deliveryPageURL = null;
+        if (deliveryService.equals("DHL")) {
+            oneTrackingNumber().click();
+            switchTo().window(1);
+            closeWindow();
+            switchTo().window(0);
+            oneTrackingNumber().click();
+            switchTo().window(1);
+            deliveryPageURL = url().replaceAll("&rfn.+","").replaceAll("html?.+.=", "");
+            closeWindow();
+            switchTo().window(0);
+        } else {
+            oneTrackingNumber().click();
+            switchTo().window(1);
+
+            deliveryPageURL = url();
+            closeWindow();
+            switchTo().window(0);
+        }
         return deliveryPageURL;
     }
 

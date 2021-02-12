@@ -271,12 +271,21 @@ public class WebMail {
     }
 
     @Step("Transition to delivery page ang get URL. WebMail")
-    public String transitionToDeliveryPageAndGetUrlFromMail() {
-        linkToDeliveryPage().click();
-        switchTo().window(1);
-        String deliveryPageURL = url();
-        closeWindow();
-        switchTo().window(0);
+    public String transitionToDeliveryPageAndGetUrlFromMail(String deliveryService) {
+        String deliveryPageURL = null;
+        if (deliveryService.equals("DHL")) {
+            linkToDeliveryPage().click();
+            switchTo().window(1);
+            deliveryPageURL = url().replaceAll("&rfn.+", "").replaceAll("html?.+.=", "");
+            closeWindow();
+            switchTo().window(0);
+        } else {
+            linkToDeliveryPage().click();
+            switchTo().window(1);
+            deliveryPageURL = url();
+            closeWindow();
+            switchTo().window(0);
+        }
         return deliveryPageURL;
     }
 
