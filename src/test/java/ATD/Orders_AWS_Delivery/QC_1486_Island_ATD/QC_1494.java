@@ -53,7 +53,7 @@ public class QC_1494 {
                 .chooseVorkasse()
                 .nextBtnClick()
                 .checkPresenceSafeOrderBlock()
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .checkRegularDeliveryPrice("13,00")
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();

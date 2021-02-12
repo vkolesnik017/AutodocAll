@@ -66,7 +66,7 @@ public class QC_1395 {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .checkTextInDeliveryAddressInfoBlock("SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("FB-MONT A. Fułek Spółka Komandytowa");
         priceProductInAllData = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
@@ -135,7 +135,7 @@ public class QC_1395 {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .checkTextInDeliveryAddressInfoBlock("Firma SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
                 .getRegularProductPriceFormAllDataPage();

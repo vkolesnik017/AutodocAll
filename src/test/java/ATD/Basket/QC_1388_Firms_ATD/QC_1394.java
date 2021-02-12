@@ -63,7 +63,7 @@ public class QC_1394 {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .checkTextInDeliveryAddressInfoBlock("SPRL Brasserie Cantillon");
         priceProductInAllData = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
         cartAllData_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithoutVAT, priceProductInAllData);
@@ -128,7 +128,7 @@ public class QC_1394 {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .checkTextInDeliveryAddressInfoBlock("SPRL Brasserie Cantillon")
                 .getRegularProductPriceFormAllDataPage();
         totalPriceDE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);

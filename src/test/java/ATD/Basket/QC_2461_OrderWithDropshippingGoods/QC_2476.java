@@ -58,10 +58,10 @@ public class QC_2476 {
                 .nextBtnClick()
                 .clickOnTheDesiredPaymentMethod(shop, "Bank")
                 .nextBtnClick()
-                .checkPresenceVAT_inTotalPriceOfGoods(idProductDrop)
+                .checkPresenceVatPostscriptInTotalPriceOfGoods(idProductDrop)
                 .checkTotalPriceForSpecificQuantityOfGoods(productPrice, 4, idProductDrop)
                 .checkAbsenceVAT_inTotalPriceOfGoods(idProductWarehouse)
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .getAmountVatPercentage(idProductDrop);
         String orderID = new CartAllData_page_Logic().nextBtnClick()
                 .getOrderNumber();

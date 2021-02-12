@@ -210,8 +210,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Checks for the absence of VAT percentage. CartAllData_page")
-    public CartAllData_page_Logic checkAbsenceOfVatPercentage() {
+    public CartAllData_page_Logic checkAbsenceOfVatPostscript() {
         percentageOfVat().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks for the presence of VAT percentage. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceOfVatPostscript() {
+        percentageOfVat().shouldBe(visible);
         return this;
     }
 
@@ -441,7 +447,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Check presence of VAT in the total price of product{idProduct}. CartAllData_page")
-    public CartAllData_page_Logic checkPresenceVAT_inTotalPriceOfGoods(String idProduct) {
+    public CartAllData_page_Logic checkPresenceVatPostscriptInTotalPriceOfGoods(String idProduct) {
         vatFromTotalProductPrice(idProduct).shouldBe(visible);
         return this;
     }
