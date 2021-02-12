@@ -1582,4 +1582,14 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("get id of current video file. Product_page")
+    public String getIdOfCurrentVideoFile() {
+        return currentIdVideo().getAttribute("data-id");
+    }
+
+    @Step("checking the change of the current video. Product_page")
+    public Product_page_Logic checkChangeOfCurrentVideo(String id) {
+        currentIdVideo().shouldBe(visible).shouldNotHave(attribute("data-id", id));
+        return this;
+    }
 }
