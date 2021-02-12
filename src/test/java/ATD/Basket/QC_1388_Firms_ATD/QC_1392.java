@@ -66,7 +66,7 @@ public class QC_1392 {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("North 51 Ltd")
                 .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
-                .checkAbsenceOfVatPercentage();
+                .checkAbsenceOfVatPostscript();
         priceProductInAllDat = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
         product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithoutVAT, priceProductInAllDat);
         totalPriceBE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);
@@ -129,7 +129,7 @@ public class QC_1392 {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma North 51 Ltd")
                 .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
-                .checkAbsenceOfVatPercentage();
+                .checkAbsenceOfVatPostscript();
         totalPriceDE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);
         orderNumberDE = cartAllData_page_logic.nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);

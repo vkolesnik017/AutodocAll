@@ -29,7 +29,7 @@ public class QC_1836 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking the text of the pop-up at the 14 days checkout")
@@ -48,7 +48,7 @@ public class QC_1836 {
                 .checkPresenceUnsubscribeButton()
                 .getDigitClientId();
         new Customer_view_aws().openCustomerPersonalArea(customerID)
-                .checkPresenceTextInCustomerSubscriptionSelector("B+ (BASIC plus) MONTH");
+                .checkPresenceTextInCustomerSubscriptionSelector("B+ (BASIC plus) YEAR");
     }
 
     @AfterMethod

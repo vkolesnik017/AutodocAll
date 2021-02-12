@@ -67,7 +67,7 @@ public class QC_1396 {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .checkTextInDeliveryAddressInfoBlock("Bedrijf SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("autotest autotest");
         priceProductInAllData = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
@@ -135,7 +135,7 @@ public class QC_1396 {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .checkTextInDeliveryAddressInfoBlock("Firma SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("autotest autotest")
                 .getRegularProductPriceFormAllDataPage();
