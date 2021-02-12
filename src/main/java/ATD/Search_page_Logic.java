@@ -797,5 +797,11 @@ public class Search_page_Logic extends Search_page {
         }
         return this;
     }
+
+    @Step("presence of product with Price per meter  label. Search_page")
+    public Search_page_Logic presenceOfProductWithPricePerMeterLabel() {
+        pricePerMeterLabel().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
 }
 
