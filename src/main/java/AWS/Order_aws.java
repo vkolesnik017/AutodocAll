@@ -217,6 +217,10 @@ public class Order_aws {
         return $x("//li[@class='search-choice']//span");
     }
 
+    SelenideElement vatPercentageInOrder(String serialNumber) {
+        return $x("(//li[@class='search-choice']//span)["+ serialNumber +"]");
+    }
+
     SelenideElement sellingPrice() {
         return $x("//a[@class='payment-in-order']//abbr");
     }
@@ -1152,6 +1156,12 @@ public class Order_aws {
     @Step("Checks VAT status {statusVatOrder} in order. Order_aws")
     public Order_aws checkVatStatusInOrder(String statusVatOrder) {
         vatPercentageInOrder().shouldHave(text(statusVatOrder));
+        return this;
+    }
+
+    @Step("Checks VAT status {statusVatOrder} in order. Order_aws")
+    public Order_aws checkVatStatusInOrder(String statusVatOrder, String serialNumber) {
+        vatPercentageInOrder(serialNumber).shouldHave(text(statusVatOrder));
         return this;
     }
 

@@ -68,7 +68,7 @@ public class QC_1485 {
                 .chooseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
-                .checkAbsenceOfVatPercentage()
+                .checkAbsenceOfVatPostscript()
                 .getPriceIncludingVat(vatForEN);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);

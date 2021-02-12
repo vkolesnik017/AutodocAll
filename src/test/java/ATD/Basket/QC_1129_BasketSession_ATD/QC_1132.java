@@ -44,7 +44,6 @@ public class QC_1132 {
         main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
                 .closePopupAfterTransitionOnLoginPageMob("apps.apple.com", "https://m.autodoc.de/login")
-                .closeFooterPopup()
                 .signIn(mail);
         openPage("https://m.autodoc.de/vemo/2295352?force=mobile");
         productIdOnProductPage = product_page_Mob_logic.getProductId();
@@ -70,7 +69,6 @@ public class QC_1132 {
         main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
                 .closePopupAfterTransitionOnLoginPageMob("apps.apple.com", "https://m.autodoc.de/login")
-                .closeFooterPopup()
                 .signInFromFB(mailFB, passFB)
                 .checkPresenceIconUserId();
         openPage("https://m.autodoc.de/vemo/2295352?force=mobile");

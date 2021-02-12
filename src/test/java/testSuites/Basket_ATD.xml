@@ -146,4 +146,10 @@
         </classes>
     </test>
 
+    <test name="QC_2461_OrderWithDropshippingGoods">
+        <classes>
+            <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2476"/>
+        </classes>
+    </test>
+
 </suite>
