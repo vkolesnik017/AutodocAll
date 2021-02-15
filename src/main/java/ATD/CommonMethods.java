@@ -155,7 +155,7 @@ public class CommonMethods {
     public static String mailRandomMailinator(String QCnumber) {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
-        return "QC_" + QCnumber + "_autotestMail" + random + "@mailinator.com";
+        return "qc_" + QCnumber + "_autotestmail" + random + "@mailinator.com";
     }
 
     @Step("Get currency {nameLocator} and verify")
