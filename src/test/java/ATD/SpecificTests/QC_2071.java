@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
+import static Common.CommonMethods.waitWhileRouteBecomeExpected;
 import static Common.Excel.parseExcel;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.$;

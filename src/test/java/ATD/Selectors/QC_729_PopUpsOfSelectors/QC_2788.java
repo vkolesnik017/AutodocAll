@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
-import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
+import static Common.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;

@@ -38,9 +38,16 @@ public class QC_1008 {
     @Description(value = "Test verify form soft 404 from selector search")
     public void testFormSoft404SelectorSearch(String route) {
         openPage(route);
-        mail = "QC_1008_" + mailinatorMailRandom();
-        new Category_car_list_page_Logic().checkingDatenschutzerklarungLinkBehaviorSoftForm().checkingBehaviorSoft404(mail);
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
+        mail = "qc_1008_" + mailinatorMailRandom();
+        new Category_car_list_page_Logic().checkingDatenschutzerklarungLinkBehaviorSoftForm()
+                .checkingBehaviorSoft404(mail);
+        new WebMail().openMail(mail)
+                .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
+        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin()
+                .checkingPolicyAndSubscribeForMail(this.mail);
+
     }
     @AfterMethod
     private void close() {

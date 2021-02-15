@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
-import static PKW.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -902,7 +902,7 @@ public class Main_page_Logic extends Main_page {
         subscriptionMailField().setValue(mail);
         subscriptionMailCheckbox().click();
         subscriptionButton().click();
-        subscriptionSuccessPopup().shouldHave(Condition.text("Herzlichen Dank! Viel Spaß beim Shoppen!"));
+        subscriptionSuccessPopup().shouldHave(Condition.text(" Wir haben eine E-Mail zur Bestätigung Ihres Abonnements an Ihre E-Mail-Adresse gesendet."));
         subscriptionPopupClose().click();
         return this;
     }

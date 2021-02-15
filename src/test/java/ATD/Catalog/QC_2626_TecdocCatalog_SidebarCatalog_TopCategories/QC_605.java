@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 

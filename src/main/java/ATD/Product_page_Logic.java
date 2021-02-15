@@ -18,8 +18,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.getCurrentUrl;
 import static Common.CommonMethods.roundOfTheCost;
-import static PKW.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
@@ -960,7 +961,7 @@ public class Product_page_Logic extends Product_page {
     public String clickLinkSafetyDataSheetAndGetUrl() throws IOException {
         safetyDataSheet().shouldBe(visible).click();
         switchTo().window(1);
-        String url = getCurrentUtl();
+        String url = getCurrentUrl();
         closeWindow();
         switchTo().window(0);
         return url;

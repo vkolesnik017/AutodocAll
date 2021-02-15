@@ -14,7 +14,7 @@ import java.io.IOException;
 
 import static Common.Excel.parseExcel;
 import static Common.SetUp.setUpBrowser;
-import static PKW.CommonMethods.waitWhileRouteBecomeExpected;
+import static Common.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 

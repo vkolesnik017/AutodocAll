@@ -1,7 +1,6 @@
 package mailinator;
 
 import ATD.PasswordRecovery_page_Logic;
-import AWS.Order_aws;
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -12,8 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static PKW.CommonMethods.checkingContainsUrl;
-import static PKW.CommonMethods.waitWhileRouteBecomeExpected;
+import static Common.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -389,7 +388,7 @@ public class WebMail {
 
     @Step("Check letter info text in old mail service Mailinator. WebMail")
     public WebMail checkLetterInfoText(int letterNumber, String expectedText1, String expectedText2) {
-        letterInfo(letterNumber).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
+        letterInfo(letterNumber).waitUntil(visible,20000).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
         return this;
     }
 

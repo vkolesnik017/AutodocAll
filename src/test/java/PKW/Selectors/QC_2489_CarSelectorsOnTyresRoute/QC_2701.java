@@ -12,6 +12,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
+
+import static Common.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;

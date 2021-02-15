@@ -1,6 +1,8 @@
 package Common;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.TimeoutException;
+import org.testng.Assert;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -13,7 +15,59 @@ import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.Random;
 
+import static com.codeborne.selenide.Selenide.Wait;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.WebDriverRunner.url;
+
 public class CommonMethods {
+
+
+    @Step("Method for waiting while link become contains expected")
+    public static void checkingContainsUrl(String expectedContainsUrl) {
+        try {
+            Wait().until(webDriver -> url().contains(expectedContainsUrl));
+        } catch (TimeoutException e) {
+            System.out.println(url());
+            Assert.fail("Url doesn't contains: " + expectedContainsUrl);
+        }
+    }
+
+    @Step("Get current URL")
+    public static String getCurrentUrl() {
+        return url();
+    }
+
+    @Step("Wait while route contains expected condition {expected route}")
+    public static void waitWhileRouteContainsExpectedCondition(String expectedCondition) {
+        try {
+            Wait().until(WebDriver -> getCurrentUrl().contains(expectedCondition));
+        } catch (TimeoutException e) {
+            Assert.fail("Current route: [" + getCurrentUrl() + "] don't contains expected condition: " + expectedCondition);
+        }
+    }
+
+    @Step("Get name route")
+    public static String getNameRouteFromJSVarInHTML() {
+        return executeJavaScript("return $siteSettings.route");
+    }
+
+    @Step("Wait while route become expected {expected route}")
+    public static void waitWhileRouteBecomeExpected(String expectedRoute) {
+        try {
+            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
+        } catch (TimeoutException e) {
+            Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
+        }
+    }
+
+    @Step("Wait while route contains expected {expected route}")
+    public static void waitWhileRouteContainsExpected(String expectedRoute) {
+        try {
+            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().contains(expectedRoute));
+        } catch (TimeoutException e) {
+            Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
+        }
+    }
 
     @Step("Get the expected date of a calendar in the format {dataFormat} you want, by entering the expected months {minusMonths}, days {minusDays}. CommonMethods")
     public static String getExpectedCalendarData(String dataFormat, int minusMonths, int minusDays) {

@@ -1,6 +1,6 @@
 package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
-import ATD.CommonMethods;
+import Common.CommonMethods;
 import Common.DataBase;
 import ATD.Moto_main_page_Logic;
 import Common.SetUp;
