@@ -1,5 +1,6 @@
 package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
 
+import ATD.Main_page_Logic;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -19,6 +20,7 @@ import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_3132 {
     Product_page_Logic productPage = new Product_page_Logic();
+    Main_page_Logic mainPage = new Main_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -39,7 +41,8 @@ public class QC_3132 {
         openPage(route);
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
-                .chooseModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+                .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+        mainPage.displayAllCategoriesInHeader();
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
@@ -61,7 +64,8 @@ public class QC_3132 {
         openPage(route);
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
-                .chooseModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+                .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+        mainPage.displayAllCategoriesInHeader();
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
@@ -83,7 +87,8 @@ public class QC_3132 {
         openPage(route);
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
-                .chooseModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+                .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+        mainPage.displayAllCategoriesInHeader();
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
@@ -105,7 +110,8 @@ public class QC_3132 {
         openPage(route);
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
-                .chooseModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+                .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+        mainPage.displayAllCategoriesInHeader();
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
@@ -127,7 +133,8 @@ public class QC_3132 {
         openPage(route);
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
-                .chooseModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+                .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+        mainPage.displayAllCategoriesInHeader();
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
@@ -149,7 +156,8 @@ public class QC_3132 {
         openPage(route);
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
-                .chooseModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+                .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+        mainPage.displayAllCategoriesInHeader();
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
@@ -171,7 +179,8 @@ public class QC_3132 {
         openPage(route);
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
-                .chooseModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+                .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+        mainPage.displayAllCategoriesInHeader();
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
@@ -193,7 +202,8 @@ public class QC_3132 {
         openPage(route);
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
-                .chooseModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+                .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+        mainPage.displayAllCategoriesInHeader();
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
@@ -215,7 +225,8 @@ public class QC_3132 {
         openPage(route);
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
-                .chooseModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+                .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
+        mainPage.displayAllCategoriesInHeader();
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)

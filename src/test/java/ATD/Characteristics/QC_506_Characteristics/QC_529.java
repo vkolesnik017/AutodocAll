@@ -26,7 +26,7 @@ public class QC_529 {
 
     @DataProvider(name = "route")
     Object[] test1() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product39,product40,product47");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product40,product47");  //product39 - ТОВАР НЕ В НАЛИЧИИ
     }
 
     @Test(dataProvider = "route")

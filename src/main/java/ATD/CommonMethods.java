@@ -11,6 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -600,13 +603,28 @@ public class CommonMethods {
         }
     }
 
-    @Step("wait while page is reload.")
+    @Step("wait while page is reload. CommonMethods")
     public static void pageReload() {
         Wait().until(webDriver -> executeJavaScript("return document.readyState").equals("complete"));
     }
 
-    @Step("create a new browser window.")
+    @Step("create a new browser window. CommonMethods")
     public static void createNewBrowserWindow() {
         executeJavaScript("window.open('about:blank', '-blank')");
+    }
+
+    @Step("upload File via windows PopUp. CommonMethods")
+    public static void uploadFileViaWindowsPopUp(String pathToFile) throws AWTException {
+        sleep(3000);   // НЕОБХОДИМО ДЛЯ ОЖИДАНИЯ ПОЯВЛЕНИЯ ОКНА ЗАГРУЗКИ
+        StringSelection s = new StringSelection(pathToFile);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(s, null);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        sleep(3000);  // НЕОБХОДИМО ДЛЯ ОЖИДАНИЯ ЗАГРУЗКИ ПУТИ К ФАЙЛУ
+        robot.keyPress(java.awt.event.KeyEvent.VK_ENTER);
     }
 }
