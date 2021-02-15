@@ -75,6 +75,15 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("select model be value {modelNumberValue} in horizontal car selector. Product_page")
+    public Product_page_Logic selectModelInHorizontalCarSelector(String modelNumberValue) {
+        modelSelector().selectOptionByValue(modelNumberValue);
+        Wait().until(webDriver -> modelSelector().getSelectedValue().equals(modelNumberValue));
+        sleep(2000);
+        return this;
+    }
+
+
     @Step("Choose model be value {modelNumberValue} in horizontal car selector. Product_page")
     public Product_page_Logic chooseModelInHorizontalCarSelector(String modelNumberValue) {
         modelSelector().selectOptionByValue(modelNumberValue);
@@ -1584,7 +1593,8 @@ public class Product_page_Logic extends Product_page {
 
     @Step("get id of current video file. Product_page")
     public String getIdOfCurrentVideoFile() {
-        return currentIdVideo().getAttribute("data-id");
+        String id = currentIdVideo().getAttribute("data-id");
+        return id;
     }
 
     @Step("checking the change of the current video. Product_page")
