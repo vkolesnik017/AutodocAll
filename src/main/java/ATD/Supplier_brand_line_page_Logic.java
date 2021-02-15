@@ -104,7 +104,7 @@ public class Supplier_brand_line_page_Logic extends Supplier_brand_line_page {
 
     @Step("click On Details Of TOP Product.  Supplier_brand_line_page")
     public Product_page_Logic clickOnDetailsOfTopProduct(int position) {
-        titleOfTopProducts().get(position).scrollTo().hover();
+        titleOfTopProducts().get(position).shouldBe(visible).scrollTo().hover();
         detailsOfTopProducts().get(position).shouldBe(visible).click();
         return page(Product_page_Logic.class);
     }

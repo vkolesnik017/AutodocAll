@@ -76,6 +76,15 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("select model be value {modelNumberValue} in horizontal car selector. Product_page")
+    public Product_page_Logic selectModelInHorizontalCarSelector(String modelNumberValue) {
+        modelSelector().selectOptionByValue(modelNumberValue);
+        Wait().until(webDriver -> modelSelector().getSelectedValue().equals(modelNumberValue));
+        sleep(2000);
+        return this;
+    }
+
+
     @Step("Choose model be value {modelNumberValue} in horizontal car selector. Product_page")
     public Product_page_Logic chooseModelInHorizontalCarSelector(String modelNumberValue) {
         modelSelector().selectOptionByValue(modelNumberValue);
@@ -1242,6 +1251,12 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("absece of Ridex info block. Product page")
+    public Product_page_Logic absenceOfRidexInfoBlock() {
+        ridexInfoBlock().shouldNotBe(visible);
+        return this;
+    }
+
     @Step("check elements of ridex info block. Product page")
     public Product_page_Logic checkElementsOfRidexInfoBlock() {
         ridexLogo().shouldBe(visible);
@@ -1585,12 +1600,20 @@ public class Product_page_Logic extends Product_page {
 
     @Step("get id of current video file. Product_page")
     public String getIdOfCurrentVideoFile() {
-        return currentIdVideo().getAttribute("data-id");
+        String id = currentIdVideo().getAttribute("data-id");
+        return id;
     }
 
     @Step("checking the change of the current video. Product_page")
     public Product_page_Logic checkChangeOfCurrentVideo(String id) {
         currentIdVideo().shouldBe(visible).shouldNotHave(attribute("data-id", id));
+        return this;
+    }
+
+    @Step("presence of upload file. Product_page")
+    public Product_page_Logic presenceOfUploadFile(String uploadFileFromAws) {
+        String uploadedFileProductPage = ridexInfoBlock().getAttribute("href").replaceAll(".+\\/", "");
+        Assert.assertEquals(uploadedFileProductPage, uploadFileFromAws);
         return this;
     }
 }
