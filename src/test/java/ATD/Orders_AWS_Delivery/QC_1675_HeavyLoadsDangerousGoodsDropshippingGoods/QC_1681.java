@@ -1,5 +1,6 @@
 package ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
+import ATD.CartAddress_page_Logic;
 import ATD.CartAllData_page_Logic;
 import Common.DataBase;
 import ATD.Product_page_Logic;
@@ -14,8 +15,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -34,7 +34,7 @@ public class QC_1681 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
     }
 
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks negative purchase of a heavy loads in FR / AllData")
@@ -49,8 +49,11 @@ public class QC_1681 {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkPresencePopUpCountryDeliveryLimit()
-                .checkAbsenceBtnChangeAddressInDeliveryPopup()
+                .checkPresencePopUpDeliveryLimitAllDataPage()
+                .clickBtnChangeAddressInDeliveryPopupCartAllDataPage();
+        checkingContainsUrl("basket/address");
+        new CartAddress_page_Logic().nextBtnClick()
+                .nextBtnClick()
                 .closePopUpDeliveryLimitCartAllDataPage()
                 .checkAbsenceGoodInCartPage("7037462")
                 .checkPresenceGoodInCardPage("7807629")

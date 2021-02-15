@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -33,7 +33,7 @@ public class QC_1635 {
     @Description(value = "Registration from login button")
     @Flaky
     public void testRegistrationFromButtonLogin(String route) {
-        String mail = mailRandom();
+        String mail = mailinatorMailRandom();
         openPage(route);
         new Main_page_Logic().registrationFromLoginButton("QC_1635_" + mail)
                 .logOuAndLoginWithUser("QC_1635_" + mail);

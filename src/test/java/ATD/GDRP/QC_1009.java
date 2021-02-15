@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -36,7 +36,7 @@ public class QC_1009 {
     @Description(value = "Test verify form soft 404 from Search Bar in header")
     public void testFormSoft404HeaderSearch(String route) {
         openPage(route);
-        mail = "QC_1009_" + mailRandom();
+        mail = "QC_1009_" + mailinatorMailRandom();
         new Main_page_Logic().useSearch("Запчасть")
                 .checkingDatenschutzerklarungLinkBehaviorSoftForm().checkingBehaviorSoft404(mail);
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);

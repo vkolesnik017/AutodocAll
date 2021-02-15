@@ -35,7 +35,7 @@ public class QC_220 {
     @Description(value = "Test verify working GDPR on main page in form of registration")
     public void testGdprRegistrationOnMain(String route) {
         openPage(route);
-        mail = "QC_220_" + mailRandom();
+        mail = "QC_220_" + mailinatorMailRandom();
         new Main_page_Logic().openRegistrationPopup()
                 .checkingDatenschutzerklarungLinkBehaviorRegistrationForm()
                 .fillRequiredFieldsForRegistration(firstNameRandom(), secondNameRandom(), mail, false)

@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -38,7 +38,7 @@ public class QC_1008 {
     @Description(value = "Test verify form soft 404 from selector search")
     public void testFormSoft404SelectorSearch(String route) {
         openPage(route);
-        mail = "QC_1008_" + mailRandom();
+        mail = "QC_1008_" + mailinatorMailRandom();
         new Category_car_list_page_Logic().checkingDatenschutzerklarungLinkBehaviorSoftForm().checkingBehaviorSoft404(mail);
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
     }

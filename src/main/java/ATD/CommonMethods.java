@@ -122,7 +122,7 @@ public class CommonMethods {
         return "autotestSecondName" + random;
     }
 
-    public static String mailRandom() {
+    public static String mailinatorMailRandom() {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
         return "autotest" + random + "@mailinator.com";

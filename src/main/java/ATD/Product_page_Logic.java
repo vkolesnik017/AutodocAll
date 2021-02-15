@@ -226,7 +226,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Filling fields and checking behavior of available form. Product_page")
     public String fillingFieldsAndCheckBehaviorAvailableForm(String qc) {
-        String mail = qc + mailRandom();
+        String mail = qc + mailinatorMailRandom();
         emailFieldInPopUpOfGrayBtn().setValue(mail);
         checkboxInPopUpOfGrayBtn().click();
         sendButtonInPopUpOfGrayBtn().click();
@@ -274,7 +274,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Filling fields and checking behavior of reviews form. Product_page")
     public String fillingFieldsAndCheckBehaviorReviewsForm(String qc) {
-        String mail = qc + mailRandom();
+        String mail = qc + mailinatorMailRandom();
         reviewsNameInput().setValue("autotest autotest");
         reviewsEmailInput().setValue(mail);
         reviewsMessageInput().setValue("autotest");
@@ -321,7 +321,7 @@ public class Product_page_Logic extends Product_page {
     @Step("Filling fields and checking behavior of faq form. Product_page")
     public String fillingFieldsAndCheckBehaviorFaqForm(String qc) {
         faqFormNameField().setValue("autotest autotest");
-        String mail = qc + mailRandom();
+        String mail = qc + mailinatorMailRandom();
         faqFormMailField().setValue(mail);
         faqFormCommentField().setValue("autotest");
         faqFormSendenBtn().click();

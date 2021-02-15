@@ -34,7 +34,7 @@ public class QC_1010 {
     @Description(value = "Test verify presence GDPR checkbox in profile with checked checkbox")
     public void testGdprPresenceCheckboxInProfileWithChecked(String route){
         openPage(route);
-        mail = "qc_1010_" + mailRandom();
+        mail = "qc_1010_" + mailinatorMailRandom();
         new Main_page_Logic().openRegistrationPopup()
                 .fillRequiredFieldsForRegistration(firstNameRandom(), secondNameRandom(), mail, true).fillPasswordFieldsAndClickRegistration()
                 .checkingAutodocPlusActive().clickSetting().checkingCheckedCheckbox().logOut()

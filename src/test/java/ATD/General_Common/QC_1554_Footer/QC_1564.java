@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -26,13 +26,14 @@ public class QC_1564 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = false) //TODO логика теста была изменена, авто тест требует переработки
+    @Test(dataProvider = "route", enabled = true) //TODO логика теста была изменена, авто тест требует переработки
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test successful newsletter subscription")
     public void checkingSuccessfulSubscription(String route) {
+        String mail = "ac_1564_" + mailinatorMailRandom();
         openPage(route);
-        new Main_page_Logic().checkSuccessfulNewsletterSubscription();
+        new Main_page_Logic().checkSuccessfulNewsletterSubscription(mail);
     }
     @AfterMethod
     private void close() {
