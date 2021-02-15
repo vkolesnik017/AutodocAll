@@ -1777,4 +1777,12 @@ public class Main_page_Logic extends Main_page {
         covidIcon().shouldNotBe(visible);
         return this;
     }
+
+    @Step("display all Categories In Header. Main_page")
+    public Main_page_Logic displayAllCategoriesInHeader() {
+        for (int i = 0; i < visibleCategoriesInHeader().size(); i++) {
+            visibleCategoriesInHeader().get(i).shouldBe(visible);
+        }
+        return this;
+    }
 }
