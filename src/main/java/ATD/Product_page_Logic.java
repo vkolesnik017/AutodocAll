@@ -1241,6 +1241,12 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("absece of Ridex info block. Product page")
+    public Product_page_Logic absenceOfRidexInfoBlock() {
+        ridexInfoBlock().shouldNotBe(visible);
+        return this;
+    }
+
     @Step("check elements of ridex info block. Product page")
     public Product_page_Logic checkElementsOfRidexInfoBlock() {
         ridexLogo().shouldBe(visible);
@@ -1590,6 +1596,13 @@ public class Product_page_Logic extends Product_page {
     @Step("checking the change of the current video. Product_page")
     public Product_page_Logic checkChangeOfCurrentVideo(String id) {
         currentIdVideo().shouldBe(visible).shouldNotHave(attribute("data-id", id));
+        return this;
+    }
+
+    @Step("presence of upload file. Product_page")
+    public Product_page_Logic presenceOfUploadFile(String uploadFileFromAws) {
+        String uploadedFileProductPage = ridexInfoBlock().getAttribute("href").replaceAll(".+\\/", "");
+        Assert.assertEquals(uploadedFileProductPage, uploadFileFromAws);
         return this;
     }
 }
