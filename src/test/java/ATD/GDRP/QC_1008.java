@@ -6,11 +6,11 @@ import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.mailinatorMailRandom;
@@ -32,7 +32,7 @@ public class QC_1008 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list19");
     }
 
-    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345 and Bug SALES-3203
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify form soft 404 from selector search")

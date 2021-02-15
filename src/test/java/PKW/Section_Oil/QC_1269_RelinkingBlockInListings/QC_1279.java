@@ -53,6 +53,7 @@ public class QC_1279 {
         new Motoroil_specification_page_Logic()
                 .checkTransitionByClickInRelinkingBlock();
     }
+
     @DataProvider(name = "routesRelease", parallel = true)
     Object[] dataProviderRelease() throws SQLException {
         return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
