@@ -31,6 +31,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static java.lang.String.format;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -48,7 +49,7 @@ public class CommonMethods {
     public static String usualIdProduct = "8340509";
     public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
-    public static String idPfandProduct = "13644581";
+    public static String idPfandProduct = "16152948";
     public static String idProductWithDynamicChar = "2295352";
 
     @Step("{url} Open page with close popup")
@@ -137,6 +138,13 @@ public class CommonMethods {
         datenschutzerklarungLink.shouldHave(cssValue("text-decoration", cssValue));
         datenschutzerklarungLink.click();
         checkingUrlAndCloseTab("https://www.autodoc.de/services/datenschutz");
+    }
+
+    @Step("Generates random email on @mailinator.com")
+    public static String mailRandomMailinator(String QCnumber) {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "qc_" + QCnumber + "_autotestmail" + random + "@mailinator.com";
     }
 
     @Step("Get currency {nameLocator} and verify")
