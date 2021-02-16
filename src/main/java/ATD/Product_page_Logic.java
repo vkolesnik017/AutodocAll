@@ -1602,4 +1602,21 @@ public class Product_page_Logic extends Product_page {
         currentIdVideo().shouldBe(visible).shouldNotHave(attribute("data-id", id));
         return this;
     }
+
+    @Step("presence Of Selected Brand And Model. Product_page")
+    public Product_page_Logic presenceOfSelectedBrandAndModel(String brand, String model) {
+        Main_page_Logic mainPage = new Main_page_Logic();
+        mainPage.displayAllCategoriesInHeader();
+        if (brandSelector().getSelectedValue().equals("0")) {
+            chooseBrandInHorizontalCarSelector(brand)
+                    .selectModelInHorizontalCarSelector(model).getIdOfCurrentVideoFile();
+            refresh();
+            mainPage.displayAllCategoriesInHeader();
+        } else if (brandSelector().getSelectedText().equals(brand) && modelSelector().getSelectedValue().equals("0")) {
+            selectModelInHorizontalCarSelector(model).getIdOfCurrentVideoFile();
+            refresh();
+            mainPage.displayAllCategoriesInHeader();
+        }
+        return this;
+    }
 }
