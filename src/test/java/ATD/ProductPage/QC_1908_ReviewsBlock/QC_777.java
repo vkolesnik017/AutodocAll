@@ -28,7 +28,7 @@ public class QC_777 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @Test(enabled = false) //TODO отключен по техническим обстоятельствам
+    @Test()
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks reviews form validation")
@@ -40,9 +40,7 @@ public class QC_777 {
         new Product_page_Logic().enterValidReviewData(randomEmail, reviewMessage);
         new WebMail().openMail(randomEmail)
                 .openLetterInOldMailServiceMailinator(1)
-                .clickFAQemailConfirm();
-        switchTo().window(1);
-        new Reviews_Confirmation_page_Logic().checkReviewsConfirmationMessage();
+                .clickBtnConfirmSubscriptions();
         new Login_aws().loginInAwsWithOpen();
         open("https://aws.autodoc.de/reviews");
         new Reviews_aws().checkReviewInAWS(randomEmail, reviewMessage);
