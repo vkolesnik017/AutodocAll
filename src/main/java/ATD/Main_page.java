@@ -883,4 +883,8 @@ public class Main_page {
     SelenideElement covidIcon() {return $(".header-covid__text");}
 
     SelenideElement btnCloseCovidIcon() {return $(".js-close-header_alert");}
+
+    SelenideElement categoriesBlockInHeader() {return $x("//div[@class='header__nav']");}
+
+    ElementsCollection visibleCategoriesInHeader() {return $$x("//ul[@class='header__nav-list']//li").filter(visible);}
 }
