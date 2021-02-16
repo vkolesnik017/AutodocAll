@@ -1,5 +1,6 @@
 package ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR;
 
+import ATD.CommonMethods;
 import ATD.Main_page_Logic;
 import ATD.Profile_plus_page_Logic;
 import Common.SetUp;
@@ -36,7 +37,7 @@ public class QC_665 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks login with new email")
     public void testLoginWithNewEmail(String route) {
-        String newEmail = mailRandomMailinator("665");
+        String newEmail = CommonMethods.mailinatorMailRandom("665");
         openPage(route);
         main_page_logic.loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()

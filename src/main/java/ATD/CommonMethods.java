@@ -102,10 +102,18 @@ public class CommonMethods {
         return "autotestSecondName" + random;
     }
 
+    @Step("Generates random email on @mailinator.com")
     public static String mailinatorMailRandom() {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
         return "autotest" + random + "@mailinator.com";
+    }
+
+    @Step("Generates random email on @mailinator.com")
+    public static String mailinatorMailRandom(String QCnumber) {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "QC_" + QCnumber + "_autotestMail" + random + "@mailinator.com";
     }
 
     @Step("get random mail")
@@ -129,13 +137,6 @@ public class CommonMethods {
         datenschutzerklarungLink.shouldHave(cssValue("text-decoration", cssValue));
         datenschutzerklarungLink.click();
         checkingUrlAndCloseTab("https://www.autodoc.de/services/datenschutz");
-    }
-
-    @Step("Generates random email on @mailinator.com")
-    public static String mailRandomMailinator(String QCnumber) {
-        Random randomGenerator = new Random();
-        int random = randomGenerator.nextInt();
-        return "QC_" + QCnumber + "_autotestMail" + random + "@mailinator.com";
     }
 
     @Step("Get currency {nameLocator} and verify")

@@ -380,6 +380,7 @@ public class WebMail {
 
     @Step("Open letter in old mail service Mailinator. WebMail")
     public WebMail openLetterInOldMailServiceMailinator(int numberLetter) {
+        letterMailinator(numberLetter).waitUntil(visible,20000);
         letterMailinator(numberLetter).shouldBe(appear);
         letterMailinator(numberLetter).click();
         switchTo().frame("html_msg_body");

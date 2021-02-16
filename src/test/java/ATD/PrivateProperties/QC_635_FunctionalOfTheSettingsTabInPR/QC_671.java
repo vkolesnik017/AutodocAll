@@ -1,5 +1,6 @@
 package ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR;
 
+import ATD.CommonMethods;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -34,7 +35,7 @@ public class QC_671 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the email change with empty field Confirm email")
     public void testFieldConfirmEmailAreEmpty(String route) {
-        String newEmail = mailRandomMailinator("671");
+        String newEmail = CommonMethods.mailinatorMailRandom("671");
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.mailRandomMailinator;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -34,7 +34,7 @@ public class QC_1936 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks entering incorrect data into the input")
     public void testEnteringIncorrectDataIntoTheInputPersonnummer(String route) throws SQLException {
-        String mail = mailRandomMailinator("1935");
+        String mail = mailinatorMailRandom("1935");
         openPage(route);
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

@@ -1,6 +1,7 @@
 package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
 
 
+import ATD.CommonMethods;
 import Common.DataBase;
 import ATD.FAQ_Confirmation_page_Logic;
 import ATD.Product_page_Logic;
@@ -38,7 +39,7 @@ public class QC_709 {
     @Description(value = "Test checks faq form with valid data")
     public void testFAQformWithValidData() throws SQLException {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
-        String randomEmail = mailRandomMailinator("709");
+        String randomEmail = CommonMethods.mailinatorMailRandom("709");
         String faqMessage = ("QC_709_AUTOTEST_FAQ" + getRandomNumber());
         String faqResponse = ("QC_709_FAQ_AUTOTEST_RESPONSE" + getRandomNumber());
         product_page_logic.enterFAQValidData(randomEmail, faqMessage);
