@@ -6,6 +6,7 @@ import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -31,15 +32,25 @@ public class QC_517 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "staticSales");
     }
 
-    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345 and Bug SALES-3203
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify working of send ship form on Sales page")
     public void testFormOnSalesPage(String route) {
         openPage(route);
-        mail = new Sales_page_Logic().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendMailForm();
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
+        mail = new Sales_page_Logic()
+                .checkingDatenschutzerklarungLinkBehavior()
+                .fillingFieldsAndCheckBehaviorSendMailForm();
+        new WebMail().openMail(mail)
+                .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
+        new PrivacyPolicySubscription_aws()
+                .openPolicySubscriptionWithLogin()
+                .checkingPolicyAndSubscribeForMail(this.mail);
     }
+
+
     @AfterMethod
     private void close() {
         closeWebDriver();
