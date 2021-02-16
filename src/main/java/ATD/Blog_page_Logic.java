@@ -3,7 +3,7 @@ package ATD;
 
 import io.qameta.allure.Step;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static com.codeborne.selenide.Condition.appear;
 
 public class Blog_page_Logic extends Blog_page{
@@ -16,7 +16,7 @@ public class Blog_page_Logic extends Blog_page{
 
     @Step("Filling fields in send mail form and checking behavior. Blog_page")
     public String fillingFieldsAndCheckBehaviorSendMailForm() {
-        String mail = "qc515_" + mailRandom();
+        String mail = "qc515_" + mailinatorMailRandom();
         sendFormMailField().setValue(mail);
         subscribeCheckbox().click();
         submitMailButton().click();

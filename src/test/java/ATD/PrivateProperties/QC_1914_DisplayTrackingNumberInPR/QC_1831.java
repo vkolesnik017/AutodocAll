@@ -37,7 +37,6 @@ public class QC_1831 {
     Object[] dataProviderProducts() {
         return new Object[][]{
                 {"GLS"},
-                {"DHL"},
                 {"NOX"},
                 {"POSTNORD"},
                 {"DPDPL"},

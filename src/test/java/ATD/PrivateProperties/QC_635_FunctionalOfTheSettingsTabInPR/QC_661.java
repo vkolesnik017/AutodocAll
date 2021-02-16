@@ -1,5 +1,6 @@
 package ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR;
 
+import ATD.CommonMethods;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -11,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -33,7 +35,7 @@ public class QC_661 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful change of e-mail in PR")
     public void testForSuccessfulChangeOfEmailInPR(String route) {
-        String newEmail = mailRandomMailinator("661");
+        String newEmail = CommonMethods.mailinatorMailRandom("661");
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()

@@ -1,5 +1,6 @@
 package ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR;
 
+import ATD.CommonMethods;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -11,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -33,8 +35,8 @@ public class QC_677 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the email change with unequal fields the new email and confirm the email")
     public void testNewEmailFieldIsNotEqualToConfirmEmailField(String route) {
-        String newEmail = mailRandomMailinator("677");
-        String confirmEmail = mailRandomMailinator("677");
+        String newEmail = CommonMethods.mailinatorMailRandom("677");
+        String confirmEmail = CommonMethods.mailinatorMailRandom("677");
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()

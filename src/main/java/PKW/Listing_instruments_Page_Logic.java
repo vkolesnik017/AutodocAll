@@ -3,7 +3,7 @@ package PKW;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import static PKW.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;

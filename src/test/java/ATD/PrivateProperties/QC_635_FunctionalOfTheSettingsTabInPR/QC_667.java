@@ -1,5 +1,6 @@
 package ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR;
 
+import ATD.CommonMethods;
 import ATD.Main_page_Logic;
 import ATD.Profile_plus_page_Logic;
 import Common.SetUp;
@@ -12,6 +13,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -35,7 +37,7 @@ public class QC_667 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks login with new email")
     public void testLoginWithNewEmail(String route) {
-        String newEmail = mailRandomMailinator("667");
+        String newEmail = CommonMethods.mailinatorMailRandom("667");
         openPage(route);
         main_page_logic.loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
