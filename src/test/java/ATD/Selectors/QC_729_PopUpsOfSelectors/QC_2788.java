@@ -13,8 +13,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
-import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
-import static ATD.CommonMethods.openPage;
+
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -94,7 +94,7 @@ public class QC_2788 {
     }
 
 
-    @DataProvider(name = "routes4", parallel = true)
+    @DataProvider(name = "routes4", parallel = false)
     Object[] dataProvider4() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories3,listing_instruments");
     }
@@ -108,7 +108,8 @@ public class QC_2788 {
         String urlPage = url();
         new Listing_accessories_page_Logic().clickLogoAutodoc()
         .selectVehicleInSelectorOfMyGarage("121", "1994", "8799");
-        back();refresh();
+        checkingContainsUrl("ersatzteile");
+        openPage(route);
         mainPageLogic.fillNumberKba("0000", "000")
                 .clickKbaBtn();
         mainPageLogic.fillNumberKbaInPopup("0603", "419")
