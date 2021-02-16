@@ -3,7 +3,7 @@ package PKW;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
+import static Common.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 

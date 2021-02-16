@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
+import static Common.CommonMethods.waitWhileRouteBecomeExpected;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 

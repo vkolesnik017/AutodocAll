@@ -8,7 +8,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static ATD.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 

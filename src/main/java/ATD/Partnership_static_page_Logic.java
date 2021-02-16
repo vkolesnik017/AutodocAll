@@ -3,7 +3,7 @@ package ATD;
 import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.clickable;
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.visible;
 
@@ -24,7 +24,7 @@ public class Partnership_static_page_Logic extends Partnership_static_page {
 
     @Step("Filling fields and check behavior send ship form. Partnership_static_page")
     public String fillingFieldsAndCheckBehaviorSendShipForm() {
-        String mail = "qc519_" + mailRandom();
+        String mail = "qc519_" + mailinatorMailRandom();
         sendShipFormMailField().setValue(mail);
         submitShipDataButton().click();
         sendShipFormSuccesPopup().shouldBe(appear);

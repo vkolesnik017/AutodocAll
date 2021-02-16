@@ -1,5 +1,6 @@
 package ATD.Basket.QC_1932_RouteAddress_ATD;
 
+import ATD.CommonMethods;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -34,7 +35,7 @@ public class QC_1935 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks presence input Personnummer")
     public void testInputPersonnummer_PositiveCase(String route) throws SQLException {
-        String mail = mailRandomMailinator("1935");
+        String mail = CommonMethods.mailinatorMailRandom("1935");
         openPage(route);
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

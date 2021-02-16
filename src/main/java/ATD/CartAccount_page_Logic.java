@@ -3,11 +3,9 @@ package ATD;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
-import java.util.NoSuchElementException;
-
 import static ATD.CommonMethods.password;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -16,7 +14,7 @@ public class CartAccount_page_Logic extends CartAccount_page {
 
     @Step("Filling fields in registration form. CartAccount_page")
     public String fillingRegistrationFields(String qc) {
-        String mail = qc + mailRandom();
+        String mail = qc + mailinatorMailRandom();
         registrationFormEmailInput().setValue(mail);
         registrationFormPasswordInput().setValue(password);
         registrationFormNextBtnClick();

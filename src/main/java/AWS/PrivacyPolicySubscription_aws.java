@@ -1,11 +1,12 @@
 package AWS;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PrivacyPolicySubscription_aws {
 
@@ -37,6 +38,10 @@ public class PrivacyPolicySubscription_aws {
         return $(By.xpath("//table[@class='table table-borderedd']//td[contains(text(), 'Subscription Requested')]"));
     }
 
+    private SelenideElement acceptedLabel(String status) {
+        return $x("//table[@class='table table-borderedd']//td/i[@class='splashy-" + status + "']");
+    }
+
 
     public PrivacyPolicySubscription_aws checkingPolicyForMail(String mail) {
         emailFiled().setValue(mail);
@@ -51,6 +56,15 @@ public class PrivacyPolicySubscription_aws {
         privacyPolicyCell().shouldHave(text("Privacy Policy Acceptance"));
         subscriptionCell().shouldHave(text("Subscription Acceptance"));
         subscriptionRequest().shouldHave(text("Subscription Requested"));
+        return this;
+    }
+
+    @Step("Checking a successful subscription to the newsletter. PrivacyPolicySubscription_aws")
+    public PrivacyPolicySubscription_aws checkingSuccessfulSubscription(String mail) {
+        emailFiled().setValue(mail);
+        searchBtn().click();
+        privacyPolicyCell().shouldHave(text("Privacy Policy"));
+        acceptedLabel("okay").shouldBe(visible);
         return this;
     }
 }

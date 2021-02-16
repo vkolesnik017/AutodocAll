@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.mailRandomMailinator;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
@@ -204,7 +204,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
 
     @Step("Filling fields and checking behavior of send shipping form. Versand_static_page")
     public String fillingFieldsAndCheckBehaviorSendShipForm(String country) {
-        String mail = mailRandomMailinator("1947");
+        String mail = mailinatorMailRandom("1947");
         sendShipFormMailField().setValue(mail);
         selectCountry(country);
         mailingCheckbox().click();

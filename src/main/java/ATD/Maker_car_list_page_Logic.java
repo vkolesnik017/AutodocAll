@@ -14,7 +14,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
-import static PKW.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;

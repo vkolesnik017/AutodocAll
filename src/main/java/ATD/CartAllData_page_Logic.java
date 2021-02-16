@@ -8,6 +8,7 @@ import org.testng.Assert;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.checkingContainsUrl;
 import static Common.CommonMethods.roundOfTheCost;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;

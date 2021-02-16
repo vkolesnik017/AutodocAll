@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
-import static ATD.CommonMethods.waitWhileRouteContainsExpected;
+import static Common.CommonMethods.waitWhileRouteContainsExpected;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;

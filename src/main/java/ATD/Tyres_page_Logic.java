@@ -14,6 +14,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
