@@ -6,6 +6,7 @@ import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -29,7 +30,7 @@ public class QC_271 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345 and Bug SALES-3203
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify working GDPR form in footer on Main Page")
@@ -40,6 +41,10 @@ public class QC_271 {
                 .checkingDatenschutzerklarungLinkBehaviorInReviewsForm()
                 .checkingErrorPopupUnclickCheckbox("qc_271_")
                 .checkingSuccessPopupClickCheckbox("qc_271_");
+        new WebMail().openMail(mail)
+                .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);

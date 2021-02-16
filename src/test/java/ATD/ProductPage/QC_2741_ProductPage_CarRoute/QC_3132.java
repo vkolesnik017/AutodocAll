@@ -39,6 +39,7 @@ public class QC_3132 {
     @Description(value = "test checking displaying of Ridex video with selected car on product page")
     public void testCheckDisplayingOfRidexVideoWithSelectedCar(String route) {
         openPage(route);
+
         String idOfCurrentVideo = productPage.
                 chooseBrandInHorizontalCarSelector("BMW")
                 .selectModelInHorizontalCarSelector("3999").getIdOfCurrentVideoFile();
@@ -46,6 +47,7 @@ public class QC_3132 {
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
+                .presenceOfSelectedBrandAndModel("BMW","3999")
                 .presenceVideoBlock()
                 .checkIdOfVideoFile("9bBh1J0H1S0");
     }
@@ -69,6 +71,7 @@ public class QC_3132 {
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
+                .presenceOfSelectedBrandAndModel("BMW","3999")
                 .presenceVideoBlock()
                 .checkIdOfVideoFile("XZzIO0DiqaM");
     }
@@ -92,6 +95,7 @@ public class QC_3132 {
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
+                .presenceOfSelectedBrandAndModel("BMW","3999")
                 .presenceVideoBlock()
                 .checkIdOfVideoFile("_2yoa51LPzs");
     }
@@ -115,6 +119,7 @@ public class QC_3132 {
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
+                .presenceOfSelectedBrandAndModel("BMW","3999")
                 .presenceVideoBlock()
                 .checkIdOfVideoFile("B0CBL_HVJ14");
     }
@@ -138,6 +143,7 @@ public class QC_3132 {
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
+                .presenceOfSelectedBrandAndModel("BMW","3999")
                 .presenceVideoBlock()
                 .checkIdOfVideoFile("XsOt7En8oYU");
     }
@@ -161,6 +167,7 @@ public class QC_3132 {
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
+                .presenceOfSelectedBrandAndModel("BMW","3999")
                 .presenceVideoBlock()
                 .checkIdOfVideoFile("EAj2Iyn_-Hw");
     }
@@ -184,6 +191,7 @@ public class QC_3132 {
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
+                .presenceOfSelectedBrandAndModel("BMW","3999")
                 .presenceVideoBlock()
                 .checkIdOfVideoFile("_MX_EhPlaW4");
     }
@@ -207,6 +215,7 @@ public class QC_3132 {
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
+                .presenceOfSelectedBrandAndModel("BMW","3999")
                 .presenceVideoBlock()
                 .checkIdOfVideoFile("hJ5FSb3mbhQ");
     }
@@ -230,6 +239,7 @@ public class QC_3132 {
         refresh();
         productPage
                 .checkChangeOfCurrentVideo(idOfCurrentVideo)
+                .presenceOfSelectedBrandAndModel("BMW","3999")
                 .presenceVideoBlock()
                 .checkIdOfVideoFile("R1DgJd04VuY");
     }

@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
+import static Common.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.waitingElementVisibility;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.Wait;

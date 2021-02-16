@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
-import static PKW.CommonMethods.getNameRouteFromJSVarInHTML;
+import static Common.CommonMethods.getNameRouteFromJSVarInHTML;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2891 {

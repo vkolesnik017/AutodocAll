@@ -61,7 +61,7 @@ public class QC_1126 {
                 .checkPresenceTableOfSuppliersAndClickBtnSelect()
                 .checkArticleOfAddedProduct(firstArticleNum)
                 .addProduct(secondArticleNum)
-                .chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(secondProductArticleID)
+                .checkPresenceTableOfSuppliersAndClickBtnSelect()
                 .checkArticleOfAddedProduct(secondArticleNum)
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()

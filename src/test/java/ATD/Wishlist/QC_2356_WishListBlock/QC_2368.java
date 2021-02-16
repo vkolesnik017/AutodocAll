@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import java.util.List;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -44,7 +44,7 @@ public class QC_2368 {
 
         List<String> artNumOfProduct = carListPage.presenceOfTecDocListing().addArtNumOfProductToList(1);
         carListPage.addProductToWishList(1);
-        new Main_page_Logic().registrationFromLoginButton(mailRandom()).visibilityOfUsersName();
+        new Main_page_Logic().registrationFromLoginButton(mailinatorMailRandom()).visibilityOfUsersName();
         new Search_page_Logic().goToWishListPage().presenceOfProductList().
                 checkChronologicalOrderOfProducts(artNumOfProduct);
     }

@@ -264,7 +264,7 @@ public class Cart_page {
 
     SelenideElement btnCloseOfRemoveProductFromWishListPopUp() {return $x("//div[@class='popup-content__buttons']/a[1]");}
 
-    SelenideElement mainLogo() {return $x("//div[@class='cart-page-head__logo']/a");}
+    SelenideElement mainLogo() {return $x("//div[@class='cart-page-head__logo']/a/img");}
 
      SelenideElement characteristicZustandInProduct() {
         return $x("//div[@class='info__more-info']//ul[@style='display: block;']//span[contains(text(),'Zustand')]");

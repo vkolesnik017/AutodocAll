@@ -6,12 +6,13 @@ import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -30,16 +31,24 @@ public class QC_1009 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345 and Bug SALES-3203
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify form soft 404 from Search Bar in header")
     public void testFormSoft404HeaderSearch(String route) {
         openPage(route);
-        mail = "QC_1009_" + mailRandom();
-        new Main_page_Logic().useSearch("Запчасть")
-                .checkingDatenschutzerklarungLinkBehaviorSoftForm().checkingBehaviorSoft404(mail);
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
+        mail = "QC_1009_" + mailinatorMailRandom();
+        new Main_page_Logic()
+                .useSearch("Запчасть")
+                .checkingDatenschutzerklarungLinkBehaviorSoftForm()
+                .checkingBehaviorSoft404(mail);
+        new WebMail().openMail(mail)
+                .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
+        new PrivacyPolicySubscription_aws()
+                .openPolicySubscriptionWithLogin()
+                .checkingPolicyAndSubscribeForMail(this.mail);
     }
 
     @AfterMethod

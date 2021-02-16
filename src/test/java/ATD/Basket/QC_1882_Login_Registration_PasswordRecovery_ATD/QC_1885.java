@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
@@ -39,7 +39,7 @@ public class QC_1885 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the registration with empty password field")
     public void testRegistrationNegativeCaseEmptyPasswordField(String route) throws SQLException {
-    String mail = mailRandom();
+    String mail = mailinatorMailRandom();
         openPage(route);
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

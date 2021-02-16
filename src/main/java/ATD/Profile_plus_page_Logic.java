@@ -1,5 +1,7 @@
 package ATD;
 
+import Common.CommonMethods;
+import Common.DataBase;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -7,7 +9,7 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -248,7 +250,7 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
     @Step("go to the Catalog route from the popup of garage in header. Profile_plus_page")
     public Maker_car_list_page_Logic checkRedirectToCatalogRoute() throws SQLException {
         btnToCatalogRouteInPopUp().click();
-        CommonMethods.checkingContainsUrl(new Common.DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE","main", "maker_car_list18"));
+        CommonMethods.checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE","main", "maker_car_list18"));
         return page(Maker_car_list_page_Logic.class);
     }
 

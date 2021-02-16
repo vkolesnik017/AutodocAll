@@ -32,7 +32,7 @@ public class QC_1637 {
     @Description(value = "Registration from basket")
     @Flaky
     public void TestRegistrationInBasket(String route) {
-        String mail = mailRandom();
+        String mail = mailinatorMailRandom();
         openPage(route);
         new Main_page_Logic().useSearch(ridex_82B0896)
                 .addFirstProductAndGoToCart()
