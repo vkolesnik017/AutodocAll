@@ -338,6 +338,8 @@ public class LKW_main_page {
     ElementsCollection artNumInfoExamplePopUp() {return $$x("//td[contains(text(),'Artikelnummer')]/../td[2]");}
 
     ElementsCollection oenInfoExamplePopUp() {return $$x("//td[contains(text(),'OEN')]/../td[2]");}
+
+    ElementsCollection childOfParentCategory(String parent) {return $$x("//span[text()='"+parent+"']/ancestor::li/div/a/span");}
 }
 
 

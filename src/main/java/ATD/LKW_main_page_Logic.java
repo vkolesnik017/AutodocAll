@@ -9,8 +9,9 @@ import org.testng.Assert;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static Common.CommonMethods.checkingContainsUrl;
 import static Common.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -638,6 +639,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
         back();
         clickOnOilTitleChildCategory("Motoröl");
         checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_category4"));
+        back();
+        clickOnOilTitleChildCategory("Getriebeöl");
+        checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_category8"));
+        back();
+        clickOnOilTitleChildCategory("Hydrauliköl");
+        checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_category7"));
         return this;
     }
 
@@ -732,6 +739,13 @@ public class LKW_main_page_Logic extends LKW_main_page {
     @Step("click on invisible main logo. LKW_main_page")
     public LKW_main_page_Logic clickOnInvisibleMainLogo() {
         executeJavaScript("arguments[0].click();", logoInHeader());
+        return this;
+    }
+
+    @Step(" presence Child categories In Parent Category. LKW_main_page")
+    public LKW_main_page_Logic presenceChildInParentCategory(List<String> childCategory, String parentCategory) {
+        List<String> childFront = childOfParentCategory(parentCategory).stream().map(title -> title.getText()).collect(Collectors.toList());
+        Assert.assertEquals(childFront, childCategory);
         return this;
     }
 }
