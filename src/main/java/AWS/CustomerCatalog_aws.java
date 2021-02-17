@@ -9,7 +9,7 @@ import io.qameta.allure.Step;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
+import static Common.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;

@@ -3,7 +3,7 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.testNumberThatPutOrderInTest;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -12,7 +12,7 @@ public class Contact_static_page_Logic extends Contact_static_page {
 
     @Step("Filling fields in NO ORDER tab and checking behavior. Contact_static_page")
     public String fillRequiredFieldsNoOrderAndCheckBehavior(String qc) {
-        String mail = qc + mailRandom();
+        String mail = qc + mailinatorMailRandom();
         openedTabTitle().shouldHave(text("Ich habe noch keine Bestellung aufgegeben"));
         mailFieldNoOrder().setValue(mail);
         articleFieldNoOrder().setValue("10000/1");
@@ -35,7 +35,7 @@ public class Contact_static_page_Logic extends Contact_static_page {
 
     @Step("Filling fields in ORDER tab and checking behavior. Contact_static_page")
     public String fillRequiredFieldsOrderAndCheckBehavior(String qc) {
-        String mail = qc + mailRandom();
+        String mail = qc + mailinatorMailRandom();
         orderFormOrderField().setValue("7916699");
         orderFormTelField().setValue(testNumberThatPutOrderInTest);
         orderEmailInput().setValue(mail);

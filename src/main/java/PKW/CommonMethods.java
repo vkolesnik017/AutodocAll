@@ -1,12 +1,10 @@
 package PKW;
 
-import com.codeborne.pdftest.PDF;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
-import org.openqa.selenium.TimeoutException;
-import org.testng.Assert;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -69,16 +67,6 @@ public class CommonMethods {
         bufferedWriter.close();
     }
 
-    @Step("Method for waiting while link become contains expected")
-    public static void checkingContainsUrl(String expectedContainsUrl) {
-        try {
-            Wait().until(webDriver -> url().contains(expectedContainsUrl));
-        } catch (TimeoutException e) {
-            System.out.println(url());
-            Assert.fail("Url doesn't contains: " + expectedContainsUrl);
-        }
-    }
-
     @Step("Checking counter increase on {increaseCount} of product quantity")
     void checkingCounterIncrease(int increaseCount, SelenideElement counterValue, SelenideElement counterPlus) {
         int startValue = Integer.parseInt(counterValue.getValue());
@@ -103,20 +91,6 @@ public class CommonMethods {
         }
         int valueAfterAllDecrease = startValue - decreaseCount;
         counterValue.shouldHave(value(String.valueOf(valueAfterAllDecrease)));
-    }
-
-
-    public static String getNameRouteFromJSVarInHTML() {
-        return executeJavaScript("return $siteSettings.route");
-    }
-
-    @Step("Wait while route become expected {expected route}")
-    public static void waitWhileRouteBecomeExpected(String expectedRoute) {
-        try {
-            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
-        } catch (TimeoutException e) {
-            Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
-        }
     }
 
     @Step("Checking follow url on new tab and close tab")
@@ -146,22 +120,10 @@ public class CommonMethods {
         checkingUrlAndCloseTab("/privacy-policy");
     }
 
-    @Step("Wait while route contains expected condition {expected route}")
-    public static void waitWhileRouteContainsExpectedCondition(String expectedCondition) {
-        try {
-            Wait().until(WebDriver -> getCurrentUtl().contains(expectedCondition));
-        } catch (TimeoutException e) {
-            Assert.fail("Current route: [" + getCurrentUtl() + "] don't contains expected condition: " + expectedCondition);
-        }
-    }
     @Step("get text from not visible element {expected element}")
     public static String getTextFromUnVisibleElement(SelenideElement element){
         return (String) (executeJavaScript(
                 "return jQuery(arguments[0]).text();", element));
-    }
-
-    public static String getCurrentUtl() {
-        return url();
     }
 
     //checking selector

@@ -6,6 +6,7 @@ import org.testng.Assert;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static Common.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -38,7 +39,7 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
         btnPreviousPageInPagination().click();
         btnReturnOnFirstPageInPagination().shouldNotBe(visible);
         btnNextPageInPagination().click();
-        PKW.CommonMethods.checkingContainsUrl("page=2");
+        checkingContainsUrl("page=2");
         btnLastPageInPagination().click();
         btnLastPageInPagination().shouldNotBe(visible);
         btnReturnOnFirstPageInPagination().click();

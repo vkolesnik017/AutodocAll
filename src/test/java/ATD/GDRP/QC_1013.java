@@ -35,7 +35,7 @@ public class QC_1013 {
     @Description(value = "Test verify working GDPR checkbox in profile desktop and profile mobile")
     public void testGdprRegistrationWithoutSubscribeCheckbox(String route) {
         openPage(route);
-        mail = "qc_1013_" + mailRandom();
+        mail = "qc_1013_" + mailinatorMailRandom();
         firstName = firstNameRandom();
         secondName = secondNameRandom();
         new Main_page_Logic().openRegistrationPopup()

@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static ATD.CommonMethods.checkingContainsUrl;
-import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
+import static Common.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;

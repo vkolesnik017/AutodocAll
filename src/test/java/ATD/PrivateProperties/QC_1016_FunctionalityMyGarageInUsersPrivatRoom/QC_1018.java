@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.mailRandomMailinator;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -35,7 +35,7 @@ public class QC_1018 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the adding a passenger car to the My garage block in PR")
     public void testAddPassengerCarToMyGarageBlockInPR(String route) throws SQLException {
-        String mail = mailRandomMailinator("1018");
+        String mail = mailinatorMailRandom("1018");
         openPage(route);
         new Main_page_Logic().registrationFromLoginButton(mail)
                 .goToMyVehiclesBlock()

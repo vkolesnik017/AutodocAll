@@ -7,7 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
+import static Common.CommonMethods.getNameRouteFromJSVarInHTML;
 import static Common.EmailNotification.emailUtils;
 import static Common.Excel.writeInExcel;
 import static com.codeborne.selenide.Selenide.sleep;

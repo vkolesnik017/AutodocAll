@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static Common.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.waitWhileRouteBecomeExpected;
 import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;

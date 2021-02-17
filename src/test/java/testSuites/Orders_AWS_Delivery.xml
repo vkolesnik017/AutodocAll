@@ -57,6 +57,7 @@
             <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_2997"/>
             <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_3002"/>
             <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_2998"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_3005"/>
         </classes>
     </test>
 

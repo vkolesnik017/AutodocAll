@@ -1,5 +1,6 @@
 package ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom;
 
+import ATD.CommonMethods;
 import ATD.Main_page_Logic;
 import ATD.Payment_handler_page_Logic;
 import Common.SetUp;
@@ -35,7 +36,7 @@ public class QC_1032 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the block of passenger cars from customer orders on the Garage page in PR")
     public void testBlockPassengerCarsFromCustomerOrdersOnGaragePageInPR(String route) throws SQLException {
-        String mail = mailRandomMailinator("1032");
+        String mail = CommonMethods.mailinatorMailRandom("1032");
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         String orderNumber = new Main_page_Logic().registrationFromLoginButton(mail)

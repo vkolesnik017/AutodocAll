@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.mailRandomMailinator;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -34,7 +34,7 @@ public class QC_1930 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks password recovery by entering not registered in the system email.")
     public void testPasswordRecoveryNegativeCase_NotRegisteredMail(String route) throws SQLException {
-        String mail = mailRandomMailinator("1930");
+        String mail = mailinatorMailRandom("1930");
         openPage(route);
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

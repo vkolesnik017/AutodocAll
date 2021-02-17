@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
-import static PKW.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -283,9 +283,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Cart clicking. Main_page")
-    public Cart_page cartClick() {
+    public Cart_page_Logic cartClick() {
         cartIcon().scrollTo().click();
-        return page(Cart_page.class);
+        return page(Cart_page_Logic.class);
     }
 
     // Selector
@@ -545,7 +545,7 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Checking error popup with unclick checkbox in footer subscribe block. Main_page")
     public Main_page_Logic checkingErrorPopupUnclickCheckbox(String qc) {
-        String mail = qc + mailRandom();
+        String mail = qc + mailinatorMailRandom();
         subscriptionMailField().setValue(mail);
         subscriptionButton().click();
         subscriptionErrPopup().shouldHave(Condition.text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
@@ -555,7 +555,7 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Checking success popup with click checkbox in footer subscribe block. Main_page")
     public String checkingSuccessPopupClickCheckbox(String qc) {
-        String mail = qc + mailRandom();
+        String mail = qc + mailinatorMailRandom();
         subscriptionMailField().setValue(mail);
         subscriptionMailCheckbox().click();
         subscriptionButton().click();
@@ -897,12 +897,12 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks for successful newsletter subscription in footer. Main_page")
-    public Main_page_Logic checkSuccessfulNewsletterSubscription() {
+    public Main_page_Logic checkSuccessfulNewsletterSubscription(String mail) {
         footerForm().scrollTo();
-        subscriptionMailField().setValue(testMail);
+        subscriptionMailField().setValue(mail);
         subscriptionMailCheckbox().click();
         subscriptionButton().click();
-        subscriptionSuccessPopup().shouldHave(Condition.text("Herzlichen Dank! Viel Spaß beim Shoppen!"));
+        subscriptionSuccessPopup().shouldHave(Condition.text(" Wir haben eine E-Mail zur Bestätigung Ihres Abonnements an Ihre E-Mail-Adresse gesendet."));
         subscriptionPopupClose().click();
         return this;
     }

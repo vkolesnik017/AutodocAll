@@ -5,7 +5,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.clickable;
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.switchTo;
 
@@ -20,7 +20,7 @@ public class MobileApp_static_page_Logic extends MobileApp_static_page {
 
     @Step("Filling fields and checking behavior of subscribe form. MobileApp_static_page")
     public String fillingFieldsAndCheckBehaviorSubscribeForm(String qc) {
-        String mail = qc + mailRandom();
+        String mail = qc + mailinatorMailRandom();
         mailFieldInSubscribeForm().setValue(mail);
         appSubscribeCheckbox().click();
         getMailBtnInSubscribeForm().click();

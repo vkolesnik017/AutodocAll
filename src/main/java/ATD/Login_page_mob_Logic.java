@@ -2,7 +2,7 @@ package ATD;
 
 import io.qameta.allure.Step;
 import java.util.NoSuchElementException;
-import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
+import static Common.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.password;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;

@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.mailRandom;
+import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -31,7 +31,7 @@ public class QC_3115 {
     @Flaky
     @Description(value = "test check error login pop-up")
     public void testCheckErrorLoginPopUp(String route) {
-        String mail = mailRandom();
+        String mail = mailinatorMailRandom();
         openPage(route);
         new Main_page_Logic().
                 clickOnRegistrationForm()

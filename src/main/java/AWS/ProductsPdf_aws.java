@@ -76,6 +76,32 @@ public class ProductsPdf_aws {
         return $x("//td[text()='" + artId + "']/ancestor::tr/td[7]");
     }
 
+    private SelenideElement genericFieldFirstLine() {
+        return $(byId("form_Filter[genericArticleId]"));
+    }
+
+    private SelenideElement genericFieldSecondLine() {
+        return $(byId("form_Filteradd[genericArticleId]"));
+    }
+
+    private SelenideElement brandFieldFirstLine() {
+        return $(byId("form_Filter_brandNo__chzn"));
+    }
+
+    private SelenideElement brandFieldSecondLine() {
+        return $(byId("form_Filteradd_brandNo__chzn"));
+    }
+
+    private SelenideElement inputBrandFieldFirstLine() {
+        return $x("//div[@id='form_Filter_brandNo__chzn']//input");
+    }
+
+    private SelenideElement inputBrandFieldSecondLine() {
+        return $x("//div[@id='form_Filteradd_brandNo__chzn']//input");
+    }
+
+    private SelenideElement resultSearchTable() {return $x("//table[@class='table table-bordered table-striped pdf-products']");}
+
     private String url = "https://aws.autodoc.de/products/pdf";
 
     @Step(" open product PDF. ProductsPdf_aws")
@@ -174,6 +200,38 @@ public class ProductsPdf_aws {
         }
         btnRemoveRecord(idOfProduct).click();
         switchTo().alert().accept();
+        return this;
+    }
+
+    @Step("set generic value in first line of filter. ProductsPdf_aws")
+    public ProductsPdf_aws setGenericFirstLine(String idGeneric) {
+        genericFieldFirstLine().selectOptionByValue(idGeneric);
+        return this;
+    }
+
+    @Step("set generic value in second line of filter. ProductsPdf_aws")
+    public ProductsPdf_aws setGenericSecondLine(String idGeneric) {
+        genericFieldSecondLine().selectOptionByValue(idGeneric);
+        return this;
+    }
+
+    @Step("set brand value in first line of filter. ProductsPdf_aws")
+    public ProductsPdf_aws setBrandFirstLine(String brand) {
+        brandFieldFirstLine().click();
+        inputBrandFieldFirstLine().shouldBe(visible).setValue(brand).pressEnter();
+        return this;
+    }
+
+    @Step("set brand value in second line of filter. ProductsPdf_aws")
+    public ProductsPdf_aws setBrandSecondLine(String brand) {
+        brandFieldSecondLine().click();
+        inputBrandFieldSecondLine().shouldBe(visible).setValue(brand).pressEnter();
+        return this;
+    }
+
+    @Step("absence of Result Search Table. ProductsPdf_aws")
+    public ProductsPdf_aws absenceResultSearchTable() {
+        resultSearchTable().shouldNotBe(visible);
         return this;
     }
 }

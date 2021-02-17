@@ -49,7 +49,7 @@ public class CommonMethods {
     public static String usualIdProduct = "8340509";
     public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
-    public static String idPfandProduct = "13644581";
+    public static String idPfandProduct = "16152948";
     public static String idProductWithDynamicChar = "2295352";
 
     @Step("{url} Open page with close popup")
@@ -71,28 +71,6 @@ public class CommonMethods {
         String currentShop = executeJavaScript("return $siteSettings.lang");
         if (currentShop.equals("lu")) currentShop = "ld";
         return currentShop.toUpperCase();
-    }
-
-    public static String getNameRouteFromJSVarInHTML() {
-        return executeJavaScript("return $siteSettings.route");
-    }
-
-    @Step("Wait while route become expected {expected route}")
-    public static void waitWhileRouteBecomeExpected(String expectedRoute) {
-        try {
-            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
-        } catch (TimeoutException e) {
-            Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
-        }
-    }
-
-    @Step("Wait while route contains expected {expected route}")
-    public static void waitWhileRouteContainsExpected(String expectedRoute) {
-        try {
-            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().contains(expectedRoute));
-        } catch (TimeoutException e) {
-            Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
-        }
     }
 
     public static String getShopFromRoute(String route) {
@@ -125,10 +103,18 @@ public class CommonMethods {
         return "autotestSecondName" + random;
     }
 
-    public static String mailRandom() {
+    @Step("Generates random email on @mailinator.com")
+    public static String mailinatorMailRandom() {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
         return "autotest" + random + "@mailinator.com";
+    }
+
+    @Step("Generates random email on @mailinator.com")
+    public static String mailinatorMailRandom(String QCnumber) {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "QC_" + QCnumber + "_autotestMail" + random + "@mailinator.com";
     }
 
     @Step("get random mail")
@@ -158,7 +144,7 @@ public class CommonMethods {
     public static String mailRandomMailinator(String QCnumber) {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
-        return "QC_" + QCnumber + "_autotestMail" + random + "@mailinator.com";
+        return "qc_" + QCnumber + "_autotestmail" + random + "@mailinator.com";
     }
 
     @Step("Get currency {nameLocator} and verify")
@@ -181,17 +167,6 @@ public class CommonMethods {
         String actualUrl = url();
         Assert.assertEquals(actualUrl, expectedUrl);
         back();
-    }
-
-    @Step
-    //Method for waiting while link become contains expected
-    public static void checkingContainsUrl(String expectedContainsUrl) {
-        try {
-            Wait().until(webDriver -> url().contains(expectedContainsUrl));
-        } catch (TimeoutException e) {
-            System.out.println(url());
-            Assert.fail("Url doesn't contains: " + expectedContainsUrl);
-        }
     }
 
     @Step
@@ -467,19 +442,6 @@ public class CommonMethods {
             result = matcher.group(0);
         }
         return Float.valueOf((result));
-    }
-
-    @Step("Wait while route contains expected condition {expected route}")
-    public static void waitWhileRouteContainsExpectedCondition(String expectedCondition) {
-        try {
-            Wait().until(WebDriver -> getCurrentUtl().contains(expectedCondition));
-        } catch (TimeoutException e) {
-            Assert.fail("Current route: [" + getCurrentUtl() + "] don't contains expected condition: " + expectedCondition);
-        }
-    }
-
-    public static String getCurrentUtl() {
-        return url();
     }
 
     //checking selector

@@ -15,14 +15,14 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_679 {
 
-    private String mail = "QC_679_autotest@mailinator.com";
+    private String mail = "qc_679_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {

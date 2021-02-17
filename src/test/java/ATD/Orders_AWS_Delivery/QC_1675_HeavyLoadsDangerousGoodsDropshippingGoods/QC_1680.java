@@ -33,7 +33,7 @@ public class QC_1680 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
     }
 
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks negative purchase of a heavy loads in FR / Basket")
@@ -45,7 +45,10 @@ public class QC_1680 {
                 .closePopupOtherCategoryIfYes();
         new Main_page_Logic().loginFromHeader(email)
                 .cartClick()
-                .checkAbsenceBtnContinueShoppingInDeliveryPopupCartPage()
+                .checkPresencePopUpDeliveryLimit()
+                .clickBtnContinueShoppingInDeliveryPopupCartPage()
+                .goToMainPage()
+                .cartClick()
                 .closePopUpDeliveryLimitCartPage()
                 .checkAbsenceGoodInCartPage("7037462")
                 .checkPresenceGoodInCardPage("7807629");
