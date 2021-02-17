@@ -56,7 +56,7 @@ public class QC_511 {
         expectedCharacteristics.add("Lochkreis-Ø \\[mm]:\\n100");
         expectedCharacteristics.add("Bremsscheibendicke \\[mm]:\\n8,9");
         expectedCharacteristics.add("Mindestdicke \\[mm]:\\n7");
-        expectedCharacteristics.add("Innendurchmesser \\[mm]:\\n132,5");
+        expectedCharacteristics.add("Innendurchmesser \\[mm]:\\n132,2");
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
         expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
