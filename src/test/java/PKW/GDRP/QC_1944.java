@@ -6,6 +6,7 @@ import PKW.Main_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -28,11 +29,11 @@ public class QC_1944 {
     }
 
     @DataProvider(name = "route", parallel = true)
-    Object[] dataProviderProducts() throws SQLException {
+    Object[] dataProviderProducts()  {
         return new SetUp("PKW").setUpShop("prod", "EN");
     }
 
-    @Test(dataProvider = "route", enabled = false) //TODO Change of logic. Changes to the task SALES-2345 and Bug SALES-3203
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test verify working GDPR in popup from Selector on main page")
@@ -41,6 +42,10 @@ public class QC_1944 {
         mail = mainPageLogic.clickBtnNotFoundCarInSelector()
                 .checkingPrivacyPolicyLinkBehavior(mainPageLogic.privacyPolicyLinkPopupFromSelector())
                 .fillRequiredFieldsInPopupFromSelector("qc_1944_", "11111");
+        new WebMail().openMail(mail)
+                .checkLetterInfoText(1, "just now", "One more step and you'll be subscribed to our newsletters.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);
