@@ -41,9 +41,7 @@ public class QC_3102 {
                 .displayOfVideoFiles()
                 .clickOnDownNavigationArrow()
                 .presenceOfVisibleVideoFile()
-                .clickOnUpNavigationArrow()
-                .clickOnCurrentVideoFile()
-                .clickOnDownNavigationArrow();
+                .clickOnUpNavigationArrow();
     }
 
     @AfterMethod
