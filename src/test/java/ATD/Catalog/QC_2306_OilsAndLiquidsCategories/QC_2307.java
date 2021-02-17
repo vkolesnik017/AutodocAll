@@ -11,12 +11,15 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2307 {
+    List<String> expectedChildCategories = Arrays.asList("Getriebeöl","Hydrauliköl","Motoröl");
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -34,6 +37,7 @@ public class QC_2307 {
     public void testChecksPresenceOgOilAndLiquidCategories(String route) throws SQLException {
         openPage(route);
         new LKW_main_page_Logic().presenceOfOilCategory()
+                .presenceChildInParentCategory(expectedChildCategories,"Öle & Flüssigkeiten")
                 .checkTransitionByClickOnOilParentElements();
     }
 
