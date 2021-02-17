@@ -1458,5 +1458,17 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-}
+    @Step("Wait while first brand become active. Listing_page")
+    public Listing_page_Logic waitWhileFirstBrandBecomeActive() {
+        firstBrandNameGetData().shouldHave(attribute("data-checked", "true"));
+        return this;
+    }
 
+    @Step("Wait while second brand become active. Listing_page")
+    public Listing_page_Logic waitWhileSecondBrandBecomeActive() {
+        secondBrandNameGetData().shouldHave(attribute("data-checked", "true"));
+        return this;
+    }
+
+
+}
