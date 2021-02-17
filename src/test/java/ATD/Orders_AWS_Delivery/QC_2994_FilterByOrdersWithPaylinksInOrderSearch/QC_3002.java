@@ -31,22 +31,22 @@ public class QC_3002 {
                 .clickOnRandomOrderID(1);
     }
 
-    @DataProvider(name = "projectName")
-    Object[] dataProject() {
+    @DataProvider(name = "shopName")
+    Object[] shopName() {
         return new Object[][]{
                 {"pkwteile.at (AT)"},
                 {"auto-doc.at (AT)"}
         };
     }
 
-    @Test(dataProvider = "projectName")
+    @Test(dataProvider = "shopName")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Checking the search work on the Group Field filter: Link Surcharges + Project filter in AWS")
-    public void testCheckingSearchBy_GroupField_Filter_FilterLinkSurcharges_ProjectFilter(String projectName) {
+    public void testCheckingSearchBy_GroupField_Filter_FilterLinkSurcharges_ProjectFilter(String shopName) {
         new SearchOrders_page_aws().openSearchOrderPageWithLogin()
                 .selectExpectedGroupField("Линк Доплаты")
-                .chooseProjectInSelector(projectName)
+                .chooseShopInSelector(shopName)
                 .clickSearchBtn()
                 .clickOnRandomOrderID(1);
 
