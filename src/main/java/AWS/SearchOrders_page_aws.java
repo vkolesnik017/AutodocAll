@@ -75,8 +75,12 @@ public class SearchOrders_page_aws {
         return $x("//input[@value='<Project>']");
     }
 
+    private SelenideElement shopList(String shop) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + shop + "']");
+    }
+
     private SelenideElement projectList(String project) {
-        return $x("//div[@class='chzn-drop']//ul//li[text()='" + project + "']");
+        return $x("(//div[@class='chzn-drop']//ul//li[text()='" + project + "'])[2]");
     }
 
     private SelenideElement countrySelector() {
@@ -265,6 +269,15 @@ public class SearchOrders_page_aws {
         return this;
     }
 
+    @Step("Choosing shop in selector {shop}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseShopInSelector(String shop) {
+        projectSelector().shouldBe(visible);
+        projectSelector().click();
+        shopList(shop).shouldBe(visible);
+        shopList(shop).click();
+        return this;
+    }
+
     @Step("Choosing project in selector {project}. SearchOrders_page_aws")
     public SearchOrders_page_aws chooseProjectInSelector(String project) {
         projectSelector().shouldBe(visible);
@@ -306,6 +319,42 @@ public class SearchOrders_page_aws {
         assemblyWarehouse().shouldBe(visible);
         assemblyWarehouse().selectOptionContainingText(expectedAssemblyWarehouse);
         return this;
+    }
+
+    @Step("Selects any desired filter. SearchOrders_page_aws")
+    public SearchOrders_page_aws choosingAllExpectedFilter(String expectedFilter, String expectedPayments, String expectedCurrency,
+                                                           String expectedAssembly, String customerInfo) {
+            switch (expectedFilter) {
+                case "choosePaymentsMethods":
+                    choosePaymentsMethods(expectedPayments);
+                    break;
+                case "chooseCurrency":
+                    chooseCurrency(expectedCurrency);
+                    break;
+                case "chooseAssemblyWarehouse":
+                    chooseAssemblyWarehouse(expectedAssembly);
+                    break;
+                case "fillingFieldCustomerInfo":
+                    fillingFieldCustomerInfo(customerInfo);
+                    break;
+            }
+        return this;
+        }
+
+    @Step("Gives an a randomly one payment method. SearchOrders_page_aws")
+    public static String randomPaymentsMethod() {
+        String [] payments = {"PayPal", "Be2bill"};
+        int minValue = 0;
+        int randomIndex = minValue + (int) (Math.random() *payments.length);
+        return payments[randomIndex];
+    }
+
+    @Step("Gives an a randomly one assembly warehouse. SearchOrders_page_aws")
+    public static String randomAssemblyWarehouse() {
+        String [] AssemblyWarehouse = {"Основной склад", "Склад PL", "Склад PL A (M13)"};
+        int minValue = 0;
+        int randomIndex = minValue + (int) (Math.random() *AssemblyWarehouse.length);
+        return AssemblyWarehouse[randomIndex];
     }
 }
 

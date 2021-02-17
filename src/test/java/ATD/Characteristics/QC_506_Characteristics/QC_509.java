@@ -51,9 +51,12 @@ public class QC_509 {
         expectedCharacteristics.add("Zentrierungsdurchmesser \\[mm]:\\n65");
         expectedCharacteristics.add("Lochanzahl:\\n5");
         expectedCharacteristics.add("Felge Lochzahl:\\n5");
+        expectedCharacteristics.add("Bohrung-Ø 2 \\[mm]:\\n6,6");
+        expectedCharacteristics.add("Bohrung-Ø 1 \\[mm]:\\n15,75");
           expectedCharacteristics.add("Lochkreis-Ø \\[mm]:\\n100");
         expectedCharacteristics.add("Bremsscheibendicke \\[mm]:\\n8,9");
         expectedCharacteristics.add("Mindestdicke \\[mm]:\\n7");
+        expectedCharacteristics.add("Innendurchmesser \\[mm]:\\n132,2");
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
 
 
