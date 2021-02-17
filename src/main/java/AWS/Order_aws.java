@@ -233,6 +233,10 @@ public class Order_aws {
         return $x("//a[text()='" + articleID + "']/../..//td[14]//abbr");
     }
 
+    private SelenideElement vatFromSellingPrice(String articleID) {
+        return $x("//a[text()='" + articleID + "']/../..//td[14]/span[@class='inkl']");
+    }
+
     private SelenideElement labelDangerOfCertainProduct(String artID) {
         return $x("//a[text()='" + artID + "']/..//span[@class='label label-danger']");
     }
@@ -1023,7 +1027,7 @@ public class Order_aws {
     @Step("Transition to the personal account of the customer. Order_aws")
     public Customer_view_aws clickCustomerId() {
         sleep(2000);
-        customerId().click();
+        customerId().scrollIntoView("{block: \"center\"}").click();
         return page(Customer_view_aws.class);
     }
 
@@ -1129,6 +1133,12 @@ public class Order_aws {
     @Step("Get selling price of a certain product {articleID}. Order_aws")
     public Float getSellingPriceOfCertainProduct(String articleID) {
         return Float.valueOf(sellingPriceOfCertainProduct(articleID).getText());
+    }
+
+    @Step("Check presence of VAT in the selling price of product{idProduct}. Order_aws")
+    public Order_aws checkPresenceVatInSellingPrice(String articleID, String expectedText) {
+        vatFromSellingPrice(articleID).scrollIntoView("{block: \"center\"}").shouldHave(text(expectedText));
+        return this;
     }
 
     @Step("Get product quantity from column product quantity")
@@ -1253,9 +1263,7 @@ public class Order_aws {
 
     @Step("Subtracts removed product cost {sellingCostOneProduct} from the total oder cost {totalCost}. Order_aws")
     public Float subtractsRemovedProductCostFromTotalOrderCost(Float totalCost, Float sellingCostOneProduct) {
-        float cost = totalCost - sellingCostOneProduct;
-        float actualTotalCost = getTotalPriceOrderAWS();
-        return roundOfTheCost(cost, actualTotalCost);
+        return totalCost - sellingCostOneProduct;
     }
 
     @Step("Checks conto NR number {contoNR}. Order_aws")

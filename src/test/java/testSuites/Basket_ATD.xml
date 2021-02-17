@@ -149,6 +149,10 @@
     <test name="QC_2461_OrderWithDropshippingGoods">
         <classes>
             <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2476"/>
+            <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2462"/>
+            <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2546"/>
+            <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2883"/>
+            <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2889"/>
         </classes>
     </test>
 
