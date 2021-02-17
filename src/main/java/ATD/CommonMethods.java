@@ -114,7 +114,7 @@ public class CommonMethods {
     public static String mailinatorMailRandom(String QCnumber) {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
-        return "QC_" + QCnumber + "_autotestMail" + random + "@mailinator.com";
+        return "qc_" + QCnumber + "_autotest" + random + "@mailinator.com";
     }
 
     @Step("get random mail")

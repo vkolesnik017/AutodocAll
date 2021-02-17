@@ -14,13 +14,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.mailinatorMailRandom;
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2680 {
-    String email = "qc_2680" + mailinatorMailRandom();
+    String email = "qcc_2680" + mailinatorMailRandom();
 
     @BeforeClass
     void setUp() {
