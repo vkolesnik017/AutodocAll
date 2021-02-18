@@ -39,7 +39,7 @@ public class QC_3039 {
         setUpBrowser(false, "chrome", "87.0", true);
     }
 
-    @Test()
+    @Test(enabled = false) // Требуется обновление логики, ожидаю апдейта по тикету
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking VAT percentage for CH when creating an order in AWS")
@@ -110,7 +110,7 @@ public class QC_3039 {
         };
     }
 
-    @Test(dataProvider = "deliveryShop")
+    @Test(dataProvider = "deliveryShop", enabled = false) // Требуется обновление логики, ожидаю апдейта по тикету
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking VAT for CH for delivery in LI and DE with index 78266 when creating an order in AWS")

@@ -44,7 +44,7 @@ public class QC_3036 {
         return new SetUp("ATD").setUpShopsWithSubroute("prod", "CH,IT,FR,AT", "main", "staticVersand");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) // Требуется обновление логики, ожидаю апдейта по тикету
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks VAT percentage for CH")
@@ -136,7 +136,7 @@ public class QC_3036 {
         };
     }
 
-    @Test(dataProvider = "deliveryShop")
+    @Test(dataProvider = "deliveryShop", enabled = false) // Требуется обновление логики, ожидаю апдейта по тикету
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks VAT percentage for CH for delivery in LI and DE with index 78266")
