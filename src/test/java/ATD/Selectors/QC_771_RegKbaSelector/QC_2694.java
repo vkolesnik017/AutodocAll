@@ -43,7 +43,7 @@ public class QC_2694 {
         openPage(route);
         refresh();
         mainPageLogic.fillNumberKba(kba)
-                .clickKbaBtn();
+                .clickKbaBtnAndClosePopupSelectorIfVisible(kba);
         String orderNumber = new Maker_car_list_page_Logic().addProductFromTopProductsToBasket()
                 .cartClick()
                 .nextButtonClick()
