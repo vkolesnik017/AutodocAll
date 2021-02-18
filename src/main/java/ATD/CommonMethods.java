@@ -49,7 +49,7 @@ public class CommonMethods {
     public static String usualIdProduct = "8340509";
     public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
-    public static String idPfandProduct = "16152948";
+    public static String idPfandProduct = "1145183";
     public static String idProductWithDynamicChar = "2295352";
 
     @Step("{url} Open page with close popup")
@@ -114,7 +114,7 @@ public class CommonMethods {
     public static String mailinatorMailRandom(String QCnumber) {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
-        return "QC_" + QCnumber + "_autotestMail" + random + "@mailinator.com";
+        return "qc_" + QCnumber + "_autotest" + random + "@mailinator.com";
     }
 
     @Step("get random mail")

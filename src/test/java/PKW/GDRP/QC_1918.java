@@ -6,6 +6,7 @@ import PKW.Versand_static_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -32,7 +33,7 @@ public class QC_1918 {
         return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "static_versand");
     }
 
-    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345 and Bug SALES-3203
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test verify working GDPR form in footer on Versand static page ")
@@ -42,6 +43,10 @@ public class QC_1918 {
                 .scrollToFooterSubscribeBlock()
                 .checkingDatenschutzerklarungLinkBehavior(versandStaticPageLogic.linkDatenschutzerklarungInFooter())
                 .checkingGdprSuccessWithClickCheckboxInFooter("qc_1918_");
+        new WebMail().openMail(mail)
+                .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);

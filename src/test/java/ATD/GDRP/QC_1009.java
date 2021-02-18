@@ -37,7 +37,7 @@ public class QC_1009 {
     @Description(value = "Test verify form soft 404 from Search Bar in header")
     public void testFormSoft404HeaderSearch(String route) {
         openPage(route);
-        mail = "QC_1009_" + mailinatorMailRandom();
+        mail = "qc_1009_" + mailinatorMailRandom();
         new Main_page_Logic()
                 .useSearch("Запчасть")
                 .checkingDatenschutzerklarungLinkBehaviorSoftForm()

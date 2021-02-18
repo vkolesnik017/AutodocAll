@@ -396,6 +396,9 @@ public class WebMail {
     @Step("Click btn Confirm Subscriptions in letter Mailinator. WebMail")
     public WebMail clickBtnConfirmSubscriptions() {
         btnConfirmSubscriptions().shouldBe(visible).click();
+        if (btnConfirmSubscriptions().isDisplayed()) {
+            btnConfirmSubscriptions().shouldBe(visible).click();
+        }
         switchTo().window(1);
         checkingContainsUrl("confirm_promo_subscription");
         waitWhileRouteBecomeExpected("main");
