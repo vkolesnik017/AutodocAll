@@ -6,6 +6,7 @@ import PKW.Car_parts_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -31,7 +32,7 @@ public class QC_1907 {
         return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts");
     }
 
-    @Test(dataProvider = "route", enabled = false) //TODO Change of logic. Changes to the task SALES-2345  and Bug SALES-3203
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test verify working GDPR in soft 404 block")
@@ -41,6 +42,10 @@ public class QC_1907 {
                 .checkingPresenceSoft404Block()
                 .checkingDatenschutzerklarungLinkBehaviorInSoft404Form()
                 .checkingSuccessPopupClickCheckbox("qc_1907_");
+        new WebMail().openMail(mail)
+                .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);

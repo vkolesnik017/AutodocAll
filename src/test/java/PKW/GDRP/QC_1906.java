@@ -6,6 +6,7 @@ import PKW.Shop_reviews_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -33,7 +34,7 @@ public class QC_1906 {
         return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "shop_reviews");
     }
 
-    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345  and Bug SALES-3203
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test Gdpr verify working of reviews form on review page")
@@ -42,13 +43,17 @@ public class QC_1906 {
         mail = shopReviewsPageLogic.scrollToReviewBlock()
                 .checkingDatenschutzerklarungLinkBehavior(shopReviewsPageLogic.reviewFormDatenschutzerklarungLink())
                 .fillRequiredFieldsReviewFormAndCheckBehavior("qc_1906_");
+        new WebMail().openMail(mail)
+                .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);
     }
 
 
-    @Test(dataProvider = "route", enabled = false)   //TODO Change of logic. Changes to the task SALES-2345  and Bug SALES-3203
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test Gdpr verify working of rating form on review page")
@@ -57,6 +62,10 @@ public class QC_1906 {
         mail = shopReviewsPageLogic.clickBtnRateSiteInRatingBlock()
                 .checkingDatenschutzerklarungLinkBehavior(shopReviewsPageLogic.ratingFormDatenschutzerklarungLink())
                 .fillRequiredFieldsPopupRatingFormAndCheckBehavior("qc_1906_");
+        new WebMail().openMail(mail)
+                .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")
+                .openLetterInOldMailServiceMailinator(1)
+                .clickBtnConfirmSubscriptions();
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);

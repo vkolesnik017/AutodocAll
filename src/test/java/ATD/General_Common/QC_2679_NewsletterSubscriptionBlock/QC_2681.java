@@ -19,7 +19,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2681 {
-    String email = "QC_2681" + mailinatorMailRandom();
+    String email = "qcc_2681" + mailinatorMailRandom();
 
     @BeforeClass
     void setUp() {

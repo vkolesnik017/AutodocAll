@@ -282,8 +282,12 @@ public class Listing_page_Logic extends Listing_page {
         } else {
             for (int i = 0; i < productsOnListingInTileMode().size(); i++) {
                 productsOnListingInTileMode().get(i).hover();
-                characS.get(i).shouldHave(text(attributeSelectedInSideFilter));
-                $(".search_button").hover();
+                if (characS.get(i).isDisplayed()) {
+                    characS.get(i).shouldHave(text(attributeSelectedInSideFilter));
+                    $(".search_button").hover();
+                }else {
+                    characS.get(i + 1).shouldHave(text(attributeSelectedInSideFilter));
+                }
             }
         }
         return this;
@@ -1454,5 +1458,17 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-}
+    @Step("Wait while first brand become active. Listing_page")
+    public Listing_page_Logic waitWhileFirstBrandBecomeActive() {
+        firstBrandNameGetData().shouldHave(attribute("data-checked", "true"));
+        return this;
+    }
 
+    @Step("Wait while second brand become active. Listing_page")
+    public Listing_page_Logic waitWhileSecondBrandBecomeActive() {
+        secondBrandNameGetData().shouldHave(attribute("data-checked", "true"));
+        return this;
+    }
+
+
+}

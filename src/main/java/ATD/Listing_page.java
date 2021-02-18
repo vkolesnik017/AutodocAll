@@ -380,8 +380,16 @@ public class Listing_page {
         return $(By.xpath("//*[@class='slick-track']/li[8]/label/img"));
     }
 
+    public SelenideElement firstBrandNameGetData() {
+        return $x("//*[@class='slick-track']/li[8]/input");
+    }
+
     public SelenideElement firstBrandNameInFilterLKWmodelRoute() {
         return $x("//*[@class='slick-track']/li[@class='slick-slide slick-current slick-active']//img");
+    }
+
+    public SelenideElement secondBrandNameGetData() {
+        return $x("//*[@class='slick-track']/li[9]/input");
     }
 
     public SelenideElement secondBrandNameInFilter() {
