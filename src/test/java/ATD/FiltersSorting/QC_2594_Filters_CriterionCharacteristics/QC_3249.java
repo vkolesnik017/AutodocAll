@@ -18,7 +18,6 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_3249 {
 
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
