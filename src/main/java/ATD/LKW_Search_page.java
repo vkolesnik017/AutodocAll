@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class LKW_Search_page {
 
     SelenideElement listOfProductInTecDocListingBlock() {
-        return $x("//ul[@class='list_products']");
+        return $x("//ul[@class='list_products' or @class='list_products ']");
     }
     ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::li//span[@class='add-to-wishlist title_btn add-article']");}
 
