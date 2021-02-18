@@ -1,6 +1,6 @@
-package ATD.Catalog.QC_2306_OilsAndLiquidsCategories;
+package ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics;
 
-import ATD.LKW_main_page_Logic;
+import ATD.Motoroil_brand_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,31 +16,31 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2303 {
+public class QC_3246 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_brand,motoroil_viscosity2,motoroil_search");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of Oil and Liquid categories in catalog, child category and transition")
-    public void testChecksPresenceOgOilAndLiquidCategories(String route) throws SQLException {
+    @Description(value = "Test checks display of INHALT filter in sidebar")
+    public void testCheckPresenceOfInhaltFilterInSidebar(String route) {
         openPage(route);
-        new LKW_main_page_Logic().
-                presenceOfOilParentCategoryInHeaderCatalog("lkw_parent_category4")
-                .checkOfTransitionToChildCategoryFromHeader();
+
+        new Motoroil_brand_page_Logic()
+                .presenceInhaltFilterInSidebar();
     }
 
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }

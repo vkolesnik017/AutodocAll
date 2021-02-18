@@ -610,17 +610,9 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
-    @Step("presence of Oil child category pop-up .LKW_main_page")
-    public LKW_main_page_Logic presenceOfOilChildCategoryPopUp() {
-        listOfParentsDropMainTruckCatalog().get(0).shouldBe(visible).hover();
-        titleOfSecondLevelMainDropMenuTruckCatalog().get(0).shouldHave(exactText(listOfParentsDropMainTruckCatalog().get(0).getText()));
-        listOfCategoriesSecondLevelDropMainTruckCatalog().shouldHaveSize(5);
-        return this;
-    }
-
     @Step("click on Oil child category .LKW_main_page")
-    public LKW_Category_page_Logic clickOnOilChildCategory() {
-        listOfCategoriesSecondLevelDropMainTruckCatalog().get(3).shouldBe(visible).click();
+    public LKW_Category_page_Logic clickOnOilChildCategory(int childPosition) {
+        listOfCategoriesSecondLevelDropMainTruckCatalog().get(childPosition).shouldBe(visible).click();
         return page(LKW_Category_page_Logic.class);
     }
 
@@ -746,6 +738,40 @@ public class LKW_main_page_Logic extends LKW_main_page {
     public LKW_main_page_Logic presenceChildInParentCategory(List<String> childCategory, String parentCategory) {
         List<String> childFront = childOfParentCategory(parentCategory).stream().map(title -> title.getText()).collect(Collectors.toList());
         Assert.assertEquals(childFront, childCategory);
+        return this;
+    }
+
+    @Step("check Of Transition To Child Category From Header catalog. LKW_main_page")
+    public LKW_main_page_Logic checkOfTransitionToChildCategoryFromHeader() throws SQLException {
+        DataBase db = new DataBase("ATD");
+        for (int i = 0; i < 5; i++) {
+            menuCatalogInHeader().click();
+            dropMainMenuTrucksCatalogInHeader().shouldBe(visible);
+            listOfParentsDropMainTruckCatalog().get(0).shouldBe(visible).hover();
+            titleOfSecondLevelMainDropMenuTruckCatalog().get(0).shouldHave(exactText(listOfParentsDropMainTruckCatalog().get(0).getText()));
+            listOfCategoriesSecondLevelDropMainTruckCatalog().shouldHaveSize(5);
+            clickOnOilChildCategory(i);
+            switch (i) {
+                case 0:
+                    checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_category6"));
+                    break;
+                case 1:
+                    checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_category8"));
+                    break;
+                case 2:
+                    checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_category7"));
+                    break;
+                case 3:
+                    checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_category4"));
+                    break;
+                case 4:
+                    checkingContainsUrl(db.getRouteByRouteName("DE", "listing_chemicals6"));
+                    break;
+                default:
+                    break;
+            }
+            back();
+        }
         return this;
     }
 }
