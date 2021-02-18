@@ -33,8 +33,12 @@ public class CartAddress_page {
         return $(byId("form_lOrt"));
     }
 
-    SelenideElement telephon() {
+    SelenideElement telephoneShipping() {
         return $(byId("form_lTelefon"));
+    }
+
+    SelenideElement telephoneBilling() {
+        return $(byId("form_rTelefon"));
     }
 
     public SelenideElement checkboxFirmShipping() {

@@ -31,7 +31,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         chooseDeliveryCountryForShipping(shop);
         fillInPostalCode("default");
         checkCorrectTextAndFillInput(ort(), "autotest");
-        checkCorrectTextAndFillInput(telephon(), "200+002");
+        checkCorrectTextAndFillInput(telephoneShipping(), "200+002");
         return this;
     }
 
@@ -57,7 +57,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         fillingPostalCodeFieldJSForShipping(index);
         checkCorrectTextAndFillInput(ort(), city);
         chooseDeliveryCountryForShipping(shop);
-        checkCorrectTextAndFillInput(telephon(), "200+002");
+        checkCorrectTextAndFillInput(telephoneShipping(), "200+002");
         if (!fieldFirm().isDisplayed()) {
             checkboxFirmShipping().click();
         }
@@ -76,7 +76,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         fillingPostalCodeOrDefaultFieldJSForShipping("default");
         checkCorrectTextAndFillInput(ort(), city);
         chooseDeliveryCountryForShipping(shop);
-        checkCorrectTextAndFillInput(telephon(), "200+002");
+        checkCorrectTextAndFillInput(telephoneShipping(), "200+002");
         if (!fieldFirm().isDisplayed()) {
             checkboxFirmShipping().click();
         }
@@ -119,8 +119,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Fill field telephone number {telNum} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillFieldTelNumForShipping(String telNum) {
-        telephon().shouldBe(visible);
-        checkCorrectTextAndFillInput(telephon(), telNum);
+        telephoneShipping().shouldBe(visible);
+        checkCorrectTextAndFillInput(telephoneShipping(), telNum);
+        return this;
+    }
+
+    @Step("Fill field telephone number {telNum} for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillFieldTelNumForBilling(String telNum) {
+        telephoneBilling().shouldBe(visible);
+        checkCorrectTextAndFillInput(telephoneBilling(), telNum);
         return this;
     }
 
@@ -527,7 +534,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         deliveryHouse().shouldHave(attribute("value", ""));
         postalCodeFieldForShipping().shouldHave(attribute("value", ""));
         ort().shouldHave(attribute("value", ""));
-        telephon().shouldHave(attribute("value", ""));
+        telephoneShipping().shouldHave(attribute("value", ""));
         return this;
     }
 
@@ -694,7 +701,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Checks absence safe order block after change delivery country. CartAddress_page")
     public CartAddress_page_Logic checkAbsenceSafeOrderBlockAfterChangeDeliveryCountry(String[] listOfCountry) {
         Cart_page_Logic cart_page_logic = new Cart_page_Logic();
-        checkCorrectTextAndFillInput(telephon(), "200+002");
+        checkCorrectTextAndFillInput(telephoneShipping(), "200+002");
         for (int i = 0; i < listOfCountry.length; i++) {
             chooseDeliveryCountryForShipping(listOfCountry[i])
                     .nextBtnClick()
