@@ -157,5 +157,15 @@ public class CommonMethods {
     public static Float convertStringToFloat(String expectedString) {
         return Float.parseFloat(expectedString.replaceAll("[^0-9,]", "").replaceAll(",","."));
     }
+
+    @Step("Method check that url not contains expected value")
+    public static void checkingNotContainsUrl(String expectedContainsUrl) {
+        try {
+            Wait().until(webDriver -> (!url().contains(expectedContainsUrl)));
+        } catch (TimeoutException e) {
+            System.out.println(url());
+            Assert.fail("Url contains: " + expectedContainsUrl);
+        }
+    }
 }
 

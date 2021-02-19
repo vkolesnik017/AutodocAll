@@ -38,7 +38,6 @@ public class QC_2121 {
                 .addedOutOfStockProductToWishList(1)
                 .goToWishListPage()
                 .clickOnGrayBtnOfProduct()
-                .clickOnGrayBtnOfProduct()
                 .presenceOfAvailablePopUp();
     }
 
