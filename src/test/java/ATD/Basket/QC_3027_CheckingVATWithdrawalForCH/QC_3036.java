@@ -21,7 +21,6 @@ import static Common.File.assertThatPdfContainsText;
 import static Common.File.renameDownloadFile;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.sleep;
 
 
 public class QC_3036 {
