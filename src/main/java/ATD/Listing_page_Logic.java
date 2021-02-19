@@ -282,6 +282,7 @@ public class Listing_page_Logic extends Listing_page {
         } else {
             for (int i = 0; i < productsOnListingInTileMode().size(); i++) {
                 productsOnListingInTileMode().get(i).hover();
+                sleep(1000);
                 if (characS.get(i).isDisplayed()) {
                     characS.get(i).shouldHave(text(attributeSelectedInSideFilter));
                     $(".search_button").hover();
