@@ -1195,6 +1195,12 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Chooses firm confirmation status in order {expectedConfirmationStatus}. Order_aws")
+    public Order_aws choosesFirmConfirmationStatus(String expectedConfirmationStatus) {
+        firmConfirmationSelector().selectOptionByValue(expectedConfirmationStatus);
+        return this;
+    }
+
     @Step("Gets user data. Order_aws")
     public ArrayList getUserDataInOrder() {
         String nameText = fieldNameInBilling().getValue();
@@ -1261,9 +1267,14 @@ public class Order_aws {
         return Float.parseFloat(formatCost);
     }
 
-    @Step("Subtracts removed product cost {sellingCostOneProduct} from the total oder cost {totalCost}. Order_aws")
+    @Step("Subtracts one product cost {sellingCostOneProduct} from the total order cost {totalCost}. Order_aws")
     public Float subtractsRemovedProductCostFromTotalOrderCost(Float totalCost, Float sellingCostOneProduct) {
         return totalCost - sellingCostOneProduct;
+    }
+
+    @Step("Get the price {price} of goods by multiplying it by the quantity {expectedQuantity}. Order_aws")
+    public Float getPriceOfGoodsByMultiplyingItByQuantity(Float sellingPrice, Float expectedQuantity) {
+        return sellingPrice * expectedQuantity;
     }
 
     @Step("Checks conto NR number {contoNR}. Order_aws")
