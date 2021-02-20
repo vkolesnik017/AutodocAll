@@ -16,6 +16,8 @@ public class Motoroil_brand_page {
 
     SelenideElement oemFreigabeFilter(String id) {return $x("//div[@class='filter-disk__head releaseFilter']/..//label[text()='"+id+"']");}
 
+    SelenideElement inhaltFilter(String id) {return $x("//div[@class='filter-disk__form']/..//label[text()='"+id+"']");}
+
     SelenideElement specificationFilter(String id) {return $x("//div[@class='filter-disk__form']/..//label[text()='"+id+"']");}
 
     SelenideElement loaderInTecDocListing() {
@@ -30,7 +32,11 @@ public class Motoroil_brand_page {
 
     SelenideElement checkBoxSpecificationFilter(String id) {return $x("//div[@class='filter-disk__form']/..//label[text()='"+id+"']/preceding-sibling::input");}
 
+    SelenideElement checkBoxInhaltFilter(String id) {return $x("//div[@class='filter-disk__form']/..//label[text()='"+id+"']/preceding-sibling::input");}
+
     ElementsCollection oemValuesInProducts() {return $$x("//span[text()='Herstellerfreigabe:  ']/following-sibling::span");}
 
     ElementsCollection specificationValuesInProducts() {return $$x("//span[text()='Spezifikation:  ']/following-sibling::span");}
+
+    ElementsCollection inhaltValuesInProducts() {return $$x("//span[text()='Inhalt [Liter]:  ']/following-sibling::span");}
 }
