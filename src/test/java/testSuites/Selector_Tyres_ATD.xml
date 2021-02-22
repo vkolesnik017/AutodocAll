@@ -9,7 +9,7 @@
     <test name="QC_1104_TyresSelector">
         <classes>
             <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1369"/>
-      <!--      <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1370"/>-->
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1370"/>
             <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1105"/>
             <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1106"/>
             <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1107"/>

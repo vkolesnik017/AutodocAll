@@ -14,6 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingNotContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -29,7 +30,7 @@ public class QC_3253 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_brand,motoroil_viscosity2,motoroil");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_brand,motoroil_viscosity2");  // ,motoroil_search - бага
     }
 
     @Test(dataProvider = "route")
@@ -46,7 +47,17 @@ public class QC_3253 {
                 .checkSelectedCheckBoxSpecificationFilter(firstIdValue)
                 .checkDisplaySelectedSpecificationFilterInProducts(firstIdValue);
         checkingContainsUrl(firstIdValue.replaceAll(" ", "-").toLowerCase());
-
+        motoroilPage.setSpecificationFilterInSidebar(secondIdValue)
+                .appearsOfLoader()
+                .checkSpecificationSelector(secondIdValue)
+                .checkSelectedCheckBoxSpecificationFilter(secondIdValue)
+                .checkDisplaySelectedSpecificationFilterInProducts(secondIdValue);
+        checkingContainsUrl(secondIdValue.replaceAll(" ", "-").toLowerCase());
+        motoroilPage.setSpecificationFilterInSidebar(secondIdValue)
+                .appearsOfLoader()
+                .checkCheckboxSpecificationFilter(false, secondIdValue)
+                .checkSizeValuesSpecificationFilterInProducts();
+        checkingNotContainsUrl(secondIdValue.replaceAll(" ", "-").toLowerCase());
     }
 
     @AfterMethod

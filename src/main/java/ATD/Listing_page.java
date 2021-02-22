@@ -448,6 +448,10 @@ public class Listing_page {
 
     //By generic filters locators
 
+    public SelenideElement allCategoryGeneric() {
+        return $x("//label[@for='category-all']");
+    }
+
     public SelenideElement firstGenericAboveListing() {
         return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[1]/div[2]"));
     }
