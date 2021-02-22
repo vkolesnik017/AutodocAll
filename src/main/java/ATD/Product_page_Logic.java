@@ -18,9 +18,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
-import static Common.CommonMethods.getCurrentUrl;
-import static Common.CommonMethods.roundOfTheCost;
-import static Common.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
@@ -1637,6 +1635,24 @@ public class Product_page_Logic extends Product_page {
     public Product_page_Logic presenceOfUploadFile(String uploadFileFromAws) {
         String uploadedFileProductPage = ridexInfoBlock().getAttribute("href").replaceAll(".+\\/", "");
         Assert.assertEquals(uploadedFileProductPage, uploadFileFromAws);
+        return this;
+    }
+
+    @Step("compare Quantity Of Product With FIle. Product_page")
+    public Product_page_Logic compareQuantityOfProductWithFile(List<String> idOfProduct, List<String> quantityOfProduct, String fileName) throws IOException {
+        for (int i = 0; i < idOfProduct.size(); i++) {
+            try {
+                open("https://www.autodoc.de/brand/" + idOfProduct.get(i));
+                Assert.assertTrue(url().contains(idOfProduct.get(i)));
+                String countOfProduct = countInputOnProduct().shouldBe(visible).attr("value");
+                if (!countOfProduct.equals(quantityOfProduct.get(i))) {
+                    new CommonMethods().writerInFile(fileName, true, idOfProduct.get(i));
+                    System.out.println(idOfProduct.size() + " - quantity is different. " + String.format("In file quantity - %s , on product page - %s", quantityOfProduct.get(i), countOfProduct));
+                }
+            } catch (Throwable e) {
+                new CommonMethods().writerInFile(fileName, true, idOfProduct.get(i) + "#" + "Fail");
+            }
+        }
         return this;
     }
 }

@@ -212,4 +212,14 @@ public class Excel {
             System.out.println("Created file: " + file.getAbsolutePath());
         }
     }
+
+    @Step("get values from file with from couple sheets. Exel")
+    public List<String> getValuesFromFile(String file, int quantityOfPages, int cellNumber, String sheetName) {
+        List<String> values = new ArrayList<>();
+        for (int i = 0; i < quantityOfPages; i++) {
+            int k = i + 1;
+            values.addAll(new Excel().readFromExcel(file, sheetName + String.valueOf(k), cellNumber));
+        }
+        return values;
+    }
 }
