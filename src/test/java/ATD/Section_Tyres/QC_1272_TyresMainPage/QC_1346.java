@@ -33,7 +33,7 @@ public class QC_1346 {
 
     @DataProvider(name = "routesTyresFeature")
     Object[] dataProviderTyresFeature() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker,tyres_feature");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker,tyres_feature,tyres_model");
     }
 
     @Test(dataProvider = "routesTyresPage")

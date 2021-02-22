@@ -358,10 +358,12 @@ public class TyresListing_page_Logic extends TyresListing_page {
         heightValueInSelector().shouldHave(text(height));
         diameterValueInSelector().shouldHave(text(diameter));
         if (routeName.equals("tyres_dimension") | routeName.equals("tyres_size")) {
-            String baseUrlWithDimension = baseUrl.replaceAll("\\d", "").replaceAll("\\/--r", "").replaceAll("\\/-zoll", "");
+            String baseUrlWithDimension = baseUrl.replaceAll("\\d", "")
+                    .replaceAll("\\/--r", "").replaceAll("\\/-zoll", "");
             String urlWithDimension = (baseUrlWithDimension + "/" + width + "-" + height + "-r" + diameter);
             waitingWhileLinkBecomeExpected(urlWithDimension);
-        } else if (routeName.equals("tyres_season_size") | routeName.equals("tyres_type_list") | routeName.equals("tyres_feature") | routeName.equals("tyres_maker")) {
+        } else if (routeName.equals("tyres_season_size") | routeName.equals("tyres_type_list")
+                | routeName.equals("tyres_feature") | routeName.equals("tyres_maker") | routeName.equals("tyres_model")) {
             checkingContainsUrl(width + "-" + height + "-r" + diameter);
         } else {
             String urlWithDimension = (baseUrl + "/" + width + "-" + height + "-r" + diameter);
