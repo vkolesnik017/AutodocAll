@@ -328,6 +328,12 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Click checkbox in FAQ form. Product_page")
+    public Product_page_Logic clickCheckboxInFaqForm() {
+        faqCheckBox().shouldBe(visible).click();
+        return this;
+    }
+
     @Step("Filling fields and checking behavior of faq form. Product_page")
     public String fillingFieldsAndCheckBehaviorFaqForm(String qc) {
         faqFormNameField().setValue("autotest autotest");
