@@ -32,7 +32,7 @@ public class QC_1905 {
         return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test verify working of faq form on product page")

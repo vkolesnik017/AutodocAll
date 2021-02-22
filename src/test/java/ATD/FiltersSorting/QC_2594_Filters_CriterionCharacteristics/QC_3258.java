@@ -13,10 +13,15 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
+import static Common.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3249 {
+public class QC_3258 {
+
+    private String firstIdValue = "1L";
+    private String secondIdValue = "2L";
+    Motoroil_brand_page_Logic motoroilPage = new Motoroil_brand_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -31,12 +36,17 @@ public class QC_3249 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks display of specification filter in sidebar")
-    public void testCheckPresenceOfSpecificationFilterInSidebar(String route) {
+    @Description(value = "Test checks Application of the Inhalt filter on oil listings")
+    public void testCheckApplicationInhaltFilter(String route) {
         openPage(route);
 
-        new Motoroil_brand_page_Logic()
-                .displaySpecificationFilterInSidebar();
+        motoroilPage
+                .presenceInhaltFilterInSidebar()
+                .setInhaltFilterInSidebar(firstIdValue)
+                .appearsOfLoader()
+                .checkSelectedCheckBoxInhaltFilter(firstIdValue)
+                .checkDisplaySelectedInhaltFilterInProducts(firstIdValue);
+        checkingContainsUrl(firstIdValue.replaceAll("[^0-9]", ""));
     }
 
     @AfterMethod
