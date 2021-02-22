@@ -7,15 +7,14 @@ import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.apache.commons.io.FileUtils;
 import org.testng.annotations.*;
-
 import java.io.File;
 import java.io.IOException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2413 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -26,7 +25,7 @@ public class QC_2413 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = false) //TODO defect SHOP-936
+    @Test(dataProvider = "route", enabled = true) //TODO test works but disabled method ".checkingTheTitleHilftBlockPDF()" . Line 44 . defect SHOP-758
     @Owner(value = "LavrynenkoOlha")
     @Flaky
     @Description(value = "Test checks elements and functionality on the Presse page")
@@ -40,9 +39,9 @@ public class QC_2413 {
                 .getStatusImageCod()
                 .getStatusPhotoCod()
                 .checkingTheDownloadsPDF()
-                .checkingTheDownloadsJPG()  //bug
-                .checkingTheDownloadsPDFHilftBlock()  //bug
-                .checkingTheTitleHilftBlockPDF()  //bug
+                .checkingTheDownloadsJPG()
+                .checkingTheDownloadsPDFHilftBlock()
+//                .checkingTheTitleHilftBlockPDF()  //TODO defect SHOP-758
                 .checkingTheActiveArticle()
                 .checkingTheBackForwardButtons()
                 .checkingTheImagesStatusCode()
