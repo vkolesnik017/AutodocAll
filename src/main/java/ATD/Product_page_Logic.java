@@ -1149,7 +1149,7 @@ public class Product_page_Logic extends Product_page {
     @Step(" check location of kit composition block. Product page")
     public Product_page_Logic locationOfKitCompositionBlock() {
         kitCompositionBlock().shouldBe(visible);
-        kitCompositionBlockUnderPdf().shouldBe(visible);
+      //  kitCompositionBlockUnderPdf().shouldBe(visible);   // УБРАЛ ПРОВЕРКУ, ТАК КАК УБРАЛИ PDF БЛОК
         kitCompositionBlockAboveFeedbBckBlock().shouldBe(visible);
         return this;
     }

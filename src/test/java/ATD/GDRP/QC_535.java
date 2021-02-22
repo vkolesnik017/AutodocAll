@@ -31,7 +31,7 @@ public class QC_535 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product3");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)  //TODO Change of logic. Changes to the task SALES-2345
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify working of FAQ form on product page")

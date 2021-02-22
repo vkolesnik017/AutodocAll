@@ -40,7 +40,7 @@ public class Search_page {
 
     // locator for counter
     SelenideElement counterValue() {
-        return $(By.xpath("//input[@class='amount qty_2']"));
+        return $(By.xpath("//input[@id='form_']"));
     }
 
     SelenideElement counterPlus() {
