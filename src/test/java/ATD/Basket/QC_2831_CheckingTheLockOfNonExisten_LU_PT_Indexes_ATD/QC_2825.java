@@ -23,7 +23,7 @@ public class QC_2825 {
     @BeforeClass
     void setUp() throws SQLException {
         setUpBrowser(false, "chrome", "77.0", false);
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD","main","product41"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD","main","product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
