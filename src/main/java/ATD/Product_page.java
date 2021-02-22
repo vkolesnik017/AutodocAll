@@ -557,7 +557,7 @@ public class Product_page {
 
     // locator for counter
     SelenideElement counterValuePairedGood() {
-        return $(By.xpath("//input[@class=' qty_2']"));
+        return $(By.xpath("//input[@id='form_amount']"));
     }
 
     SelenideElement counterValue() {
