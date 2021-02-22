@@ -3,6 +3,7 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 import static Common.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
+import static Common.CommonMethods.getNameRouteFromJSVarInHTML;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -483,9 +485,14 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-    @Step("Wait until preloader disappear. Listing_page")
+    @Step("Wait until preloaded disappear. Listing_page")
     public Listing_page_Logic waitUntilPreloaderDisappear() {
-        preloader().waitUntil(attribute("style", "display: none;"), 20000);
+        try {
+            preloader().waitUntil(attribute("style", "display: none;"), 20000);
+        } catch (ElementNotFound ex) {
+            System.out.println("Preloader is not visible");
+            ex.printStackTrace();
+        }
         return this;
     }
 
@@ -1079,6 +1086,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Check second generic filter applying on listing. Listing_page")
     public Listing_page_Logic checkSecondGenericApplying() {
+        String routeName = getNameRouteFromJSVarInHTML();
         String secondGenericName = getTextFromGeneric();
         if (secondGenericAboveListing().isDisplayed()) {
             secondGenericAboveListing().click();
@@ -1087,16 +1095,20 @@ public class Listing_page_Logic extends Listing_page {
         }
         waitUntilPreloaderDisappear();
         checkProductTitleOnListing(secondGenericName, true, productTitleInListMode());
-        showListingInTileModeButton().click();
-        waitUntilPreloaderDisappear();
-        checkProductTitleOnListing(secondGenericName, true, productTitleInTileMode());
-        if (firstGenericAboveListing().isDisplayed()) {
-            firstGenericAboveListing().click();
-        } else if (firstGenericInSidebar().isDisplayed()) {
-            firstGenericInSidebar().click();
+        if (!routeName.equals("moto_category_car_list") && (!routeName.equals("moto_category_car_list_model"))) {
+            showListingInTileModeButton().click();
+            waitUntilPreloaderDisappear();
+            checkProductTitleOnListing(secondGenericName, true, productTitleInTileMode());
+            allCategoryGeneric().shouldBe(visible);
+            allCategoryGeneric().click();
+            waitUntilPreloaderDisappear();
+            checkUniqueGenericsOnListing(1, productTitleInTileMode());
+        } else {
+            allCategoryGeneric().shouldBe(visible);
+            allCategoryGeneric().click();
+            waitUntilPreloaderDisappear();
+            checkUniqueGenericsOnListing(1, productTitleInListMode());
         }
-        waitUntilPreloaderDisappear();
-        checkUniqueGenericsOnListing(1, productTitleInTileMode());
         return this;
     }
 

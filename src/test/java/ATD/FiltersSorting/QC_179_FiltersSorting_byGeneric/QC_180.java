@@ -39,6 +39,11 @@ public class QC_180 {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list,lkw_search8,lkw_search9,lkw_search14,lkw_search15");
     }
 
+    @DataProvider(name = "routesMoto", parallel = true)
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list16,moto_search2,moto_category_car_list_model8");
+    }
+
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
@@ -60,6 +65,18 @@ public class QC_180 {
         genericName = listingPage.getTextFromGeneric();
         listingPage.checkFirstGenericApplying(genericName)
                     .checkSecondGenericApplyingLKW();
+    }
+
+    @Test(dataProvider = "routesMoto")
+    @Flaky
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test checks generic position in generic block on listing Moto")
+    public void checkGenericPositionMoto(String route) {
+        openPage(route);
+        new Main_page_Logic().closeCarSelectorTooltipIfVisible();
+        genericName = listingPage.getTextFromGeneric();
+        listingPage.checkFirstGenericApplying(genericName)
+                .checkSecondGenericApplying();
     }
 
     @Test
