@@ -41,7 +41,6 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
             btnIncreaseOfProduct().shouldBe(visible).click();
             currentCountOfProduct += 2;
             visibleOfAllBlocksInsideBar();
-            refresh();
             productBlock().shouldBe(visible);
         }
         countOfProduct().shouldHave(attribute("value", Integer.toString(currentCountOfProduct)));
