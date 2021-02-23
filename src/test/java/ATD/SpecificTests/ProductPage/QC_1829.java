@@ -1,61 +1,52 @@
 package ATD.SpecificTests.ProductPage;
 
-import Common.Excel;
 import ATD.Product_page_Logic;
-import com.codeborne.selenide.Configuration;
+import Common.Excel;
+import Common.SetUp;
+import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
+import java.util.List;
 
-import static Common.Excel.parseExcel;
+import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1829 {
-    private final String dataFile = "C://Autotests/files/data/QC_1829_data.xls";
-    private final String result = "C://Autotests/files/res/QC_1829_result.txt";
-
-    private final String url = "https://test.autodoc.de/bosch";
-
+    private final String dataFile = "C://Autotests/files/data/qc_1829.xls";
+    private final String result = "C://Autotests/files/data/QC_1829_result.txt";
+    Excel excelFIle = new Excel();
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
-        Configuration.pageLoadStrategy = "none";
     }
 
-    @DataProvider(name = "data", parallel = true)
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() {
-        return new Excel().setUpAllCellFromExcel(dataFile);
+        return new SetUp("ATD").setUpShopsWithMainRoute("prod", "DE", "main");
     }
 
+    @Test(dataProvider = "routes")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test Checking the default quantity in the product counter")
+    public void testCheckingDefaultQuantityInProductCounter(String route) throws IOException {
+        openPage(route);
 
-    @Test(dataProvider = "data")
-    public void page(String data) throws Exception {
-        String urlId = parseExcel(data)[0].trim();
-        String expectedQuanity = parseExcel(data)[1].trim();
-        try {
-            open(url.concat("/").concat(urlId));
-            System.out.println(url.concat("/").concat(urlId));
-            String quanityOnPage = new Product_page_Logic().getProductQuanity();
-            if (!expectedQuanity.equals(quanityOnPage)) writer(result, true, urlId);
-        } catch (Throwable e) {
-            writer(result, true, urlId + "#" + "Fail");
-        }
+        List<String> idOfProduct = excelFIle.getValuesFromFile(dataFile, 6, 0, "Sheet_");
+        List<String> quantityOfProduct = excelFIle.getValuesFromFile(dataFile, 6, 1, "Sheet_");
+        new Product_page_Logic().compareQuantityOfProductWithFile(idOfProduct, quantityOfProduct, result);
     }
 
-    private void writer(String fileName, boolean append, String write) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName, append), StandardCharsets.UTF_8));
-        System.out.println("Write in file" + " " + fileName);
-        bufferedWriter.newLine();
-        bufferedWriter.write(write);
-        bufferedWriter.close();
+    @AfterMethod
+    private void close() {
+        closeWebDriver();
     }
-
 }
