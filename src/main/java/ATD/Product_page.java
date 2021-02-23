@@ -619,6 +619,10 @@ public class Product_page {
         return $(By.xpath("//div[@id='faq']//a[@title='Datenschutzerklärung']"));
     }
 
+    SelenideElement faqCheckBox() {
+        return $x("//input[@id='subscribe_accept_faq']");
+    }
+
     //locators for related products popup
     ElementsCollection categoriesInRelatedProductsPopup() {
         return $$(".popup-other-cat__content-item");

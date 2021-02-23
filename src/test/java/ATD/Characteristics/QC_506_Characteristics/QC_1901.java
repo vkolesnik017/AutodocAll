@@ -30,12 +30,12 @@ public class QC_1901 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list24,search25,category_oen11");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list24,search25,category_oen6");
     }
 
-    @Test(dataProvider = "route", enabled = false) //TODO disabled for a reason bug SHOP-2624
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Checks Characteristics Do Not Hide After Brand Filter Applying")
