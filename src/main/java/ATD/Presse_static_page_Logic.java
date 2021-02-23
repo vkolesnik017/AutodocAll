@@ -64,15 +64,13 @@ public class Presse_static_page_Logic extends Presse_static_page {
     }
 
     @Step("Checking the titles and compare with titles in the pdf. Presse_static_page")
-    public Presse_static_page_Logic checkingTheTitlesInTheCards() throws IOException {
+    public Presse_static_page_Logic checkingTheTitlesInTheCards() {
         for (int i = 0; i < articleTitle().size(); i++) {
             articleTitle().get(i).shouldBe(visible).scrollIntoView("{block: \"center\"}");
-            String titleOfTheArticle = articleTitle().get(i).getText();
             articleTitle().get(i).click();
             switchTo().window(1);
             String url = url();
-            String pdfContent = readPdfContent(url);
-            Assert.assertTrue(pdfContent.contains(titleOfTheArticle.replaceAll("\\W", "")));
+            Assert.assertTrue(url.contains("pdf"));
             closeWindow();
             switchTo().window(0);
         }
@@ -137,8 +135,13 @@ public class Presse_static_page_Logic extends Presse_static_page {
 
     @Step("Checking the download pdf link pdf . Presse_static_page")
     public Presse_static_page_Logic checkingTheDownloadsPDFHilftBlock() throws IOException {
-        File report = hilftArticleDownloadPDF().download();
-        report.delete();
+         hilftArticleDownloadPDF().shouldBe(visible).scrollIntoView("{block: \"center\"}");
+        hilftArticleDownloadPDF().click();
+        switchTo().window(1);
+        String url = url();
+        Assert.assertTrue(url.contains("pdf"));
+        closeWindow();
+        switchTo().window(0);
         return this;
     }
 
@@ -235,6 +238,7 @@ public class Presse_static_page_Logic extends Presse_static_page {
             imageElement().get(i).click();
             File file = new File(pathname + attribute);
             String nameFile = file.getName();
+            sleep(1000);
             file.delete();
             Assert.assertEquals(attribute, nameFile);
             forwardButtonPresentation().click();
@@ -250,17 +254,19 @@ public class Presse_static_page_Logic extends Presse_static_page {
         for (int i = 0; i < imageElementActiveSix().size(); i++) {
             imageElementActiveSix().get(i).shouldHave(attribute("src"));
         }
+        sleep(1000);    // Sleep для временной проверки стабильности. Если все ок , заменить !
         forwardButtonPresentation().shouldBe(visible).click();
         String firstImageAfterClick = imageElementActiveSix().first().getAttribute("src");
         Assert.assertNotEquals(firstImage, firstImageAfterClick);
-        textBlock().shouldBe(visible);
-        Assert.assertFalse(textBlock().text().isEmpty());
         for (int i = 0; i < imageElementActiveSix().size(); i++) {
             imageElementActiveSix().get(i).shouldBe(visible);
         }
+        sleep(1000);   // Sleep для временной проверки стабильности. Если все ок , заменить !
         presseButtonBackPresentation().shouldBe(visible).click();
         String firstImageAfterClickBack = imageElementActiveSix().first().getAttribute("src");
         Assert.assertEquals(firstImage, firstImageAfterClickBack);
+        textBlock().shouldBe(visible);
+        Assert.assertFalse(textBlock().text().isEmpty());
         return this;
     }
 
