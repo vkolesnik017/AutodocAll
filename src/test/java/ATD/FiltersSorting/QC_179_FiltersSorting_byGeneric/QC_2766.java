@@ -82,6 +82,20 @@ public class QC_2766 {
         new Listing_instruments_page_Logic().checkHeadlineOfGenericsBlock("WÄHLEN SIE DIE GEWÜNSCHTE TEILE-KATEGORIE");
     }
 
+    @DataProvider(name = "routesMoto", parallel = true)
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model9,moto_category_car_list17");
+    }
+
+    @Test(dataProvider = "routesMoto")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test check headline of generic block")
+    public void testCheckHeadlineOfGenericBlockMoto(String route) {
+        openPage(route);
+        new Listing_instruments_page_Logic().checkHeadlineOfGenericsBlock("WÄHLEN SIE DIE GEWÜNSCHTE TEILE-KATEGORIE");
+    }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

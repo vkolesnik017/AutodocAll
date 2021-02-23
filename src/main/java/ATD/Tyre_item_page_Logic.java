@@ -45,7 +45,7 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
         return this;
     }
 
-    @Step("get MPN number of product. Tyre_item_page")
+    @Step("add product to basket. Tyre_item_page")
     public Tyre_item_page_Logic addProductToBasket() {
         btnAddProductToBasket().shouldBe(visible).click();
         basketDropMenu().should(appear);
