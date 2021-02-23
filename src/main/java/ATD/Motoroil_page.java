@@ -89,7 +89,7 @@ public class Motoroil_page {
     }
 
     SelenideElement kbaSelectorSendButton() {
-        return $x("//*[@class='submit kba_submit']");
+        return $x("//div[@class='block-select-kba__button']");
     }
 
     SelenideElement kbaSelectorErrorMessageEmptyFields() {
