@@ -9,6 +9,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAllData_page {
 
+    public SelenideElement titleLogo() {
+        return $x("//img[@alt='AUTODOC']");
+    }
+
     public SelenideElement searchProductByID(String idProduct) {
         return $(byCssSelector("[data-article_id='" + idProduct + "']"));
     }
