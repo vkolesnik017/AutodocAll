@@ -10,8 +10,7 @@ import java.util.Objects;
 
 import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
 
 public class Motoroil_page_Logic extends Motoroil_page {
@@ -197,6 +196,23 @@ public class Motoroil_page_Logic extends Motoroil_page {
     public Motoroil_page_Logic presenceOfKbaSelector() {
         kbaSelector().shouldBe(visible);
         return this;
+    }
+
+    @Step("Sending reg selector form with valid data. Motoroil page")
+    public Category_car_list_page_Logic sendingRegSelectorWithValidData(String regNum) {
+        Main_page_Logic mainPageLogic = new Main_page_Logic();
+        regSelectorBlock().shouldBe(visible);
+        regInput().sendKeys(regNum);
+        regSelectorSendButton().click();
+        sleep(3000);
+        if (mainPageLogic.selectorPopup().isDisplayed()) {
+            mainPageLogic.closeBtnInCarSelectorPopup().shouldBe(visible).click();
+            mainPageLogic.selectorPopup().shouldNotBe(visible);
+            regInput().clear();
+            regInput().sendKeys(regNum);
+            regSelectorSendButton().click();
+        }
+        return page(Category_car_list_page_Logic.class);
     }
 
 }

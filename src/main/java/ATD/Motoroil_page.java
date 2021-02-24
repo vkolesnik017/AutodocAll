@@ -88,8 +88,16 @@ public class Motoroil_page {
         return $x("//*[@class='block-select-kba  block-select-kba--de']");
     }
 
+    SelenideElement regSelectorBlock() {
+        return $x("//div[@class='block-select-number']");
+    }
+
     SelenideElement kbaSelectorSendButton() {
         return $x("//div[@class='block-select-kba__button']");
+    }
+
+    SelenideElement regSelectorSendButton() {
+        return $x("//div[@class='block-select-number__button']");
     }
 
     SelenideElement kbaSelectorErrorMessageEmptyFields() {
@@ -185,4 +193,34 @@ public class Motoroil_page {
     }
 
     SelenideElement kbaSelector() {return $x("//*[self::div[contains(@class,'block-select-kba--de')] or self::div[@class='block-select-number']]");}
+
+    SelenideElement regInput() {
+        return $x("//input[@id='kba1']");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
