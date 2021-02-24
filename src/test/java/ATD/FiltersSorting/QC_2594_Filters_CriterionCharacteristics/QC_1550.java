@@ -1,8 +1,9 @@
 package ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics;
 
 
-import Common.DataBase;
 import ATD.Listing_page_Logic;
+import ATD.Moto_Category_car_list_page_Logic;
+import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -68,6 +69,21 @@ public class QC_1550 {
     public void testAllFiltersAreFixedInSidebarAfterScrollLKWsearchRoute() throws SQLException {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         new Listing_page_Logic().checkFiltersFixInSidebarLKWsearchRoute();
+    }
+
+    @DataProvider(name = "routesMoto", parallel = true)
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list19,moto_category_car_list_model11");
+    }
+
+    @Test(dataProvider = "routesMoto")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll")
+    public void testAllFiltersAreFixedInSidebarAfterScrollMoto(String route) {
+        openPage(route);
+
+        new Moto_Category_car_list_page_Logic().checkFiltersFixInSidebar();
     }
 
     @AfterMethod
