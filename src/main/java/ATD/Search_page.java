@@ -264,7 +264,7 @@ public class Search_page {
 
     ElementsCollection artNumOfAddedProductToWishList() {return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']/ancestor::li//span[@class='article_number'][1]");}
 
-    ElementsCollection titleOfMainProducts() {return $$x("//li[contains(@class,'item_in_stock')]//div[@class='name']/*[self::a or self::span][1]");}
+    ElementsCollection titleOfMainProducts() {return $$x("//li[contains(@class,'item_in_stock') and not(contains(@class,'recommended'))]//div[@class='name']/*[self::a or self::span][1]");}
 
     ElementsCollection labelAddToWishListNotActiveProduct() {return $$x("//div[@class='button not_active']/ancestor::div[@class='price_box']//span[@class='add-to-wishlist title_btn add-article']");}
 
