@@ -28,7 +28,7 @@ public class QC_3145 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list65,search47"); // category_oen27,listing_accessories5 - БАГА
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list65,search47,search30"); // category_oen27,listing_accessories5 - БАГА
     }
 
     @Test(dataProvider = "routes")
@@ -42,8 +42,6 @@ public class QC_3145 {
                 .selectBrandInBlock("100015");
         List<String> brandOfProductsInList = carListPage.getProductBrandsFromList();
         Assert.assertTrue(brandOfProductsInList.contains("RIDEX"));
-        System.out.println();
-
     }
 
     @AfterMethod

@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1025 {
 
-    private String email = "QC_1025_autotestATD@mailinator.com";
+    private String email = "qc_1025_autotest@mailinator.com";
 
     private WebMail webMail = new WebMail();
     private Product_page_Logic product_page = new Product_page_Logic();
