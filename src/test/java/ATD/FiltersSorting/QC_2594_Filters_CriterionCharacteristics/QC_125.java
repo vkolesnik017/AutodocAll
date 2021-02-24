@@ -109,6 +109,24 @@ public class QC_125 {
                 .checkTextInElement(listingPageLogic.activeSideFilter3(), characteristic);
     }
 
+    @DataProvider(name = "routesMoto", parallel = true)
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model10,moto_category_car_list18");
+    }
+    @Test(dataProvider = "routesMoto")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks filter position")
+    public void testFilterPositionMoto(String route) {
+        openPage(route);
+        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
+        listingPageLogic.scrollToElement(listingPageLogic.langeFilterAttribute3())
+                .clickFilterButton(listingPageLogic.langeFilterCheckbox3())
+                .waitUntilPreloaderDisappear()
+                .checkTextInElement(listingPageLogic.activeSideFilter3(), characteristic);
+    }
+
+
     @AfterMethod
     public void close() {
         closeWebDriver();
