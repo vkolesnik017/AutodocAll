@@ -24,9 +24,9 @@ public class QC_529 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route")
+    @DataProvider(name = "route", parallel = true)
     Object[] test1() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product40");  //product39,product47 - ТОВАР НЕ В НАЛИЧИИ
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product40,product93,product94");  
     }
 
     @Test(dataProvider = "route")
