@@ -1155,7 +1155,7 @@ public class Product_page_Logic extends Product_page {
     @Step(" check location of kit composition block. Product page")
     public Product_page_Logic locationOfKitCompositionBlock() {
         kitCompositionBlock().shouldBe(visible);
-      //  kitCompositionBlockUnderPdf().shouldBe(visible);   // УБРАЛ ПРОВЕРКУ, ТАК КАК УБРАЛИ PDF БЛОК
+        //  kitCompositionBlockUnderPdf().shouldBe(visible);   // УБРАЛ ПРОВЕРКУ, ТАК КАК УБРАЛИ PDF БЛОК
         kitCompositionBlockAboveFeedbBckBlock().shouldBe(visible);
         return this;
     }
@@ -1653,6 +1653,22 @@ public class Product_page_Logic extends Product_page {
                 new CommonMethods().writerInFile(fileName, true, idOfProduct.get(i) + "#" + "Fail");
             }
         }
+        return this;
+    }
+
+
+    @Step("compare Quantity Of Product And Write To File. Product_page")
+    public Product_page_Logic compareQuantityOfProductAndWriteToFile(String expectedQuantity, String idOfProduct, String fileName) throws IOException {
+        try {
+            String countOfProduct = countInputOnProduct().shouldBe(visible).attr("value");
+            if (!countOfProduct.equals(expectedQuantity)) {
+                new CommonMethods().writerInFile(fileName, true, idOfProduct);
+                System.out.println(idOfProduct + " - quantity is different. " + String.format("In file quantity - %s , on product page - %s", expectedQuantity, countOfProduct));
+            }
+        } catch (Throwable e) {
+            new CommonMethods().writerInFile(fileName, true, idOfProduct + "#" + "Fail");
+        }
+
         return this;
     }
 }
