@@ -418,4 +418,14 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         childCategoriesInSideBar().get(position).shouldBe(visible).click();
         return page(Moto_Category_car_list_page_Logic.class);
     }
+
+    @Step("check Filters Fix In Sidebar. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkFiltersFixInSidebar() {
+        brandsFilterInHeader().shouldBe(visible);
+        installationSideFilterInHeader().shouldBe(visible);
+        productsAtTecDocListing().get(7).scrollTo();
+        installationSideFilterInSideBar().shouldBe(visible);
+        brandsFilterInSideBar().shouldBe(visible);
+        return this;
+    }
 }
