@@ -106,12 +106,12 @@ public class CartAllData_page {
         return $(byXpath("//*[@class='alldata-bottom']//div[6]/span[2]"));
     }
 
+    // locator for all shop
     SelenideElement percentageOfVat() {
         return $x("//div[@class='order-summary__row order-summary__row--total']//i");
     }
 
     // locators of prices with Currencies
-
     public SelenideElement uncoverPriceInHead() {
         return $(".order-summary__open");
     }

@@ -305,6 +305,17 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks sum safe order. CartAllData_page")
+    public CartAllData_page_Logic checkSumSO(String safeOrderSum) {
+        priceOfSafeOrder().waitUntil(visible, 5000);
+        String sumInBlockSO = priceOfSafeOrder().getText().replaceAll("[^0-9,]", "").replaceAll(",",".");
+        safeOrderPriceFromOrderSummaryBlock().waitUntil(visible, 5000);
+        String sumSO_InSummeryOrder = safeOrderPriceFromOrderSummaryBlock().getText().replaceAll("[^0-9,]", "").replaceAll(",",".");
+        Assert.assertEquals(safeOrderSum, sumInBlockSO);
+        Assert.assertEquals(safeOrderSum, sumSO_InSummeryOrder);
+        return this;
+    }
+
     @Step("Get text in Safe Order block. CartAllData_page")
     public String getTextInSafeOrderBlock() {
         return String.valueOf(safeOrderBlock().getText());
