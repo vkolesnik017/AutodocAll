@@ -158,6 +158,7 @@
             <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2989"/>
             <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2584"/>
             <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2992"/>
+            <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2995"/>
         </classes>
     </test>
 
