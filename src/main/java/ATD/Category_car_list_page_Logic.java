@@ -489,6 +489,12 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         return this;
     }
 
+    @Step("presence Vehicle in REG Selector. Category_car_list_page")
+    public Category_car_list_page_Logic presenceVehicleInREGSelector(String regValue) {
+        kbaFirstValueInSelector().shouldHave(value(regValue));
+        return this;
+    }
+
     @Step("checking the applicability of product for selected vehicle .Car_parts_motoroil_page")
     public Category_car_list_page_Logic checkingApplicabilityOfProductForSelectedVehicle() {
         selectProductInTecDocListing();
