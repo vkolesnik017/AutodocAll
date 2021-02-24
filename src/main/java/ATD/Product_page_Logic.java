@@ -1662,19 +1662,13 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-
     @Step("compare Quantity Of Product And Write To File. Product_page")
     public Product_page_Logic compareQuantityOfProductAndWriteToFile(String expectedQuantity, String idOfProduct, String fileName) throws IOException {
-        try {
-            String countOfProduct = countInputOnProduct().shouldBe(visible).attr("value");
-            if (!countOfProduct.equals(expectedQuantity)) {
-                new CommonMethods().writerInFile(fileName, true, idOfProduct);
-                System.out.println(idOfProduct + " - quantity is different. " + String.format("In file quantity - %s , on product page - %s", expectedQuantity, countOfProduct));
-            }
-        } catch (Throwable e) {
-            new CommonMethods().writerInFile(fileName, true, idOfProduct + "#" + "Fail");
+        String countOfProduct = countInputOnProduct().shouldBe(visible).attr("value");
+        if (!countOfProduct.equals(expectedQuantity)) {
+            new CommonMethods().writerInFile(fileName, true, idOfProduct);
+            System.out.println(idOfProduct + " - quantity is different. " + String.format("In file quantity - %s , on product page - %s", expectedQuantity, countOfProduct));
         }
-
         return this;
     }
 }
