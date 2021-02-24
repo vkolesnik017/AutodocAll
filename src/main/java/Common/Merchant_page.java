@@ -72,16 +72,16 @@ public class Merchant_page {
 
     //Elements from the Trustly merchant
     SelenideElement allBank() {
-        return $x("//div[@class='bank_img_container']");
+        return $x("//div[@class='sc-fznMAR dGIjYT']");
     }
     SelenideElement formForDataInMerchant() {
-        return $x("//div[@class='order_holder core_loader_holder']");
+        return $x("//div[@class='sc-oUAoT kVASKi']");
     }
     SelenideElement headerBackBtn() {
-        return $x("//a[@id='header_back_button']");
+        return $x("(//span[@name='close'])[1]");
     }
     SelenideElement cancelTransactionBtnTrustly() {
-        return $x("//div[@id='core_order_cancel']/img");
+        return $x("//button[@data-testid='abort-order-button']/span");
     }
     SelenideElement btnExit() {
         return $x("//a[@class='prompt-yes']");
@@ -250,13 +250,12 @@ public class Merchant_page {
     public CartPayments_page_Logic checkPresenceElementFromMerchantPageTrustlyAndCancelOrder() {
         checkingContainsUrl("/trustly");
         switchTo().frame(frame());
-        allBank().click();
         sleep(5000);
-        formForDataInMerchant().shouldBe(visible);
+        allBank().click();
+        formForDataInMerchant().waitUntil(visible, 10000);
+        sleep(5000);
         headerBackBtn().click();
-        allBank().shouldBe(visible);
-        cancelTransactionBtnTrustly().click();
-        btnExit().waitUntil(visible, 5000).click();
+        cancelTransactionBtnTrustly().waitUntil(visible, 10000).click();
         checkingContainsUrl("/basket/payments");
         return page(CartPayments_page_Logic.class);
     }
