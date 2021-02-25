@@ -6,7 +6,8 @@ import io.qameta.allure.Step;
 import java.awt.*;
 
 import static ATD.CommonMethods.uploadFileViaWindowsPopUp;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -100,7 +101,9 @@ public class ProductsPdf_aws {
         return $x("//div[@id='form_Filteradd_brandNo__chzn']//input");
     }
 
-    private SelenideElement resultSearchTable() {return $x("//table[@class='table table-bordered table-striped pdf-products']");}
+    private SelenideElement resultSearchTable() {
+        return $x("//table[@class='table table-bordered table-striped pdf-products']");
+    }
 
     private String url = "https://aws.autodoc.de/products/pdf";
 
@@ -152,8 +155,8 @@ public class ProductsPdf_aws {
 
     @Step("presence Preloader. ProductsPdf_aws")
     public ProductsPdf_aws presencePreloader() {
-        preloader().shouldHave(attribute("style", "display: block;"));
-        preloader().shouldHave(attribute("style", "display: none;"));
+        preloader().shouldBe(visible);
+        preloader().waitWhile(visible, 25000);
         return this;
     }
 
