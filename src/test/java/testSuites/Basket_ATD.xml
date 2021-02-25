@@ -51,6 +51,9 @@
             <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2343"/>
             <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2347"/>
             <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2734"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2730"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2728"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2733"/>
         </classes>
     </test>
 
