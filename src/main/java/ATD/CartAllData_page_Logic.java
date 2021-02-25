@@ -23,6 +23,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(Payment_handler_page_Logic.class);
     }
 
+    @Step("Click logo title. CartAllData_page")
+    public Main_page clickLogo() {
+        titleLogo().shouldBe(visible).click();
+        return page(Main_page.class);
+    }
+
     @Step("Next buttin clicking and Wait until preloader disappear. CartAllData_page")
     public Payment_handler_page_Logic nextBtnClick(int sleepTime) throws Exception {
         nextBtn().click();
@@ -228,6 +234,11 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Get total VAT percentage amount. CartAllData_page")
+    public String getTotalVatPercentageAmount() {
+        return percentageOfVat().getText().replaceAll("[^0-9]","");
+    }
+
     @Step("Check text {textWithAddressInfo} in delivery address info block. CartAllData_page")
     public CartAllData_page_Logic checkTextInDeliveryAddressInfoBlock(String textWithAddressInfo) {
         deliveryAddressInfo().shouldHave(text(textWithAddressInfo));
@@ -291,6 +302,17 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Checks for presence Safe Order block for Heavy Loads. CartAllData_page")
     public CartAllData_page_Logic checkPresenceSafeOrderBlock() {
         safeOrderBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks sum safe order. CartAllData_page")
+    public CartAllData_page_Logic checkSumSO(String safeOrderSum) {
+        priceOfSafeOrder().waitUntil(visible, 5000);
+        String sumInBlockSO = priceOfSafeOrder().getText().replaceAll("[^0-9,]", "").replaceAll(",",".");
+        safeOrderPriceFromOrderSummaryBlock().waitUntil(visible, 5000);
+        String sumSO_InSummeryOrder = safeOrderPriceFromOrderSummaryBlock().getText().replaceAll("[^0-9,]", "").replaceAll(",",".");
+        Assert.assertEquals(safeOrderSum, sumInBlockSO);
+        Assert.assertEquals(safeOrderSum, sumSO_InSummeryOrder);
         return this;
     }
 
@@ -450,6 +472,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Check presence of VAT in the total price of product{idProduct}. CartAllData_page")
     public CartAllData_page_Logic checkPresenceVatPostscriptInTotalPriceOfGoods(String idProduct) {
         vatFromTotalProductPrice(idProduct).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check absence of VAT in the total price of product{idProduct}. CartAllData_page")
+    public CartAllData_page_Logic checkAbsenceVatPostscriptInTotalPriceOfGoods(String idProduct) {
+        vatFromTotalProductPrice(idProduct).shouldNotBe(visible);
         return this;
     }
 

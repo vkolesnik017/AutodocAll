@@ -9,6 +9,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAllData_page {
 
+    public SelenideElement titleLogo() {
+        return $x("//img[@alt='AUTODOC']");
+    }
+
     public SelenideElement searchProductByID(String idProduct) {
         return $(byCssSelector("[data-article_id='" + idProduct + "']"));
     }
@@ -102,12 +106,12 @@ public class CartAllData_page {
         return $(byXpath("//*[@class='alldata-bottom']//div[6]/span[2]"));
     }
 
+    // locator for all shop
     SelenideElement percentageOfVat() {
         return $x("//div[@class='order-summary__row order-summary__row--total']//i");
     }
 
     // locators of prices with Currencies
-
     public SelenideElement uncoverPriceInHead() {
         return $(".order-summary__open");
     }

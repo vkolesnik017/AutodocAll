@@ -620,7 +620,7 @@ public class Main_page {
         return $x("//div[contains(@class,'popup-kba-error')]//a[contains(@class,'submit kba_submit')]");
     }
 
-    SelenideElement selectorPopup() {
+    public SelenideElement selectorPopup() {
         return $x("//div[@class='new_popup popup_content popup-kba-error']");
     }
 

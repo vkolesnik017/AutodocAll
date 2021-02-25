@@ -274,6 +274,10 @@ public class Cart_page {
         return $x("//div[@class='order-summary__row order-summary__row--total']//i");
     }
 
+    public SelenideElement vatFromTotalProductPrice(String idProduct) {
+        return $x("//tr[@data-article_id='" + idProduct + "']//td[@class='total-price']");
+    }
+
     //locators for checking labels payments method bank
     SelenideElement firstLabelBank() {
         return $x("//img[contains(@src,'wire')]");

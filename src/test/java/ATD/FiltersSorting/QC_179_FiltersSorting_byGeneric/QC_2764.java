@@ -52,6 +52,20 @@ public class QC_2764 {
         new Category_car_list_page_Logic().checkWorkOfSliderInGenericBlock();
     }
 
+    @DataProvider(name = "routesMoto", parallel = true)
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_search2");
+    }
+
+    @Test(dataProvider = "routesMoto")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test check Work of SliderInGenericBlock ")
+    public void testCheckWorkOfSliderInGenericBlockMoto(String route) {
+        openPage(route);
+        new Search_page_Logic().checkWorkOfSliderInGenericBlock();
+    }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

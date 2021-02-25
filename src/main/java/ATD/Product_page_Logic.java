@@ -179,6 +179,12 @@ public class Product_page_Logic extends Product_page {
         return page(Cart_page_Logic.class);
     }
 
+    @Step(":from Product_page")
+    public CartAllData_page_Logic cartClickAndReturnAllDataPage() {
+        new Main_page_Logic().cartClick();
+        return page(CartAllData_page_Logic.class);
+    }
+
     @Step("Checking number basket and refresh page if not. Product_page")
     public Product_page_Logic checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
         try {
@@ -1155,7 +1161,7 @@ public class Product_page_Logic extends Product_page {
     @Step(" check location of kit composition block. Product page")
     public Product_page_Logic locationOfKitCompositionBlock() {
         kitCompositionBlock().shouldBe(visible);
-      //  kitCompositionBlockUnderPdf().shouldBe(visible);   // УБРАЛ ПРОВЕРКУ, ТАК КАК УБРАЛИ PDF БЛОК
+        //  kitCompositionBlockUnderPdf().shouldBe(visible);   // УБРАЛ ПРОВЕРКУ, ТАК КАК УБРАЛИ PDF БЛОК
         kitCompositionBlockAboveFeedbBckBlock().shouldBe(visible);
         return this;
     }
@@ -1652,6 +1658,16 @@ public class Product_page_Logic extends Product_page {
             } catch (Throwable e) {
                 new CommonMethods().writerInFile(fileName, true, idOfProduct.get(i) + "#" + "Fail");
             }
+        }
+        return this;
+    }
+
+    @Step("compare Quantity Of Product And Write To File. Product_page")
+    public Product_page_Logic compareQuantityOfProductAndWriteToFile(String expectedQuantity, String idOfProduct, String fileName) throws IOException {
+        String countOfProduct = countInputOnProduct().shouldBe(visible).attr("value");
+        if (!countOfProduct.equals(expectedQuantity)) {
+            new CommonMethods().writerInFile(fileName, true, idOfProduct);
+            System.out.println(idOfProduct + " - quantity is different. " + String.format("In file quantity - %s , on product page - %s", expectedQuantity, countOfProduct));
         }
         return this;
     }

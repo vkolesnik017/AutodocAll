@@ -156,4 +156,12 @@ public class Moto_Category_car_list_page {
     ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li/a");}
 
     ElementsCollection detailsBlockOfAnalogProduct() {return $$x("//div[@class='rec_prod_info_popup']").filter(visible);}
+
+    SelenideElement brandsFilterInHeader() {return $("#selected-instalation__slider");}
+
+    SelenideElement installationSideFilterInHeader() {return $(".installation-side__content");}
+
+    SelenideElement installationSideFilterInSideBar() {return $(".sidebar  .installation-side__content");}
+
+    SelenideElement brandsFilterInSideBar() {return $(".sidebar .branded-filter-sidebar");}
 }
