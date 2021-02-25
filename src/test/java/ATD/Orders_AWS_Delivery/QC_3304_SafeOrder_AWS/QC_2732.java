@@ -26,12 +26,12 @@ public class QC_2732 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "shopForBASIK", parallel = true)
-    Object[] dataProviderBASIK() throws SQLException {
+    @DataProvider(name = "shop", parallel = true)
+    Object[] dataProvider() throws SQLException {
         return new SetUp("ATD").setUpShopsWithSubroute("prod", "EE,LV,LT,SI,EN", "main", "staticVersand");
     }
 
-    @Test(dataProvider = "shopForBASIK")
+    @Test(dataProvider = "shop", priority = 1)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking for no free SO with ATD + MVP2 BASIK package")
@@ -56,13 +56,7 @@ public class QC_2732 {
                 .checkCurrentStatusInOrder("Testbestellungen");
     }
 
-
-    @DataProvider(name = "shopForOPTIMUM", parallel = true)
-    Object[] dataProviderOPTIMUM() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "EE,LV,LT,SI,EN", "main", "staticVersand");
-    }
-
-    @Test(dataProvider = "shopForOPTIMUM")
+    @Test(dataProvider = "shop", priority = 2)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking for no free SO with ATD + MVP2 OPTIMUM package")
@@ -87,13 +81,7 @@ public class QC_2732 {
                 .checkCurrentStatusInOrder("Testbestellungen");
     }
 
-
-    @DataProvider(name = "shopForTRIAL", parallel = true)
-    Object[] dataProviderTRIAL() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "EE,LV,LT,SI,EN", "main", "staticVersand");
-    }
-
-    @Test(dataProvider = "shopForTRIAL")
+    @Test(dataProvider = "shop", priority = 3)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking for no free SO with ATD + MVP2 TRIAL package")
@@ -118,13 +106,7 @@ public class QC_2732 {
                 .checkCurrentStatusInOrder("Testbestellungen");
     }
 
-
-    @DataProvider(name = "shopForPRO", parallel = true)
-    Object[] dataProviderPRO() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "EE,LV,LT,SI,EN", "main", "staticVersand");
-    }
-
-    @Test(dataProvider = "shopForPRO")
+    @Test(dataProvider = "shop", priority = 4)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking for no free SO with ATD + MVP2 PRO package")
