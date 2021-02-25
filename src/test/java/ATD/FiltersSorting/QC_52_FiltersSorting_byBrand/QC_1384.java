@@ -24,12 +24,17 @@ public class QC_1384 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories,category_car_list,category_oen,search2,category_car_list6,search19,motoroil_viscosity");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories,listing_instruments,listing_chemicals,category_car_list,category_oen,search2,category_car_list6,search19,motoroil_viscosity");
     }
 
     @DataProvider(name = "routeLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2,lkw_search,lkw_search6");
+    }
+
+    @DataProvider(name = "routeMoto", parallel = true)
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_search,moto_category_car_list,moto_category_car_list_model5");
     }
 
 
@@ -46,7 +51,16 @@ public class QC_1384 {
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test checks work of the buttons Previous and Next in the brand block")
-    public void testCheckWorkButtonsPrevAndNextInBlockBrandsForLKW(String route) {
+    public void testLKW_CheckWorkButtonsPrevAndNextInBlockBrands(String route) {
+        openPage(route);
+        new Listing_accessories_page_Logic().checksWorkButtonsPrevAndNextInBlockBrands();
+    }
+
+    @Test(dataProvider = "routeMoto")
+    @Flaky
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checks work of the buttons Previous and Next in the brand block")
+    public void testMoto_CheckWorkButtonsPrevAndNextInBlockBrands(String route) {
         openPage(route);
         new Listing_accessories_page_Logic().checksWorkButtonsPrevAndNextInBlockBrands();
     }
