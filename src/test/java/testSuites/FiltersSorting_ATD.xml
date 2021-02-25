@@ -29,6 +29,7 @@
             <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_3249"/>
             <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_3250"/>
             <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_3253"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_3258"/>
         </classes>
     </test>
 
@@ -49,6 +50,8 @@
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_113"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_114"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_2663"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_3408"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_3406"/>
         </classes>
     </test>
 
