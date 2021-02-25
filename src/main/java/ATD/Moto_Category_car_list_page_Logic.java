@@ -9,11 +9,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.back;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_page {
@@ -317,7 +319,7 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     @Step("add product to basket from an analog block .Moto_Category_car_list_page")
     public Cart_page_Logic addProductToBasketFromAnalogBlock() {
         analogProducts().get(0).hover();
-        if (!detailsBlockOfAnalogProduct().get(0).isDisplayed()){
+        if (!detailsBlockOfAnalogProduct().get(0).isDisplayed()) {
             analogProducts().get(0).hover();
         }
         detailsBlockOfAnalogProduct().get(0).shouldBe(visible);
@@ -426,6 +428,50 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         productsAtTecDocListing().get(7).scrollTo();
         installationSideFilterInSideBar().shouldBe(visible);
         brandsFilterInSideBar().shouldBe(visible);
+        return this;
+    }
+
+    @Step("set Plinth Filter By Title. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic setPlinthFilterByTitle(String title) {
+        plinthFilterByTitle(title).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("set Generic Filter By Title. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic setGenericFilterByTitle(String title) {
+        genericFilterByTitle(title).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("appears of Loader .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic appearsOfLoader() {
+        loader().should(appear);
+        loader().should(disappear);
+        return this;
+    }
+
+    @Step("set brand by id. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic setBrandById(String id) {
+        brandById(id).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check Listing With Selected Plinth filter And Brand filter. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkListingWithSelectedPlinthAndBrand(String lampType, String brand) {
+        List<String> lampValues = lampTypeInCharacteristicsBlock().stream().map(value -> value.getText()).collect(Collectors.toList());
+
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            titleOfProductInTecDocListingBlock().get(i).shouldHave(text(brand));
+            Assert.assertTrue(lampValues.get(i).equals(lampType));
+        }
+        return this;
+    }
+
+    @Step("check Listing With Selected Generic filter And Brand filter. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkListingWithSelectedGenericAndBrand(String generic, String brand) {
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            titleOfProductInTecDocListingBlock().get(i).shouldHave(text(brand)).shouldHave(text(generic));
+        }
         return this;
     }
 }

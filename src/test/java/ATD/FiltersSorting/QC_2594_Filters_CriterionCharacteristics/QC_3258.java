@@ -14,13 +14,14 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.checkingContainsUrl;
+import static Common.CommonMethods.checkingNotContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_3258 {
 
     private String firstIdValue = "1L";
-    private String secondIdValue = "2L";
+    private String secondIdValue = "4L";
     Motoroil_brand_page_Logic motoroilPage = new Motoroil_brand_page_Logic();
 
     @BeforeClass
@@ -47,6 +48,17 @@ public class QC_3258 {
                 .checkSelectedCheckBoxInhaltFilter(firstIdValue)
                 .checkDisplaySelectedInhaltFilterInProducts(firstIdValue);
         checkingContainsUrl(firstIdValue.replaceAll("[^0-9]", ""));
+        motoroilPage
+                .setInhaltFilterInSidebar(secondIdValue)
+                .appearsOfLoader()
+                .checkSelectedCheckBoxInhaltFilter(secondIdValue)
+                .checkDisplaySelectedInhaltFilterInProducts(secondIdValue);
+        checkingContainsUrl(secondIdValue.replaceAll("[^0-9]", ""));
+        motoroilPage.setInhaltFilterInSidebar(secondIdValue)
+                .appearsOfLoader()
+                .checkCheckboxInhaltFilter(false, secondIdValue)
+                .checkSizeValuesInhaltFilterInProducts();
+        checkingNotContainsUrl(secondIdValue.replaceAll(" ", "-").toLowerCase());
     }
 
     @AfterMethod

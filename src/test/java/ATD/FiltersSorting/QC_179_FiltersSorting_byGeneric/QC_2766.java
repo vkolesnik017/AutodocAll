@@ -1,5 +1,6 @@
 package ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric;
 
+import ATD.Accessories_listing_criteria_page_Logic;
 import ATD.Category_car_list_page_Logic;
 import ATD.Listing_instruments_page_Logic;
 import Common.SetUp;
@@ -94,6 +95,20 @@ public class QC_2766 {
     public void testCheckHeadlineOfGenericBlockMoto(String route) {
         openPage(route);
         new Listing_instruments_page_Logic().checkHeadlineOfGenericsBlock("WÄHLEN SIE DIE GEWÜNSCHTE TEILE-KATEGORIE");
+    }
+
+    @DataProvider(name = "routesAccessories", parallel = true)
+    Object[] dataProviderAccessories() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "accessories_listing_criteria");
+    }
+
+    @Test(dataProvider = "routesAccessories")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test check headline of generic block")
+    public void testCheckHeadlineOfGenericBlockAccessories(String route) {
+        openPage(route);
+        new Accessories_listing_criteria_page_Logic().checkHeadlineOfGenericsBlock("WÄHLEN SIE DIE GEWÜNSCHTE TEILE-KATEGORIE");
     }
 
     @AfterMethod
