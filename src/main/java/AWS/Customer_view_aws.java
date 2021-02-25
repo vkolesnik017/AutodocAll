@@ -293,7 +293,7 @@ public class Customer_view_aws {
     @Step("Check and open order with expected data. Customer_view_aws")
     public Order_aws checkAndOpenOrderWithExpectedData() {
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        orderLink(date).click();
+        orderLink(date).shouldBe(visible).click();
         return page(Order_aws.class);
     }
 

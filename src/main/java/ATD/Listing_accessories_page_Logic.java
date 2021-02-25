@@ -167,13 +167,13 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
 
     @Step("Checking work of the buttons Previous and Next in the brand block. Listing_accessories_page")
     public Listing_accessories_page_Logic checksWorkButtonsPrevAndNextInBlockBrands() {
-        secondVisibleBrand().shouldBe(visible);
+        secondVisibleBrand().shouldHave(attribute("aria-hidden", "false"));
         btnPrevInBlockBrands().click();
         sleep(2000);
-        secondVisibleBrand().shouldNotBe(visible);
+        secondVisibleBrand().shouldHave(attribute("aria-hidden", "true"));
         btnNextInBlockBrands().click();
         sleep(2000);
-        secondVisibleBrand().shouldBe(visible);
+        secondVisibleBrand().shouldHave(attribute("aria-hidden", "false"));
         return this;
     }
 

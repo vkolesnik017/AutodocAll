@@ -436,6 +436,12 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
+    @Step("Check presence of VAT in the total price of product{idProduct}. Cart_page")
+    public Cart_page_Logic checkPresenceVatPostscriptInTotalPriceOfGoods(String idProduct) {
+        vatFromTotalProductPrice(idProduct).shouldBe(visible);
+        return this;
+    }
+
     @Step("Get deposit price in product block {productID}. Cart_page")
     public String getDepositPriceInProductBlock(String productID) {
        return pfandPriceInProductBlock(productID).getText();

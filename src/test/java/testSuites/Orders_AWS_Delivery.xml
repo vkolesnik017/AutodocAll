@@ -26,11 +26,23 @@
         </classes>
     </test>
 
-    <test name="QC_2505_Delivery" thread-count="1">
+    <test name="QC_2506_Delivery" thread-count="1">
         <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2506"/>
+        </classes>
+    </test>
+    <test name="QC_2507_Delivery" thread-count="1">
+        <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2507"/>
+        </classes>
+    </test>
+    <test name="QC_2508_Delivery" thread-count="1">
+        <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2508"/>
+        </classes>
+    </test>
+    <test name="QC_2509_Delivery" thread-count="1">
+        <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2509"/>
         </classes>
     </test>

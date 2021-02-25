@@ -38,7 +38,7 @@ public class QC_1027 {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the editing a vehicle on the My garage page in PR")
-    public void testEditingVehicleOnMyGaragePage(String route) throws SQLException {
+    public void testEditingVehicleOnMyGaragePage(String route) {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToMyVehiclesBlock()

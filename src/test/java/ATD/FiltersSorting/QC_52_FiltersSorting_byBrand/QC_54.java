@@ -22,6 +22,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_54 {
+
     private Listing_page_Logic listingPageLogic = new Listing_page_Logic();
     private Listing_instruments_page_Logic instrumentsPage = new Listing_instruments_page_Logic();
     private Category_car_list_page_Logic carListPage = new Category_car_list_page_Logic();
@@ -31,14 +32,11 @@ public class QC_54 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
+
+
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", ",search19");
-    }
-
-    @DataProvider(name = "routesLKW", parallel = true)
-    Object[] dataProviderLKW() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search6");
     }
 
     @Test(dataProvider = "routes")
@@ -53,6 +51,12 @@ public class QC_54 {
                 .checkThatListingDisplaysProductOfOneSelectedBrand(brand1, true, listingPageLogic.productTitleInListMode());
     }
 
+
+    @DataProvider(name = "routesLKW", parallel = true)
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search6");
+    }
+
     @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "Romaniuta")
@@ -65,9 +69,10 @@ public class QC_54 {
                 .checkThatListingDisplaysProductOfOneSelectedBrand(brand1, true, listingPageLogic.productTitleInListMode());
     }
 
+
     @DataProvider(name = "routesAccessories", parallel = true)
     Object[] dataProviderAccessories() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories3,accessories_listing_criteria");
     }
 
     @Test(dataProvider = "routesAccessories")
@@ -81,6 +86,7 @@ public class QC_54 {
         listingPageLogic.clickSecondListingPageButton()
                 .checkThatListingDisplaysProductOfOneSelectedBrand(brand1, true, listingPageLogic.productTitleInListMode());
     }
+
 
     @DataProvider(name = "routesChemical", parallel = true)
     Object[] dataProviderChemical() throws SQLException {
@@ -99,6 +105,7 @@ public class QC_54 {
                 .checkThatListingDisplaysProductOfOneSelectedBrand(brand1, true, listingPageLogic.productTitleInListMode());
     }
 
+
     @DataProvider(name = "routesInstruments", parallel = true)
     Object[] dataProviderInstruments() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments6");
@@ -116,6 +123,7 @@ public class QC_54 {
         instrumentsPage.checkListingWithSelectedBrands(selectedBrands);
     }
 
+
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
@@ -131,6 +139,27 @@ public class QC_54 {
         List<String> selectedBrands = instrumentsPage.getTitleOfSelectedBrands();
         carListPage.checkListingWithVisibleSelectedBrands(selectedBrands);
     }
+
+
+    @DataProvider(name = "routesMoto", parallel = true)
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list16,moto_category_car_list_model8");
+    }
+
+    @Test(dataProvider = "routesMoto")
+    @Flaky
+    @Owner(value = "Sergey_QA")
+    @Description(value = "Test checks brand filter Moto")
+    public void checkBrandFilterMoto(String route) {
+        openPage(route);
+        new Category_car_list_page_Logic().selectBrandInBlock("67");
+        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.firstResetBrandBtn(), listingPageLogic.firstBrandNameInFiler(), "alt");
+        listingPageLogic.checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInListMode());
+    }
+
+
+
+
     @AfterMethod
     private void close() {
         closeWebDriver();

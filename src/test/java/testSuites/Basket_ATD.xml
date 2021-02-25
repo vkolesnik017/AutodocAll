@@ -50,6 +50,7 @@
             <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2346"/>
             <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2343"/>
             <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2347"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2734"/>
         </classes>
     </test>
 
@@ -158,6 +159,7 @@
             <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2989"/>
             <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2584"/>
             <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2992"/>
+            <class name="ATD.Basket.QC_2461_OrderWithDropshippingGoods.QC_2995"/>
         </classes>
     </test>
 
