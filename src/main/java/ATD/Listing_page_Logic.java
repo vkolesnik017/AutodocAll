@@ -488,7 +488,7 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Wait until preloaded disappear. Listing_page")
     public Listing_page_Logic waitUntilPreloaderDisappear() {
         try {
-            preloader().waitUntil(attribute("style", "display: none;"), 20000);
+            preloader().waitUntil(attribute("style", "display: none;"), 50000);
         } catch (ElementNotFound ex) {
             System.out.println("Preloader is not visible");
             ex.printStackTrace();

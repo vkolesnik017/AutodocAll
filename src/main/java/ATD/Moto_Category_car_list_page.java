@@ -164,4 +164,14 @@ public class Moto_Category_car_list_page {
     SelenideElement installationSideFilterInSideBar() {return $(".sidebar  .installation-side__content");}
 
     SelenideElement brandsFilterInSideBar() {return $(".sidebar .branded-filter-sidebar");}
+
+    SelenideElement plinthFilterByTitle(String title) {return $x("//div[@class='filter-disk__form']//span[text()='"+title+"']");}
+
+    SelenideElement loader() { return $x("//div[@class='preloader_wrapper']"); }
+
+    SelenideElement brandById(String id) {return $x("//div[@id='selected-instalation__slider']//label[@for='cb-brand-"+id+"']");}
+
+    ElementsCollection lampTypeInCharacteristicsBlock() {return $$x("//div[@class='about']//span[text()='Lampenart:  ']/following-sibling::span");}
+
+    SelenideElement genericFilterByTitle(String title) {return $x("//div[@class='filter-generics-tecdoc__item-title'][text()='"+title+"']/ancestor::label");}
 }

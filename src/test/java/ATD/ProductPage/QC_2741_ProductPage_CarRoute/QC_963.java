@@ -32,7 +32,7 @@ public class QC_963 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @Test (enabled = false) // TODO Bug SEO-2549
+    @Test ()
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks presence of elements on product page")
