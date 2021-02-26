@@ -93,13 +93,19 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
-    @Step("Click on fourth Bread Crumb. Listing_accessories_page")
-    public Listing_accessories_page_Logic checkingPresenceAndNotClickableFourthBreadCrumb() {
-        fourthBreadCrumb().shouldBe(visible).shouldNotBe(attribute("href"));
+    @Step("Checking presence and not clickable last Bread Crumb. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingPresenceAndNotClickableLastBreadCrumb(SelenideElement lastBreadCrumb) {
+        lastBreadCrumb.shouldBe(visible).shouldNotBe(attribute("href"));
         return this;
     }
 
-    @Step("Checking presence and not clickable third Bread Crumb. Listing_accessories_page")
+    @Step("Click on fourth Bread Crumb. Listing_accessories_page")
+    public Listing_accessories_page_Logic clickFourthBreadCrumb() {
+        fourthBreadCrumb().click();
+        return this;
+    }
+
+    @Step("Click on third Bread Crumb. Listing_accessories_page")
     public Index_accessories_group_page_Logic clickThirdBreadCrumb() {
         thirdBreadCrumb().click();
         return page(Index_accessories_group_page_Logic.class);
@@ -231,7 +237,6 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         btnNextPageInPagination().click();
         checkingContainsUrl("page=3");
         btnReturnOnFirstPageInPagination().click();
-        checkingContainsUrl("einparkhilfen");
         return this;
     }
 

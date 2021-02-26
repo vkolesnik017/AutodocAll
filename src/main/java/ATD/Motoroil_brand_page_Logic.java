@@ -109,6 +109,16 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
         return this;
     }
 
+    @Step("check Checkbox of Inhalt Filter . Motoroil_brand_page")
+    public Motoroil_brand_page_Logic checkCheckboxInhaltFilter(boolean label, String expectedValue) {
+        if (label == true) {
+            checkBoxInhaltFilter(expectedValue).shouldHave(attribute("checked"));
+        } else {
+            checkBoxInhaltFilter(expectedValue).shouldNotHave(attribute("checked"));
+        }
+        return this;
+    }
+
     @Step("check Size Values Oem-Freigabe Filter In Products . Motoroil_brand_page")
     public Motoroil_brand_page_Logic checkSizeValuesOemFreigabeFilterInProducts() {
         for (int i = 0; i < oemValuesInProducts().size(); i++) {
@@ -123,6 +133,16 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
     public Motoroil_brand_page_Logic checkSizeValuesSpecificationFilterInProducts() {
         for (int i = 0; i < specificationValuesInProducts().size(); i++) {
             List<String> valuesFromProduct = new ArrayList<>(Arrays.asList(specificationValuesInProducts().get(i).getText().split(", ")));
+            Assert.assertTrue(valuesFromProduct.size() > 0);
+            valuesFromProduct.clear();
+        }
+        return this;
+    }
+
+    @Step("check Size Values Inhalt Filter In Products . Motoroil_brand_page")
+    public Motoroil_brand_page_Logic checkSizeValuesInhaltFilterInProducts() {
+        for (int i = 0; i < inhaltValuesInProducts().size(); i++) {
+            List<String> valuesFromProduct = new ArrayList<>(Arrays.asList(inhaltValuesInProducts().get(i).getText().split(", ")));
             Assert.assertTrue(valuesFromProduct.size() > 0);
             valuesFromProduct.clear();
         }
@@ -149,7 +169,7 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
     public Motoroil_brand_page_Logic checkDisplaySelectedInhaltFilterInProducts(String expectedValue) {
         for (int i = 0; i < inhaltValuesInProducts().size(); i++) {
             List<String> valuesFromProduct = new ArrayList<>(Arrays.asList(inhaltValuesInProducts().get(i).getText().split(", ")));
-            Assert.assertTrue(valuesFromProduct.contains(expectedValue.replaceAll("[^0-9]","")));
+            Assert.assertTrue(valuesFromProduct.contains(expectedValue.replaceAll("[^0-9]", "")));
             valuesFromProduct.clear();
         }
         return this;
