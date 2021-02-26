@@ -56,6 +56,10 @@ public class Order_aws {
         return $("[data-hint='Test']");
     }
 
+    private SelenideElement blackListLabel() {
+        return $x("//div[@class='form-group']//div[text()=' Blacklist']");
+    }
+
     private SelenideElement productQuantity() {
         return $(By.xpath("//*[@id='table_order_products_list']/tbody/tr/td[16]"));
     }
@@ -175,6 +179,14 @@ public class Order_aws {
 
     private SelenideElement popUpAddProduct() {
         return $x("//div[@id='addProduct']//div[@class='modal-dialog']");
+    }
+
+    private SelenideElement popUpBlackList() {
+        return $x("//div[@class='modal-dialog']//*[contains(text(),'Blacklist')]");
+    }
+
+    private SelenideElement closePopUPBlackList() {
+        return $x("//a[@class='btn btn-danger']");
     }
 
     private SelenideElement suppliersTableInPopUpAddProduct() {
@@ -938,6 +950,15 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Open order in AWS with login and check Black List label. Order_aws")
+    public Order_aws openOrderInAwsAndCheckBlackListLabel() {
+        open(url + orderNumber);
+        new Login_aws().loginInAws();
+        checkWhatOrderOpened();
+        blackListLabel().shouldBe(visible);
+        return this;
+    }
+
     public Order_aws openOrderInAwsWithoutLoginAndCheckTestIcon() {
         open(url + orderNumber);
         checkOrderHasTestPhone();
@@ -1657,4 +1678,28 @@ public class Order_aws {
         errorPopupInTopRight().shouldBe(visible);
         return this;
     }
+
+    @Step("Checks the phone number for extra characters. Order_aws")
+    public Order_aws checkPhoneNumberForExtraCharacters(String expectedChar) {
+        String phoneNum = fieldPhoneInBilling().getValue().replaceAll("^\\d{2}", "");
+        if (phoneNum.startsWith("0")) {
+            Assert.fail("Number starts at zero");
+        } else {
+            System.out.println("Number does not start at zero");
+        }
+        if (phoneNum.contains(expectedChar)) {
+            Assert.fail("The number contains the symbol");
+        } else {
+            System.out.println("The number does not contain the symbol");
+        }
+        return this;
+    }
+
+    @Step("Check and close pop up Black List. Order_aws")
+    public Order_aws checkAndClosePopUpBlackList() {
+        popUpBlackList().waitUntil(visible, 5000);
+        closePopUPBlackList().click();
+        return this;
+    }
+
 }

@@ -117,4 +117,10 @@
         </classes>
     </test>
 
+    <test name="QC_2336_BlackList">
+        <classes>
+            <class name="ATD.Orders_AWS_Delivery.QC_2336_BlackList.QC_2340"/>
+        </classes>
+    </test>
+
 </suite>
