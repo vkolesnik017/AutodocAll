@@ -864,7 +864,7 @@ public class Product_page {
     ElementsCollection productsFromKitCompositionBlock() { return $$x("//div[@class='product-info-block__set__row']/div[1]/a"); }
     SelenideElement pricePerMeter() {return $x("//*[contains(text(),'Preis pro Meter')]");}
 
-    SelenideElement locationOfCandlesAnalogBlock() {return $x("//div[@id='footer']/preceding-sibling::main[@class='product-page']/div/div[last()]");}
+    SelenideElement locationOfCandlesAnalogBlock() {return $x("//div[@id='footer']/preceding-sibling::main[@class='product-page']/div/div[last()-1]");}
 
     SelenideElement headlineOfCandlesAnalogBlock() {return $(byId("section8"));}
 
