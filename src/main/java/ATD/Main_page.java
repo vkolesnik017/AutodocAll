@@ -887,4 +887,6 @@ public class Main_page {
     SelenideElement categoriesBlockInHeader() {return $x("//div[@class='header__nav']");}
 
     ElementsCollection visibleCategoriesInHeader() {return $$x("//ul[@class='header__nav-list']//li").filter(visible);}
+
+    SelenideElement autodocPlusLinkInHeader() { return $(".header__plus-icon"); }
 }
