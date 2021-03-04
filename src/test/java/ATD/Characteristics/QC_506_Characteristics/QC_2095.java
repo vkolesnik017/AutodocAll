@@ -43,7 +43,7 @@ public class QC_2095 {
         tyreFormPage.goToProductpage(0).compareMpnNumOfProduct(mpnOfProduct).addProductToBasket();
         String mpnNumOfProduct = tyreItemPage.getMpnNumOfProduct();
         tyreItemPage.compareMpnNumOfProductInBasketPopUp(mpnNumOfProduct).goToBasket().nextButtonClick()
-                .signIn(email, password).fillAllFields("DE").nextBtnClick().chooseVorkasse().nextBtnClick().compareArtNumOfProduct(mpnNumOfProduct);
+                .signIn(email, password).fillAllFieldsForShipping("DE").nextBtnClick().chooseVorkasse().nextBtnClick().compareArtNumOfProduct(mpnNumOfProduct);
     }
 
 
@@ -62,7 +62,7 @@ public class QC_2095 {
         tyreFormPage.goToProductpage(0).compareMpnNumOfProduct(mpnOfProduct).addProductToBasket();
         String mpnNumOfProduct = tyreItemPage.getMpnNumOfProduct();
         tyreItemPage.compareMpnNumOfProductInBasketPopUp(mpnNumOfProduct).goToBasket().nextButtonClick()
-                .signIn(email, password).fillAllFields("DE").nextBtnClick().chooseVorkasse().nextBtnClick().compareArtNumOfProduct(mpnNumOfProduct);
+                .signIn(email, password).fillAllFieldsForShipping("DE").nextBtnClick().chooseVorkasse().nextBtnClick().compareArtNumOfProduct(mpnNumOfProduct);
     }
 
     @AfterMethod

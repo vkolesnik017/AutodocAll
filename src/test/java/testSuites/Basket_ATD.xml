@@ -91,6 +91,8 @@
             <class name="ATD.Basket.QC_3090_BanningWordPackstationInStreetFieldAt_DE_Shop.QC_1938"/>
             <class name="ATD.Basket.QC_3090_BanningWordPackstationInStreetFieldAt_DE_Shop.QC_1939"/>
             <class name="ATD.Basket.QC_3090_BanningWordPackstationInStreetFieldAt_DE_Shop.QC_1940"/>
+            <class name="ATD.Basket.QC_3090_BanningWordPackstationInStreetFieldAt_DE_Shop.QC_3079"/>
+            <class name="ATD.Basket.QC_3090_BanningWordPackstationInStreetFieldAt_DE_Shop.QC_3080"/>
         </classes>
     </test>
 

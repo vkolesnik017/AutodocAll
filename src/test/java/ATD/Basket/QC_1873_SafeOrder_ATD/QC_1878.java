@@ -44,7 +44,7 @@ public class QC_1878 {
                 .checkNumberOfDaysInSafeOrderBlockForDeAndFrShops(shop, "200")
                 .nextButtonClick()
                 .signIn(mail, password)
-                .fillAllFields(shop)
+                .fillAllFieldsForShipping(shop)
                 .nextBtnClick()
                 .choosePayPal()
                 .nextBtnClick()

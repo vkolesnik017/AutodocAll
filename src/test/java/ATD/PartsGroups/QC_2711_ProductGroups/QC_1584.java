@@ -43,7 +43,7 @@ public class QC_1584 {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
-                .fillAllFields(shop).nextBtnClick()
+                .fillAllFieldsForShipping(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));

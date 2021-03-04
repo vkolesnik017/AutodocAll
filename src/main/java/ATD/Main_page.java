@@ -40,6 +40,15 @@ public class Main_page {
         return $x("//input[@name='login']");
     }
 
+    // Locators for basket preview
+    SelenideElement previewBasket() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement articleNumInProductFromPreview() {
+        return $x("//div[@class='row-text']//span");
+    }
+
     // When user signIn
     SelenideElement profileBtn() {
         return $(By.xpath("//a[@class='header-i header-i--user']"));

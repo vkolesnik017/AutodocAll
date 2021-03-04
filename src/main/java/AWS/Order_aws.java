@@ -56,8 +56,16 @@ public class Order_aws {
         return $("[data-hint='Test']");
     }
 
+    private SelenideElement iconIdInBlackList() {
+        return $x("//div[@data-hint='ID in Blacklist']");
+    }
+
     private SelenideElement blackListLabel() {
         return $x("//div[@class='form-group']//div[text()=' Blacklist']");
+    }
+
+    private SelenideElement infoOrderAccountInBlackList() {
+        return $x("//span[normalize-space()='Account is in Blacklist']");
     }
 
     private SelenideElement productQuantity() {
@@ -990,6 +998,12 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Checks that there is a postscript in the order information that the account is on the blacklist. Order_aws")
+    public Order_aws checkInfoOrderAccountInBlackList() {
+        infoOrderAccountInBlackList().waitUntil(visible, 3000);
+        return this;
+    }
+
     @Step
     public Order_aws checkOrderHasTestStatus() {
         statusOrder().waitUntil(visible, 5000);
@@ -1699,6 +1713,12 @@ public class Order_aws {
     public Order_aws checkAndClosePopUpBlackList() {
         popUpBlackList().waitUntil(visible, 5000);
         closePopUPBlackList().click();
+        return this;
+    }
+
+    @Step("Check presence icon ID in BlackList. Order_was")
+    public Order_aws checkIconIdInBlackList() {
+        iconIdInBlackList().waitUntil(visible, 3000);
         return this;
     }
 

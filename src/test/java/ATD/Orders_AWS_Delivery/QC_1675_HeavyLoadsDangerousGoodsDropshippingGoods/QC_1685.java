@@ -49,7 +49,7 @@ public class QC_1685 {
                 .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
-                .fillAllFields(shop).nextBtnClick()
+                .fillAllFieldsForShipping(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .checkRegularDeliveryPrice("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
