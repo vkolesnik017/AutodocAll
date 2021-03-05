@@ -1083,8 +1083,7 @@ public class Order_aws {
 
     @Step("Save order. Order_aws")
     public Order_aws saveOrder() {
-        btnChangeOrderStatusInTest().scrollTo();
-        saveChangesInOrderBtn().click();
+        saveChangesInOrderBtn().scrollTo().click();
         sleep(5000);
         return this;
     }

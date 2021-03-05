@@ -47,7 +47,6 @@ public class QC_2464 {
         String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "Bank");
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .checksForLabelOfBankPaymentMethod()
                 .nextButtonClick()

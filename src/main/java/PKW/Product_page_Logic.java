@@ -73,16 +73,22 @@ public class Product_page_Logic extends Product_page {
         closeBtnOFPopupReviewIfYes();
         checkNumberBasketAndRefreshPageIfNot();
         sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
-        buyButton().click();
-        closePopupOtherCategoryIfYes();
         try {
-            checksPresentProductInCartPopup();
-        } catch (UIAssertionError e) {
-            closePopupOtherCategoryIfYes();
             buyButton().click();
-            checksPresentProductInCartPopup();
+            closePopupOtherCategoryIfYes();
+        } catch (UIAssertionError s) {
+            closeBtnOFPopupReviewIfYes();
+            buyButton().click();
+            closePopupOtherCategoryIfYes();
         }
-        return this;
+            try {
+                checksPresentProductInCartPopup();
+            } catch (UIAssertionError e) {
+                closePopupOtherCategoryIfYes();
+                buyButton().click();
+                checksPresentProductInCartPopup();
+            }
+            return this;
     }
 
     @Step(":from Product_page")

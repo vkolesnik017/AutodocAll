@@ -41,7 +41,6 @@ public class QC_2410 {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         float totalPrice = new Product_page_Logic().addProductToCart()
-                .closeBtnOFPopupReviewIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password)

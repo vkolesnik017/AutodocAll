@@ -58,6 +58,12 @@ public class Merchant_page {
     SelenideElement submitCancelTransactionBtn() {
         return $x("//button[@id='CancelTransaction']");
     }
+    SelenideElement cookieModal() {
+        return $x("//div[@class='modal-container compact']");
+    }
+    SelenideElement cookieAcceptAllBtn() {
+        return $x("(//div[@id='cookie-modal-basic']//button[contains(@class,'modal-accept-all')])[2]");
+    }
 
     //Elements from the Ideal merchant
     SelenideElement validateSubmit() {
@@ -275,6 +281,9 @@ public class Merchant_page {
     @Step("Cancels order for Sofort method. Merchant_page")
     public CartPayments_page_Logic cancelOrderForSofortMethod() {
         checkingContainsUrl("sofort.com");
+        if (cookieModal().isDisplayed()) {
+            cookieAcceptAllBtn().shouldBe(visible).click();
+        }
         cancelTransaction().click();
         try {
             switchTo().alert().accept();
