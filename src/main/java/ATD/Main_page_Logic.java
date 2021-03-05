@@ -889,8 +889,8 @@ public class Main_page_Logic extends Main_page {
             String shopName = element.attr("id");
             shopName = shopName.substring(shopName.indexOf("_") + 1);
             if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
-            $(By.xpath("//div[contains(@class,'footer-language__select')]")).click();
-            element.$(By.xpath("./a")).scrollIntoView(true).click();
+            $(By.xpath("//div[contains(@class,'footer-language__select')]")).scrollIntoView(true).click();
+            element.waitUntil(visible, 3000).scrollIntoView(true).click();
             new CommonMethods().checkingUrlAndCloseTab(new DataBase("ATD").getRouteByRouteName(shopName, "main"));
         }
         return this;
