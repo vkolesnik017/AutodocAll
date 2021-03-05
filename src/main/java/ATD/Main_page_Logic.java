@@ -884,13 +884,12 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Checking countries subscription from footer country list. Main_page")
     public Main_page_Logic checkingCountriesSubscription() throws SQLException {
-        ElementsCollection elements = $$(By.xpath("//div[@class='mCSB_container']/div"));
-        for (SelenideElement element : elements) {
+        for (SelenideElement element : allCountryInLangSelector()) {
             String shopName = element.attr("id");
             shopName = shopName.substring(shopName.indexOf("_") + 1);
             if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
-            $(By.xpath("//div[contains(@class,'footer-language__select')]")).click();
-            element.$(By.xpath("./a")).scrollIntoView(true).click();
+            languageSelector().scrollIntoView(true).click();
+            element.waitUntil(visible, 3000).scrollIntoView(true).click();
             new CommonMethods().checkingUrlAndCloseTab(new DataBase("ATD").getRouteByRouteName(shopName, "main"));
         }
         return this;
