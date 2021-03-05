@@ -45,7 +45,6 @@ public class QC_2474 {
         String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "Multibanco");
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
-                .closeBtnOFPopupReviewIfYes()
                 .cartClick()
                 .checkPresencePaymentsMethodLabel(new Cart_page().multibancoLabel())
                 .nextButtonClick()

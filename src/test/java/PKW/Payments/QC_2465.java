@@ -33,7 +33,7 @@ public class QC_2465 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
         return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,AT,CH", "main", "product");
     }
@@ -49,7 +49,6 @@ public class QC_2465 {
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
-                .closeBtnOFPopupReviewIfYes()
                 .cartClick()
                 .checkPresencePaymentsMethodLabel(new Cart_page().sofortLabel())
                 .nextButtonClick()
