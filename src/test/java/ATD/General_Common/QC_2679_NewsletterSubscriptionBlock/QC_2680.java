@@ -42,7 +42,7 @@ public class QC_2680 {
                 .nextButtonClick()
                 .checkAndClickTextBlockInRegForm()
                 .registrationFromCart(email)
-                .fillAllFields("DE")
+                .fillAllFieldsForShipping("DE")
                 .nextBtnClick();
         new WebMail().openMail(email)
                 .checkLetterInfoText(1, "just now", "Noch ein weiterer Schritt und Sie haben unseren Newsletter abonniert.")

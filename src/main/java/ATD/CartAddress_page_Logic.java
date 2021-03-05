@@ -23,7 +23,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Filling fields. CartAddress_page")
-    public CartAddress_page_Logic fillAllFields(String shop) {
+    public CartAddress_page_Logic fillAllFieldsForShipping(String shop) {
         checkCorrectTextAndFillInput(vorname(), "autotest");
         checkCorrectTextAndFillInput(nameIn(), "autotest");
         checkCorrectTextAndFillInput(strasse(), "autotest");
@@ -32,6 +32,20 @@ public class CartAddress_page_Logic extends CartAddress_page {
         fillInPostalCode("default");
         checkCorrectTextAndFillInput(ort(), "autotest");
         checkCorrectTextAndFillInput(telephoneShipping(), "200+002");
+        return this;
+    }
+
+    @Step("Filling fields. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsForShipping(String name, String surname, String street,
+                                                           String house, String shop, String city, String telNum) {
+        checkCorrectTextAndFillInput(vorname(), name);
+        checkCorrectTextAndFillInput(nameIn(), surname);
+        checkCorrectTextAndFillInput(strasse(), street);
+        checkCorrectTextAndFillInput(deliveryHouse(), house);
+        chooseDeliveryCountryForShipping(shop);
+        fillInPostalCode("default");
+        checkCorrectTextAndFillInput(ort(), city);
+        checkCorrectTextAndFillInput(telephoneShipping(), telNum);
         return this;
     }
 
@@ -45,6 +59,20 @@ public class CartAddress_page_Logic extends CartAddress_page {
         fillInPostalCodeForBilling("default");
         checkCorrectTextAndFillInput(ortBilling(), "autotest");
         checkCorrectTextAndFillInput(telephonBilling(), "200+002");
+        return this;
+    }
+
+    @Step("Filling fields for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsForBilling(String name, String surname, String street,
+                                                          String house, String shop, String city, String telNum) {
+        checkCorrectTextAndFillInput(vornameBilling(), name);
+        checkCorrectTextAndFillInput(nameInBilling(), surname);
+        checkCorrectTextAndFillInput(strasseBilling(), street);
+        checkCorrectTextAndFillInput(paymentHouseBilling(), house);
+        chooseDeliveryCountryForBilling(shop);
+        fillInPostalCodeForBilling("default");
+        checkCorrectTextAndFillInput(ortBilling(), city);
+        checkCorrectTextAndFillInput(telephonBilling(), telNum);
         return this;
     }
 
@@ -375,6 +403,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Click checkbox for open billing form. CartAddress_page")
     public CartAddress_page_Logic clickCheckboxForOpenBilling() {
+        billingCheckBox().waitUntil(visible,3000);
         if (!billingForm().isDisplayed()) {
             billingCheckBox().click();
         }

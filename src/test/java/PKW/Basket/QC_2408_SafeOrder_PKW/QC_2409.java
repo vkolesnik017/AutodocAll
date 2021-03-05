@@ -40,7 +40,6 @@ public class QC_2409 {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         String orderNumber = new Product_page_Logic().addProductToCart()
-                .closeBtnOFPopupReviewIfYes()
                 .cartClick()
                 .checkThatSafeOrderCheckboxIsNotSelected()
                 .nextButtonClick()

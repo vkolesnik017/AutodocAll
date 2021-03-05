@@ -44,7 +44,6 @@ public class QC_2392 {
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         new Product_page_Logic().addProductToCart()
-                .closeBtnOFPopupReviewIfYes()
                 .cartClick()
                 .checkPresencePaymentsMethodLabel(new Cart_page().visaLabel(), new Cart_page().masterCardLabel())
                 .checksPresenceOfPaymentMethodsLabelForRequiredCountry(shop,"IT", new Cart_page().cartaSiLabel(), new Cart_page().postePayLabel())

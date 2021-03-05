@@ -51,7 +51,6 @@ public class QC_2470 {
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
-                .closeBtnOFPopupReviewIfYes()
                 .cartClick()
                 .checkPresencePaymentsMethodLabel(new Cart_page().klarnaLabel())
                 .nextButtonClick()

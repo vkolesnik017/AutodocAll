@@ -405,7 +405,7 @@ public class Product_page {
     }
 
     SelenideElement heavyCargoLink() {
-        return $(By.xpath("//p[@class='product-inkl-info']/a[2]"));
+        return $(By.xpath("//div[@class='product-inkl-info']//a[2]"));
     }
 
     SelenideElement heavyCargoBlock() {
@@ -431,7 +431,7 @@ public class Product_page {
     }
 
     public SelenideElement vatPostscript() {
-        return $x("//p[@class='product-inkl-info']/span");
+        return $x("//div[@class='product-inkl-info']//span");
     }
 
     // locators in popup of cart
