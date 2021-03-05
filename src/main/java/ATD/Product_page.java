@@ -405,7 +405,7 @@ public class Product_page {
     }
 
     SelenideElement heavyCargoLink() {
-        return $(By.xpath("//p[@class='product-inkl-info']/a[2]"));
+        return $(By.xpath("//div[@class='product-inkl-info']//a[2]"));
     }
 
     SelenideElement heavyCargoBlock() {
