@@ -252,9 +252,8 @@ public class Merchant_page {
         switchTo().frame(frame());
         sleep(5000);
         allBank().click();
-        formForDataInMerchant().waitUntil(visible, 10000);
-        sleep(5000);
-        headerBackBtn().click();
+        sleep(3000);
+        headerBackBtn().waitUntil(visible, 10000).click();
         cancelTransactionBtnTrustly().waitUntil(visible, 10000).click();
         checkingContainsUrl("/basket/payments");
         return page(CartPayments_page_Logic.class);

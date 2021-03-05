@@ -54,7 +54,7 @@ public class QC_1594 {
                 .cartClick()
                 .counterIncreaseForPaired("4").counterDecreaseForPaired("6").nextButtonClick()
                 .signIn(testMail, password)
-                .fillAllFields(shop).nextBtnClick()
+                .fillAllFieldsForShipping(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .counterIncreaseForPaired("4").counterDecreaseForPaired("6").nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));

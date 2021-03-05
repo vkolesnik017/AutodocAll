@@ -1785,4 +1785,11 @@ public class Main_page_Logic extends Main_page {
         }
         return this;
     }
+
+    @Step("Hover over the preview basket and check the article item number {expectedArtNum}. Main_page")
+    public Main_page_Logic hoverOverPreviewBasketAndCheckArtItemNum(String expectedArtNum) {
+        previewBasket().scrollIntoView("{block: \"center\"}").hover();
+        articleNumInProductFromPreview().shouldBe(visible).shouldHave(text(expectedArtNum));
+        return this;
+    }
 }

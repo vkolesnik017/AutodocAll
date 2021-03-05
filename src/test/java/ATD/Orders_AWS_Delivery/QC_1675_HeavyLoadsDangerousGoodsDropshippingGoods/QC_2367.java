@@ -49,7 +49,7 @@ public class QC_2367 {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .fillAllFields("DE")
+                .fillAllFieldsForShipping("DE")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()

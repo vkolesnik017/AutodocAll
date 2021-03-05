@@ -1,6 +1,7 @@
-package ATD.Basket.QC_1873_SafeOrder_ATD;
+package ATD.Orders_AWS_Delivery.QC_2336_BlackList;
 
 import ATD.Product_page_Logic;
+import AWS.Order_aws;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,9 +17,7 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1879 {
-
-    private String mail = "QC_1879_autotest@mailinator.com";
+public class QC_2340 {
 
     @BeforeClass
     void setUp() {
@@ -27,27 +26,35 @@ public class QC_1879 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "CH,NO", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks absence of SO block on language versions where it is not included.")
-    public void testAbsenceOfSO_BlockOnLanguageVersionsWhereITIsNotIncluded(String route) throws SQLException {
+    @Description(value = "Test order entry into status 65 (Blacklist) when PHONE parameter matches")
+    public void testCheckingBlacklistStatusWhenPhoneMatches(String route) throws SQLException {
+        String mail = "qc_2340_autotest@mailinator.com";
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        new Product_page_Logic().addProductToCart()
+        String orderID = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkAbsenceSafeOrderBlock()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .fillAllFieldsForShipping(shop)
+                .chooseDeliveryCountryForShipping(shop)
+                .fillFieldTelNumForShipping("011110000-1111")
                 .nextBtnClick()
-                .choosePayPal()
+                .clickOnTheDesiredPaymentMethod(shop, "Bank")
                 .nextBtnClick()
-                .checkAbsenceSafeOrderBlock();
+                .nextBtnClick()
+                .getOrderNumber();
+        new Order_aws(orderID).openOrderInAwsAndCheckBlackListLabel()
+                .checkCurrentStatusInOrder("Blacklist")
+                .checkPhoneNumberForExtraCharacters("-")
+                .reSaveOrder()
+                .checkAndClosePopUpBlackList()
+                .checkCurrentStatusInOrder("Testbestellungen");
     }
 
     @AfterMethod
