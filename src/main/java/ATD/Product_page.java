@@ -149,7 +149,7 @@ public class Product_page {
     }
 
     public SelenideElement versandkostenButton() {
-        return $(".product-inkl-info > a");
+        return $(".product-inkl-info  a");
     }
 
     public SelenideElement raitingBlock() {

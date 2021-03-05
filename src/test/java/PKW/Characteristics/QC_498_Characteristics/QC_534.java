@@ -33,7 +33,11 @@ public class QC_534 {
     public void testChecksPresenceOfRefurbishedCharacteristicInBasket(String route) {
         openPage(route);
 
-        new Product_page_Logic().addProductToBasket().cartClick().presenceOfAddedProductList().presenceOfExpectedCharacteristic("Zustand: Wiederaufbereitet");
+        new Product_page_Logic()
+                .addProductToBasket()
+                .cartClick()
+                .presenceOfAddedProductList()
+                .presenceOfExpectedCharacteristic("Zustand: Wiederaufbereitet");
     }
 
     @AfterMethod
