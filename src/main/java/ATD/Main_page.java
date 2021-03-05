@@ -528,6 +528,10 @@ public class Main_page {
         return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1'] [@style='visibility: visible;']");
     }
 
+    ElementsCollection allCountryInLangSelector() {
+        return $$x("//div[@class='mCSB_container']/div");
+    }
+
     // Vertical car selector popup
 
     public SelenideElement brandSelectorInVerticalCarSelector() {
