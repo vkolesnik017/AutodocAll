@@ -30,7 +30,7 @@ public class Product_page_Logic extends Product_page {
     @Step("Closing other category popup after adding product in basket. Product_page")
     public Product_page_Logic closePopupOtherCategoryIfYes() {
         try {
-            closeBtnOfPopupOtherCategory().waitUntil(visible, 2500);
+            closeBtnOfPopupOtherCategory().waitUntil(visible, 5000);
             closeBtnOfPopupOtherCategory().click();
             closeBtnOfPopupOtherCategory().shouldBe(not(visible));
         } catch (ElementNotFound ignored) {
@@ -74,6 +74,7 @@ public class Product_page_Logic extends Product_page {
         checkNumberBasketAndRefreshPageIfNot();
         sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
         buyButton().click();
+        closePopupOtherCategoryIfYes();
         try {
             checksPresentProductInCartPopup();
         } catch (UIAssertionError e) {
