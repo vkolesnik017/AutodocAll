@@ -26,7 +26,7 @@ public class QC_1888 {
         return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product13");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routes" )
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Checking the presence of the elements, checking the transition after clicking the links ang brand logo")
     public void testCheckingThePresenceOfTheElements(String route) throws SQLException {

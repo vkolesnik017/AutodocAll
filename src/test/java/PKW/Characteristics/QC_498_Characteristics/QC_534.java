@@ -34,7 +34,7 @@ public class QC_534 {
         openPage(route);
 
         new Product_page_Logic()
-                .addProductToBasket()
+                .addProductToCart()
                 .cartClick()
                 .presenceOfAddedProductList()
                 .presenceOfExpectedCharacteristic("Zustand: Wiederaufbereitet");
