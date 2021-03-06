@@ -59,10 +59,10 @@ public class QC_1222 {
     public void testChecksResetOfToleranceFilterInOilListingBrand(String route) {
         openPage(route);
         String currentUrl = viscosityBrandPage.getCurrentUrl();
-        viscosityBrandPage.selectFilterByTolerance("Ford WSS-M2C913-A", "?release%5B%5D=ford-wss-m2c913-a")
-                .clickOnToleranceFilter("Ford WSS-M2C913-A");
+        viscosityBrandPage.selectFilterByTolerance("BMW Longlife-12 FE", "?release%5B%5D=bmw-longlife-12-fe")
+                .clickOnToleranceFilter("BMW Longlife-12 FE");
         checkingContainsUrl(currentUrl);
-        viscosityBrandPage.selectFilterByTolerance("Ford WSS-M2C913-A", "?release%5B%5D=ford-wss-m2c913-a")
+        viscosityBrandPage.selectFilterByTolerance("BMW Longlife-12 FE", "?release%5B%5D=bmw-longlife-12-fe")
                 .clickOnToleranceFilter("Alle");
         checkingContainsUrl(currentUrl);
     }

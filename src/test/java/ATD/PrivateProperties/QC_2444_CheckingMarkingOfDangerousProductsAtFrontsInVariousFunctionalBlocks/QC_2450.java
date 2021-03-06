@@ -139,6 +139,7 @@ public class QC_2450 {
         String signalWord = categoryNamePage.getSignalWordFromFirstDangerousProduct();
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

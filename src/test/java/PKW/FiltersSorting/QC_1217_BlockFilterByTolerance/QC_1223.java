@@ -52,8 +52,8 @@ public class QC_1223 {
     public void testChecksResetOfToleranceFilterInOilListingBrand(String route) {
         openPage(route);
 
-        new Motoroil_viscosity_brand_page_Logic().selectFilterByTolerance("Ford WSS-M2C913-A", "?release%5B%5D=ford-wss-m2c913-a")
-                .selectFilterByTolerance("Ford WSS-M2C913-B", "?release%5B%5D=ford-wss-m2c913-b")
+        new Motoroil_viscosity_brand_page_Logic().selectFilterByTolerance("BMW Longlife-12 FE", "?release%5B%5D=bmw-longlife-12-fe")
+                .selectFilterByTolerance("Ford WSS-M2C950-A", "?release%5B%5D=ford-wss-m2c950-a")
                 .checkCountOfSelectedToleranceFilter();
     }
 
