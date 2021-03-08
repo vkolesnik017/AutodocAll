@@ -49,7 +49,7 @@ public class QC_1683 {
                 .addProductToCart().closePopupOtherCategoryIfYes().cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .fillAllFields(shop).nextBtnClick()
+                .fillAllFieldsForShipping(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .checkPresenceFreeDeliveryPriceCartAllDataPage()
                 .checkPresenceHeavyLoadsDeliveryPriceAllDataPage()

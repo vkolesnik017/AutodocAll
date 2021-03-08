@@ -50,7 +50,7 @@ public class QC_1880 {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .fillAllFields(shop)
+                .fillAllFieldsForShipping(shop)
                 .nextBtnClick()
                 .choosePayPal()
                 .nextBtnClick()

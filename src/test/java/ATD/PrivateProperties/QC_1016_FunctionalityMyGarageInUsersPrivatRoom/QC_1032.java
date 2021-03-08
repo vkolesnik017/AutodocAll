@@ -49,7 +49,7 @@ public class QC_1032 {
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .clickBtnNextAndTransitionOnAddressPage()
-                .fillAllFields(shop)
+                .fillAllFieldsForShipping(shop)
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()

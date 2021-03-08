@@ -43,7 +43,7 @@ public class QC_1879 {
                 .checkAbsenceSafeOrderBlock()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .fillAllFields(shop)
+                .fillAllFieldsForShipping(shop)
                 .nextBtnClick()
                 .choosePayPal()
                 .nextBtnClick()

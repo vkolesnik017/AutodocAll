@@ -1496,7 +1496,6 @@ public class Product_page_Logic extends Product_page {
         if (btnCloseBasketPopUp().isDisplayed()) {
             btnCloseBasketPopUp().click();
         }
-        btnCloseBasketPopUp().click();
         return this;
     }
 

@@ -50,7 +50,7 @@ public class QC_1598 {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
-                .fillAllFields("FR").nextBtnClick()
+                .fillAllFieldsForShipping("FR").nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .closePopupDeliveryImpossibleAndCheckEmptyCart();
         close();
@@ -59,7 +59,7 @@ public class QC_1598 {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
-                .fillAllFields(shop).nextBtnClick()
+                .fillAllFieldsForShipping(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));

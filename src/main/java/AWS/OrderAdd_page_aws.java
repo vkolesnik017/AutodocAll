@@ -238,6 +238,20 @@ public class OrderAdd_page_aws {
         return page(Order_aws.class);
     }
 
+    @Step("Click save order button. OrderAdd_page_aws")
+    public Order_aws clickSaveOrderBtnAndCheckThatThisAccountInBlackList() {
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 60000);
+        }
+        saveOrderBtn().click();
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 60000);
+        }
+        sleep(5000);
+        new Order_aws().checkInfoOrderAccountInBlackList();
+        return page(Order_aws.class);
+    }
+
     @Step("Get delivery cost. OrderAdd_page_aws")
     public Float getDeliveryCost() {
         sleep(2000);

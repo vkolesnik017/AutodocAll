@@ -72,7 +72,7 @@ public class Moto_Category_page {
 
     SelenideElement infoTextOfTopProductBlock() {return $x("//span[@class='more_text'] ");}
 
-    ElementsCollection topProducts() {return $$x("//div[@class='rec_products_block ']");}
+    ElementsCollection topProducts() {return $$(".rec_products_block ");}
 
     SelenideElement basketDropMenu() {
         return $x("//div[@class='cart-items-block ']");
@@ -94,11 +94,11 @@ public class Moto_Category_page {
 
     ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li/a");}
 
-    ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block ']/div[1]");}
+    ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block js-products-item ']/div[1]");}
 
     ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[contains(@class,'dangerous-listing__title')]");}
 
-    ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block ']");}
+    ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block js-products-item ']/div[1]");}
 
     ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//span[@class='dangerous-listing__show-more'])["+positionOfProduct+"]/ancestor::div[@class='rec_prod_info_popup']//div[@class='dangerous-listing__icon dangerous-listing__icon-attention']");}
 

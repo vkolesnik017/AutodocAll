@@ -66,7 +66,7 @@ public class QC_1830 {
         openPage(route);
         main_page_logic.profilePlusBtnClickInHeader()
                 .goToMyOrdersPage()
-                .checkPresenceDeliveryStatusBlock()
+                .checkPresenceStatusOrderBlock()
                 .checkNumberDeliveryServiceAdded(5)
                 .checkTransitionToDeliveryPage();
         order_aws.openOrderInAwsWithoutLogin()
@@ -79,7 +79,7 @@ public class QC_1830 {
         openPage(route);
         main_page_logic.profilePlusBtnClickInHeader()
                 .goToMyOrdersPage()
-                .checkPresenceDeliveryStatusBlock()
+                .checkPresenceStatusOrderBlock()
                 .checkNumberDeliveryServiceAddedFromTooltip(5)
                 .trackingNumInDeliveryPageFromTooltip();
         order_aws.openOrderInAwsWithoutLogin()

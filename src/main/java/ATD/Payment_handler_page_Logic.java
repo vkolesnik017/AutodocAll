@@ -99,4 +99,10 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
         Assert.assertTrue(requisites.contains(orderPriceFormat));
         return this;
     }
+
+    @Step(": for Payment_handler_page")
+    public Profile_plus_page_Logic profilePlusBtnClickInHeader() {
+        new Main_page_Logic().profilePlusBtnClickInHeader();
+        return page(Profile_plus_page_Logic.class);
+    }
 }

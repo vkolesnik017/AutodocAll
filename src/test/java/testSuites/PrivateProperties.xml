@@ -12,7 +12,7 @@
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2446"/>
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2448"/>
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2450"/>
-<!--            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2451"/> inactive-->
+            <!--<class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2451"/> inactive-->
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2535"/>
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2811"/>
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2812"/>
@@ -125,6 +125,20 @@
             <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_810"/>
             <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_864"/>
             <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_928"/>
+        </classes>
+    </test>
+
+    <test name="QC_619_FunctionalTabMyOrderInPR">
+        <classes>
+            <class name="ATD.PrivateProperties.QC_619_FunctionalTabMyOrderInPR.QC_620"/>
+            <class name="ATD.PrivateProperties.QC_619_FunctionalTabMyOrderInPR.QC_1139"/>
+            <class name="ATD.PrivateProperties.QC_619_FunctionalTabMyOrderInPR.QC_1149"/>
+            <class name="ATD.PrivateProperties.QC_619_FunctionalTabMyOrderInPR.QC_1161"/>
+            <class name="ATD.PrivateProperties.QC_619_FunctionalTabMyOrderInPR.QC_1291"/>
+            <class name="ATD.PrivateProperties.QC_619_FunctionalTabMyOrderInPR.QC_1292"/>
+            <class name="ATD.PrivateProperties.QC_619_FunctionalTabMyOrderInPR.QC_1293"/>
+            <class name="ATD.PrivateProperties.QC_619_FunctionalTabMyOrderInPR.QC_1301"/>
+            <class name="ATD.PrivateProperties.QC_619_FunctionalTabMyOrderInPR.QC_1310"/>
         </classes>
     </test>
 

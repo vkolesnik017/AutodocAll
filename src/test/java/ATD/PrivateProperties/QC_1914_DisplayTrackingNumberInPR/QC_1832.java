@@ -74,7 +74,7 @@ public class QC_1832 {
         openPage(route);
         listTrackingNumberFromUrl = main_page_logic.profilePlusBtnClickInHeader()
                 .goToMyOrdersPage()
-                .checkPresenceDeliveryStatusBlock()
+                .checkPresenceStatusOrderBlock()
                 .checkNumberDeliveryServiceAdded(3)
                 .transitionToDeliveryPageAndGetTrackingNumFromURL();
         Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl);
@@ -116,7 +116,7 @@ public class QC_1832 {
         openPage(route);
         listTrackingNumberFromUrl = main_page_logic.profilePlusBtnClickInHeader()
                 .goToMyOrdersPage()
-                .checkPresenceDeliveryStatusBlock()
+                .checkPresenceStatusOrderBlock()
                 .checkNumberDeliveryServiceAdded(3)
                 .transitionToDeliveryPageAndGetTrackingNumFromURL();
         Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl);

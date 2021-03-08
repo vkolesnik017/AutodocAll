@@ -47,7 +47,7 @@ public class QC_1676 {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .fillAllFields(shop).nextBtnClick()
+                .fillAllFieldsForShipping(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .checkRegularDeliveryPrice("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")

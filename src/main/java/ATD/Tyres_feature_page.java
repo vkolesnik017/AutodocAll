@@ -40,7 +40,7 @@ public class Tyres_feature_page {
 
     SelenideElement winterSeason() {return $(byId("winter-radio"));}
 
-    SelenideElement summerSeason() {return $("summer-radio");}
+    SelenideElement summerSeason() {return $("#summer-radio");}
 
     public SelenideElement summerSeasonRadioBtn() {
         return $x("//div[@class='radio-block']//input[@id='summer-radio']/../span");

@@ -54,11 +54,10 @@ public class QC_1220 {
         openPage(route);
 
         new Motoroil_viscosity_brand_page_Logic()
-                .selectFilterByTolerance("Ford WSS-M2C913-A", "?release%5B%5D=ford-wss-m2c913-a")
-                .checkSelectorWithSelectedToleranceFilter("ford-wss-m2c913-a")
-                .checkListingWithSelectedToleranceFilter("Ford WSS-M2C913-A");
+                .selectFilterByTolerance("BMW Longlife-12 FE", "?release%5B%5D=bmw-longlife-12-fe")
+                .checkSelectorWithSelectedToleranceFilter("bmw-longlife-12-fe")
+                .checkListingWithSelectedToleranceFilter("BMW Longlife-12 FE");
     }
-
 
     @DataProvider(name = "routesBrandSpecific", parallel = true)
     Object[] dataProviderBrandSpecific() throws SQLException {

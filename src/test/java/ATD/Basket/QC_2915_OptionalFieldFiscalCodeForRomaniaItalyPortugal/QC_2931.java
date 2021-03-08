@@ -45,7 +45,7 @@ public class QC_2931 {
                 .nextButtonClick();
         new CartAccount_page_Logic().signIn(mail, password)
                 .clickCheckboxForOpenBilling()
-                .fillAllFields(shop)
+                .fillAllFieldsForShipping(shop)
                 .fillAllFieldsForBilling(shop)
                 .checkPresenceFieldFiscalCodeForShipping(false)
                 .checkPresenceFieldFiscalCodeForBilling(false)

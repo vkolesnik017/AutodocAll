@@ -78,7 +78,7 @@ public class QC_1831 {
         openPage(dataBase.getFullRouteByRouteName("prod", "DE", "main"));
         String trackingNumFromPR = main_page_logic.profilePlusBtnClickInHeader()
                 .goToMyOrdersPage()
-                .checkPresenceDeliveryStatusBlock()
+                .checkPresenceStatusOrderBlock()
                 .getTrackingNum();
         Assert.assertEquals(trackingNumFromAWS, trackingNumFromPR);
         String deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1)
