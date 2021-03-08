@@ -4,8 +4,13 @@ import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static ATD.CommonMethods.getAttributeFromUnVisibleElement;
 import static ATD.CommonMethods.password;
-import static com.codeborne.selenide.CollectionCondition.*;
+import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -262,10 +267,10 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
     }
 
     @Step("applicability of top product to truck on Product page .LKW_Categories_maker_page")
-    public LKW_Categories_maker_page_Logic applicabilityOfTopProductToTruck(String selectedBrand) {
-        for (int i = 0; i < topProductsFirstLevel().size(); i++) {
-            clickOnTopProduct(topProductsFirstLevel(), i).matchingProductToSelectedTruck(selectedBrand);
-            back();
+    public LKW_Categories_maker_page_Logic applicabilityOfTopProductToTruck(String selectedBrand, List<String> urlList) {
+        for (int i = 0; i < urlList.size(); i++) {
+            open(urlList.get(i));
+            new LKW_Product_page_Logic().matchingProductToSelectedTruck(selectedBrand);
         }
         return this;
     }
@@ -334,5 +339,11 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
     public String getUrlOfTopProductFromHisTitle(int positionOfProduct) {
         String urlOfProduct = titleOfTopProduct().get(positionOfProduct).shouldBe(visible).getAttribute("url");
         return urlOfProduct;
+    }
+
+    @Step("get product urls from 'Details' button . LKW_Categories_maker_page")
+    public List<String> getProductUrls() {
+        List<String> urls = btnDetails().stream().map(n -> getAttributeFromUnVisibleElement(n, "url")).collect(Collectors.toList());
+        return urls;
     }
 }

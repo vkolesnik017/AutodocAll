@@ -1,8 +1,9 @@
 package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 
-import Common.DataBase;
 import ATD.Listing_page_Logic;
+import ATD.Moto_Category_car_list_page_Logic;
+import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -20,6 +21,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_141 {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
+    private Moto_Category_car_list_page_Logic motoPage = new Moto_Category_car_list_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -102,6 +104,26 @@ public class QC_141 {
                 .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
                 .checkProductAttributeOnListingWithCarAndFilter(durchmesserValue, listingPage.durchmesserProductAttributeGenericRoute(), listingPage.durchmesserProductAttributeTecdocRoute())
                 .checkProductTitleOnListing("BOSCH", true, listingPage.productTitleInListMode());
+    }
+
+    @DataProvider(name = "routesAccessories", parallel = true)
+    Object[] dataProviderAccessories() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "accessories_listing_criteria");
+    }
+
+    @Test(dataProvider = "routesAccessories")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks by side, brand and side filters interaction LKW route model")
+    public void testBySideAndBrandAndSideFilterInteractionAccessories(String route) throws Exception {
+        openPage(route);
+        listingPage.clickFilterBySideBack()
+                .waitUntilPreloaderDisappear();
+        listingPage.clickFilterButton(motoPage.firstBrandInFilterButton())
+                .waitUntilPreloaderDisappear()
+                .setCountFilterByPosition(0)
+                .waitUntilPreloaderDisappear()
+                .checkListingWithSelectedFilters("Ridex", "hinten", "1");
     }
 
     @AfterMethod

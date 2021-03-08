@@ -6,13 +6,15 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import static ATD.CommonMethods.getAttributeFromUnVisibleElement;
 import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Category_maker_Logic extends LKW_Category_maker {
@@ -46,7 +48,8 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
     public LKW_Category_maker_Logic checkLinkClickInBreadCrumbsBlock() throws SQLException {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick();  checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_parent_category"));
+        secondLinkClick();
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_parent_category"));
         back();
         thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         return this;
@@ -182,10 +185,10 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
 
 
     @Step("applicability of top product to truck on Product page .LKW_Category_maker")
-    public LKW_Category_maker_Logic applicabilityOfTopProductToTruck(String selectedBrand) {
-        for (int i = 0; i < imageOfTopProduct().size(); i++) {
-            clickOnImageOfTopProduct(imageOfTopProduct(), i).matchingProductToSelectedTruck(selectedBrand);
-            back();
+    public LKW_Category_maker_Logic applicabilityOfTopProductToTruck(String selectedBrand, List<String> urlList) {
+        for (int i = 0; i < urlList.size(); i++) {
+            open(urlList.get(i));
+            new LKW_Product_page_Logic().matchingProductToSelectedTruck(selectedBrand);
         }
         return this;
     }
@@ -201,5 +204,11 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
     public String getSelectedTruck() {
         String brandOfTruck = markeInVerticalCarSelector().getText();
         return brandOfTruck;
+    }
+
+    @Step("get product urls from 'Details' button .LKW_Category_maker")
+    public List<String> getProductUrls() {
+        List<String> urls = btnDetails().stream().map(n -> getAttributeFromUnVisibleElement(n, "url")).collect(Collectors.toList());
+        return urls;
     }
 }

@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
@@ -38,7 +39,8 @@ public class QC_80 {
     public void testChecksApplicabilityProductToTruck(String route) {
         openPage(route);
         String truck = categoryMakerPage.getSelectedTruck();
-        categoryMakerPage.applicabilityOfTopProductToTruck(truck);
+        List<String> allProductsUrl = categoryMakerPage.getProductUrls();
+        categoryMakerPage.applicabilityOfTopProductToTruck(truck,allProductsUrl);
     }
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
@@ -53,7 +55,8 @@ public class QC_80 {
     public void testChecksApplicabilityProductToTruckCategoriesMaker(String route) {
         openPage(route);
         String truck = categoriesMakerPage.getSelectedTruck();
-        categoriesMakerPage.applicabilityOfTopProductToTruck(truck);
+        List<String> allProductsUrl = categoriesMakerPage.getProductUrls();
+        categoriesMakerPage.applicabilityOfTopProductToTruck(truck,allProductsUrl);
     }
 
     @AfterMethod

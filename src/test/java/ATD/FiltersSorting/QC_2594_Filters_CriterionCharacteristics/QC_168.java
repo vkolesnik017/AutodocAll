@@ -70,6 +70,28 @@ public class QC_168 {
                 .checkPresenceOfUniqueProductsBySideFilter();
     }
 
+
+    @DataProvider(name = "routesAccessories", parallel = true)
+    Object[] dataProviderAccessories() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "accessories_listing_criteria");
+    }
+
+    @Test(dataProvider = "routesAccessories")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks filter by side in tile mode LKW")
+    public void testProductOutputWithFilterBySideAccessories(String route) {
+        openPage(route);
+        listingPageLogic.clickFilterBySideFront()
+                .waitUntilPreloaderDisappear()
+                .clickShowListingInTileModeButton()
+                .waitUntilPreloaderDisappear()
+                .checkInstallationSide("Vorderachse")
+                .clickFilterBySideFront()
+                .waitUntilPreloaderDisappear()
+                .checkPresenceOfUniqueProductsBySideFilter();
+    }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

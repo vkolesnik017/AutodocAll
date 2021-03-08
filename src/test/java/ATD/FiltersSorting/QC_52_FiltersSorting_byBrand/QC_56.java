@@ -99,6 +99,26 @@ public class QC_56 {
                 .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
     }
 
+    @DataProvider(name = "routesAccessories", parallel = true)
+    Object[] dataProviderAccessories() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "accessories_listing_criteria");
+    }
+
+
+    @Test(dataProvider = "routesAccessories")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks brand filter reset (LKW listing)")
+    public void checkBrandFilterResetAccessories(String route) {
+        openPage(route);
+        new Main_page_Logic().closeCarSelectorTooltipIfVisible();
+        listingPageLogic.clickFirstBrandNameInFilter()
+                .waitUntilPreloaderDisappear()
+                .clickFirstBrandNameInFilter()
+                .waitUntilPreloaderDisappear()
+                .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
+    }
+
     @AfterMethod
     private void close() {
         closeWebDriver();

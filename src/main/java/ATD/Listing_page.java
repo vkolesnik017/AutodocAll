@@ -1021,4 +1021,14 @@ public class Listing_page {
     SelenideElement logoAutodoc() {
         return $x("//a[@class='header__logo-main']");
     }
+
+    SelenideElement brandFilterById(String id) {return $x("//*[self::li[@class='slick-slide slick-active'] or self::li[@class='slick-slide slick-current slick-active']]//label[@for='cb-brand-"+id+"']");}
+
+    SelenideElement forwardOfBrandBlock() {return $x("//a[@class='next slick-arrow']");}
+
+    ElementsCollection countFilter() {return $$x("//div[contains(text(),'Menge')]/following-sibling::div//label");}
+
+    ElementsCollection valueOfInstallationSideInDescription() {return $$x("//span[text()='Einbauseite:  ']/following-sibling::span");}
+
+    ElementsCollection valueOfCountInDescription() {return $$x("//span[text()='Menge:  ']/following-sibling::span");}
 }

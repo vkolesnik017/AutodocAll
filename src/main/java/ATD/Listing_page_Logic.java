@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static Common.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
+import static Common.CommonMethods.checkingContainsUrl;
 import static Common.CommonMethods.getNameRouteFromJSVarInHTML;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
@@ -288,7 +288,7 @@ public class Listing_page_Logic extends Listing_page {
                 if (characS.get(i).isDisplayed()) {
                     characS.get(i).shouldHave(text(attributeSelectedInSideFilter));
                     $(".search_button").hover();
-                }else {
+                } else {
                     characS.get(i + 1).shouldHave(text(attributeSelectedInSideFilter));
                 }
             }
@@ -673,6 +673,16 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("set brand filter by id. Listing_page")
+    public Listing_page_Logic setBrandFilterById(String id) {
+        brandFilterBlock().shouldBe(visible);
+        while (!brandFilterById(id).isDisplayed()) {
+            forwardOfBrandBlock().click();
+        }
+        brandFilterById(id).click();
+        return this;
+    }
+
     @Step("Get text from filter. Listing_page")
     public String getTextFromElement(SelenideElement element) {
         String textFromElement = element.getText();
@@ -762,6 +772,16 @@ public class Listing_page_Logic extends Listing_page {
             checkAddToBasketButtonsSorting();
             nextPageButton().click();
         } while (nextPageButton().is(visible));
+        return this;
+    }
+
+    @Step("Check sorting of grey button. Listing_page")
+    public Listing_page_Logic checkSortingOfGreyButton() {
+        checkAddToBasketButtonsSorting();
+        while (nextPageButton().isDisplayed()) {
+            nextPageButton().click();
+            checkAddToBasketButtonsSorting();
+        }
         return this;
     }
 
@@ -1441,7 +1461,8 @@ public class Listing_page_Logic extends Listing_page {
         for (int i = 0; i < mehrButtonListing().size(); i++) {
             String iconInAlternativeBlock = pictogramsAlternativeBlock().get(i).shouldBe(visible).getAttribute("style");
             executeJavaScript("arguments[0].click();", mehrButtonListingOne());
-            popUpDangerousListing().waitUntil(visible,4000).shouldBe(visible);popUpDangerousTitle().shouldBe(visible);
+            popUpDangerousListing().waitUntil(visible, 4000).shouldBe(visible);
+            popUpDangerousTitle().shouldBe(visible);
             Assert.assertFalse(popUpDangerousTitle().text().isEmpty());
             popUpDangerousText().shouldBe(visible);
             Assert.assertFalse(popUpDangerousText().text().isEmpty());
@@ -1483,5 +1504,20 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("set Count Filter. Listing_page")
+    public Listing_page_Logic setCountFilterByPosition(int position) {
+        countFilter().get(position).click();
+        return this;
+    }
+
+    @Step("check Listing With Selected Filters. Listing_page")
+    public Listing_page_Logic checkListingWithSelectedFilters(String brand, String installationSide, String countOfProduct) {
+        for (int i = 0; i < cardProducts().size(); i++) {
+            titleOfProductInListing().get(i).shouldHave(text(brand));
+            valueOfInstallationSideInDescription().get(i).shouldHave(text(installationSide));
+            valueOfCountInDescription().get(i).shouldHave(text(countOfProduct));
+        }
+        return this;
+    }
 
 }

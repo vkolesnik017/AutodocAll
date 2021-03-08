@@ -1,13 +1,15 @@
 package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
 
 
-import Common.DataBase;
 import ATD.Listing_page_Logic;
+import Common.DataBase;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
@@ -33,6 +35,22 @@ public class QC_229 {
         new Listing_page_Logic().clickFilterBySideBack()
                 .waitUntilPreloaderDisappear()
                 .checkAddToBasketButtonsSortingWithPagination();
+    }
+
+    @DataProvider(name = "routesMoto", parallel = true)
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model11,moto_category_car_list19");
+    }
+
+    @Test(dataProvider = "routesMoto")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks addToBasket buttons sorting with filter by side")
+    public void testSortingWithFilterBySideMoto(String routes) {
+        openPage(routes);
+        new Listing_page_Logic().clickFilterBySideBack()
+                .waitUntilPreloaderDisappear()
+                .checkSortingOfGreyButton();
     }
 
     @AfterMethod
