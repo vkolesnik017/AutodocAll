@@ -40,6 +40,10 @@ public class Product_page {
         return $(byCssSelector(".button.not_active>a"));
     }
 
+    SelenideElement greyButtonFromBlockUnitByLitre() {
+        return $x("//a[contains(@class,'select-displacement__btn')]");
+    }
+
     public SelenideElement infoBlockWithSelectedCar() {
         return $x("//div[@class='car-match-block']/p");
     }
