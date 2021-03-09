@@ -31,11 +31,14 @@ public class QC_3036 {
     private CartAllData_page_Logic cartAllData_page_logic = new CartAllData_page_Logic();
     private Cart_page_Logic cart_page_logic = new Cart_page_Logic();
     private DataBase dB = new DataBase("ATD");
+    private String idAndBrandIlliquidProduct;
 
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "87.0", true);
+        idAndBrandIlliquidProduct = new ProductSearch_aws().openProductSearchPageAndLogin().chooseIlliquidProductAndGetId();
+        close();
     }
 
     @DataProvider(name = "route", parallel = false)
@@ -43,7 +46,7 @@ public class QC_3036 {
         return new SetUp("ATD").setUpShopsWithSubroute("prod", "CH,IT,FR,AT", "main", "staticVersand");
     }
 
-    @Test(dataProvider = "route", enabled = false) // Требуется обновление логики, ожидаю апдейта по тикету
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks VAT percentage for CH")
@@ -52,8 +55,9 @@ public class QC_3036 {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         float deliveryPrice = new Versand_static_page_Logic().getDeliveryPrice(shop, "CH", "CH");
-        openPage(dB.getFullRouteByRouteAndSubroute("prod", shop, "main", "product54"));
-        String artIdOFNotLiquid = product_page_logic.addProductToCart()
+        String[] url = idAndBrandIlliquidProduct.split("#");
+        openPage(dB.getFullRouteByRouteName("prod", shop, "main") + "/" + url[1] + "/" + url[0]);
+        String artIdOFIlliquidProduct = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .getArticleNumber();
 
@@ -96,7 +100,7 @@ public class QC_3036 {
                 .compereActualDeliveryCostWithExpected(deliveryPrice)
                 .compereDeliveryCostOfHeavyLoadsWithCostOnSite(heavyLoadsDeliveryCost)
                 .checkOrderHasExpectedPfandPrice(convertStringToFloat(deposit))
-                .checkTextInLabelDanger(artIdOFNotLiquid, "Неликвид")
+                .checkTextInLabelDanger(artIdOFIlliquidProduct, "Неликвид")
                 .getArticleId();
 
         order_aws.reSaveOrder()
@@ -105,7 +109,7 @@ public class QC_3036 {
                 .compereActualDeliveryCostWithExpected(deliveryPrice)
                 .compereDeliveryCostOfHeavyLoadsWithCostOnSite(heavyLoadsDeliveryCost)
                 .checkOrderHasExpectedPfandPrice(convertStringToFloat(deposit))
-                .checkTextInLabelDanger(artIdOFNotLiquid, "Неликвид")
+                .checkTextInLabelDanger(artIdOFIlliquidProduct, "Неликвид")
 
                 .openPopUpAccountsAndCheckVat(vatForCH)
                 .closePopupAccounts()
@@ -114,7 +118,7 @@ public class QC_3036 {
                 .clickCheckBoxProductInPopupReturn()
                 .clickCheckBoxDeliveryInPopupReturn()
                 .clickPrintButtonInPopupReturn();
-        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderNumber + ".pdf", "MwSt. " + vatForCH + " %");
+        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderNumber + ".pdf", vatForCH);
         order_aws.clickBtnClosePopUpReturn()
                 .clickBtnDeclaration()
                 .checkModalWindowDeclarationAndClickPrintBtn();
@@ -135,7 +139,7 @@ public class QC_3036 {
         };
     }
 
-    @Test(dataProvider = "deliveryShop", enabled = false) // Требуется обновление логики, ожидаю апдейта по тикету
+    @Test(dataProvider = "deliveryShop")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks VAT percentage for CH for delivery in LI and DE with index 78266")
@@ -147,7 +151,8 @@ public class QC_3036 {
         openPage(currencyRatesPageURL);
         float actualDeliveryCostForRegion = new CurrencyRatesPage_aws().exchangeAmountAtDesiredRate(deliveryCostForRegion, "CHF");
         float actualDeliveryCostForCountry = new CurrencyRatesPage_aws().exchangeAmountAtDesiredRate(deliveryCostForCountry, "CHF");
-        openPage(dB.getFullRouteByRouteAndSubroute("prod", "CH", "main", "product54"));
+        String[] url = idAndBrandIlliquidProduct.split("#");
+        openPage(dB.getFullRouteByRouteName("prod", "CH", "main") + "/" + url[1] + "/" + url[0]);
         String artIdOFNotLiquid = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .getArticleNumber();
@@ -209,7 +214,7 @@ public class QC_3036 {
                 .clickCheckBoxProductInPopupReturn()
                 .clickCheckBoxDeliveryInPopupReturn()
                 .clickPrintButtonInPopupReturn();
-        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderNumber + ".pdf", "MwSt. " + vatForCH + " %");
+        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderNumber + ".pdf", vatForCH);
         order_aws.clickBtnClosePopUpReturn()
                 .clickBtnDeclaration()
                 .checkModalWindowDeclarationAndClickPrintBtn();
