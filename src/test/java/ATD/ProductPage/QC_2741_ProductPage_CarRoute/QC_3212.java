@@ -35,7 +35,7 @@ public class QC_3212 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test Check presence of a plate about the liter recommended for a complete oil change")
-    public void testCheckPresencePlateAboutLiterRecommended(String route) throws SQLException {
+    public void testCheckPresencePlateAboutLiterRecommended(String route) {
         openPage(route);
         productPage.presenceOfGluingBlock().
                 chooseBrandModelTypeInHorizontalSelector("AUDI", "6", "17421")
