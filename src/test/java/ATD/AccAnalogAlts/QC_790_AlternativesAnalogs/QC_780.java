@@ -30,7 +30,7 @@ public class QC_780 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routes", enabled = false)  //TODO  disappeared Popup - Waiting for a reply from a reporter
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Related Products Popup On Product Page With Car")

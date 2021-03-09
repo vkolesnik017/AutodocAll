@@ -94,6 +94,7 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
 
     @Step("Checking the number of mini-cards in top-10 products block. Index_instruments_page")
     public Index_instruments_page_Logic checkingNumberOfMiniCardsTop10Products() {
+        firstBtnAddToBasketInTop10ProductsBlock().scrollIntoView("{block: \"center\"}");
         miniCardsInTop10ProductsBlock().shouldHave(size(10));
         return this;
     }
