@@ -95,7 +95,7 @@ class Index_accessories_page {
     }
 
     SelenideElement btnDetailsInPopupTop6Block() {
-        return $x("//div[@class='product-list__item__popup']//span[@class='link ga-click']");
+        return $x("//div[@class='product-list__item__popup']//span[@class='link pointer ga-click']");
     }
 
     SelenideElement blockAdvantages() {

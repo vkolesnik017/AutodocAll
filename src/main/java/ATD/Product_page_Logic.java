@@ -1474,7 +1474,9 @@ public class Product_page_Logic extends Product_page {
 
     @Step("click On Btn Add Gluing Product To Basket.Product_page")
     public Product_page_Logic clickOnBtnAddGluingProductToBasket(int position) {
-        btnAddGluingProductToBasket().get(position).click();
+        btnAddGluingProductToBasket().get(position).shouldBe(visible).click();
+        btnAddGluingProductToBasket().get(position).shouldHave(attribute("class","select-displacement__btn still_add_to_basket ga-click in_cart"));
+        btnAddGluingProductToBasket().get(position).shouldNotHave(attribute("class","select-displacement__btn still_add_to_basket ga-click in_cart"));
         return this;
     }
 
@@ -1668,6 +1670,12 @@ public class Product_page_Logic extends Product_page {
             new CommonMethods().writerInFile(fileName, true, idOfProduct);
             System.out.println(idOfProduct + " - quantity is different. " + String.format("In file quantity - %s , on product page - %s", expectedQuantity, countOfProduct));
         }
+        return this;
+    }
+
+    @Step("Check presence grey button from block unit by litre. Product_page")
+    public Product_page_Logic checkPresenceGreyButtonFromBlockUnitByLitre() {
+        greyButtonFromBlockUnitByLitre().shouldBe(visible);
         return this;
     }
 }

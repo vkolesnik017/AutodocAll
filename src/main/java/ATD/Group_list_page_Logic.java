@@ -35,7 +35,7 @@ public class Group_list_page_Logic extends Group_list_page {
 
     @Step("Checks elements in the pdf Manual block. Group_list_page")
     public Group_list_page_Logic checkTransitionToClubPageFromPDFManualBlock() throws SQLException, IOException {
-        pdfManualBlock().shouldBe(visible);
+        pdfManualBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         for (int i = 0; i < previewImages().size(); i++) {
             titlesOfManuals().get(i).shouldBe(visible).click();
             switchTo().window(1);
