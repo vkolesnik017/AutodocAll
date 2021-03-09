@@ -1,6 +1,10 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
@@ -39,6 +43,25 @@ public class Service_packages_page_Logic extends Service_packages_page {
     @Step("presence Of Registration PopUp. Service_packages_page")
     public Service_packages_page_Logic presenceOfRegistrationPopUp() {
         registrationPopUp().shouldBe(visible);
+        return this;
+    }
+
+    @Step("absence Of Safe Order option. Service_packages_page")
+    public Service_packages_page_Logic absenceOfSoOption() {
+        List<String> iconTitle = servicePackageIcons().stream().map(n -> n.getAttribute("src").replaceAll("^.+\\/", "").replaceAll("\\..+$", "")).collect(Collectors.toList());
+        Assert.assertFalse(iconTitle.contains("return-icon"));
+        return this;
+    }
+
+    @Step("presence of service packages. Service_packages_page")
+    public Service_packages_page_Logic presenceOfServicePackages() {
+        servicePackagesBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("absence Of Safe Order Image Block . Service_packages_page")
+    public Service_packages_page_Logic absenceOfSoImageBlock() {
+        serviceOrderImageBlock().shouldNotBe(visible);
         return this;
     }
 }

@@ -145,4 +145,6 @@ public class Profile_plus_page {
 
     ElementsCollection headlineOfPriorityOrderStatus() { return $$x("//div[@class='member-plus-block__content-row']/div/div[2]");}
 
+    ElementsCollection servicePackageIcons() {return $$(".package__middle-icon img");}
+
 }

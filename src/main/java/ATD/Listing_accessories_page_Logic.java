@@ -7,10 +7,13 @@ import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class Listing_accessories_page_Logic extends Listing_accessories_page {
 
@@ -296,5 +299,12 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     public Main_page_Logic clickLogoAutodoc() {
         logoAutodoc().shouldBe(visible).click();
         return page(Main_page_Logic.class);
+    }
+
+    @Step("check Listing With Unique Material Filter. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkListingWithUniqueMaterialFilter() {
+        Set<String> characteristics = materialCharacteristicOfProduct().stream().map(n -> n.getText()).collect(Collectors.toSet());
+        Assert.assertTrue(characteristics.size()>1);
+        return this;
     }
 }

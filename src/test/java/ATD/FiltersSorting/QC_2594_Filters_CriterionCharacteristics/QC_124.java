@@ -1,8 +1,10 @@
 package ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics;
 
 
-import Common.DataBase;
+import ATD.Accessories_listing_criteria_page_Logic;
+import ATD.Listing_accessories_page_Logic;
 import ATD.Listing_page_Logic;
+import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -20,6 +22,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_124 {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
+    private Accessories_listing_criteria_page_Logic accessoriesPage = new Accessories_listing_criteria_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -44,11 +47,11 @@ public class QC_124 {
         openPage(route);
         String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
         listingPage.hoverOnSideFilterAndClick(listingPage.activeSideFilter2())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
         int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeGenericRoute());
         listingPage.hoverOnSideFilterAndClick(listingPage.activeSideFilter())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
@@ -61,11 +64,11 @@ public class QC_124 {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
         String characteristic = listingPage.getTextFromElement(listingPage.verschleisswarnkontaktFirstButtonInSidebar());
         listingPage.clickFilterButton(listingPage.verschleisswarnkontaktFirstButtonInSidebar())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.verschleiswarnkontaktProductAttributeGenericRouteLKW(), listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.verschleiswarnkontaktProductAttributeGenericRouteLKW(), listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
         int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
         listingPage.clickFilterButton(listingPage.verschleisswarnkontaktFirstButtonInSidebar())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
@@ -78,11 +81,11 @@ public class QC_124 {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
         String characteristic = listingPage.getTextFromElement(listingPage.verschleisswarnkontaktFirstButtonInSidebar());
         listingPage.clickFilterButton(listingPage.verschleisswarnkontaktFirstButtonInSidebar())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.verschleiswarnkontaktProductAttributeGenericRouteLKW(), listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.verschleiswarnkontaktProductAttributeGenericRouteLKW(), listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
         int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
         listingPage.clickFilterButton(listingPage.activeSideFilterLkwCheckbox())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
@@ -95,11 +98,11 @@ public class QC_124 {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         String characteristic = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonFirstValue());
         listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonFirstValue())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.durchmesserProductAttributeGenericRoute(), listingPage.durchmesserProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.durchmesserProductAttributeGenericRoute(), listingPage.durchmesserProductAttributeTecdocRoute());
         int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.durchmesserProductAttributeGenericRoute());
         listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonFirstValue())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.durchmesserProductAttributeTecdocRoute());
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
@@ -112,13 +115,33 @@ public class QC_124 {
         openPage(route);
         String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
         listingPage.clickFilterButton(listingPage.activeSideFilter2())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
         int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
         listingPage.clickFilterButton(listingPage.activeSideFilter())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
+    }
+
+    @DataProvider(name = "routesAccessories", parallel = true)
+    Object[] dataProviderAccessories() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "accessories_listing_criteria");
+    }
+
+    @Test(dataProvider = "routesAccessories")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks side filter cancelling")
+    public void testSideFilterCancellingAccessories(String route) {
+        openPage(route);
+
+        accessoriesPage.setMaterialFilterByName("Eco-Leder")
+                .checkListingWithSelectedMaterialFilter("Eco-Leder");
+        listingPage.waitUntilPreloaderDisappear();
+        accessoriesPage.clickOnSelectedMaterialFilterByName("Eco-Leder");
+        listingPage.waitUntilPreloaderDisappear();
+        new Listing_accessories_page_Logic().checkListingWithUniqueMaterialFilter();
     }
 
     @AfterMethod
