@@ -28,18 +28,19 @@ public class QC_3039 {
     private String customerID = "21893836";
     private String mailDE_LI = "QC_3039_autotestDE@autodoc.si";
     private String customerID_DE_LI = "21894072";
-    private String illiquidProduct = "VKJA 5561";
     private String productWithDeposit = "24.3481-8515.5";
     private String heavyLoad = "6504-03-2509591P";
-
+    private String articleIdIlliquidProduct;
     private Order_aws order_aws = new Order_aws();
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "87.0", true);
+        articleIdIlliquidProduct = new ProductSearch_aws().openProductSearchPageAndLogin().chooseIlliquidProductAndGetArticleId();
+        close();
     }
 
-    @Test(enabled = false) // Требуется обновление логики, ожидаю апдейта по тикету
+    @Test()
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking VAT percentage for CH when creating an order in AWS")
@@ -67,7 +68,7 @@ public class QC_3039 {
                 .checkRegularDeliveryPriceInEmail(String.valueOf(deliveryCost));
         closeWindow();
         switchTo().window(0);
-        order_aws.addProductInOrder(illiquidProduct, "1")
+        order_aws.addProductInOrder(articleIdIlliquidProduct, "1")
                 .confirmationAddingGoodsToOrder("")
 
                 .addProductInOrder(productWithDeposit, "1")
@@ -78,7 +79,7 @@ public class QC_3039 {
 
         float depositSum = order_aws.reSaveOrder()
                 .getPfandSumInAddedProductTabel(productWithDeposit);
-        order_aws.checkTextInLabelDanger(illiquidProduct, "Неликвид")
+        order_aws.checkTextInLabelDanger(articleIdIlliquidProduct, "Неликвид")
                 .checkOrderHasExpectedPfandPrice(depositSum)
                 .compereActualDeliveryCostWithExpected(deliveryCost);
         float heavyLoadsSum = order_aws.getHeavyLoads(heavyLoad);
@@ -92,7 +93,7 @@ public class QC_3039 {
                 .clickCheckBoxProductInPopupReturn()
                 .clickCheckBoxDeliveryInPopupReturn()
                 .clickPrintButtonInPopupReturn();
-        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderID + ".pdf", "MwSt. " + vatForCH + " %");
+        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderID + ".pdf", vatForCH);
         order_aws.clickBtnClosePopUpReturn()
                 .clickBtnDeclaration()
                 .checkModalWindowDeclarationAndClickPrintBtn();
@@ -110,7 +111,7 @@ public class QC_3039 {
         };
     }
 
-    @Test(dataProvider = "deliveryShop", enabled = false) // Требуется обновление логики, ожидаю апдейта по тикету
+    @Test(dataProvider = "deliveryShop")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking VAT for CH for delivery in LI and DE with index 78266 when creating an order in AWS")
@@ -143,7 +144,7 @@ public class QC_3039 {
                 .checkDeliveryCostForCountryOrRegion(actualDeliveryCostForRegion, actualDeliveryCostForCountry, deliveryShop);
         closeWindow();
         switchTo().window(0);
-        order_aws.addProductInOrder(illiquidProduct, "1")
+        order_aws.addProductInOrder(articleIdIlliquidProduct, "1")
                 .confirmationAddingGoodsToOrder("")
 
                 .addProductInOrder(productWithDeposit, "1")
@@ -155,7 +156,7 @@ public class QC_3039 {
 
         float depositSum = order_aws.reSaveOrder()
                 .getPfandSumInAddedProductTabel(productWithDeposit);
-        order_aws.checkTextInLabelDanger(illiquidProduct, "Неликвид")
+        order_aws.checkTextInLabelDanger(articleIdIlliquidProduct, "Неликвид")
                 .checkOrderHasExpectedPfandPrice(depositSum)
                 .checkDeliveryCostForCountryOrRegion(actualDeliveryCostForRegion, actualDeliveryCostForCountry, deliveryShop);
         order_aws.checkHeavyLoadsDeliveryPriceOrderAWS("0");
@@ -168,7 +169,7 @@ public class QC_3039 {
                 .clickCheckBoxProductInPopupReturn()
                 .clickCheckBoxDeliveryInPopupReturn()
                 .clickPrintButtonInPopupReturn();
-        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderID + ".pdf", "MwSt. " + vatForCH + " %");
+        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderID + ".pdf", vatForCH);
         order_aws.clickBtnClosePopUpReturn()
                 .clickBtnDeclaration()
                 .checkModalWindowDeclarationAndClickPrintBtn();
