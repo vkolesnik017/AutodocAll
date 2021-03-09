@@ -85,7 +85,6 @@ public class QC_3058 {
         new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderId, articleId)
                 .checkStandardMultiplier("1.02")
                 .checkTotalPrice(priceProduct);
-
     }
 
 

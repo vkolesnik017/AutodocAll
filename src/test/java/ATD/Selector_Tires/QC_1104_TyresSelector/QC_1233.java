@@ -55,8 +55,7 @@ public class QC_1233 {
     @Description(value = "Test checks validation popup with clear height, width, diameter on Tyres feature page")
     public void testValidationPopupWithClearHeightWidthDiameterForTyresFeature(String route) {
         openPage(route);
-        openPage(route);
-        tyres_feature_page_logic.clickExpectedSeasonBtn(tyres_feature_page_logic.summerSeasonRadioBtn())
+        tyres_feature_page_logic.clickExpectedSeasonBtn(tyres_feature_page_logic.winterSeasonRadioBtn())
                 .clickSubmitTyresSelector();
         new Tyres_page_Logic().validationPopupWithClearDiameter();
     }
