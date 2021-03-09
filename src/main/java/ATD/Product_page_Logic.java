@@ -1674,4 +1674,10 @@ public class Product_page_Logic extends Product_page {
         }
         return this;
     }
+
+    @Step("Check presence grey button from block unit by litre. Product_page")
+    public Product_page_Logic checkPresenceGreyButtonFromBlockUnitByLitre() {
+        greyButtonFromBlockUnitByLitre().shouldBe(visible);
+        return this;
+    }
 }
