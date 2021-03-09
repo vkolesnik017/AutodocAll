@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class ProductSearch_aws {
 
-    public final String urlPage = "https://aws.autodoc.de/products/search";
+    public final String urlPage = "https://aws.autodoc.de/products";
 
     private SelenideElement dangerousCargoSelector() {
         return $(byId("form_filterSearch[hazardEnabled]"));
@@ -110,8 +110,9 @@ public class ProductSearch_aws {
         return this;
     }
 
-    @Step
+    @Step("Choose illiquid product and get id. ProductSearch_aws")
     public String chooseIlliquidProductAndGetId() {
+        inStockSelector().selectOption(1); // yes
         illiquidColumn().selectOption(1);
         searchBtn().click();
 //        illiquidColumn().shouldHave(text("Да"));
@@ -121,6 +122,15 @@ public class ProductSearch_aws {
         System.out.println(id);
         System.out.println(brand);
         return id + "#" + brand;
+    }
+
+    @Step("Choose illiquid product and get article id. ProductSearch_aws")
+    public String chooseIlliquidProductAndGetArticleId() {
+        inStockSelector().selectOption(1); // yes
+        illiquidColumn().selectOption(1);
+        searchBtn().click();
+        illiquidColumn().shouldHave(value("yes"));
+        return articleProductInTable().getText();
     }
 
     @Step
