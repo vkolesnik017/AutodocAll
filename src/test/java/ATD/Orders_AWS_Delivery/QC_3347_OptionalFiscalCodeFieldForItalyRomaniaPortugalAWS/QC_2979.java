@@ -38,6 +38,8 @@ public class QC_2979 {
     @Description(value = "Successful saving of changes, with a filled / empty field \"Fiscal code\" (editing an order in AWS)")
     public void testSuccessfulSavingOfChangesInFiscalCodeField(String orderID) {
         new Order_aws(orderID).openOrderInAwsWithLogin()
+                .clearFiscalCodeFieldForBilling()
+                .clearFiscalCodeFieldForShipping()
                 .setValueInFiscalCodeForBilling("TS111")
                 .checkPresenceTextInFiscalCodeFieldForBilling(true)
                 .checkPresenceTextInFiscalCodeFieldForShipping(false)
