@@ -1791,4 +1791,10 @@ public class Main_page_Logic extends Main_page {
         articleNumInProductFromPreview().shouldBe(visible).shouldHave(text(expectedArtNum));
         return this;
     }
+
+    @Step("Click on Autodoc Plus link in header. Main_page")
+    public Service_packages_page_Logic clickOnAutodocPlusInHeader() {
+        autodocPlusLinkInHeader().shouldBe(visible).click();
+        return page(Service_packages_page_Logic.class);
+    }
 }

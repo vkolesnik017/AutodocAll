@@ -174,4 +174,6 @@ public class Moto_Category_car_list_page {
     ElementsCollection lampTypeInCharacteristicsBlock() {return $$x("//div[@class='about']//span[text()='Lampenart:  ']/following-sibling::span");}
 
     SelenideElement genericFilterByTitle(String title) {return $x("//div[@class='filter-generics-tecdoc__item-title'][text()='"+title+"']/ancestor::label");}
+
+    public SelenideElement firstBrandInFilterButton() {return $x("(//ul[@class='no-margin']//label)[1]");}
 }
