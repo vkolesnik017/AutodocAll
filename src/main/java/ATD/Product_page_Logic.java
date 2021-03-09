@@ -1474,7 +1474,9 @@ public class Product_page_Logic extends Product_page {
 
     @Step("click On Btn Add Gluing Product To Basket.Product_page")
     public Product_page_Logic clickOnBtnAddGluingProductToBasket(int position) {
-        btnAddGluingProductToBasket().get(position).click();
+        btnAddGluingProductToBasket().get(position).shouldBe(visible).click();
+        btnAddGluingProductToBasket().get(position).shouldHave(attribute("class","select-displacement__btn still_add_to_basket ga-click in_cart"));
+        btnAddGluingProductToBasket().get(position).shouldNotHave(attribute("class","select-displacement__btn still_add_to_basket ga-click in_cart"));
         return this;
     }
 
