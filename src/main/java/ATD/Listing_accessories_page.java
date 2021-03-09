@@ -182,4 +182,6 @@ public class Listing_accessories_page {
     ElementsCollection mainProductsList() {
         return $$x("//ul[@class='list_products ']/li");
     }
+
+    ElementsCollection materialCharacteristicOfProduct() {return $$x("//span[@class='lf'][text()='Material:  ']/following-sibling::span");}
 }

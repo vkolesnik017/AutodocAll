@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Accessories_listing_criteria_page_Logic extends Accessories_listing_criteria_page {
 
@@ -60,6 +62,26 @@ public class Accessories_listing_criteria_page_Logic extends Accessories_listing
     public Accessories_listing_criteria_page_Logic checkProductsWithSelectedColorFilter(String expectedColor) {
         for (int i = 0; i < colorCharacteristicOfProduct().size(); i++) {
             colorCharacteristicOfProduct().get(i).shouldHave(text(expectedColor));
+        }
+        return this;
+    }
+
+    @Step("click On Selected Material Filter By Name. Accessories_listing_criteria_page")
+    public Listing_accessories_page_Logic clickOnSelectedMaterialFilterByName(String filter) {
+        selectedMaterialFilterByName(filter).shouldBe(visible).click();
+        return page(Listing_accessories_page_Logic.class);
+    }
+
+    @Step("set Material Filter By Name. Accessories_listing_criteria_page")
+    public Accessories_listing_criteria_page_Logic setMaterialFilterByName(String filter) {
+        materialFilterByName(filter).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("checkListingWithSelecterMaterialFilter. Accessories_listing_criteria_page")
+    public Accessories_listing_criteria_page_Logic checkListingWithSelectedMaterialFilter(String filter) {
+        for (int i = 0; i < materialCharacteristicOfProduct().size(); i++) {
+            materialCharacteristicOfProduct().get(i).shouldHave(text(filter));
         }
         return this;
     }

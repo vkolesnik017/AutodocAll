@@ -18,4 +18,10 @@ public class Service_packages_page {
     SelenideElement btnActiveBasicPackage() {return $x("//div[contains(text(),'Basis')]/..//a");}
 
     SelenideElement registrationPopUp() {return $x("//div[@class='autodoc_login_popup popup_login pass']");}
+
+    SelenideElement servicePackagesBlock() {return $(".atd-plus-services__packs");}
+
+    ElementsCollection servicePackageIcons() {return $$(".atd-plus-services__item-bonus img");}
+
+    SelenideElement serviceOrderImageBlock() {return $(".atd-plus-safe");}
 }
