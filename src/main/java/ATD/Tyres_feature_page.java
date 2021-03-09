@@ -46,6 +46,10 @@ public class Tyres_feature_page {
         return $x("//div[@class='radio-block']//input[@id='summer-radio']/../span");
     }
 
+    public SelenideElement winterSeasonRadioBtn() {
+        return $x("//div[@class='radio-block']//input[@id='winter-radio']/../span");
+    }
+
     SelenideElement allSizesButtonInSizeBlock() {
         return $x("//div[@class='tyre-size-block-button']/a");
     }

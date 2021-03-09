@@ -226,4 +226,5 @@ class LKW_Categories_maker_page {
         return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]] /div[@class='top-small-products-items__item']").filter(visible);
     }
 
+    ElementsCollection btnDetails() {return $$x("//*[self::div[@class='top-small-products__items slick-slide'] or self::div[@class='top-small-products__items slick-slide slick-current slick-active']]//span[@class='details link']");}
 }

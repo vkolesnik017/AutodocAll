@@ -1,8 +1,9 @@
 package ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics;
 
 
-import Common.DataBase;
+import ATD.Accessories_listing_criteria_page_Logic;
 import ATD.Listing_page_Logic;
+import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -20,6 +21,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_121 {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
+    private Accessories_listing_criteria_page_Logic accessoriesPage = new Accessories_listing_criteria_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -44,10 +46,10 @@ public class QC_121 {
         openPage(route);
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute());
         listingPage.hoverOnSideFilterAndClick(listingPage.langeFilterCheckbox())
-                    .waitUntilPreloaderDisappearAndSleep(3000)
-                    .clickShowListingInTileModeButton()
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappearAndSleep(3000)
+                .clickShowListingInTileModeButton()
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
     }
 
     @Test
@@ -76,6 +78,25 @@ public class QC_121 {
                 .clickShowListingInTileModeButton()
                 .waitUntilPreloaderDisappear()
                 .checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
+    }
+
+    @DataProvider(name = "routesAccessories", parallel = true)
+    Object[] dataProviderAccessories() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "accessories_listing_criteria");
+    }
+
+    @Test(dataProvider = "routesAccessories")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks side filter in tile mode")
+    public void testSideFilterInTileModeAccessories(String route) throws Exception {
+        openPage(route);
+        listingPage
+                .setCountFilterByPosition(4)
+                .waitUntilPreloaderDisappear()
+                .clickShowListingInTileModeButton()
+                .waitUntilPreloaderDisappear();
+        accessoriesPage.checkCountOfProductInCharacteristicTableView("5");
     }
 
     @AfterMethod
