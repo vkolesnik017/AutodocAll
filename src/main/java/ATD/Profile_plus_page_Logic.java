@@ -8,6 +8,8 @@ import org.testng.Assert;
 
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
@@ -283,7 +285,13 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         for (int i = 0; i < headlineOfPriorityOrderStatus().size(); i++) {
             headlineOfPriorityOrderStatus().get(i).shouldNotHave(text("20 %"));
         }
+        return this;
+    }
 
+    @Step("absence Of Safe Order option. Profile_plus_page")
+    public Profile_plus_page_Logic absenceOfSoOption() {
+        List<String> iconTitle = servicePackageIcons().stream().map(n -> n.getAttribute("src").replaceAll("^.+\\/", "").replaceAll("\\..+$", "")).collect(Collectors.toList());
+        Assert.assertFalse(iconTitle.contains("return-icon"));
         return this;
     }
 }
