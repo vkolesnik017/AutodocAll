@@ -262,8 +262,8 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Checking the redirection to the OEN listing after clicking the OEN tab .Product_page")
     public Product_page_Logic checkingTheTransitionToTheOENListingPageAfterClickingTheOenTab() {
-        oenNummerTab().click();
-        firstLinkOenNummer().scrollIntoView(false).click();
+        oenNummerTab().scrollIntoView("{block: \"center\"}").click();
+        firstLinkOenNummer().scrollIntoView("{block: \"center\"}").click();
         waitWhileRouteBecomeExpected("oe_number");
         return this;
     }

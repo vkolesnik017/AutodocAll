@@ -98,7 +98,7 @@ public class QC_3039 {
                 .clickBtnDeclaration()
                 .checkModalWindowDeclarationAndClickPrintBtn();
         renameDownloadFile("C:/Users/User/Downloads/doc.pdf", "C:/Users/User/Downloads/doc" + orderID + ".pdf");
-        assertThatPdfContainsText("C:/Users/User/Downloads/doc" + orderID + ".pdf", "MWST. " + vatForCH + " %");
+        assertThatPdfContainsText("C:/Users/User/Downloads/doc" + orderID + ".pdf", vatForCH);
     }
 
 
@@ -174,7 +174,7 @@ public class QC_3039 {
                 .clickBtnDeclaration()
                 .checkModalWindowDeclarationAndClickPrintBtn();
         renameDownloadFile("C:/Users/User/Downloads/doc.pdf", "C:/Users/User/Downloads/doc" + orderID + ".pdf");
-        assertThatPdfContainsText("C:/Users/User/Downloads/doc" + orderID + ".pdf", "MWST. " + vatForCH + " %");
+        assertThatPdfContainsText("C:/Users/User/Downloads/doc" + orderID + ".pdf", vatForCH);
     }
 
     @AfterMethod
