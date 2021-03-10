@@ -83,6 +83,30 @@ public class QC_186 {
         new Listing_page_Logic().checkRatingfilterIsNotPresent();
     }
 
+    @DataProvider(name = "routesMoto", parallel = true)
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list19,moto_category_car_list_model11");
+    }
+
+    @Test(dataProvider = "routesMoto")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks output with filter by rating LKW")
+    public void testOutputWithFilterByRatingMoto(String route) {
+        openPage(route);
+        new Listing_page_Logic().clickThreeRatingStarsInFilter()
+                .waitUntilPreloaderDisappear()
+                .checkThreeStarsRatingInEveryProductOnListing()
+                .clickFiveRatingStarsInFilter()
+                .waitUntilPreloaderDisappear()
+                .checkFiveStarsRatingInEveryProductOnListing()
+                .refreshPage()
+                .checkFiveStarsRatingInEveryProductOnListing()
+                .clickFiveRatingStarsInFilter()
+                .waitUntilPreloaderDisappear()
+                .checkTwoUniqueRatingOnListing();
+    }
+
     @AfterMethod
     private void close() {
         closeWebDriver();

@@ -29,7 +29,7 @@ public class QC_779 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product22");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routes", enabled = false)  //TODO  BUG: SHOP-2902
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Related Products Popup On Product Page Without Car")
