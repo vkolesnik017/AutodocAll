@@ -64,4 +64,11 @@ public class Service_packages_page_Logic extends Service_packages_page {
         serviceOrderImageBlock().shouldNotBe(visible);
         return this;
     }
+
+    @Step("Check absence of personal discount. Service_packages_page")
+    public Service_packages_page_Logic checkAbsencePersonalDiscount() {
+        subscribeIconInBlockProfi().shouldNotBe(visible);
+        subscribeIconInBlockProfi().shouldNotBe(visible);
+        return this;
+    }
 }
