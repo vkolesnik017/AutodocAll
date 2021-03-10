@@ -192,8 +192,19 @@ public class OrderAdd_page_aws {
         return $x("//select[@name='Order[delivery_country_id]']//option[text()='" + country + "']");
     }
 
+    private SelenideElement checkBoxHerrInBillingBlock() {
+        return $x("//div[@id='billing_shipping_data']//div[@class='form-group'][1]/label[2]/input");
+    }
+
     private SelenideElement preLoader() {
         return $x("//div[@class='block-msg order-view order-processing']");
+    }
+
+
+    @Step("Click checkbox Herr in Billing block. OrderAdd_page_aws")
+    public OrderAdd_page_aws clickCheckboxHerrInBilling() {
+        checkBoxHerrInBillingBlock().shouldBe(visible).click();
+        return this;
     }
 
     @Step("Open add order page. OrderAdd_page_aws")
