@@ -804,5 +804,31 @@ public class Search_page_Logic extends Search_page {
         pricePerMeterLabel().shouldHave(sizeGreaterThan(0));
         return this;
     }
+
+    @Step("display Of Addition Results Label. Search_page")
+    public Search_page_Logic displayOfAdditionResultsLabel(String expectedText) {
+        additionalResultLabel().shouldBe(visible).shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("get Sum Of Main Products. Search_page")
+    public long getSumOfMainProducts() {
+        long mainAmount = mainProducts().stream().count();
+        return mainAmount;
+    }
+
+    @Step("get Sum Of Recommended Products. Search_page")
+    public long getSumOfRecommendedProducts() {
+        long recommendedAmount = recommendedProducts().stream().count();
+        return recommendedAmount;
+    }
+
+    @Step("check Titles With expected Generic. Search_page")
+    public Search_page_Logic checkTitlesWithGeneric(String expectedGeneric) {
+        for (int i = 0; i < titleOfProducts().size(); i++) {
+            titleOfProducts().get(i).shouldHave(text(expectedGeneric));
+        }
+        return this;
+    }
 }
 

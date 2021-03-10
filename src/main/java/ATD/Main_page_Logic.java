@@ -11,7 +11,6 @@ import com.codeborne.selenide.SelenideElement;
 import files.Car;
 import files.Product;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -1797,4 +1796,5 @@ public class Main_page_Logic extends Main_page {
         autodocPlusLinkInHeader().shouldBe(visible).click();
         return page(Service_packages_page_Logic.class);
     }
+
 }
