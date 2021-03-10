@@ -333,5 +333,11 @@ public class Search_page {
     ElementsCollection titleOfProducts() {return $$x("//div[@class='name']/*[self::a or self::span][1]");}
 
     ElementsCollection pricePerMeterLabel() {return $$x("//p[text()='Preis pro Meter']");}
+
+    SelenideElement additionalResultLabel() {return $x("//div[@class='w_search no_margin']");}
+
+    ElementsCollection mainProducts() {return $$x("//ul[@class='list_products']/li[not(contains(@class,'recommended'))]");}
+
+    ElementsCollection recommendedProducts()  {return $$x("//ul[@class='list_products']/li[contains(@class,'recommended')]");}
 }
 
