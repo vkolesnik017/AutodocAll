@@ -79,6 +79,8 @@
     <test name="QC_2873_PressPage">
         <classes>
             <class name="ATD.General_Common.QC_2873_PressPage.QC_2797"/>
+            <class name="ATD.General_Common.QC_2873_PressPage.QC_2826"/>
+            <class name="ATD.General_Common.QC_2873_PressPage.QC_2830"/>
         </classes>
     </test>
 
