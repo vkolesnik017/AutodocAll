@@ -632,9 +632,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click AutodocPlus link in the footer. Main_page")
-    public Service_packages_page_Logic clickAutodocPlus() {
+    public Service_plus_packages_page_Logic clickAutodocPlus() {
         autodocPlusLink().click();
-        return page(Service_packages_page_Logic.class);
+        return page(Service_plus_packages_page_Logic.class);
     }
 
     @Step("Click AutodocPartners link in the footer. Main_page")
@@ -1792,9 +1792,16 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click on Autodoc Plus link in header. Main_page")
-    public Service_packages_page_Logic clickOnAutodocPlusInHeader() {
+    public Service_plus_packages_page_Logic clickOnAutodocPlusInHeader() {
         autodocPlusLinkInHeader().shouldBe(visible).click();
-        return page(Service_packages_page_Logic.class);
+        return page(Service_plus_packages_page_Logic.class);
+    }
+
+    @Step("Check presence  dropdown Plus. Main_page")
+    public Main_page_Logic checkPresenceDropdownPlus() {
+        autodocPlusLinkInHeader().hover();
+        autodocDropdownPlus().waitUntil(appear, 5000);
+        return this;
     }
 
 }
