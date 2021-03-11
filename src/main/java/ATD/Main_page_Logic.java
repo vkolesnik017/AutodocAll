@@ -632,15 +632,15 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click AutodocPlus link in the footer. Main_page")
-    public AutodocPlus_page_Logic clickAutodocPlus() {
+    public Service_packages_page_Logic clickAutodocPlus() {
         autodocPlusLink().click();
-        return page(AutodocPlus_page_Logic.class);
+        return page(Service_packages_page_Logic.class);
     }
 
     @Step("Click AutodocPartners link in the footer. Main_page")
-    public AutodocPlus_page_Logic clickAutodocPartners() {
+    public Partners_static_page_Logic clickAutodocPartners() {
         autodocPartners().click();
-        return page(AutodocPlus_page_Logic.class);
+        return page(Partners_static_page_Logic.class);
     }
 
     //HILFE & SUPPORT
