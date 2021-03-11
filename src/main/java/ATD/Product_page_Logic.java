@@ -1475,8 +1475,8 @@ public class Product_page_Logic extends Product_page {
     @Step("click On Btn Add Gluing Product To Basket.Product_page")
     public Product_page_Logic clickOnBtnAddGluingProductToBasket(int position) {
         btnAddGluingProductToBasket().get(position).shouldBe(visible).click();
-        btnAddGluingProductToBasket().get(position).shouldHave(attribute("class","select-displacement__btn still_add_to_basket ga-click in_cart"));
-        btnAddGluingProductToBasket().get(position).shouldNotHave(attribute("class","select-displacement__btn still_add_to_basket ga-click in_cart"));
+        btnAddGluingProductToBasket().get(position).shouldHave(attribute("class", "select-displacement__btn still_add_to_basket ga-click in_cart"));
+        btnAddGluingProductToBasket().get(position).shouldNotHave(attribute("class", "select-displacement__btn still_add_to_basket ga-click in_cart"));
         return this;
     }
 
@@ -1645,24 +1645,6 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("compare Quantity Of Product With FIle. Product_page")
-    public Product_page_Logic compareQuantityOfProductWithFile(List<String> idOfProduct, List<String> quantityOfProduct, String fileName) throws IOException {
-        for (int i = 0; i < idOfProduct.size(); i++) {
-            try {
-                open("https://www.autodoc.de/brand/" + idOfProduct.get(i));
-                Assert.assertTrue(url().contains(idOfProduct.get(i)));
-                String countOfProduct = countInputOnProduct().shouldBe(visible).attr("value");
-                if (!countOfProduct.equals(quantityOfProduct.get(i))) {
-                    new CommonMethods().writerInFile(fileName, true, idOfProduct.get(i));
-                    System.out.println(idOfProduct.size() + " - quantity is different. " + String.format("In file quantity - %s , on product page - %s", quantityOfProduct.get(i), countOfProduct));
-                }
-            } catch (Throwable e) {
-                new CommonMethods().writerInFile(fileName, true, idOfProduct.get(i) + "#" + "Fail");
-            }
-        }
-        return this;
-    }
-
     @Step("compare Quantity Of Product And Write To File. Product_page")
     public Product_page_Logic compareQuantityOfProductAndWriteToFile(String expectedQuantity, String idOfProduct, String fileName) throws IOException {
         String countOfProduct = countInputOnProduct().shouldBe(visible).attr("value");
@@ -1676,6 +1658,12 @@ public class Product_page_Logic extends Product_page {
     @Step("Check presence grey button from block unit by litre. Product_page")
     public Product_page_Logic checkPresenceGreyButtonFromBlockUnitByLitre() {
         greyButtonFromBlockUnitByLitre().shouldBe(visible);
+        return this;
+    }
+
+    @Step("display Marke value In Selector. Product_page")
+    public Product_page_Logic displayMarkeInSelector(String expectedMarke) {
+        Assert.assertEquals(brandSelector().getSelectedValue(), expectedMarke);
         return this;
     }
 }
