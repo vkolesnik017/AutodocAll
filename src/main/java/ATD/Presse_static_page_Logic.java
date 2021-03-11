@@ -42,7 +42,7 @@ public class Presse_static_page_Logic extends Presse_static_page {
 
     @Step("Open the Articles block. Presse_static_page")
     public Presse_static_page_Logic openTheArticleBlock() {
-        presseContentBlock().shouldBe(visible, exist);
+        preReleaseBlock().shouldBe(visible, exist);
         atdHilft().shouldBe(visible, exist);
         int amountCount;
         while (mehrButton().isDisplayed()) {
@@ -265,15 +265,15 @@ public class Presse_static_page_Logic extends Presse_static_page {
         presseButtonBackPresentation().shouldBe(visible).click();
         String firstImageAfterClickBack = imageElementActiveSix().first().getAttribute("src");
         Assert.assertEquals(firstImage, firstImageAfterClickBack);
-        textBlock().shouldBe(visible);
-        Assert.assertFalse(textBlock().text().isEmpty());
+        presseGalleryContent().shouldBe(visible);
+        Assert.assertFalse(presseGalleryContent().text().isEmpty());
         return this;
     }
 
     @Step("Checking the Main images status code in the presentation. Presse_static_page")
     public Presse_static_page_Logic checkingTheMainImagesStatusCode() throws IOException {
         for (int i = 0; i < mainImageInPresentation().size(); i++) {
-            blockWithImagePresentation().isDisplayed();
+            presseGalleryList().isDisplayed();
             String linkInsideImage = mainImageInPresentation().get(i).getAttribute("src");
             URL url = new URL(linkInsideImage);
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
@@ -283,6 +283,37 @@ public class Presse_static_page_Logic extends Presse_static_page {
         }
         return this;
     }
+
+    @Step("Check presence general element in presse gallery block. Presse_static_page")
+    public Presse_static_page_Logic checkGeneralElementInGalleryBlock() {
+        presseGalleryHeader().scrollIntoView("{block: \"center\"}").shouldBe(visible).shouldHave(text("Galerie"));
+        presseGalleryList().shouldBe(visible);
+        presseGalleryContent().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click second img element and checks that it is displayed in gallery slide. Presse_static_page")
+    public Presse_static_page_Logic clickSecondImgAndCheckDisplayedInGallery() {
+        sleep(2000);
+        String linkImg = secondImageElementActive().scrollIntoView("{block: \"center\"}").getAttribute("src");
+        secondImageElementActive().click();
+        sleep(2000);
+        String linkImgInActiveSlide = presseGalleryActiveSlide().getAttribute("src");
+        Assert.assertEquals(linkImg, linkImgInActiveSlide);
+        presseButtonBackPresentation().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Check presence block more about autodoc and check the rdf opening. Presse_static_page")
+    public Presse_static_page_Logic checkBlockMoreAboutAutodoc() {
+        blockMoreAboutAutodoc().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        headerInBlockMoreAboutAutodoc().shouldBe(visible).shouldHave(text("MEHR ÜBER AUTODOC"));
+        pdfInBlockMoreAboutAutodoc().shouldBe(visible).click();
+        switchTo().window(1);
+        checkingContainsUrl("tmp/ATD2020.pdf");
+        return this;
+    }
+
 }
 
 

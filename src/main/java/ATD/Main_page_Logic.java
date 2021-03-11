@@ -11,7 +11,6 @@ import com.codeborne.selenide.SelenideElement;
 import files.Car;
 import files.Product;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -633,15 +632,15 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click AutodocPlus link in the footer. Main_page")
-    public AutodocPlus_page_Logic clickAutodocPlus() {
+    public Service_packages_page_Logic clickAutodocPlus() {
         autodocPlusLink().click();
-        return page(AutodocPlus_page_Logic.class);
+        return page(Service_packages_page_Logic.class);
     }
 
     @Step("Click AutodocPartners link in the footer. Main_page")
-    public AutodocPlus_page_Logic clickAutodocPartners() {
+    public Partners_static_page_Logic clickAutodocPartners() {
         autodocPartners().click();
-        return page(AutodocPlus_page_Logic.class);
+        return page(Partners_static_page_Logic.class);
     }
 
     //HILFE & SUPPORT
@@ -1797,4 +1796,5 @@ public class Main_page_Logic extends Main_page {
         autodocPlusLinkInHeader().shouldBe(visible).click();
         return page(Service_packages_page_Logic.class);
     }
+
 }
