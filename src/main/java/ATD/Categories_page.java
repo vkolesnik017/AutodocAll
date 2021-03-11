@@ -94,9 +94,7 @@ public class Categories_page {
 
   ElementsCollection titleOfParentCategories() { return $$x("//span[@class='name']");    }
 
-  SelenideElement firstFieldOfKba() {return $(byId("kba1"));}
-
-  SelenideElement secondFieldOfKba() {return $(byId("kba2"));}
-
   SelenideElement btnSearchOfSelector() {return $x("//a[@class='submit search_button ripple-out']");}
+
+  ElementsCollection titleOfTopProducts() {return $$(".small-prod-title span");}
 }

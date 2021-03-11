@@ -2,8 +2,11 @@ package ATD;
 
 import Common.DataBase;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -17,7 +20,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
     public LKW_Categories_page_Logic checkSuccessfullyLKWCategoriesPageLoading() throws SQLException {
         verticalTruckSelectorInCloseCondition().shouldBe(visible);
         headlineInHeader().shouldBe(visible).shouldHave(exactText("LKW Ersatzteilkatalog"));
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_categories"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_categories"));
         return this;
     }
 
@@ -249,6 +252,13 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         imageOfParentCategories().get(0).shouldBe(visible).click();
         popUpOfParentCategories().get(0).shouldBe(visible);
         visibleChildCategoriesPopUpOfParentCategory().shouldHaveSize(1);
+        return this;
+    }
+
+    @Step("compare Child Categories .LKW_Categories_page")
+    public LKW_Categories_page_Logic compareChildCategories(List<String> expectedChildCategories) {
+        List<String> childCategoriesFront = visibleChildCategories().stream().map(n -> n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(childCategoriesFront, expectedChildCategories);
         return this;
     }
 
