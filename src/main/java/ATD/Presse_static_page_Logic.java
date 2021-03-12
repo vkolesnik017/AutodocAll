@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static Common.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -21,53 +21,52 @@ import static org.testng.Assert.assertEquals;
 
 public class Presse_static_page_Logic extends Presse_static_page {
 
-    @Step("Checking the presence of the text in the blocks. Presse_static_page")
-    public Presse_static_page_Logic checkingPresenceOfTheBlocks() {
-        presseHeader().shouldBe(visible);
-        presseHeaderTitle().shouldBe(visible);
-        Assert.assertFalse(presseHeaderTitle().text().isEmpty());
-        presseHeaderFirstText().shouldBe(visible);
-        Assert.assertFalse(presseHeaderFirstText().text().isEmpty());
-        presseHeaderSecondText().shouldBe(visible);
-        Assert.assertFalse(presseHeaderFirstText().text().isEmpty());
-        presseInfoBlock().shouldBe(visible, exist);
-        presseInfoTitle().shouldBe(visible);
-        Assert.assertFalse(presseInfoTitle().text().isEmpty());
-        presseInfoText().shouldBe(visible);
-        Assert.assertFalse(presseInfoTitle().text().isEmpty());
-        presseFirstPersonBlock().shouldBe(visible, exist);
-        presseSecondPersonBlock().shouldBe(visible, exist);
+    @Step("Checking the Press-Release Header and Press-Inform blocks. Presse_static_page")
+    public Presse_static_page_Logic checkingPresReleaseHeaderAndPressInfoBlock() {
+        pressHeaderBlock().shouldBe(visible);
+        pressHeaderTitle().shouldBe(visible);
+        Assert.assertFalse(pressHeaderTitle().text().isEmpty());
+        pressHeaderHeaderAdvantage().shouldBe(visible);
+        Assert.assertFalse(pressHeaderHeaderAdvantage().text().isEmpty());
+        pressHeaderMainText().shouldBe(visible);
+        Assert.assertFalse(pressHeaderHeaderAdvantage().text().isEmpty());
+        pressInfoBlock().shouldBe(visible, exist);
+        pressInfoTitle().shouldBe(visible);
+        Assert.assertFalse(pressInfoTitle().text().isEmpty());
+        pressInfoMainText().shouldBe(visible);
+        Assert.assertFalse(pressInfoTitle().text().isEmpty());
+        pressInfoFirstPersonBlock().shouldBe(visible, exist);
+        pressInfoSecondPersonBlock().shouldBe(visible, exist);
         return this;
     }
 
-    @Step("Open the Articles block. Presse_static_page")
-    public Presse_static_page_Logic openTheArticleBlock() {
-        preReleaseBlock().shouldBe(visible, exist);
-        atdHilft().shouldBe(visible, exist);
+    @Step("Checks and open the Articles block. Presse_static_page")
+    public Presse_static_page_Logic checkAndOpenTheArticleBlock() {
+        pressContentReleaseBlock().shouldBe(visible, exist);
         int amountCount;
-        while (mehrButton().isDisplayed()) {
-            amountCount = artTitle().size();
-            mehrButton().scrollIntoView("{block: \"center\"}");
-            mehrButton().click();
-            artTitle().shouldHave(sizeGreaterThan(amountCount));
+        while (pressContentMoreButton().isDisplayed()) {
+            amountCount = pressContentArticleTitle().size();
+            pressContentMoreButton().scrollIntoView("{block: \"center\"}");
+            pressContentMoreButton().click();
+            pressContentArticleTitle().shouldHave(sizeGreaterThan(amountCount));
         }
         return this;
     }
 
-    @Step("Checking the text in the Hilft Article. Presse_static_page")
+    @Step("Checking the text in the Help Article. Presse_static_page")
     public Presse_static_page_Logic checkingTheTexts() {
-        for (int i = 0; i < articleTexts().size(); i++) {
-            articleTexts().get(i).shouldBe(visible);
-            Assert.assertFalse(articleTexts().get(i).text().isEmpty());
+        for (int i = 0; i < helpArticleTexts().size(); i++) {
+            helpArticleTexts().get(i).shouldBe(visible);
+            Assert.assertFalse(helpArticleTexts().get(i).text().isEmpty());
         }
         return this;
     }
 
     @Step("Checking the titles and compare with titles in the pdf. Presse_static_page")
     public Presse_static_page_Logic checkingTheTitlesInTheCards() {
-        for (int i = 0; i < articleTitle().size(); i++) {
-            articleTitle().get(i).shouldBe(visible).scrollIntoView("{block: \"center\"}");
-            articleTitle().get(i).click();
+        for (int i = 0; i < pressContentArticleTitle().size(); i++) {
+            pressContentArticleTitle().get(i).shouldBe(visible).scrollIntoView("{block: \"center\"}");
+            pressContentArticleTitle().get(i).click();
             switchTo().window(1);
             String url = url();
             Assert.assertTrue(url.contains("pdf"));
@@ -88,29 +87,30 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return content;
     }
 
-    @Step("Checking the download pdf link . Presse_static_page")
+    @Step("Checking the download pdf link in Press Content block. Presse_static_page")
     public Presse_static_page_Logic checkingTheDownloadsPDF() throws IOException {
-        for (int i = 0; i < downloadPDF().size(); i++) {
-            downloadPDF().get(i).scrollIntoView("{block: \"center\"}");
-            File report = downloadPDF().get(i).download();
+        for (int i = 0; i < pressContentBtnDownloadPDF().size(); i++) {
+            pressContentBtnDownloadPDF().get(i).scrollIntoView("{block: \"center\"}");
+            File report = pressContentBtnDownloadPDF().get(i).download();
             report.delete();
         }
         return this;
     }
 
-    @Step("Checking the download jpg link  . Presse_static_page")
+    @Step("Checking the download jpg link in Press Content block. Presse_static_page")
     public Presse_static_page_Logic checkingTheDownloadsJPG() throws IOException {
-        for (int i = 0; i < downloadJPG().size(); i++) {
-            File report = downloadJPG().get(i).download();
+        for (int i = 0; i < pressContentBtnDownloadJPG().size(); i++) {
+            File report = pressContentBtnDownloadJPG().get(i).download();
             report.delete();
+            sleep(2000);
         }
         return this;
     }
 
-    @Step("Gets the status of the photo code. Presse_static_page")
-    public Presse_static_page_Logic getStatusPhotoCod() throws IOException {
-        if (pressePhotos().isDisplayed()) {
-            String linkInsideImage = pressePhotos().getAttribute("src");
+    @Step("Gets the status code for img in Press Info block. Presse_static_page")
+    public Presse_static_page_Logic getStatusCodForImgInPressInfoBlock() throws IOException {
+        if (pressPhotos().isDisplayed()) {
+            String linkInsideImage = pressPhotos().getAttribute("src");
             URL url = new URL(linkInsideImage);
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             http.setInstanceFollowRedirects(true);
@@ -120,10 +120,10 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Gets the status of the image code. Presse_static_page")
-    public Presse_static_page_Logic getStatusImageCod() throws IOException {
-        if (atdHilftImage().isDisplayed()) {
-            String linkInsideImage = atdHilftImage().getAttribute("src");
+    @Step("Gets the status code for img in Help block. Presse_static_page")
+    public Presse_static_page_Logic getStatusCodForImgInHelpBlock() throws IOException {
+        if (helpImage().isDisplayed()) {
+            String linkInsideImage = helpImage().getAttribute("src");
             URL url = new URL(linkInsideImage);
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             http.setInstanceFollowRedirects(true);
@@ -133,10 +133,10 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Checking the download pdf link pdf . Presse_static_page")
-    public Presse_static_page_Logic checkingTheDownloadsPDFHilftBlock() throws IOException {
-        hilftArticleDownloadPDF().shouldBe(visible).scrollIntoView("{block: \"center\"}");
-        hilftArticleDownloadPDF().click();
+    @Step("Download pdf and checking link pdf in Autodoc help block. Presse_static_page")
+    public Presse_static_page_Logic checkingTheDownloadsPdfInHelpBlock() throws IOException {
+        articleDownloadPdfInHelpBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}");
+        articleDownloadPdfInHelpBlock().click();
         switchTo().window(1);
         String url = url();
         Assert.assertTrue(url.contains("pdf"));
@@ -145,25 +145,25 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Checking the title in the Hilft Block in the pdf. Presse_static_page")
-    public Presse_static_page_Logic checkingTheTitleHilftBlockPDF() throws IOException {
-        hilftArticleTitle().shouldBe(visible);
-        String titleOfTheArticleHilft = hilftArticleTitle().getText();
-        hilftArticleTitle().click();
+    @Step("Checks the title in the Autodoc help block against the title in the pdf. Presse_static_page")
+    public Presse_static_page_Logic checkingTitleInHelpBlockAgainstInPDF() throws IOException {
+        helpArticleTitle().shouldBe(visible);
+        String titleOfTheArticleHelp = helpArticleTitle().getText();
+        helpArticleTitle().click();
         switchTo().window(1);
         String url = url();
         String pdfContent = readPdfContent(url);
-        Assert.assertTrue(pdfContent.contains(titleOfTheArticleHilft.replaceAll("\\W", "")));
+        Assert.assertTrue(pdfContent.contains(titleOfTheArticleHelp.replaceAll("\\W", "")));
         closeWindow();
         switchTo().window(0);
         return this;
     }
 
-    @Step("Checking the active articles in the slider . Presse_static_page")
+    @Step("Checking the active articles in the slider. Presse_static_page")
     public Presse_static_page_Logic checkingTheActiveArticle() {
-        for (int i = 0; i < activeArticlesInSlider().size(); i++) {
-            String attributeUrl = activeArticlesInSlider().get(i).getAttribute("url").replaceAll("(^.+\\/\\/)(\\w{3}\\.\\w{2,10}\\W?\\w{2,}\\.\\w{2,3})(.+)", "$2");
-            activeArticlesInSlider().get(i).click();
+        for (int i = 0; i < autodocPressActiveArticlesInSlider().size(); i++) {
+            String attributeUrl = autodocPressActiveArticlesInSlider().get(i).getAttribute("url").replaceAll("(^.+\\/\\/)(\\w{3}\\.\\w{2,10}\\W?\\w{2,}\\.\\w{2,3})(.+)", "$2");
+            autodocPressActiveArticlesInSlider().get(i).click();
             switchTo().window(1);
             String currentArticleUrl = url();
             Assert.assertTrue(currentArticleUrl.contains(attributeUrl));
@@ -176,13 +176,13 @@ public class Presse_static_page_Logic extends Presse_static_page {
     @Step("Checking the back and forward buttons in the slider. Presse_static_page")
     public Presse_static_page_Logic checkingTheBackForwardButtons() {
         String firstArticle = activeArticlesInSliderFive().first().getAttribute("url");
-        autodocPresseButtonForward().click();
+        autodocPressButtonForward().click();
         String firstArticleAfterClick = activeArticlesInSliderFive().first().getAttribute("url");
         Assert.assertNotEquals(firstArticleAfterClick, firstArticle);
         for (int i = 0; i < activeArticlesInSliderFive().size(); i++) {
-            activeArticlesInSlider().get(i).shouldBe(visible);
+            autodocPressActiveArticlesInSlider().get(i).shouldBe(visible);
         }
-        autodocPresseButtonBack().click();
+        autodocPressButtonBack().click();
         String firstArticleAfterClickBack = activeArticlesInSliderFive().first().getAttribute("url");
         Assert.assertEquals(firstArticleAfterClickBack, firstArticle);
         return this;
@@ -190,25 +190,25 @@ public class Presse_static_page_Logic extends Presse_static_page {
 
     @Step("Checking the images in the slider. Presse_static_page")
     public Presse_static_page_Logic checkingTheImagesStatusCode() throws IOException {
-        for (int i = 0; i < imagesOfTheArticlesInSlider().size(); i++) {
-            String linkInsideImage = imagesOfTheArticlesInSlider().get(i).getAttribute("src");
+        for (int i = 0; i < autodocPressImagesOfTheArticlesInSlider().size(); i++) {
+            String linkInsideImage = autodocPressImagesOfTheArticlesInSlider().get(i).getAttribute("src");
             URL url = new URL(linkInsideImage);
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             http.setInstanceFollowRedirects(true);
             int responseCode = http.getResponseCode();
             assertEquals(responseCode, 200);
         }
-        autodocPresseBlock().shouldBe(visible);
-        autodocPresseBlockTitle().shouldBe(visible);
-        Assert.assertFalse(autodocPresseBlockTitle().text().isEmpty());
+        autodocPressBlock().shouldBe(visible);
+        autodocPressBlockTitle().shouldBe(visible);
+        Assert.assertFalse(autodocPressBlockTitle().text().isEmpty());
         return this;
     }
 
     @Step("Checking the block with the presentation . Presse_static_page")
     public Presse_static_page_Logic checkingThePresentation(String expectedUrl) {
-        autodocPresseTitlePresentation().shouldBe(visible);
-        Assert.assertFalse(autodocPresseTitlePresentation().text().isEmpty());
-        blockWithPresentation().shouldBe(exist).scrollIntoView("{block: \"center\"}").click();
+        headerInBlockMoreAboutAutodoc().shouldBe(visible);
+        Assert.assertFalse(headerInBlockMoreAboutAutodoc().text().isEmpty());
+        pdfInBlockMoreAboutAutodoc().shouldBe(exist).scrollIntoView("{block: \"center\"}").click();
         switchTo().window(1);
         checkingContainsUrl(expectedUrl);
         closeWindow();
@@ -218,9 +218,9 @@ public class Presse_static_page_Logic extends Presse_static_page {
 
     @Step("Checking the image in the presentation block. Presse_static_page")
     public Presse_static_page_Logic checkingThePresentationImage() throws IOException {
-        for (int i = 0; i < activeImagesInPresentationBlock().size(); i++) {
-            activeImagesInPresentationBlock().get(i).isDisplayed();
-            String linkInsideImage = activeImagesInPresentationBlock().get(i).getAttribute("src");
+        for (int i = 0; i < activeImagesInGalleryBlock().size(); i++) {
+            activeImagesInGalleryBlock().get(i).isDisplayed();
+            String linkInsideImage = activeImagesInGalleryBlock().get(i).getAttribute("src");
             URL url = new URL(linkInsideImage);
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             http.setInstanceFollowRedirects(true);
@@ -232,49 +232,49 @@ public class Presse_static_page_Logic extends Presse_static_page {
 
     @Step("Checking the download of the image in the presentation block. Presse_static_page")
     public Presse_static_page_Logic checkingTheDownloadImage(String pathname) {
-        for (int i = 0; i < imageElement().size(); i++) {
-            String attribute = imageElement().get(i).getAttribute("download");
-            imageElement().get(i).scrollIntoView("{block: \"center\"}");
-            imageElement().get(i).click();
+        for (int i = 0; i < allBtnSaveInGalleryBlock().size(); i++) {
+            String attribute = allBtnSaveInGalleryBlock().get(i).getAttribute("download");
+            allBtnSaveInGalleryBlock().get(i).scrollIntoView("{block: \"center\"}");
+            allBtnSaveInGalleryBlock().get(i).click();
             File file = new File(pathname + attribute);
             String nameFile = file.getName();
             sleep(1000);
             file.delete();
             Assert.assertEquals(attribute, nameFile);
-            forwardButtonPresentation().click();
+            nexSlideBtnInGalleryBlock().click();
         }
         return this;
     }
 
     @Step("Checking the back and forward buttons in the slider in the presentation block. Presse_static_page")
     public Presse_static_page_Logic checkingTheBackForwardButtonsPresentation() {
-        String firstImage = imageElementActiveSix().first().getAttribute("src");
-        String mainImage = mainImageInPresentation().first().getAttribute("src");
+        String firstImage = sixActiveImageInGalleryBlock().first().getAttribute("src");
+        String mainImage = mainImageInGalleryBlock().first().getAttribute("src");
         Assert.assertEquals(firstImage, mainImage);
-        for (int i = 0; i < imageElementActiveSix().size(); i++) {
-            imageElementActiveSix().get(i).shouldHave(attribute("src"));
+        for (int i = 0; i < sixActiveImageInGalleryBlock().size(); i++) {
+            sixActiveImageInGalleryBlock().get(i).shouldHave(attribute("src"));
         }
         sleep(1000);    // Sleep для временной проверки стабильности. Если все ок , заменить !
-        forwardButtonPresentation().shouldBe(visible).click();
-        String firstImageAfterClick = imageElementActiveSix().first().getAttribute("src");
+        nexSlideBtnInGalleryBlock().shouldBe(visible).click();
+        String firstImageAfterClick = sixActiveImageInGalleryBlock().first().getAttribute("src");
         Assert.assertNotEquals(firstImage, firstImageAfterClick);
-        for (int i = 0; i < imageElementActiveSix().size(); i++) {
-            imageElementActiveSix().get(i).shouldBe(visible);
+        for (int i = 0; i < sixActiveImageInGalleryBlock().size(); i++) {
+            sixActiveImageInGalleryBlock().get(i).shouldBe(visible);
         }
         sleep(1000);   // Sleep для временной проверки стабильности. Если все ок , заменить !
-        presseButtonBackPresentation().shouldBe(visible).click();
-        String firstImageAfterClickBack = imageElementActiveSix().first().getAttribute("src");
+        previousSlideBtnInGalleryBlock().shouldBe(visible).click();
+        String firstImageAfterClickBack = sixActiveImageInGalleryBlock().first().getAttribute("src");
         Assert.assertEquals(firstImage, firstImageAfterClickBack);
-        presseGalleryContent().shouldBe(visible);
-        Assert.assertFalse(presseGalleryContent().text().isEmpty());
+        pressGalleryContentBlock().shouldBe(visible);
+        Assert.assertFalse(pressGalleryContentBlock().text().isEmpty());
         return this;
     }
 
     @Step("Checking the Main images status code in the presentation. Presse_static_page")
     public Presse_static_page_Logic checkingTheMainImagesStatusCode() throws IOException {
-        for (int i = 0; i < mainImageInPresentation().size(); i++) {
-            presseGalleryList().isDisplayed();
-            String linkInsideImage = mainImageInPresentation().get(i).getAttribute("src");
+        for (int i = 0; i < mainImageInGalleryBlock().size(); i++) {
+            pressGalleryListBlock().isDisplayed();
+            String linkInsideImage = mainImageInGalleryBlock().get(i).getAttribute("src");
             URL url = new URL(linkInsideImage);
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             http.setInstanceFollowRedirects(true);
@@ -284,23 +284,35 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Check presence general element in presse gallery block. Presse_static_page")
+    @Step("Check presence general element in presse Gallery block. Presse_static_page")
     public Presse_static_page_Logic checkGeneralElementInGalleryBlock() {
-        presseGalleryHeader().scrollIntoView("{block: \"center\"}").shouldBe(visible).shouldHave(text("Galerie"));
-        presseGalleryList().shouldBe(visible);
-        presseGalleryContent().shouldBe(visible);
+        pressGalleryHeaderBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible).shouldHave(text("Galerie"));
+        pressGalleryListBlock().shouldBe(visible);
+        pressGalleryContentBlock().shouldBe(visible);
+        oneBtnSaveInGalleryBlock().shouldBe(visible);
+        activeSlideInGalleryBlock().shouldBe(visible);
+        nexSlideBtnInGalleryBlock().shouldBe(visible);
+        previousSlideBtnInGalleryBlock().shouldBe(visible);
         return this;
     }
 
     @Step("Click second img element and checks that it is displayed in gallery slide. Presse_static_page")
     public Presse_static_page_Logic clickSecondImgAndCheckDisplayedInGallery() {
         sleep(2000);
-        String linkImg = secondImageElementActive().scrollIntoView("{block: \"center\"}").getAttribute("src");
-        secondImageElementActive().click();
+        String linkImg = secondImageInGalleryBlock().scrollIntoView("{block: \"center\"}").getAttribute("src");
+        secondImageInGalleryBlock().click();
         sleep(2000);
-        String linkImgInActiveSlide = presseGalleryActiveSlide().getAttribute("src");
+        String linkImgInActiveSlide = activeSlideInGalleryBlock().getAttribute("src");
         Assert.assertEquals(linkImg, linkImgInActiveSlide);
-        presseButtonBackPresentation().shouldBe(visible).click();
+        previousSlideBtnInGalleryBlock().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Check elements in atd-help block. Presse_static_page")
+    public Presse_static_page_Logic checkElementsInHelpBlock() {
+        helpBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        helpImage().shouldBe(visible);
+        articleDownloadPdfInHelpBlock().shouldBe(visible);
         return this;
     }
 
@@ -311,6 +323,44 @@ public class Presse_static_page_Logic extends Presse_static_page {
         pdfInBlockMoreAboutAutodoc().shouldBe(visible).click();
         switchTo().window(1);
         checkingContainsUrl("tmp/ATD2020.pdf");
+        closeWindow();
+        switchTo().window(0);
+        return this;
+    }
+
+
+    @Step("Check elements in atd-press block. Presse_static_page")
+    public Presse_static_page_Logic checkElementsInPresBlock(String expectedTitleText) {
+        autodocPressBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        autodocPressBlockTitle().shouldBe(visible).shouldHave(text(expectedTitleText));
+        autodocPressButtonForward().shouldBe(visible);
+        autodocPressButtonBack().shouldBe(visible);
+        autodocPressSliderList().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check element in press Release block. Presse_static_page")
+    public Presse_static_page_Logic checkElementInPressReleaseBlock(String expectedHeaderText){
+        pressContentReleaseBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        pressContentReleaseHeader().shouldBe(visible).shouldHave(text(expectedHeaderText));
+        pressContentReleaseArticleBlock().shouldBe(visible);
+        pressContentArticleDate().shouldBe(visible);
+        for (int title = 0; title < pressContentArticleTitle().size(); title++) {
+            pressContentArticleTitle().shouldHave(sizeGreaterThanOrEqual(4));
+            pressContentArticleTitle().get(title).shouldBe(visible);
+        }
+        for (int img = 0; img < pressContentArticleImg().size(); img++) {
+            pressContentArticleImg().shouldHave(sizeGreaterThanOrEqual(4));
+            pressContentArticleImg().get(img).shouldBe(visible);
+        }
+        for (int pdf = 0; pdf < pressContentBtnDownloadPDF().size(); pdf++) {
+            pressContentBtnDownloadPDF().shouldHave(sizeGreaterThanOrEqual(4));
+            pressContentBtnDownloadPDF().get(pdf).shouldBe(visible);
+        }
+        for (int jpg = 0; jpg < pressContentBtnDownloadJPG().size(); jpg++) {
+            pressContentBtnDownloadJPG().shouldHave(sizeGreaterThanOrEqual(4));
+            pressContentBtnDownloadJPG().get(jpg).shouldBe(visible);
+        }
         return this;
     }
 
