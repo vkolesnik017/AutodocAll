@@ -290,5 +290,4 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         motorOfVerticalTruckSelector().shouldHave(value(motorOfTruck));
         return this;
     }
-
 }
