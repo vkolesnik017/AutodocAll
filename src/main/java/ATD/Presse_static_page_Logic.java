@@ -135,7 +135,7 @@ public class Presse_static_page_Logic extends Presse_static_page {
 
     @Step("Checking the download pdf link pdf . Presse_static_page")
     public Presse_static_page_Logic checkingTheDownloadsPDFHilftBlock() throws IOException {
-         hilftArticleDownloadPDF().shouldBe(visible).scrollIntoView("{block: \"center\"}");
+        hilftArticleDownloadPDF().shouldBe(visible).scrollIntoView("{block: \"center\"}");
         hilftArticleDownloadPDF().click();
         switchTo().window(1);
         String url = url();
