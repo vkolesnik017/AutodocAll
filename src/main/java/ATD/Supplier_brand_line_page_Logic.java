@@ -134,4 +134,19 @@ public class Supplier_brand_line_page_Logic extends Supplier_brand_line_page {
         }
         return this;
     }
+
+    @Step("check structure of bread crumbs. Supplier_brand_line_page")
+    public Supplier_brand_line_page_Logic checkStructureOfBreadCrumbs() {
+        Listing_accessories_page_Logic listingAccessoriesPageLogic = new Listing_accessories_page_Logic();
+        listingAccessoriesPageLogic.checkingQuantityBreadCrumbs().clickFirstBreadCrumb();
+        checkingContainsUrl("autoersatzteile-hersteller");
+        back();
+        listingAccessoriesPageLogic.clickSecondBreadCrumb();
+        checkingContainsUrl("valeo");
+        back();
+        listingAccessoriesPageLogic.checkingPresenceAndNotClickableLastBreadCrumb(listingAccessoriesPageLogic.thirdBreadCrumb());
+        return this;
+    }
+
+
 }
