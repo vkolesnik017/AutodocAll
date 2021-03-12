@@ -340,7 +340,7 @@ public class Presse_static_page_Logic extends Presse_static_page {
     }
 
     @Step("Check element in press Release block. Presse_static_page")
-    public Presse_static_page_Logic checkElementInPressReleaseBlock(String expectedHeaderText){
+    public Presse_static_page_Logic checkElementInPressReleaseBlock(String expectedHeaderText) {
         pressContentReleaseBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         pressContentReleaseHeader().shouldBe(visible).shouldHave(text(expectedHeaderText));
         pressContentReleaseArticleBlock().shouldBe(visible);
