@@ -1,5 +1,6 @@
 package ATD.Catalog_Mark.QC_2568_MarkPages;
 
+import ATD.Tyres_model_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -33,7 +34,9 @@ public class QC_3405 {
     @Description(value = "test Checking the block of top models on the tires routes")
     public void testCheckingBlockTopModelsOnTiresRoutes(String route) {
         openPage(route);
-
+        new Tyres_model_page_Logic().checkPresenceTopModelBlock()
+                .checkingLocationTopModelsBlock()
+                .checkTransitionOnAllModelsInTopModelsBlock();
     }
 
 
