@@ -5,8 +5,8 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Category_name_page {
 
@@ -93,4 +93,8 @@ public class Category_name_page {
     }
 
     SelenideElement mainHeadline() {return $x("//div[@class='top_title no_image']/h2");}
+
+    SelenideElement markeFieldInSelector() {return $(byId("form_maker_id"));}
+
+    ElementsCollection  titleOfTopProducts() {return $$(".product-list__item__title span");}
 }

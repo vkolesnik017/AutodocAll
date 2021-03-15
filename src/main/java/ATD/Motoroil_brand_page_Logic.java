@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
 
@@ -174,4 +175,33 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
         }
         return this;
     }
+
+    @Step(":from Motoroil_brand_page")
+    public Categories_page_Logic clickFirstBreadCrumb() {
+        new Listing_accessories_page_Logic().clickFirstBreadCrumb();
+        return page(Categories_page_Logic.class);
+    }
+
+    @Step(":from Motoroil_brand_page")
+    public Motoroil_page clickSecondBreadCrumb() {
+        new Listing_accessories_page_Logic().clickSecondBreadCrumb();
+        return page(Motoroil_page.class);
+    }
+
+
+    @Step(":from Motoroil_brand_page")
+    public Motoroil_brand_page_Logic checkingPresenceAndNotClickableLastBreadCrumb() {
+        new Listing_accessories_page_Logic().checkingPresenceAndNotClickableLastBreadCrumb(new Listing_accessories_page_Logic().thirdBreadCrumb());
+        return this;
+    }
+
+
+    @Step(":from Motoroil_brand_page")
+    public Motoroil_brand_page_Logic checkingQuantityBreadCrumbs() {
+        new Listing_accessories_page_Logic().checkingQuantityBreadCrumbs();
+        return this;
+    }
+
+
+
 }
