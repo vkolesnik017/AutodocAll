@@ -73,6 +73,7 @@
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2830"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2793"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2791"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2819"/>
         </classes>
     </test>
 

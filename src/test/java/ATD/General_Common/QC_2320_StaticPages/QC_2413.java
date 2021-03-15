@@ -42,13 +42,13 @@ public class QC_2413 {
                 .checkingTheDownloadsJPG()
                 .checkingTheDownloadsPdfInHelpBlock()
 //                .checkingTitleInHelpBlockAgainstInPDF()  //TODO defect SHOP-758
-                .checkingTheActiveArticle()
-                .checkingTheBackForwardButtons()
-                .checkingTheImagesStatusCode()
+                .checkingTheActiveArticleForAtdPresseBlock()
+                .checkingTheBackForwardButtonsForAtdPresseBlock()
+                .checkingTheImagesStatusCodeForAtdPresseBlock()
                 .checkingThePresentation("/tmp/ATD2020.pdf")
                 .checkingThePresentationImage()
                 .checkingTheDownloadImage("C:/Users/User/Downloads/")
-                .checkingTheBackForwardButtonsPresentation()
+                .checkingTheBackForwardButtonsInGalleryBlock()
                 .checkingTheMainImagesStatusCode();
     }
 

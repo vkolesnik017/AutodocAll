@@ -12,7 +12,9 @@ public class Profile_plus_page {
         return $x("//div[@class='logo border']/a");
     }
 
-    SelenideElement nameOfUser() {return $x("//span[@class='name']");}
+    SelenideElement nameOfUser() {
+        return $x("//span[@class='name']");
+    }
 
     SelenideElement profileAddressBtn() {
         return $x("//a[@data-ga-action='Sidebar_MyAddresses']");
@@ -38,17 +40,29 @@ public class Profile_plus_page {
         return $x("//a[@data-ga-action='Sidebar_MyOrders']");
     }
 
-    SelenideElement myVehiclesBlock() {return $x("//li[@class='vehicle_link ']/a");}
+    SelenideElement myVehiclesBlock() {
+        return $x("//li[@class='vehicle_link ']/a");
+    }
 
-    SelenideElement wishListBlock() {return $x("//li[@class='wishlist_link ']/a");}
+    SelenideElement wishListBlock() {
+        return $x("//li[@class='wishlist_link ']/a");
+    }
 
-    SelenideElement countOfAddedVehicleInGarageIcon() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+    SelenideElement countOfAddedVehicleInGarageIcon() {
+        return $x("//span[@class='header-garage__count header-garage__count--added']");
+    }
 
-    ElementsCollection visibleAddedVehicleInGarageAtHeader() {return $$x("//div[@class='header-garage__logged-check']");}
+    ElementsCollection visibleAddedVehicleInGarageAtHeader() {
+        return $$x("//div[@class='header-garage__logged-check']");
+    }
 
-    SelenideElement garagePopUpInHeader() {return $x("//div[@class='header-garage__logged-check']");}
+    SelenideElement garagePopUpInHeader() {
+        return $x("//div[@class='header-garage__logged-check']");
+    }
 
-    SelenideElement linkMoreInPopUpOfGarageInHeader() {return $x("//div[@class='wrapper-helper']/a");}
+    SelenideElement linkMoreInPopUpOfGarageInHeader() {
+        return $x("//div[@class='wrapper-helper']/a");
+    }
 
     SelenideElement topTitleBlock() {
         return $x("//div[@class='top_title']");
@@ -74,13 +88,21 @@ public class Profile_plus_page {
         return $x("//span[@class='green']");
     }
 
-    SelenideElement countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+    SelenideElement countOfVehicleInIconOfGarageInHeader() {
+        return $x("//span[@class='header-garage__count header-garage__count--added']");
+    }
 
-    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {
+        return $x("//div[@class='wrapper-radio']/label[@for='" + idOfVehicle + "']");
+    }
 
-    SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
+    SelenideElement headerGarageIcon() {
+        return $x("//div[@class='header-garage js-header-garage']");
+    }
 
-    SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+    SelenideElement popUpOfGarageInHeader() {
+        return $x("//div[@class='header-garage__logged-header']");
+    }
 
     ElementsCollection btnOpenInputForAddVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='wrapper-vin']/p");
@@ -97,6 +119,7 @@ public class Profile_plus_page {
     SelenideElement inputForAddVinNumInPopUpOfGarageInHeader() {
         return $x("//div[@class='vin-number-drop-input']/input");
     }
+
     ElementsCollection btnAddVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='vin-number-drop-button js-save-vin-number']");
     }
@@ -141,10 +164,52 @@ public class Profile_plus_page {
         return $x("//div[@class='member-plus-block__bottom']/p");
     }
 
-    SelenideElement readyToSendSticker() {return $x("//div[@class='member-plus-block__content-row first']");}
+    SelenideElement readyToSendSticker() {
+        return $x("//div[@class='member-plus-block__content-row first']");
+    }
 
-    ElementsCollection headlineOfPriorityOrderStatus() { return $$x("//div[@class='member-plus-block__content-row']/div/div[2]");}
+    ElementsCollection headlineOfPriorityOrderStatus() {
+        return $$x("//div[@class='member-plus-block__content-row']/div/div[2]");
+    }
 
-    ElementsCollection servicePackageIcons() {return $$(".package__middle-icon img");}
+    ElementsCollection servicePackageIcons() {
+        return $$(".package__middle-icon img");
+    }
+
+    SelenideElement activeYearPackSwitch() {
+        return $x("//label[contains(@class,'switch-label')]/../input[@id='two']");
+    }
+
+    SelenideElement switchYearPack() {
+        return $x("//label[@data-type-name='yearly']/span");
+    }
+
+    SelenideElement switchMonthlyPack() {
+        return $x("//label[@data-type-name='monthly']/span");
+    }
+
+    SelenideElement yearPriceForBasicPack() {
+        return $x("//div[@class='package package--basic']//div[@class='price']");
+    }
+
+    SelenideElement yearPriceForOptimalPack() {
+        return $x("//div[@class='package package--optimal']//div[@class='price']");
+    }
+
+    SelenideElement yearPriceForProfPack() {
+        return $x("//div[@class='package package--professional']//div[@class='price']");
+    }
+
+    SelenideElement yearPriceForExpertPack() {
+        return $x("//div[@class='package package--expert']//div[@class='price']");
+    }
+
+    ElementsCollection activationPackBtn() {
+        return $$x("//a[contains(@class,'move-to-biiling-process button')]");
+    }
+
+    SelenideElement activationTrialPackBtn() {
+        return $x("//a[@data-ga-action='trial']/span");
+    }
 
 }

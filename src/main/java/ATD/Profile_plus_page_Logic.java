@@ -8,6 +8,7 @@ import org.testng.Assert;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -292,6 +293,58 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
     public Profile_plus_page_Logic absenceOfSoOption() {
         List<String> iconTitle = servicePackageIcons().stream().map(n -> n.getAttribute("src").replaceAll("^.+\\/", "").replaceAll("\\..+$", "")).collect(Collectors.toList());
         Assert.assertFalse(iconTitle.contains("return-icon"));
+        return this;
+    }
+
+    @Step("Checks that when you switch the subscription limit, the prices for packages change. Profile_plus_page")
+    public Profile_plus_page_Logic checkPriceSwitchingOnSubscriptionPacks() {
+        ArrayList<String> priceForYear = new ArrayList<>();
+        ArrayList<String> priceForMonthly = new ArrayList<>();
+        activeYearPackSwitch().shouldHave(attribute("checked"));
+        switchMonthlyPack().shouldBe(visible).click();
+        priceForMonthly.add(yearPriceForBasicPack().getText());
+        switchYearPack().shouldBe(visible).click();
+        priceForYear.add(yearPriceForBasicPack().getText());
+        Assert.assertNotEquals(priceForYear, priceForMonthly);
+        priceForYear.clear();
+        priceForMonthly.clear();
+
+        switchMonthlyPack().shouldBe(visible).click();
+        priceForMonthly.add(yearPriceForOptimalPack().getText());
+        switchYearPack().shouldBe(visible).click();
+        priceForYear.add(yearPriceForOptimalPack().getText());
+        Assert.assertNotEquals(priceForYear, priceForMonthly);
+        priceForYear.clear();
+        priceForMonthly.clear();
+
+        switchMonthlyPack().shouldBe(visible).click();
+        priceForMonthly.add(yearPriceForProfPack().getText());
+        switchYearPack().shouldBe(visible).click();
+        priceForYear.add(yearPriceForProfPack().getText());
+        Assert.assertNotEquals(priceForYear, priceForMonthly);
+        priceForYear.clear();
+        priceForMonthly.clear();
+
+        switchMonthlyPack().shouldBe(visible).click();
+        priceForMonthly.add(yearPriceForExpertPack().getText());
+        switchYearPack().shouldBe(visible).click();
+        priceForYear.add(yearPriceForExpertPack().getText());
+        Assert.assertNotEquals(priceForYear, priceForMonthly);
+        priceForYear.clear();
+        priceForMonthly.clear();
+        return this;
+    }
+
+    @Step("Checking the function of the Packet Activation button. Profile_plus_page")
+    public Profile_plus_page_Logic checkFunctionOfPackActivationButton() {
+        activationPackBtn().shouldHaveSize(4);
+        for (int i = 0; i < activationPackBtn().size(); i++) {
+            activationPackBtn().get(i).click();
+            checkingContainsUrl("subscription/billing");
+            back();
+        }
+        activationTrialPackBtn().click();
+        checkingContainsUrl("subscription/billing");
         return this;
     }
 }
