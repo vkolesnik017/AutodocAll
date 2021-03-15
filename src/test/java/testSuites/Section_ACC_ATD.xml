@@ -58,6 +58,7 @@
             <class name="ATD.Section_ACC.QC_1340_ListingAccessories.QC_2266"/>
             <class name="ATD.Section_ACC.QC_1340_ListingAccessories.QC_2267"/>
             <class name="ATD.Section_ACC.QC_1340_ListingAccessories.QC_2269"/>
+            <class name="ATD.Section_ACC.QC_1340_ListingAccessories.QC_3428"/>
         </classes>
     </test>
 
