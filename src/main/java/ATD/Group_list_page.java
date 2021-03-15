@@ -35,4 +35,6 @@ public class Group_list_page {
     ElementsCollection typeFile() {
         return $$x("//*[@class = 'product_manual__item']//i");
     }
+
+    SelenideElement topProductsBlock() {return $x("//div[@class='product-list product-list--4items js-product-list-slider--4group js-product-list-animation slick-initialized slick-slider']");}
 }

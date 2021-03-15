@@ -134,7 +134,7 @@ public class Maker_car_list_page {
     }
 
     SelenideElement topProductsBlock() {
-        return $x("//div[@class='top-small-products top-small-products--shortened']");
+        return $x("//*[self::div[@class='top-small-products top-small-products--shortened'] or self::div[@class='top-small-products']]");
     }
 
     ElementsCollection allTitlesOfTopProducts() {

@@ -217,7 +217,7 @@ class Moto_main_page {
     }
 
     SelenideElement topProductsBlock() {
-        return $x("//div[@class='moto-top-products']");
+        return $x("//*[self::div[@class='moto-top-products'] or self::div[@class='moto-top-product']]");
     }
 
     SelenideElement headlineOfTopProductsBlock() {
