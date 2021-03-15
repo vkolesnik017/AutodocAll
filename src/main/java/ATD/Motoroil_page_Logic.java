@@ -183,14 +183,28 @@ public class Motoroil_page_Logic extends Motoroil_page {
         return page(MotoroilBrand_page_Logic.class);
     }
 
+
     @Step("Check sending kba selector form with valid data. Motoroil page")
     public Category_car_list_page_Logic sendKbaSelectorFormWithValidData(String firstValueOfKbaNumber, String secondValueOfKbaNumber) {
+        Main_page_Logic mainPageLogic = new Main_page_Logic();
+        refresh();
         kbaSelectorBlock().shouldBe(visible);
         kbaSelectorFirstInput().sendKeys(firstValueOfKbaNumber);
         kbaSelectorSecondInput().sendKeys(secondValueOfKbaNumber);
         kbaSelectorSendButton().click();
+        sleep(3000);
+        if(mainPageLogic.selectorPopup().isDisplayed()) {
+            mainPageLogic.closeBtnInCarSelectorPopup().shouldBe(visible).click();
+            mainPageLogic.selectorPopup().shouldNotBe(visible);
+            kbaSelectorFirstInput().clear();
+            kbaSelectorSecondInput().clear();
+            kbaSelectorFirstInput().sendKeys(firstValueOfKbaNumber);
+            kbaSelectorSecondInput().sendKeys(secondValueOfKbaNumber);
+            kbaSelectorSendButton().click();
+        }
         return page(Category_car_list_page_Logic.class);
     }
+
 
     @Step("presence Of Kba Selector. Motoroil page")
     public Motoroil_page_Logic presenceOfKbaSelector() {
@@ -201,6 +215,7 @@ public class Motoroil_page_Logic extends Motoroil_page {
     @Step("Sending reg selector form with valid data. Motoroil page")
     public Category_car_list_page_Logic sendingRegSelectorWithValidData(String regNum) {
         Main_page_Logic mainPageLogic = new Main_page_Logic();
+        refresh();
         regSelectorBlock().shouldBe(visible);
         regInput().sendKeys(regNum);
         regSelectorSendButton().click();
