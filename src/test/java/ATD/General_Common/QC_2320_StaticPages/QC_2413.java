@@ -25,23 +25,23 @@ public class QC_2413 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = true) //TODO test works but disabled method ".checkingTheTitleHilftBlockPDF()" . Line 44 . defect SHOP-758
+    @Test(dataProvider = "route", enabled = true) //TODO test works but disabled method ".checkingTitleInHelpBlockAgainstInPDF() " . Line 44 . defect SHOP-758
     @Owner(value = "LavrynenkoOlha")
     @Flaky
     @Description(value = "Test checks elements and functionality on the Presse page")
     public void checkPressePageElements(String route) throws IOException {
         openPage(route);
         new Main_page_Logic().goToPressePage()
-                .checkingPresenceOfTheBlocks()
-                .openTheArticleBlock()
+                .checkingPresReleaseHeaderAndPressInfoBlock()
+                .checkAndOpenTheArticleBlock()
                 .checkingTheTitlesInTheCards()
                 .checkingTheTexts()
-                .getStatusImageCod()
-                .getStatusPhotoCod()
+                .getStatusCodForImgInHelpBlock()
+                .getStatusCodForImgInPressInfoBlock()
                 .checkingTheDownloadsPDF()
                 .checkingTheDownloadsJPG()
-                .checkingTheDownloadsPDFHilftBlock()
-//                .checkingTheTitleHilftBlockPDF()  //TODO defect SHOP-758
+                .checkingTheDownloadsPdfInHelpBlock()
+//                .checkingTitleInHelpBlockAgainstInPDF()  //TODO defect SHOP-758
                 .checkingTheActiveArticle()
                 .checkingTheBackForwardButtons()
                 .checkingTheImagesStatusCode()

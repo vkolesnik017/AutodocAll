@@ -180,7 +180,7 @@ public class CommonMethods {
         }
     }
 
-    //Method checking follow url on new tab and close tab
+    @Step("Method checking follow url on new tab and close tab")
     public void checkingUrlAndCloseTab(String expectedUrl) {
         switchTo().window(1);
         String actualUrl = url();
@@ -189,8 +189,23 @@ public class CommonMethods {
         switchTo().window(0);
     }
 
-    @Step
-    // Pulling prices from text of element
+    @Step("Method checking follow url on new tab and close tab")
+    public void checkingUrlAndCloseTab(String shop, String expectedUrl) {
+        switchTo().window(1);
+        String actualUrl = url();
+        if (shop.equals("be")) {
+            String urlForBE = actualUrl.replaceAll("-", "");
+            assertTrue(urlForBE.contains(expectedUrl));
+            getWebDriver().close();
+            switchTo().window(0);
+        } else {
+            assertTrue(actualUrl.contains(expectedUrl));
+            getWebDriver().close();
+            switchTo().window(0);
+        }
+    }
+
+    @Step("Pulling prices from text of element")
     public static Float getPriceFromElement(SelenideElement element) {
         element.shouldBe(visible);
         return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
@@ -207,8 +222,7 @@ public class CommonMethods {
         $(overlay).shouldNotBe(visible);
     }
 
-    @Step
-    // method for test adding product to basket from all routes
+    @Step("Method for test adding product to basket from all routes")
     public static void clickOfBuyBtnForAllPages() {
         SelenideElement productBlockForHover = $(byCssSelector(".rec_products_block"));
         SelenideElement avaliablePopup = $(".popup-available");
@@ -243,7 +257,7 @@ public class CommonMethods {
         sleep(4000); // TODO try delete this sleep if fixed SITES-2830
     }
 
-    // methods and locators for block of top products
+    @Step("Methods and locators for block of top products")
     private SelenideElement titleOfBlockOfTopProducts() {
         return $x("//*[@class='title_list'] | //*[@class='top-small-products__title']");
     }

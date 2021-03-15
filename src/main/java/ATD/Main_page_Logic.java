@@ -873,7 +873,7 @@ public class Main_page_Logic extends Main_page {
     @Step("Checks open and close footer droplist with countries. Main_page")
     public Main_page_Logic checkOpenAndCloseDroplistCountries() {
         footerForm().scrollTo();
-        languageSelector().click();
+        languageSelector().waitUntil(visible, 5000).click();
         dropdownCountry().shouldBe(visible);
         languageSelector().click();
         dropdownCountry().shouldNotBe(visible);
@@ -889,7 +889,7 @@ public class Main_page_Logic extends Main_page {
             if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
             languageSelector().scrollIntoView(true).click();
             element.waitUntil(visible, 3000).scrollIntoView(true).click();
-            new CommonMethods().checkingUrlAndCloseTab(new DataBase("ATD").getRouteByRouteName(shopName, "main"));
+            new CommonMethods().checkingUrlAndCloseTab(shopName, new DataBase("ATD").getRouteByRouteName(shopName, "main"));
         }
         return this;
     }

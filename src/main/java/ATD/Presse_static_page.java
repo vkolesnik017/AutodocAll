@@ -4,117 +4,137 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 class Presse_static_page {
 
-    SelenideElement presseHeader() {
+    // Locators for press-release header block
+    SelenideElement pressHeaderBlock() {
         return $(By.xpath("//*[@class='press-release__header']"));
     }
 
-    SelenideElement presseHeaderTitle() {
+    SelenideElement pressHeaderTitle() {
         return $(By.xpath("//*[@class='press-release__header-title']"));
     }
 
-    SelenideElement presseHeaderFirstText() {
+    SelenideElement pressHeaderHeaderAdvantage() {
         return $(By.xpath("//*[@class='press-release__header-advantage']"));
     }
 
-    SelenideElement presseHeaderSecondText() {
+    SelenideElement pressHeaderMainText() {
         return $(By.xpath("//*[@class='press-release__header-text']//p"));
     }
 
-    SelenideElement presseInfoBlock() {
+    SelenideElement pressInfoBlock() {
         return $(By.xpath("//*[@class='press-inform']"));
     }
 
-    SelenideElement presseInfoTitle() {
+    // Locators for press-inform block
+    SelenideElement pressInfoTitle() {
         return $(By.xpath("//*[@class='press-inform__title']"));
     }
 
-    SelenideElement presseInfoText() {
+    SelenideElement pressInfoMainText() {
         return $(By.xpath("//*[@class='press-inform__text']//p"));
     }
 
-    SelenideElement preReleaseBlock() {
-        return $(By.xpath("//*[@class='press-content'][1]"));
-    }
-
-    SelenideElement presseFirstPersonBlock() {
+    SelenideElement pressInfoFirstPersonBlock() {
         return $(By.xpath("//*[@class='press-inform__persone'][1]"));
     }
 
-    SelenideElement pressePhotos() {
+    SelenideElement pressPhotos() {
         return $(By.xpath("//*[@class='press-inform__persone']//div//img"));
     }
 
-    SelenideElement presseSecondPersonBlock() {
+    SelenideElement pressInfoSecondPersonBlock() {
         return $(By.xpath("//*[@class='press-inform__persone'][2]"));
     }
 
-    SelenideElement mehrButton() {
-        return $(By.xpath("//*[@class='press-content__more js-press-content__more'][1]"));
+    // Locator for press-content block
+    SelenideElement pressContentReleaseBlock() {
+        return $(By.xpath("//*[@class='press-content'][1]"));
     }
 
-    SelenideElement atdHilft() {
-        return $(By.xpath("//*[@class='atd-hilft']"));
+    SelenideElement pressContentReleaseHeader() {
+        return $x("(//div[@class='press-content__header']/span)[1]");
     }
 
-    SelenideElement atdHilftImage() {
-        return $(By.xpath("//*[@class='atd-hilft__img']//img"));
+    SelenideElement pressContentReleaseArticleBlock() {
+        return $x("//div[@class='press-content__articles js-press-content']");
     }
 
-    ElementsCollection articleTexts() {
-        return $$(By.xpath("//*[@class='atd-hilft__text']//p"));
+    SelenideElement pressContentArticleDate() {
+        return $(".press-article__date");
     }
 
-    ElementsCollection articleTitle() {
+    ElementsCollection pressContentArticleImg() {
+        return $$(".press-article__img");
+    }
+
+    ElementsCollection pressContentArticleTitle() {
         return $$(By.xpath("//*[@class='press-article__title']//a"));
     }
 
-    ElementsCollection downloadPDF() {
+    ElementsCollection pressContentBtnDownloadPDF() {
         return $$(By.xpath("//*[@class='press-article__file press-article__file--pdf']"));
     }
 
-    ElementsCollection downloadJPG() {
+    ElementsCollection pressContentBtnDownloadJPG() {
         return $$(By.xpath("//*[@class='press-article__file press-article__file--jpg']"));
     }
 
-    ElementsCollection artTitle() {
-        return $$(By.xpath("//*[@class='press-article__title']")).filter(visible);
+    SelenideElement pressContentMoreButton() {
+        return $(By.xpath("//*[@class='press-content__more js-press-content__more'][1]"));
     }
 
-    SelenideElement hilftArticleTitle() {
+    //Locator for autodoc-help block
+    SelenideElement helpBlock() {
+        return $(By.xpath("//*[@class='atd-hilft']"));
+    }
+
+    SelenideElement helpImage() {
+        return $(By.xpath("//*[@class='atd-hilft__img']//img"));
+    }
+
+    ElementsCollection helpArticleTexts() {
+        return $$(By.xpath("//*[@class='atd-hilft__text']//p"));
+    }
+
+    SelenideElement helpArticleTitle() {
         return $(By.xpath("//*[@class='hilft-article__title']"));
     }
 
-    SelenideElement hilftArticleDownloadPDF() {
+    SelenideElement articleDownloadPdfInHelpBlock() {
         return $(By.xpath("//*[@class='link hilft-article__file hilft-article__file--file']"));
     }
 
-    SelenideElement autodocPresseBlock() {
+    // Locator for atd-press block
+    SelenideElement autodocPressBlock() {
         return $(By.xpath("//*[@class='atd-presse']"));
     }
 
-    SelenideElement autodocPresseBlockTitle() {
+    SelenideElement autodocPressBlockTitle() {
         return $(By.xpath("//*[@class='atd-presse__header']//span"));
     }
 
-    SelenideElement autodocPresseButtonForward() {
-        return $(By.xpath("//*[@class='presse-slides js-presse-slides slick-initialized slick-slider']//button[@class='slick-next slick-arrow']"));
+    SelenideElement autodocPressButtonForward() {
+        return $(By.xpath("(//button[@aria-label='Next'])[1]"));
     }
 
-    SelenideElement autodocPresseButtonBack() {
-        return $(By.xpath("//*[@class='presse-slides js-presse-slides slick-initialized slick-slider']//button[@class='slick-prev slick-arrow']"));
+    SelenideElement autodocPressButtonBack() {
+        return $(By.xpath("(//button[@aria-label='Previous'])[1]"));
     }
 
-    ElementsCollection activeArticlesInSlider() {
+    SelenideElement autodocPressSliderList() {
+        return $x("//div[@class='slick-list']");
+    }
+
+    ElementsCollection autodocPressActiveArticlesInSlider() {
         return $$(By.xpath("//div[@class='slick-track']/*[self::div[@class='presse-slides__item slick-slide slick-current slick-active'] " +
                 "or self::div[@class='presse-slides__item slick-slide slick-active'] or self::div[@class='presse-slides__item slick-slide']]//span"));
     }
 
-    ElementsCollection imagesOfTheArticlesInSlider() {
+    ElementsCollection autodocPressImagesOfTheArticlesInSlider() {
         return $$(By.xpath("//div[@class='slick-track']/*[self::div[@class='presse-slides__item slick-slide slick-current slick-active'] " +
                 "or self::div[@class='presse-slides__item slick-slide slick-active'] or self::div[@class='presse-slides__item slick-slide']]//img"));
     }
@@ -124,72 +144,69 @@ class Presse_static_page {
                 "or self::div[@class='presse-slides__item slick-slide slick-active']]//span"));
     }
 
-    SelenideElement autodocPresseTitlePresentation() {
-        return $(By.xpath("//*[@class='press-content'][2]//div[1]"));
-    }
-
-    SelenideElement blockWithPresentation() {
-        return $(By.xpath("//*[@class='press-content__presse']//a"));
-    }
-
-    ElementsCollection activeImagesInPresentationBlock() {
-        return $$(By.xpath("//*[@class='slick-track']//*[self::div[@class='presse-gallery__thumb slick-slide slick-current slick-active'] " +
-                "or self::div[@class='presse-gallery__thumb slick-slide slick-active'] or  self::div[@class='presse-gallery__thumb slick-slide']]//div//img"));
-    }
-
-    ElementsCollection imageElement() {
-        return $$(By.xpath("//*[@class='presse-gallery__slide-inside']//a"));
-    }
-
-    ElementsCollection imageElementActiveSix() {
-        return $$(By.xpath("//*[@class='slick-track']//*[self::div[@class='presse-gallery__thumb slick-slide slick-active'] " +
-                "or self::div[@class='presse-gallery__thumb slick-slide slick-current slick-active']]//div//img"));
-    }
-
-    SelenideElement secondImageElementActive() {
-        return $x("//div[contains(@class,'presse-gallery__thumb')]//*[@data-slick-index='1']/div/img");
-    }
-
-    SelenideElement presseGalleryActiveSlide() {
-        return $x("//*[@class='presse-gallery__slide-inside']//*[@tabindex='0']/..//img");
-    }
-
-    SelenideElement forwardButtonPresentation() {
-        return $(By.xpath("//*[@class='presse-gallery__slider js-presse-gallery__slider-init slick-initialized slick-slider']//*[@class='slick-next slick-arrow']"));
-    }
-
-    SelenideElement presseButtonBackPresentation() {
-        return $(By.xpath("//*[@class='presse-gallery__slider js-presse-gallery__slider-init slick-initialized slick-slider']//*[@class='slick-prev slick-arrow']"));
-    }
-
-    ElementsCollection mainImageInPresentation() {
-        return $$(By.xpath("//*[@class='presse-gallery__slide-inside']//img"));
-    }
-
-    SelenideElement presseGalleryHeader() {
-        return $(".presse-gallery__header");
-    }
-
-    SelenideElement presseGalleryList() {
-        return $(".presse-gallery__list");
-    }
-
-    SelenideElement presseGalleryContent() {
-        return $(".presse-gallery__content > p");
-    }
-
+    // Locator for more about Autodoc block
     SelenideElement blockMoreAboutAutodoc() {
         return $x("//div[@class='press-content'][2]");
     }
 
     SelenideElement headerInBlockMoreAboutAutodoc() {
-        return $x("//div[@class='press-content'][2]/div/span");
+        return $(By.xpath("//div[@class='press-content'][2]/div/span"));
     }
 
     SelenideElement pdfInBlockMoreAboutAutodoc() {
-        return $x("//div[@class='press-content'][2]/div/a");
+        return $(By.xpath("//div[@class='press-content'][2]/div/a"));
     }
 
+    // Locator for Gallery block
+    SelenideElement pressGalleryListBlock() {
+        return $(".presse-gallery__list");
+    }
+
+    SelenideElement pressGalleryHeaderBlock() {
+        return $(".presse-gallery__header");
+    }
+
+    ElementsCollection mainImageInGalleryBlock() {
+        return $$(By.xpath("//*[@class='presse-gallery__slide-inside']//img"));
+    }
+
+    SelenideElement pressGalleryContentBlock() {
+        return $(".presse-gallery__content > p");
+    }
+
+    ElementsCollection activeImagesInGalleryBlock() {
+        return $$(By.xpath("//*[@class='slick-track']//*[self::div[@class='presse-gallery__thumb slick-slide slick-current slick-active'] " +
+                "or self::div[@class='presse-gallery__thumb slick-slide slick-active'] or  self::div[@class='presse-gallery__thumb slick-slide']]//div//img"));
+    }
+
+    SelenideElement oneBtnSaveInGalleryBlock() {
+        return $x("//*[@class='presse-gallery__slide-inside']//a");
+    }
+
+    ElementsCollection allBtnSaveInGalleryBlock() {
+        return $$(By.xpath("//*[@class='presse-gallery__slide-inside']//a"));
+    }
+
+    ElementsCollection sixActiveImageInGalleryBlock() {
+        return $$(By.xpath("//*[@class='slick-track']//*[self::div[@class='presse-gallery__thumb slick-slide slick-active'] " +
+                "or self::div[@class='presse-gallery__thumb slick-slide slick-current slick-active']]//div//img"));
+    }
+
+    SelenideElement secondImageInGalleryBlock() {
+        return $x("//div[contains(@class,'presse-gallery__thumb')]//*[@data-slick-index='1']/div/img");
+    }
+
+    SelenideElement activeSlideInGalleryBlock() {
+        return $x("//*[@class='presse-gallery__slide-inside']//*[@tabindex='0']/..//img");
+    }
+
+    SelenideElement nexSlideBtnInGalleryBlock() {
+        return $(By.xpath("(//button[@aria-label='Next'])[2]"));
+    }
+
+    SelenideElement previousSlideBtnInGalleryBlock() {
+        return $(By.xpath("(//button[@aria-label='Previous'])[2]"));
+    }
 
 }
 
