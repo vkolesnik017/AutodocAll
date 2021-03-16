@@ -346,4 +346,10 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         List<String> urls = btnDetails().stream().map(n -> getAttributeFromUnVisibleElement(n, "url")).collect(Collectors.toList());
         return urls;
     }
+
+    @Step("presence Of TOP Block. LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic presenceOfTopBlock() {
+       topBlock().shouldBe(visible);
+        return this;
+    }
 }
