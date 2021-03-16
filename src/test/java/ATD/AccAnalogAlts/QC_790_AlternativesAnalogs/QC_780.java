@@ -20,6 +20,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_780 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -30,7 +31,7 @@ public class QC_780 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
     }
 
-    @Test(dataProvider = "routes", enabled = false)  //TODO  BUG: SHOP-2902
+    @Test(dataProvider = "routes", enabled = true)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Related Products Popup On Product Page With Car")

@@ -302,6 +302,8 @@ public class LKW_main_page {
 
     ElementsCollection languagesOfSubscribe() {return $$x("//div[@class='mCSB_container']/div");}
 
+    ElementsCollection countriesFlagSubscribe() {return $$x("//div[@class='mCSB_container']/div//a/img");}
+
     SelenideElement languageBlock() {return $x("//div[@class='footer-language__current']");}
 
     SelenideElement footerForm() {

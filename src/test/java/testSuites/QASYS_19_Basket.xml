@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_19_Basket" data-provider-thread-count="5">
+<suite name="QASYS_19_Basket" parallel="methods" data-provider-thread-count="6">
 
     <listeners>
         <listener class-name="Common.ProjectListener"/>

@@ -1,6 +1,5 @@
 package ATD;
 
-import PKW.Index_accessories_group_page_Logic;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -83,12 +82,19 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
             String name = element.getText();
             nameCategories.add(name);
         }
-        String nameTitle = listingTitle().getText();
+        String nameTitle = listingTitle().getText().replaceAll(" [\\s\\S]*$", "");
         if (nameCategories.contains(nameTitle)) Assert.fail(nameTitle.concat(" visible in sidebar. "));
         nameCategories.add(nameTitle);
         Collections.sort(nameCategories);
         return nameCategories;
     }
+
+    @Step(":from Listing_accessories_page")
+    public Listing_accessories_page_Logic transitionThroughEachCategoryInSidebar() {
+        new Listing_chemicals_Page_Logic().transitionThroughEachCategoryInSidebar();
+        return this;
+    }
+
 
     @Step("Checking presence of the Breadcrumbs. Listing_accessories_page")
     public Listing_accessories_page_Logic checkingPresenceOfTheBreadcrumbs() {

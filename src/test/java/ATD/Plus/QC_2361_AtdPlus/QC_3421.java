@@ -1,6 +1,6 @@
-package ATD.General_Common.QC_2873_PressPage;
+package ATD.Plus.QC_2361_AtdPlus;
 
-import ATD.Presse_static_page_Logic;
+import ATD.Main_page_Logic;
 import Common.DataBase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,7 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2826 {
+public class QC_3421 {
 
     @BeforeClass
     void setUp() {
@@ -25,10 +25,14 @@ public class QC_2826 {
     @Test()
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks presence press-content block in press page")
-    public void testChecksPressContentBlock() throws SQLException {
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticPresse"));
-        new Presse_static_page_Logic().checkBlockMoreAboutAutodoc();
+    @Description(value = "Checking for unavailable options in the User's PC without a Plus subscription")
+    public void testCheckUnavailableOptions() throws SQLException {
+        String mail = "qc_3421_autotest@mailinator.com";
+        openPage(new DataBase("ATD").getFullRouteByRouteName("prod", "DE", "main"));
+        new Main_page_Logic()
+                .loginAndTransitionToProfilePlusPage(mail)
+                .checkUnavailableOptionsInBasicPack()
+                .checkUnavailableOptionsInOptimalPack();
     }
 
     @AfterMethod

@@ -2,10 +2,12 @@ package ATD;
 
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.attribute;
@@ -66,4 +68,16 @@ public class Index_accessories_group_page_Logic extends Index_accessories_group_
         firstElementInBlockAccessorizeCatalog().shouldBe(visible).click();
         return page(Listing_accessories_page_Logic.class);
     }
+
+    @Step("Get all categories name. Index_accessories_group_page")
+    public ArrayList<String> getAllCategoriesName() {
+        ArrayList<String> nameCategories = new ArrayList<>();
+        for (SelenideElement element : mainCategories()) {
+            String name = element.getText();
+            nameCategories.add(name);
+            Collections.sort(nameCategories);
+        }
+        return nameCategories;
+    }
+
 }

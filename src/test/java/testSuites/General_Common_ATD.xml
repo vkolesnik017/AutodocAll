@@ -68,6 +68,12 @@
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2414"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2413"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_1835"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2797"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2826"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2830"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2793"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2791"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2819"/>
         </classes>
     </test>
 
@@ -76,14 +82,5 @@
             <class name="ATD.General_Common.QC_880_BlockOfDeliveryAndPaymentMethods.QC_887"/>
         </classes>
     </test>
-
-    <test name="QC_2873_PressPage">
-        <classes>
-            <class name="ATD.General_Common.QC_2873_PressPage.QC_2797"/>
-            <class name="ATD.General_Common.QC_2873_PressPage.QC_2826"/>
-            <class name="ATD.General_Common.QC_2873_PressPage.QC_2830"/>
-        </classes>
-    </test>
-
 
 </suite>
