@@ -3,6 +3,7 @@ package PKW;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +60,28 @@ public class Search_page_Logic extends Search_page {
                 characteristics.clear();
             }
         }
+        return this;
+    }
+
+    @Step("compare Selector Values With File. Search_page")
+    public Search_page_Logic compareSelectorValuesWithFile(String marke, String model, String carId, String file, String startUrl) throws IOException {
+        String markeFromSelector = markeFieldSelector().getSelectedValue();
+        String modelFromSelector = modelFieldSelector().getSelectedValue();
+        String motorFromSelector = motorFieldSelector().getSelectedValue();
+        boolean markeLabel = markeFromSelector.equals(marke) ? true : false;
+        boolean modelLabel = modelFromSelector.equals(model) ? true : false;
+        boolean motorLabel = motorFromSelector.equals(carId) ? true : false;
+        if (markeLabel == false && modelLabel == true && motorLabel == true) {
+            new CommonMethods().writerInFile(file, true, String.format("MakerId not equals. from File - %s, from Selector - %. Url - %s", marke, markeFromSelector, startUrl));
+        } else if (modelLabel == false && markeLabel == true && motorLabel == true) {
+            new CommonMethods().writerInFile(file, true, String.format("ModelId not equals. from File - %s, from Selector - %. Url - %s", model, modelFromSelector, startUrl));
+        } else if (motorLabel == false && markeLabel == true && modelLabel == true) {
+            new CommonMethods().writerInFile(file, true, String.format("MotorId(CarId) not equals. from File - %s, from Selector - %. Url - %s", carId, motorFromSelector, startUrl));
+        } else if (markeLabel == false && modelLabel == false && motorLabel == true) {
+            new CommonMethods().writerInFile(file, true, String.format("MakerId and ModelId not equals. MakerId from File - %s,  MakerId from Selector - %; ModelId from File - %s,  ModelId from Selector - %; Url - %s",
+                    marke, markeFromSelector, model, modelFromSelector, startUrl));
+        }
+        System.out.println();
         return this;
     }
 }
