@@ -71,7 +71,7 @@ public class Service_plus_packages_page_Logic extends Service_plus_packages_page
         plusServicePageLogo().shouldBe(visible);
         plusServiceTitle().shouldBe(visible);
         plusServiceMainText().shouldBe(visible);
-        ActiveYearPriceSwitch().shouldHave(attribute("checked"));
+        activeYearPriceSwitch().shouldHave(attribute("checked"));
         return this;
     }
 

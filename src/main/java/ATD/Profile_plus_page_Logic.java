@@ -8,6 +8,7 @@ import org.testng.Assert;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -74,13 +75,13 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
 
     @Step("Transition to My vehicles block. Profile_plus_page")
     public Profile_garage_page_Logic goToMyVehiclesBlock() {
-        myVehiclesBlock().click();
+        myVehiclesBtn().click();
         return page(Profile_garage_page_Logic.class);
     }
 
     @Step("Transition to wishList block. Profile_plus_page")
     public Profile_wishlist_page_Logic goToWishListBlock() {
-        wishListBlock().shouldBe(visible).click();
+        wishListBtn().shouldBe(visible).click();
         return page(Profile_wishlist_page_Logic.class);
     }
 
@@ -140,7 +141,7 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
     @Step("Checks presence heder private room block and the elements inside. Profile_plus_page")
     public Profile_plus_page_Logic checkPresenceHeaderBlockAndElementInside() {
         headerPrivateRoomBlock().shouldBe(visible);
-        nameOfClient().shouldBe(visible);
+        nameOfUser().shouldBe(visible);
         depositResultLabel().shouldBe(visible);
         depositAmount().shouldBe(visible);
         return this;
@@ -177,10 +178,9 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         return this;
     }
 
-    @Step("click on Garage icon in header. Profile_plus_page")
+    @Step(": for Profile_plus_page")
     public Profile_plus_page_Logic clickOnGarageIconInHeader() {
-        headerGarageIcon().shouldBe(visible).click();
-        popUpOfGarageInHeader().shouldBe(visible);
+        new Main_page_Logic().clickOnGarageIconInHeader();
         return this;
     }
 
@@ -292,6 +292,135 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
     public Profile_plus_page_Logic absenceOfSoOption() {
         List<String> iconTitle = servicePackageIcons().stream().map(n -> n.getAttribute("src").replaceAll("^.+\\/", "").replaceAll("\\..+$", "")).collect(Collectors.toList());
         Assert.assertFalse(iconTitle.contains("return-icon"));
+        return this;
+    }
+
+    @Step("Checks that when you switch the subscription limit, the prices for packages change. Profile_plus_page")
+    public Profile_plus_page_Logic checkPriceSwitchingOnSubscriptionPacks() {
+        ArrayList<String> priceForYear = new ArrayList<>();
+        ArrayList<String> priceForMonthly = new ArrayList<>();
+        activeYearPackSwitch().shouldHave(attribute("checked"));
+        switchMonthlyPack().shouldBe(visible).click();
+        priceForMonthly.add(priceForBasicPack().getText());
+        switchYearPack().shouldBe(visible).click();
+        priceForYear.add(priceForBasicPack().getText());
+        Assert.assertNotEquals(priceForYear, priceForMonthly);
+        priceForYear.clear();
+        priceForMonthly.clear();
+
+        switchMonthlyPack().shouldBe(visible).click();
+        priceForMonthly.add(priceForOptimalPack().getText());
+        switchYearPack().shouldBe(visible).click();
+        priceForYear.add(priceForOptimalPack().getText());
+        Assert.assertNotEquals(priceForYear, priceForMonthly);
+        priceForYear.clear();
+        priceForMonthly.clear();
+
+        switchMonthlyPack().shouldBe(visible).click();
+        priceForMonthly.add(priceForProfPack().getText());
+        switchYearPack().shouldBe(visible).click();
+        priceForYear.add(priceForProfPack().getText());
+        Assert.assertNotEquals(priceForYear, priceForMonthly);
+        priceForYear.clear();
+        priceForMonthly.clear();
+
+        switchMonthlyPack().shouldBe(visible).click();
+        priceForMonthly.add(priceForExpertPack().getText());
+        switchYearPack().shouldBe(visible).click();
+        priceForYear.add(priceForExpertPack().getText());
+        Assert.assertNotEquals(priceForYear, priceForMonthly);
+        priceForYear.clear();
+        priceForMonthly.clear();
+        return this;
+    }
+
+    @Step("Checking the function of the Packet Activation button. Profile_plus_page")
+    public Profile_plus_page_Logic checkFunctionOfPackActivationButton() {
+        activationPackBtn().shouldHaveSize(4);
+        for (int i = 0; i < activationPackBtn().size(); i++) {
+            activationPackBtn().get(i).click();
+            checkingContainsUrl("subscription/billing");
+            back();
+        }
+        activationTrialPackBtn().click();
+        checkingContainsUrl("subscription/billing");
+        return this;
+    }
+
+    @Step("Checks presence elements in header Autodoc plus section. Profile_plus_page")
+    public Profile_plus_page_Logic checkElementsInHeaderAtdPlusSection() {
+        visibilityOfUsersName();
+        logoInPlusBlock().shouldBe(visible);
+        titleTextInPlusBlock().shouldBe(visible);
+        textInPlusBlock().shouldBe();
+        activeYearPackSwitch().shouldHave(attribute("checked"));
+        switchMonthlyPack().shouldBe(visible);
+        switchYearPack().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence elements in Basic plus-subscription blocks. Profile_plus_page")
+    public Profile_plus_page_Logic checkElementInBasicPlusBlock(String expectedNamePack, String expectedNoteOnPrice) {
+        basicPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        nameBasicPack().shouldBe(visible).shouldHave(text(expectedNamePack));
+        priceForBasicPack().shouldBe(visible);
+        noteOnPricePerBasicPack().shouldBe(visible).shouldHave(text(expectedNoteOnPrice));
+        blockWithBasicPackOptions().shouldBe(visible);
+        activationBasicPackBtn().shouldBe(visible).shouldHave(attribute("href"));
+        return this;
+    }
+
+    @Step("Checks presence unavailable options in Basic plus-subscription blocks. Profile_plus_page")
+    public Profile_plus_page_Logic checkUnavailableOptionsInBasicPack() {
+        basicPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        allOptionIconInBasicPack().shouldHaveSize(6);
+        unavailableOption2xInBasicPack().shouldBe(visible);
+        unavailableOptionDiscountInBasicPack().shouldBe(visible);
+        unavailableOptionSubscribeInBasicPack().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence elements in Optimal plus-subscription blocks. Profile_plus_page")
+    public Profile_plus_page_Logic checkElementInOptimalPlusBlock(String expectedNamePack, String expectedNoteOnPrice) {
+        optimalPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        nameOptimalPack().shouldBe(visible).shouldHave(text(expectedNamePack));
+        priceForOptimalPack().shouldBe(visible);
+        noteOnPricePerOptimalPack().shouldBe(visible).shouldHave(text(expectedNoteOnPrice));
+        blockWithOptimalPackOptions().shouldBe(visible);
+        activationOptimalPackBtn().shouldBe(visible).shouldHave(attribute("href"));
+        activationTrialPackBtn().shouldBe(visible).shouldHave(attribute("href"));
+        return this;
+    }
+
+    @Step("Checks presence unavailable options in Optimal plus-subscription blocks. Profile_plus_page")
+    public Profile_plus_page_Logic checkUnavailableOptionsInOptimalPack() {
+        optimalPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        allOptionIconInOptimalPack().shouldHaveSize(6);
+        unavailableOptionDiscountInOptimalPack().shouldBe(visible);
+        unavailableOptionSubscribeInOptimalPack().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence elements in Professional plus-subscription blocks. Profile_plus_page")
+    public Profile_plus_page_Logic checkElementInProfPlusBlock(String expectedNamePack, String expectedNoteOnPrice) {
+        profPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        nameProfPack().shouldBe(visible).shouldHave(text(expectedNamePack));
+        priceForProfPack().shouldBe(visible);
+        noteOnPricePerProfPack().shouldBe(visible).shouldHave(text(expectedNoteOnPrice));
+        blockWithProfPackOptions().shouldBe(visible);
+        activationProfPackBtn().shouldBe(visible).shouldHave(attribute("href"));
+        return this;
+    }
+
+    @Step("Checks presence elements in Expert plus-subscription blocks. Profile_plus_page")
+    public Profile_plus_page_Logic checkElementInExpertPlusBlock(String expectedNamePack, String expectedNoteOnPrice) {
+        expertPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        nameExpertPack().shouldBe(visible).shouldHave(text(expectedNamePack));
+        priceForExpertPack().shouldBe(visible);
+        noteOnPricePerExpertPack().shouldBe(visible).shouldHave(text(expectedNoteOnPrice));
+        blockWithExpertPackOptions().shouldBe(visible);
+        mainIconExpertPack().shouldBe(visible);
+        activationExpertPackBtn().shouldBe(visible).shouldHave(attribute("href"));
         return this;
     }
 }
