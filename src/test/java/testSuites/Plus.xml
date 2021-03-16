@@ -28,6 +28,8 @@
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2609"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_3099"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_3100"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3421"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3424"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_3426"/>
         </classes>
     </test>
