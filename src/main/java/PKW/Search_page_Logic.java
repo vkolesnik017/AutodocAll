@@ -65,6 +65,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("compare Selector Values With File. Search_page")
     public Search_page_Logic compareSelectorValuesWithFile(String marke, String model, String carId, String file, String startUrl) throws IOException {
+        CommonMethods commonMethods = new CommonMethods();
         String markeFromSelector = markeFieldSelector().getSelectedValue();
         String modelFromSelector = modelFieldSelector().getSelectedValue();
         String motorFromSelector = motorFieldSelector().getSelectedValue();
@@ -72,14 +73,24 @@ public class Search_page_Logic extends Search_page {
         boolean modelLabel = modelFromSelector.equals(model) ? true : false;
         boolean motorLabel = motorFromSelector.equals(carId) ? true : false;
         if (markeLabel == false && modelLabel == true && motorLabel == true) {
-            new CommonMethods().writerInFile(file, true, String.format("MakerId not equals. from File - %s, from Selector - %. Url - %s", marke, markeFromSelector, startUrl));
+            commonMethods.writerInFile(file, true, String.format("MakerId not equals. from File - %s, from Selector - %. Url - %s", marke, markeFromSelector, startUrl));
         } else if (modelLabel == false && markeLabel == true && motorLabel == true) {
-            new CommonMethods().writerInFile(file, true, String.format("ModelId not equals. from File - %s, from Selector - %. Url - %s", model, modelFromSelector, startUrl));
+            commonMethods.writerInFile(file, true, String.format("ModelId not equals. from File - %s, from Selector - %. Url - %s", model, modelFromSelector, startUrl));
         } else if (motorLabel == false && markeLabel == true && modelLabel == true) {
-            new CommonMethods().writerInFile(file, true, String.format("MotorId(CarId) not equals. from File - %s, from Selector - %. Url - %s", carId, motorFromSelector, startUrl));
+            commonMethods.writerInFile(file, true, String.format("MotorId(CarId) not equals. from File - %s, from Selector - %. Url - %s", carId, motorFromSelector, startUrl));
         } else if (markeLabel == false && modelLabel == false && motorLabel == true) {
-            new CommonMethods().writerInFile(file, true, String.format("MakerId and ModelId not equals. MakerId from File - %s,  MakerId from Selector - %; ModelId from File - %s,  ModelId from Selector - %; Url - %s",
+            commonMethods.writerInFile(file, true, String.format("MakerId and ModelId not equals. MakerId from File - %s,  MakerId from Selector - %; ModelId from File - %s,  ModelId from Selector - %; Url - %s",
                     marke, markeFromSelector, model, modelFromSelector, startUrl));
+        } else if (markeLabel == false && modelLabel == true && motorLabel == false) {
+            commonMethods.writerInFile(file, true, String.format("MakerId and MotorId(CarId) not equals. MakerId from File - %s,  MakerId from Selector - %; CarId from File - %s,  CarId from Selector - %; Url - %s",
+                    marke, markeFromSelector, carId, motorFromSelector, startUrl));
+        } else if (markeLabel == true && modelLabel == false && motorLabel == false) {
+            commonMethods.writerInFile(file, true, String.format("ModelId and MotorId(CarId) not equals. ModelId from File - %s,  ModelId from Selector - %; CarId from File - %s,  CarId from Selector - %; Url - %s",
+                    model, modelFromSelector, carId, motorFromSelector, startUrl));
+        } else if (markeLabel == false && modelLabel == false && motorLabel == false) {
+            commonMethods.writerInFile(file, true, String.format("MakerId, ModelId and MotorId(CarId) not equals. MakerId from File - %s,  MakerId from Selector - %;  ModelId from File - %s,  ModelId from Selector - %; " +
+                            "CarId from File - %s,  CarId from Selector - %; Url - %s",
+                    marke, markeFromSelector, model, modelFromSelector, carId, motorFromSelector, startUrl));
         }
         System.out.println();
         return this;

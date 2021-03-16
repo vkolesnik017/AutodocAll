@@ -57,9 +57,9 @@ public class QC_3468 extends Main_page {
         openPage(startUrl);
 
         try {
-     //   commonMethods.checkingMakerName(makerNameSelected(), makerName, result, startUrl);
-       //     commonMethods.checkingGroupName(groupNameSelected(), groupName, result, startUrl);
-       //     commonMethods.checkingModelName(modelNameSelected(), modelName, result, startUrl);
+            //   commonMethods.checkingMakerName(makerNameSelected(), makerName, result, startUrl);
+            //     commonMethods.checkingGroupName(groupNameSelected(), groupName, result, startUrl);
+            //     commonMethods.checkingModelName(modelNameSelected(), modelName, result, startUrl);
             new Search_page_Logic().compareSelectorValuesWithFile(maker_id, model_id, car_id, result, startUrl);
             //    commonMethods.checkingCarName(carNameSelected(), carName, yearBegin, yearEnd, kw, hp, result, startUrl);
         } catch (ElementNotFound element) {
