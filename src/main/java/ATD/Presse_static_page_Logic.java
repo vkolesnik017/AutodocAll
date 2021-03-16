@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.*;
@@ -159,8 +161,8 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Checking the active articles in the slider. Presse_static_page")
-    public Presse_static_page_Logic checkingTheActiveArticle() {
+    @Step("Checking the active articles in the slider for atd-presse block. Presse_static_page")
+    public Presse_static_page_Logic checkingTheActiveArticleForAtdPresseBlock() {
         for (int i = 0; i < autodocPressActiveArticlesInSlider().size(); i++) {
             String attributeUrl = autodocPressActiveArticlesInSlider().get(i).getAttribute("url").replaceAll("(^.+\\/\\/)(\\w{3}\\.\\w{2,10}\\W?\\w{2,}\\.\\w{2,3})(.+)", "$2");
             autodocPressActiveArticlesInSlider().get(i).click();
@@ -173,23 +175,25 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Checking the back and forward buttons in the slider. Presse_static_page")
-    public Presse_static_page_Logic checkingTheBackForwardButtons() {
+    @Step("Checking the back and forward buttons in the slider for atd-presse block. Presse_static_page")
+    public Presse_static_page_Logic checkingTheBackForwardButtonsForAtdPresseBlock() {
         String firstArticle = activeArticlesInSliderFive().first().getAttribute("url");
-        autodocPressButtonForward().click();
+        autodocPressButtonForward().shouldBe(visible).click();
+        sleep(2000);
         String firstArticleAfterClick = activeArticlesInSliderFive().first().getAttribute("url");
         Assert.assertNotEquals(firstArticleAfterClick, firstArticle);
         for (int i = 0; i < activeArticlesInSliderFive().size(); i++) {
             autodocPressActiveArticlesInSlider().get(i).shouldBe(visible);
         }
-        autodocPressButtonBack().click();
+        autodocPressButtonBack().shouldBe(visible).click();
+        sleep(2000);
         String firstArticleAfterClickBack = activeArticlesInSliderFive().first().getAttribute("url");
         Assert.assertEquals(firstArticleAfterClickBack, firstArticle);
         return this;
     }
 
-    @Step("Checking the images in the slider. Presse_static_page")
-    public Presse_static_page_Logic checkingTheImagesStatusCode() throws IOException {
+    @Step("Checking the images in the slider for atd presse block. Presse_static_page")
+    public Presse_static_page_Logic checkingTheImagesStatusCodeForAtdPresseBlock() throws IOException {
         for (int i = 0; i < autodocPressImagesOfTheArticlesInSlider().size(); i++) {
             String linkInsideImage = autodocPressImagesOfTheArticlesInSlider().get(i).getAttribute("src");
             URL url = new URL(linkInsideImage);
@@ -204,7 +208,21 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Checking the block with the presentation . Presse_static_page")
+    @Step("Compares the current logo link to the expected one. Presse_static_page")
+    public Presse_static_page_Logic comparesCurrentLogoLinkToExpectedOne(List <String> expectedLink) {
+        autodocPressSliderList().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        ArrayList <String> listWithActualLinksToLogo = new ArrayList<>();
+        for (int i = 0; i < autodocPressImagesOfTheArticlesInSlider().size(); i++) {
+            String linkImage = autodocPressImagesOfTheArticlesInSlider().get(i).getAttribute("src");
+            listWithActualLinksToLogo.add(linkImage);
+        }
+        System.out.println(expectedLink);
+        System.out.println(listWithActualLinksToLogo);
+        Assert.assertEquals(listWithActualLinksToLogo, expectedLink);
+        return this;
+    }
+
+    @Step("Checking the block with the presentation. Presse_static_page")
     public Presse_static_page_Logic checkingThePresentation(String expectedUrl) {
         headerInBlockMoreAboutAutodoc().shouldBe(visible);
         Assert.assertFalse(headerInBlockMoreAboutAutodoc().text().isEmpty());
@@ -246,8 +264,8 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Checking the back and forward buttons in the slider in the presentation block. Presse_static_page")
-    public Presse_static_page_Logic checkingTheBackForwardButtonsPresentation() {
+    @Step("Checking the back and forward buttons in the slider in the Gallery block. Presse_static_page")
+    public Presse_static_page_Logic checkingTheBackForwardButtonsInGalleryBlock() {
         String firstImage = sixActiveImageInGalleryBlock().first().getAttribute("src");
         String mainImage = mainImageInGalleryBlock().first().getAttribute("src");
         Assert.assertEquals(firstImage, mainImage);
@@ -327,7 +345,6 @@ public class Presse_static_page_Logic extends Presse_static_page {
         switchTo().window(0);
         return this;
     }
-
 
     @Step("Check elements in atd-press block. Presse_static_page")
     public Presse_static_page_Logic checkElementsInPresBlock(String expectedTitleText) {

@@ -29,7 +29,7 @@ public class QC_2830 {
     public void testChecksPressGalleryBlock() throws SQLException {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticPresse"));
         new Presse_static_page_Logic().checkGeneralElementInGalleryBlock()
-                .checkingTheBackForwardButtonsPresentation()
+                .checkingTheBackForwardButtonsInGalleryBlock()
                 .clickSecondImgAndCheckDisplayedInGallery()
                 .checkingTheDownloadImage("C:/Users/User/Downloads/");
     }

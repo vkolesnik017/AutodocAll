@@ -44,7 +44,7 @@ public class QC_1831 {
         };
     }
 
-    @Test(dataProvider = "deliveryService")
+    @Test(dataProvider = "deliveryService", enabled = false) // TODO отключон из за замечания со стороны команды BSK
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks existing delivery services")

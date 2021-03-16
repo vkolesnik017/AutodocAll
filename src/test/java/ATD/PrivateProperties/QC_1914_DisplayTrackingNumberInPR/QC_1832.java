@@ -42,7 +42,7 @@ public class QC_1832 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) // TODO отключон из за замечания со стороны команды BSK
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the display of the tracking number in PR")

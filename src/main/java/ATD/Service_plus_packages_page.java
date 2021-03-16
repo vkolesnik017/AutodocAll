@@ -55,7 +55,7 @@ public class Service_plus_packages_page {
         return $(".atd-plus-services__text");
     }
 
-    SelenideElement ActiveYearPriceSwitch() {
+    SelenideElement activeYearPriceSwitch() {
         return $x("//div[contains(@class,'atd-plus-services-switch')]//label/../input[@id='two']");
     }
 
