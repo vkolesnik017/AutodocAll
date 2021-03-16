@@ -524,26 +524,30 @@ public class LKW_main_page_Logic extends LKW_main_page {
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
         DataBase db = new DataBase("ATD");
         String currentCountry;
-        List<String> language = Arrays.asList("CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK");
+        List<String> language = Arrays.asList("CH", "AT", "LD", "BG", "BE", "BE_fr", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK");
         int sizeOfLanguage = languagesOfSubscribe().size();
         for (int i = 0; i < sizeOfLanguage; i++) {
-            if (language.get(i).equals("LD")) {
-                currentCountry = "lu";
-            } else if (language.get(i).equals("EN")) {
-                currentCountry = "uk";
+            if (language.get(i).equals("BE_fr")) {
+                continue;
             } else {
-                currentCountry = language.get(i).toLowerCase();
+                if (language.get(i).equals("LD")) {
+                    currentCountry = "lu";
+                } else if (language.get(i).equals("EN")) {
+                    currentCountry = "uk";
+                } else {
+                    currentCountry = language.get(i).toLowerCase();
+                }
+                languageBlock().shouldBe(exist).scrollIntoView("{block: \"center\"}");
+                languageBlock().click();
+                languageListBlock().shouldBe(visible);
+                languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
+                languagesOfSubscribe().get(i).click();
+                waitWhileRouteContainsExpectedCondition(currentCountry);
+                String urlFromBD = db.getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
+                Assert.assertEquals(url(), urlFromBD);
+                back();
+                waitWhileRouteContainsExpectedCondition(db.getRouteByRouteName("DE", "lkw_main"));
             }
-            languageBlock().shouldBe(exist).scrollIntoView("{block: \"center\"}");
-            languageBlock().click();
-            languageListBlock().shouldBe(visible);
-            languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
-            languagesOfSubscribe().get(i).click();
-            waitWhileRouteContainsExpectedCondition(currentCountry);
-            String urlFromBD = db.getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
-            Assert.assertEquals(url(), urlFromBD);
-            back();
-            waitWhileRouteContainsExpectedCondition(db.getRouteByRouteName("DE", "lkw_main"));
         }
         return this;
     }
