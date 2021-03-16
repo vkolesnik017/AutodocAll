@@ -1436,7 +1436,7 @@ public class Product_page_Logic extends Product_page {
     public Product_page_Logic presenceOfPhraseAboutCompatibilityProductAndVehicle() {
         if (articleNumber().getText().equals("O33B0001")) {
             phraseAboutCompatibilityProductAndVehicle().shouldNotBe(visible);
-        } else phraseAboutCompatibilityProductAndVehicle().shouldBe(visible);
+        } else phraseAboutCompatibilityProductAndVehicle().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         return this;
     }
 

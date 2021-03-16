@@ -962,4 +962,8 @@ public class Product_page {
 
     SelenideElement locationOfPaymentBlockToFaq() {return $x("//div[@class='product-versand']/preceding-sibling::div");}
 
+    SelenideElement feedBackBlock() {
+        return $x("//div[@class='product-feedback']");
+    }
+
   }
