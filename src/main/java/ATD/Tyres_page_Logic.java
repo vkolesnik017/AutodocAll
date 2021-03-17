@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 import static ATD.CommonMethods.*;
 import static Common.CommonMethods.checkingContainsUrl;
 import static Common.CommonMethods.waitWhileRouteContainsExpectedCondition;
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -676,4 +676,40 @@ public class Tyres_page_Logic extends Tyres_page {
         allSeason().shouldBe(visible).click();
         return page(Tyres_season_page_Logic.class);
     }
+
+    @Step("Click on car brand from top car brand block. Tyres_page")
+    public Tyres_maker_page_Logic clickOnCarBrand() {
+        carBrandFromTopCarBrandBlock().shouldBe(visible).click();
+        return page(Tyres_maker_page_Logic.class);
+    }
+
+    @Step("Get only visible brand from top car brand block. Tyres_page")
+    public ArrayList<String> getSizeTopCarBrands() {
+        ArrayList<String> carBrands = new ArrayList<>();
+        for (int i = 0; i < carBrandsFromTopCarBrandBlock().size(); i++) {
+            if (carBrandsFromTopCarBrandBlock().get(i).isDisplayed()) {
+                String brands = carBrandsFromTopCarBrandBlock().get(i).getAttribute("href");
+                carBrands.add(brands);
+            }
+        }
+        return carBrands;
+    }
+
+    @Step("Check work top car brand block. Tyres_page")
+    public Tyres_page_Logic checkWorkTopCarBrandBlock() {
+        topCarBrandBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        titleTopCarBrandBlock().shouldHave(exactText("Autoreifen für Top Automarken"));
+        int sizeBrands = getSizeTopCarBrands().size();
+        Assert.assertEquals(sizeBrands,8);
+        btnMoreInTopCarBrandBlock().shouldBe(visible).click();
+        int moreSizeBrand = getSizeTopCarBrands().size();
+        Assert.assertEquals(moreSizeBrand,10);
+        btnLessInTopCarBrandBlock().shouldBe(visible).click();
+        btnMoreInTopCarBrandBlock().shouldBe(visible);
+        int lessSizeBrand = getSizeTopCarBrands().size();
+        Assert.assertEquals(lessSizeBrand,8);
+        return this;
+    }
+
+
 }
