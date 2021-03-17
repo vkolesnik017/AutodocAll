@@ -399,7 +399,7 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         return this;
     }
 
-    @Step("close popUp of my garage block .Moto_Catalog_page")
+    @Step("check Added Vehicle In My Garage Pop-Up .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkAddedVehicleInMyGaragePopUp(int size) {
         urlsOfAddedVehicleInPopUpOfGarageInHeader().shouldHaveSize(size);
         return this;
