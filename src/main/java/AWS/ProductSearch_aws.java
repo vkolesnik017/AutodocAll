@@ -151,6 +151,11 @@ public class ProductSearch_aws {
         return artNumOfProduct;
     }
 
+    @Step("get article number of product from aws table")
+    public String getArtNumberOfProduct(int position) {
+        return articleProductsInTable().get(position).shouldBe(visible).getText();
+    }
+
     @Step("input MPN number and name brand in search field")
     public ProductSearch_aws inputMpnNumberAndBrandNameOfProduct(String mpnNumber, String nameBrand) {
         dangerousCargoSelector().shouldBe(visible);
@@ -181,10 +186,10 @@ public class ProductSearch_aws {
         return this;
     }
 
-   @Step("set sorting filter. ProductSearch_aws")
+    @Step("set sorting filter. ProductSearch_aws")
     public ProductSearch_aws setSortingFilter(String filter) {
-       sortingFilter().selectOptionByValue(filter);
-       sortingFilter().shouldHave(exactValue(filter));
+        sortingFilter().selectOptionByValue(filter);
+        sortingFilter().shouldHave(exactValue(filter));
         return this;
     }
 
@@ -245,6 +250,18 @@ public class ProductSearch_aws {
     @Step("wait of change title of product. ProductSearch_aws")
     public ProductSearch_aws waitOfChangeTitleOfProduct(int positionOfProduct, String title) {
         titlesOfProducts().get(positionOfProduct).shouldBe(visible).shouldNotHave(text(title));
+        return this;
+    }
+
+    @Step("set brand. ProductSearch_aws")
+    public ProductSearch_aws setBrand(String brand) {
+        fieldSelectBrand().shouldBe(visible).setValue(brand).pressEnter();
+        return this;
+    }
+
+    @Step("click on Search button. ProductSearch_aws")
+    public ProductSearch_aws clickSearch() {
+        searchBtn().click();
         return this;
     }
 
