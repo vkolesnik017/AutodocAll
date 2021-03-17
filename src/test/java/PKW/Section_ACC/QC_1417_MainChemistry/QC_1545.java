@@ -34,7 +34,7 @@ public class QC_1545 {
         return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "index_chemicals");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) //TODO  The logic has changed, the test is being rewritten
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test checks presence top categories block , transition by first category, work btn more and less.")

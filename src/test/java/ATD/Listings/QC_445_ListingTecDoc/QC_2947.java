@@ -72,7 +72,6 @@ public class QC_2947 {
                 .clickSearchBtnInHorizontalSelector();
         pageReload();
         productPage.presenceOfCarMatchBlock()
-                .checkVisibleCharacteristic()
                 .clickOnThirdBreadCrumbLink(2)
                 .presenceOfTecDocListing()
                 .checkAlternativeTitleOfProductThroughArticle(artNum, alternativeTitle);
