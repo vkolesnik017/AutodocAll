@@ -18,10 +18,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_3468 extends Main_page {
     private CommonMethods commonMethods = new CommonMethods();
 
-    private final String dataFile = "C://Autotests/files/data/22.xls";
+    private final String dataFile = "C://Autotests/files/data/QC_3468_data.xls";
     private final String result = "C://Autotests/files/data/QC_3468_data.txt";
-
-//    private String shop = System.getenv("ShopFromJenkins").toLowerCase();
 
     @BeforeClass
     void setUp() {
@@ -29,7 +27,7 @@ public class QC_3468 extends Main_page {
         Configuration.pageLoadStrategy = "normal";
     }
 
-    @DataProvider(name = "data", parallel = false)
+    @DataProvider(name = "data", parallel = true)
     Object[] dataProvider() {
         return new Excel().setUpAllCellFromExcel(dataFile);
     }
@@ -42,26 +40,15 @@ public class QC_3468 extends Main_page {
         String model_id = parseExcel(data)[4].trim();
         String group_id = parseExcel(data)[2].trim();
         String car_id = parseExcel(data)[6].trim();
-
-        String makerName = parseExcel(data)[1].trim();
-        String groupName = parseExcel(data)[3].trim();
-        String modelName = parseExcel(data)[5].trim();
-        String carName = parseExcel(data)[7].trim();
-     /*   String yearBegin = parseExcel(data)[9].trim();
-        String yearEnd = parseExcel(data)[10].trim();
-        String kw = parseExcel(data)[11].trim();
-        String hp = parseExcel(data)[12].trim();*/
+        String carTitle = parseExcel(data)[7].trim();
 
 
         String startUrl = "https://test.buycarparts.co.uk/search?&maker_id=" + maker_id + "&model_id=" + model_id + "&group_id=" + group_id + "&car_id=" + car_id;
         openPage(startUrl);
 
         try {
-            //   commonMethods.checkingMakerName(makerNameSelected(), makerName, result, startUrl);
-            //     commonMethods.checkingGroupName(groupNameSelected(), groupName, result, startUrl);
-            //     commonMethods.checkingModelName(modelNameSelected(), modelName, result, startUrl);
-            new Search_page_Logic().compareSelectorValuesWithFile(maker_id, model_id, car_id, result, startUrl);
-            //    commonMethods.checkingCarName(carNameSelected(), carName, yearBegin, yearEnd, kw, hp, result, startUrl);
+            new Search_page_Logic().compareSelectorValuesWithFile(maker_id, model_id, car_id, result, startUrl)
+                    .compareCarTitleSelectorValueWithFile(carTitle, result, startUrl);
         } catch (ElementNotFound element) {
             commonMethods.writerInFile(result, true, "Trouble with element in selector" + "#" + startUrl);
         }
