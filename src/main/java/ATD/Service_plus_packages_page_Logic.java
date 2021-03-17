@@ -204,4 +204,11 @@ public class Service_plus_packages_page_Logic extends Service_plus_packages_page
         plusReturnMoreBtn().shouldBe(visible);
         return this;
     }
+
+    @Step("Check absence of personal discount. Service_packages_page")
+    public Service_plus_packages_page_Logic checkAbsencePersonalDiscount() {
+        subscribeIconInProfPack().shouldNotBe(visible);
+        subscribeIconInExpertPack().shouldNotBe(visible);
+        return this;
+    }
 }

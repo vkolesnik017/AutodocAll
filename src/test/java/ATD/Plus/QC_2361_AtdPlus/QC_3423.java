@@ -1,6 +1,7 @@
 package ATD.Plus.QC_2361_AtdPlus;
 
-import ATD.Service_packages_page_Logic;
+import ATD.Service_plus_packages_page;
+import ATD.Service_plus_packages_page_Logic;
 import Common.DataBase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -29,7 +30,7 @@ public class QC_3423 {
 
     public void testCheckNoPersonalDiscountOnPlusOnFranceWeb() throws SQLException {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "FR", "main", "service_packages"));
-        new Service_packages_page_Logic().checkAbsencePersonalDiscount();
+        new Service_plus_packages_page_Logic().checkAbsencePersonalDiscount();
     }
 
     @AfterMethod
