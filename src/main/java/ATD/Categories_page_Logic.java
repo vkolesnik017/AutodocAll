@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Categories_page_Logic extends Categories_page {
 
@@ -291,10 +290,49 @@ public class Categories_page_Logic extends Categories_page {
     }
 
     @Step(": from. Categories_page")
-    public Categories_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+    public Categories_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
         CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 
+    @Step("click On Selector In Close Condition. Categories_page")
+    public Categories_page_Logic clickOnSelectorInCloseCondition() {
+        selectorInCloseCondition().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("set Marke In Selector. Categories_page")
+    public Categories_page_Logic setMarkeInSelector(String marke) {
+        markeFieldInSelector().shouldBe(visible).selectOptionByValue(marke);
+        Wait().until(webDriver -> markeFieldInSelector().getSelectedValue().equals(marke));
+        return this;
+    }
+
+    @Step("click on TOP Product Title. Categories_page")
+    public Product_page_Logic clickOnTopProductTitle(int position) {
+        titleOfTopProducts().get(position).click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("display of selector Selector In Close Condition. Categories_page")
+    public Categories_page_Logic displayOfSelectorInCloseCondition() {
+        selectorInCloseCondition().shouldBe(visible);
+        return this;
+    }
+
+    @Step("set Marke In Selector And Refresh Page. Categories_page")
+    public Categories_page_Logic setMarkeInSelectorAndRefreshPage(String marke) {
+        clickOnSelectorInCloseCondition();
+        setMarkeInSelector(marke);
+        refresh();
+        displayOfSelectorInCloseCondition();
+        clickOnSelectorInCloseCondition();
+        if (!markeFieldInSelector().getSelectedValue().equals(marke)) {
+            setMarkeInSelector(marke);
+            refresh();
+            displayOfSelectorInCloseCondition();
+        }
+        return this;
+    }
 
 }

@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.compareTwoListsBetweenFrontAndAws;
+import static ATD.CommonMethods.getAttributeFromUnVisibleElement;
 import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
@@ -133,28 +134,33 @@ public class Supplier_page_Logic extends Supplier_page {
     public ArrayList<String> getIdListParentsFromBrandPage() {
         ArrayList<String> idParentsList = new ArrayList<>();
         for (int i = 0; i < idNumParents().size(); i++) {
-            String idParent =  idNumParents().get(i).getAttribute("src").replaceAll("[\\s\\S]*\\/", "").replaceAll(".png", "").trim();
+            String idParent = idNumParents().get(i).getAttribute("src").replaceAll("[\\s\\S]*\\/", "").replaceAll(".png", "").trim();
             idParentsList.add(idParent);
         }
         return idParentsList;
     }
 
     @Step(": from. Supplier_page")
-    public Supplier_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List<String> listFront, List<String> listAws, List<Integer> listRating){
+    public Supplier_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List<String> listFront, List<String> listAws, List<Integer> listRating) {
         compareTwoListsBetweenFrontAndAws(listFront, listAws, listRating);
         return this;
     }
 
     @Step(": from. Supplier_page")
     public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
-        return CommonMethods. getHrefOrUrlCategoriesThenWriteToList(categories);
+        return CommonMethods.getHrefOrUrlCategoriesThenWriteToList(categories);
     }
 
     @Step(": from. Supplier_page")
-    public Supplier_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+    public Supplier_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
         CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 
+    @Step("presence Of TOP products block. Supplier_page")
+    public Supplier_page_Logic presenceOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
 
 }

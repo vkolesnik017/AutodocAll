@@ -1,10 +1,5 @@
 package ATD;
 
-import static Common.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
-import static org.testng.Assert.assertEquals;
-
 import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -13,6 +8,11 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
+
+import static Common.CommonMethods.checkingContainsUrl;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertEquals;
 
 public class Group_list_page_Logic extends Group_list_page {
 
@@ -60,7 +60,7 @@ public class Group_list_page_Logic extends Group_list_page {
             sleep(5000);
             String titlePDF = titlesOfManuals().get(i).getAttribute("title").replaceAll("^\\s*(([^\\s]+\\s*){1,5})", "");
             String nameFile = downloadLinkOfManuals().get(i).getAttribute("url").replaceAll("^.+\\/", "");
-           Common.File.assertThatPdfContainsText("C:/Users/User/Downloads/" + nameFile + "", titlePDF);
+            Common.File.assertThatPdfContainsText("C:/Users/User/Downloads/" + nameFile + "", titlePDF);
         }
         return this;
     }
@@ -75,5 +75,10 @@ public class Group_list_page_Logic extends Group_list_page {
         return new Product_page_Logic().getUrlAutodocClubFromBannerAutodocClub();
     }
 
+    @Step("presence Of TOP Products Block. Group_list_page")
+    public Group_list_page_Logic presenceOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
 
 }

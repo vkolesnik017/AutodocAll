@@ -1,4 +1,4 @@
-package ATD.General_Common.QC_2873_PressPage;
+package ATD.General_Common.QC_2320_StaticPages;
 
 import ATD.Static_page_atd_page_Logic;
 import Common.SetUp;

@@ -11,7 +11,6 @@ import com.codeborne.selenide.SelenideElement;
 import files.Car;
 import files.Product;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -633,15 +632,15 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click AutodocPlus link in the footer. Main_page")
-    public AutodocPlus_page_Logic clickAutodocPlus() {
+    public Service_plus_packages_page_Logic clickAutodocPlus() {
         autodocPlusLink().click();
-        return page(AutodocPlus_page_Logic.class);
+        return page(Service_plus_packages_page_Logic.class);
     }
 
     @Step("Click AutodocPartners link in the footer. Main_page")
-    public AutodocPlus_page_Logic clickAutodocPartners() {
+    public Partners_static_page_Logic clickAutodocPartners() {
         autodocPartners().click();
-        return page(AutodocPlus_page_Logic.class);
+        return page(Partners_static_page_Logic.class);
     }
 
     //HILFE & SUPPORT
@@ -874,7 +873,7 @@ public class Main_page_Logic extends Main_page {
     @Step("Checks open and close footer droplist with countries. Main_page")
     public Main_page_Logic checkOpenAndCloseDroplistCountries() {
         footerForm().scrollTo();
-        languageSelector().click();
+        languageSelector().waitUntil(visible, 5000).click();
         dropdownCountry().shouldBe(visible);
         languageSelector().click();
         dropdownCountry().shouldNotBe(visible);
@@ -890,7 +889,7 @@ public class Main_page_Logic extends Main_page {
             if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
             languageSelector().scrollIntoView(true).click();
             element.waitUntil(visible, 3000).scrollIntoView(true).click();
-            new CommonMethods().checkingUrlAndCloseTab(new DataBase("ATD").getRouteByRouteName(shopName, "main"));
+            new CommonMethods().checkingUrlAndCloseTab(shopName, new DataBase("ATD").getRouteByRouteName(shopName, "main"));
         }
         return this;
     }
@@ -1793,8 +1792,16 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click on Autodoc Plus link in header. Main_page")
-    public Service_packages_page_Logic clickOnAutodocPlusInHeader() {
+    public Service_plus_packages_page_Logic clickOnAutodocPlusInHeader() {
         autodocPlusLinkInHeader().shouldBe(visible).click();
-        return page(Service_packages_page_Logic.class);
+        return page(Service_plus_packages_page_Logic.class);
     }
+
+    @Step("Check presence  dropdown Plus. Main_page")
+    public Main_page_Logic checkPresenceDropdownPlus() {
+        autodocPlusLinkInHeader().hover();
+        autodocDropdownPlus().waitUntil(appear, 5000);
+        return this;
+    }
+
 }

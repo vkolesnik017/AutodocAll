@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static Common.CommonMethods.checkingContainsUrl;
 import static Common.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -127,7 +127,7 @@ public class Category_name_page_Logic extends Category_name_page {
         labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
         blackBackground().shouldHave(attribute("style", "display: block;"));
         warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
-       // titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+        // titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
         infoTextOfDangerousPopUp().shouldNotBe(empty);
         List<String> attributeOfDangerousIcon = new ArrayList<>();
         for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {
@@ -340,7 +340,7 @@ public class Category_name_page_Logic extends Category_name_page {
 
     @Step("Get id brand from brands block. Category_name_page")
     public String getIdBrandsFromBrandsBlock() {
-        String idBrand =  brandImgFromBrandsBlock().getAttribute("src").replaceAll("[\\s\\S]*\\/", "");
+        String idBrand = brandImgFromBrandsBlock().getAttribute("src").replaceAll("[\\s\\S]*\\/", "");
         String cutIdBrand = idBrand.replace(idBrand.substring(idBrand.indexOf(".png")), "");
         return cutIdBrand;
     }
@@ -365,6 +365,30 @@ public class Category_name_page_Logic extends Category_name_page {
     public Category_name_page_Logic checkMainHeadline(String title) {
         mainHeadline().shouldBe(visible).shouldHave(text(title));
         return this;
+    }
+
+    @Step("set Marke In Selector And Refresh Page. Category_name_page")
+    public Category_name_page_Logic setMarkeInSelectorAndRefreshPage(String marke) {
+        setMarkeInSelector(marke);
+        refresh();
+        if (!markeFieldInSelector().getSelectedValue().equals(marke)) {
+            setMarkeInSelector(marke);
+            refresh();
+        }
+        return this;
+    }
+
+    @Step("set Marke In Selector. Category_name_page")
+    public Category_name_page_Logic setMarkeInSelector(String marke) {
+        markeFieldInSelector().shouldBe(visible).selectOptionByValue(marke);
+        Wait().until(webDriver -> markeFieldInSelector().getSelectedValue().equals(marke));
+        return this;
+    }
+
+    @Step("click on TOP Product Title. Categories_page")
+    public Product_page_Logic clickOnTopProductTitle(int position) {
+        titleOfTopProducts().get(position).click();
+        return page(Product_page_Logic.class);
     }
 
 }

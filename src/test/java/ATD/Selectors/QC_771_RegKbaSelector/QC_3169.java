@@ -36,7 +36,7 @@ public class QC_3169 {
         return new SetUp("ATD").setUpShopsWithSubroute("prod","DE", "main", "motoroil");
     }
 
-    @Test(dataProvider = "routesKba", enabled = false) //TODO  bug SHOP-2825
+    @Test(dataProvider = "routesKba", enabled = true)
     @Flaky
     @Owner(value = "Sergey_QA")
     @Description(value = "Test checks transition to listing with correct KBA number")
@@ -56,7 +56,7 @@ public class QC_3169 {
         return new SetUp("ATD").setUpShopsWithSubroute("prod", "DK,FI,FR,IT,NL,NO,PT,SE,CH", "main", "motoroil");
     }
 
-    @Test(dataProvider = "routesReg", enabled = false)   //TODO bug SHOP-2825
+    @Test(dataProvider = "routesReg", enabled = true)
     @Flaky
     @Owner(value = "Sergey_QA")
     @Description(value = "Test checks transition to listing with correct REG number")

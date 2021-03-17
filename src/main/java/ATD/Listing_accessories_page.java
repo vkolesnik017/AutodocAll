@@ -60,7 +60,7 @@ public class Listing_accessories_page {
         return $x("//div[@class='steps breadcrumbs']//li[@class='step_2 active parts_step_2']");
     }
 
-    SelenideElement thirdBreadCrumb() {
+    public SelenideElement thirdBreadCrumb() {
         return $x("//div[@class='steps breadcrumbs']//li[@class='step_3 active parts_step_3']//a");
     }
 

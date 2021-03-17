@@ -92,7 +92,7 @@
 
     <test name="QC_2187_TyresListing">
         <classes>
-            <class name="ATD.Listings.QC_2187_TyresListing.QC_3014"/>
+          <!--  <class name="ATD.Listings.QC_2187_TyresListing.QC_3014"/>-->
             <class name="ATD.Listings.QC_2187_TyresListing.QC_2188"/>
             <class name="ATD.Listings.QC_2187_TyresListing.QC_2189"/>
             <class name="ATD.Listings.QC_2187_TyresListing.QC_2526"/>
