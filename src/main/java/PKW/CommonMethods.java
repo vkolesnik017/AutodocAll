@@ -6,7 +6,10 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
@@ -121,7 +124,7 @@ public class CommonMethods {
     }
 
     @Step("get text from not visible element {expected element}")
-    public static String getTextFromUnVisibleElement(SelenideElement element){
+    public static String getTextFromUnVisibleElement(SelenideElement element) {
         return (String) (executeJavaScript(
                 "return jQuery(arguments[0]).text();", element));
     }
@@ -129,22 +132,22 @@ public class CommonMethods {
     //checking selector
 
     public void checkingMakerName(SelenideElement makerNameLocator, String makerName, String fileForReport, String url) throws IOException {
-        makerNameLocator.shouldBe(Condition.visible);
-        String makerNameTextFromSelector = makerNameLocator.getAttribute("innerText").replace('Ë','E');
-        makerName = makerName.replace('Ë','E');
+        makerNameLocator.shouldBe(visible);
+        String makerNameTextFromSelector = makerNameLocator.getAttribute("innerText").replace('Ë', 'E');
+        makerName = makerName.replace('Ë', 'E');
         if (!makerName.equals(makerNameTextFromSelector))
             writerInFile(fileForReport, true, "Maker from data doesn't equals maker from selector:" + "#" + makerName + "#" + makerNameTextFromSelector + "#" + url);
     }
 
     public void checkingGroupName(SelenideElement groupNameLocator, String groupName, String fileForReport, String url) throws IOException {
-        groupNameLocator.shouldBe(Condition.visible);
+        groupNameLocator.shouldBe(visible);
         String groupNameTextFromSelector = groupNameLocator.getAttribute("label");
         if (!groupName.equals(groupNameTextFromSelector))
             writerInFile(fileForReport, true, "Group from data doesn't equals group from selector:" + "#" + groupName + "#" + groupNameTextFromSelector + "#" + url);
     }
 
     public void checkingModelName(SelenideElement modelNameLocator, String modelName, String fileForReport, String url) throws IOException {
-        modelNameLocator.shouldBe(Condition.visible);
+        modelNameLocator.shouldBe(visible);
         String modelNameTextFromSelector = modelNameLocator.getAttribute("innerText");
         modelNameTextFromSelector = modelNameTextFromSelector.substring(0, modelNameTextFromSelector.lastIndexOf("(")).trim();
         if (!modelName.equals(modelNameTextFromSelector))
@@ -152,7 +155,7 @@ public class CommonMethods {
     }
 
     public void checkingCarName(SelenideElement carNameLocator, String carName, String yearBegin, String yearEnd, String kw, String hp, String fileForReport, String url) throws IOException {
-        carNameLocator.shouldBe(Condition.visible);
+        carNameLocator.shouldBe(visible);
         String carNameTextFromSelector = carNameLocator.getText();
 
         String yearBeginMonth = yearBegin.substring(4);

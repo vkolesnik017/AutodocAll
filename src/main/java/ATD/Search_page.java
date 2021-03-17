@@ -88,6 +88,8 @@ public class Search_page {
     }
 
     // Form soft 404
+    SelenideElement mainFormOfSoft404() {return $(".search_box_result");}
+
     SelenideElement mailFieldSoftForm() {
         return $(By.id("form_email"));
     }

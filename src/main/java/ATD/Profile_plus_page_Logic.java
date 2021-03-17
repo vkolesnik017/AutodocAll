@@ -423,4 +423,17 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         activationExpertPackBtn().shouldBe(visible).shouldHave(attribute("href"));
         return this;
     }
+
+    @Step("Checks absence Subscribe option in all plus-subscription blocks for FR shop. Profile_plus_page")
+    public Profile_plus_page_Logic checkAbsencePersonalDiscountOption() {
+        basicPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        unavailableOptionSubscribeInBasicPack().shouldNotBe(visible);
+        optimalPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        unavailableOptionSubscribeInOptimalPack().shouldNotBe(visible);
+        profPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        subscribeIconOptionInProfPack().shouldNotBe(visible);
+        expertPackBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        subscribeIconExpertInProfPack().shouldNotBe(visible);
+        return this;
+    }
 }

@@ -61,7 +61,7 @@ public class Service_plus_packages_page_Logic extends Service_plus_packages_page
 
     @Step("absence Of Safe Order Image Block . Service_packages_page")
     public Service_plus_packages_page_Logic absenceOfSoImageBlock() {
-        serviceOrderImageBlock().shouldNotBe(visible);
+        plusSafeBlock().shouldNotBe(visible);
         return this;
     }
 

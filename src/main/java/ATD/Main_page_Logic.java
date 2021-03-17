@@ -1804,4 +1804,20 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("check disabled category. Main_page")
+    public Main_page_Logic checkDisabledCategory(List<String> languages, String artNum) throws SQLException {
+
+        for (int i = 0; i < languages.size(); i++) {
+            String currentLanguage = languages.get(i).replaceAll("^.+\\_", "").toUpperCase();
+            if (currentLanguage.equals("EU")) {
+                continue;
+            } else {
+                open(new DataBase("ATD").getFullRouteByRouteName("prod", currentLanguage, "main"));
+                useSearch(artNum).absenceOfDisabledProduct(artNum);
+            }
+        }
+
+        return this;
+    }
+
 }
