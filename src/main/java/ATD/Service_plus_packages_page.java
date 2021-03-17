@@ -7,38 +7,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Service_plus_packages_page {
 
-    ElementsCollection priceValueForPeriod() {
-        return $$(".atd-plus-services__item-price span");
-    }
-
-    SelenideElement monthlyPriceSwitch() {
-        return $x("//div[@class='switch js--atd-plus-services-switch']//span[text()='monatlich']");
-    }
-
-    SelenideElement btnMoreOfGeneralConditionBlock() {
-        return $(".atd-plus-return__more button");
-    }
-
-    SelenideElement cancellationForm() {
-        return $x("//p[text()='– Ende der Widerrufsbelehrung –']/preceding-sibling::img");
-    }
-
-    SelenideElement registrationPopUp() {
-        return $x("//div[@class='autodoc_login_popup popup_login pass']");
-    }
-
-    SelenideElement servicePackagesBlock() {
-        return $(".atd-plus-services__packs");
-    }
-
-    ElementsCollection servicePackageIcons() {
-        return $$(".atd-plus-services__item-bonus img");
-    }
-
-    SelenideElement serviceOrderImageBlock() {
-        return $(".atd-plus-safe");
-    }
-
+    // Locators for top block (Pages header)
     SelenideElement plusServiceMainLogo() {
         return $(".atd-plus-services__logo > img");
     }
@@ -55,11 +24,33 @@ public class Service_plus_packages_page {
         return $(".atd-plus-services__text");
     }
 
+    ElementsCollection priceValueForPeriod() {
+        return $$(".atd-plus-services__item-price span");
+    }
+
+    // Locators for the Month/Year switch
+    SelenideElement monthlyPriceSwitch() {
+        return $x("//div[@class='switch js--atd-plus-services-switch']//span[text()='monatlich']");
+    }
+
     SelenideElement activeYearPriceSwitch() {
         return $x("//div[contains(@class,'atd-plus-services-switch')]//label/../input[@id='two']");
     }
 
-    //Elements in the block with a subscription to the Base package
+    // Common locators for atd-plus-services__packs block
+    SelenideElement registrationPopUp() {
+        return $x("//div[@class='autodoc_login_popup popup_login pass']");
+    }
+
+    SelenideElement servicePackagesBlock() {
+        return $(".atd-plus-services__packs");
+    }
+
+    ElementsCollection servicePackageIcons() {
+        return $$(".atd-plus-services__item-bonus img");
+    }
+
+    // Locators in the block with a subscription to the Base package
     SelenideElement titleInBasePackBlock() {
         return $x("//div[contains(@class,'base-pack')][1]//div[contains(@class,'title')]");
     }
@@ -80,7 +71,7 @@ public class Service_plus_packages_page {
         return $x("//div[contains(@class,'base-pack')][1]//div[contains(@class,'item-start')]/a");
     }
 
-    //Elements in the block with a subscription to the Optimal package
+    // Locators in the block with a subscription to the Optimal package
     SelenideElement titleInOptimalPacBlock() {
         return $x("//div[contains(@class,'optimal-pack')]//div[contains(@class,'title')]");
     }
@@ -105,7 +96,7 @@ public class Service_plus_packages_page {
         return $x("//div[contains(@class,'optimal-pack')]//div[contains(@class,'item-start')]/a");
     }
 
-    //Elements in the block with a subscription to the Prof package
+    // Locators in the block with a subscription to the Prof package
     SelenideElement titleInProfPacBlock() {
         return $x("//div[contains(@class,'profi-pack')]//div[contains(@class,'title')]");
     }
@@ -138,7 +129,7 @@ public class Service_plus_packages_page {
         return $x("//div[contains(@class,'profi-pack')]//div[contains(@class,'item-start')]/a");
     }
 
-    //Elements in the block with a subscription to the Expert package
+    // Locators in the block with a subscription to the Expert package
     SelenideElement titleInExpertPacBlock() {
         return $x("//div[contains(@class,'base-pack')][2]//div[contains(@class,'title')]");
     }
@@ -175,7 +166,7 @@ public class Service_plus_packages_page {
         return $x("//div[contains(@class,'base-pack')][2]//div[contains(@class,'item-start')]/a");
     }
 
-    //Elements in the block with a subscription to the Trial package
+    // Locators in the block with a subscription to the Trial package
     SelenideElement trialBlock() {
         return $(".atd-plus-services__bottom");
     }
@@ -192,7 +183,7 @@ public class Service_plus_packages_page {
         return $x("//div[@data-ga-action='trial']");
     }
 
-    //Elements in the delivery block
+    // Locators in the delivery block
     SelenideElement deliveryBlock() {
         return $(".atd-plus-delivery");
     }
@@ -225,7 +216,7 @@ public class Service_plus_packages_page {
         return $x("//div[contains(@class,'cost lower')]/div[3]//img[2]");
     }
 
-    //Elements in the Expert block
+    // Locators in the Expert block
     SelenideElement plusExpertBlock() {
         return $(".atd-plus-expert");
     }
@@ -250,7 +241,7 @@ public class Service_plus_packages_page {
         return $x("//div[@class='atd-plus-expert']//ul");
     }
 
-    //Elements in the Discount block
+    // Locators in the Discount block
     SelenideElement plusDiscountBlock() {
         return $(".atd-plus-discount");
     }
@@ -271,7 +262,7 @@ public class Service_plus_packages_page {
         return $(".atd-plus-twice__text");
     }
 
-    //Elements in the Personal block
+    // Locators in the Personal block
     SelenideElement plusPersonalBlock() {
         return $(".atd-plus-personal");
     }
@@ -292,7 +283,7 @@ public class Service_plus_packages_page {
         return $(".atd-plus-personal__label");
     }
 
-    //Elements in the plus Safe block
+    // Locators in the atd-plus-safe block
     SelenideElement plusSafeBlock() {
         return $(".atd-plus-safe");
     }
@@ -309,7 +300,11 @@ public class Service_plus_packages_page {
         return $(".atd-plus-safe__text");
     }
 
-    //Element in the plus ready block
+    SelenideElement serviceOrderImageBlock() {
+        return $(".atd-plus-safe");
+    }
+
+    // Locators in the atd-plus-ready block
     SelenideElement plusReadyBlock() {
         return $(".atd-plus-ready");
     }
@@ -334,7 +329,7 @@ public class Service_plus_packages_page {
         return $(".atd-plus-ready__plus");
     }
 
-    //Element in the plus return block
+    // Locators for atd-plus-return block
     SelenideElement plusReturnBlock() {
         return $(".atd-plus-return");
     }
@@ -349,5 +344,13 @@ public class Service_plus_packages_page {
 
     SelenideElement plusReturnMoreBtn() {
         return $(".atd-plus-return__more");
+    }
+
+    SelenideElement btnMoreOfGeneralConditionBlock() {
+        return $(".atd-plus-return__more button");
+    }
+
+    SelenideElement cancellationForm() {
+        return $x("//p[text()='– Ende der Widerrufsbelehrung –']/preceding-sibling::img");
     }
 }

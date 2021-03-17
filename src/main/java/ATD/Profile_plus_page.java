@@ -290,6 +290,10 @@ public class Profile_plus_page {
         return $x("//div[contains(@class,'professional')]//div[@class='package__middle']");
     }
 
+    SelenideElement subscribeIconOptionInProfPack() {
+        return $x("//div[contains(@class,'professional')]//img[@alt='subscribe-icon']");
+    }
+
     SelenideElement nameProfPack() {
         return $x("(//div[contains(@class,'professional')]//div[@class='package__top']//p)[1]");
     }
@@ -313,6 +317,10 @@ public class Profile_plus_page {
 
     SelenideElement blockWithExpertPackOptions() {
         return $x("//div[contains(@class,'expert')]//div[@class='package__middle']");
+    }
+
+    SelenideElement subscribeIconExpertInProfPack() {
+        return $x("//div[contains(@class,'expert')]//img[@alt='subscribe-icon']");
     }
 
     SelenideElement nameExpertPack() {

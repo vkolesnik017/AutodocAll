@@ -60,20 +60,21 @@
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_1175"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_1465"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_1529"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1547"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_1552"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_1559"/>
-            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1547"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1835"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2038"/>
-            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2570"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2414"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2413"/>
-            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1835"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2570"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2791"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2793"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2797"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2819"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2826"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2830"/>
-            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2793"/>
-            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2791"/>
-            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2819"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_3352"/>
         </classes>
     </test>
 
