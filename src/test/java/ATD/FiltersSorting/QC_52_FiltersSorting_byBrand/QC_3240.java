@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3420 {
+public class QC_3240 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
