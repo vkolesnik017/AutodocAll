@@ -8,6 +8,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Motoroil_brand_page {
 
+    SelenideElement brandOilFilterBlock() {
+        return $x("//div[@id='selected-instalation__slider']");
+    }
+
     SelenideElement inhaltFilterInSideBar() {return $x("//div[@class='sidebar two']//div[text()='Inhalt [Liter]']/..");}
 
     SelenideElement oemFreigabeFilterInSideBar() {return $x("//div[@class='sidebar two']//div[text()='OEM-Freigabe']/..");}
@@ -39,4 +43,5 @@ public class Motoroil_brand_page {
     ElementsCollection specificationValuesInProducts() {return $$x("//span[text()='Spezifikation:  ']/following-sibling::span");}
 
     ElementsCollection inhaltValuesInProducts() {return $$x("//span[text()='Inhalt [Liter]:  ']/following-sibling::span");}
+
 }

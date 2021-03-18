@@ -202,6 +202,9 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
         return this;
     }
 
-
-
+    @Step("Check visiable filter brand block. Motoroil_brand_page")
+    public  Motoroil_brand_page_Logic checkVisibleFilterBrandBlock() {
+        brandOilFilterBlock().shouldBe(visible);
+        return this;
+    }
 }
