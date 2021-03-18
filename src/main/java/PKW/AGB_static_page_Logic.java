@@ -40,21 +40,20 @@ public class AGB_static_page_Logic extends AGB_static_page {
 
     @Step("Checking links in the Text. AGB_static_page")
     public AGB_static_page_Logic checkingLinksInTheText() throws SQLException {
-
         CommonMethods commonMethods = new CommonMethods();
-
-        autodocEmail().shouldHave(attribute("href", "mailto:info@autodoc.de"));
-        zollLinkAgb().shouldBe(visible).click();
+        autodocEmail().scrollIntoView("{block: \"center\"}").shouldHave(attribute("href", "mailto:info@autodoc.de"));
+        zollLinkAgb().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
         commonMethods.checkingUrlAndCloseTab("Fachthemen/Zollkosten/zollkosten_node.html");
-        klarnaLinkAgbFirst().shouldBe(visible).click();
+        klarnaLinkAgbFirst().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
         commonMethods.checkingUrlAndCloseTab("1.0/shared/content/legal/terms/27506/de_de/invoice?fee=0");
-        klarnaLinkAgbSecond().shouldBe(visible).click();
+        klarnaLinkAgbSecond().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
         commonMethods.checkingUrlAndCloseTab("1.0/shared/content/legal/terms/27506/de_de/consent");
-        europaLinkAgbSecond().shouldBe(visible).click();
+        europaLink().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
         commonMethods.checkingUrlAndCloseTab("/consumers/odr/main/index.cfm?event=main.home.chooseLanguage");
-        autodocLinkAgbText().scrollIntoView(false);
-        autodocLinkAgbText().shouldBe(visible).click();
-        commonMethods.checkingUrlAndCloseTab(new DataBase("ATD").getFullRouteByRouteName("prod", "DE", "main"));
+        verbraucherSchlichterLink().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
+        commonMethods.checkingUrlAndCloseTab("verbraucher-schlichter");
+        autodocLinkAgbText().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
+        commonMethods.checkingUrlAndCloseTab("/agb");
         back();
         return this;
     }
