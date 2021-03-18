@@ -44,4 +44,16 @@ public class Motoroil_brand_page {
 
     ElementsCollection inhaltValuesInProducts() {return $$x("//span[text()='Inhalt [Liter]:  ']/following-sibling::span");}
 
+    SelenideElement nameOilInSelector() {
+        return $x("//*[@name='brand']//*[@value='castrol']");
+    }
+
+    SelenideElement oilSelector() {
+        return $x("//*[@class='selector-oil selector-oil--white']");
+    }
+
+    SelenideElement brandNameInListing() {
+        return $x("//*[@class='js-product-item ovVisLi item_in_stock  '][1]//*[@class='name']//a");
+    }
+
 }
