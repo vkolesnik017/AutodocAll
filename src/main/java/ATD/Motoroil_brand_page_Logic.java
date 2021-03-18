@@ -188,13 +188,11 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
         return page(Motoroil_page.class);
     }
 
-
     @Step(":from Motoroil_brand_page")
     public Motoroil_brand_page_Logic checkingPresenceAndNotClickableLastBreadCrumb() {
         new Listing_accessories_page_Logic().checkingPresenceAndNotClickableLastBreadCrumb(new Listing_accessories_page_Logic().thirdBreadCrumb());
         return this;
     }
-
 
     @Step(":from Motoroil_brand_page")
     public Motoroil_brand_page_Logic checkingQuantityBreadCrumbs() {
@@ -202,6 +200,17 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
         return this;
     }
 
-
+    @Step("Check visiable filter brand block. Motoroil_brand_page")
+    public  Motoroil_brand_page_Logic checkVisibleFilterBrandBlock() {
+        brandOilFilterBlock().shouldBe(visible);
+        return this;
+    }
+    @Step("Checks visibility of viscosity oil value in selector. Motoroil_brand_page")
+    public Motoroil_brand_page_Logic checkVisibilityOfBrandNameOilValueInSelectorAndListingName(String nameBrand) {
+        oilSelector().scrollTo().shouldBe(visible);
+        nameOilInSelector().shouldBe(visible).shouldHave(attribute("selected"));
+        brandNameInListing().shouldHave(text(nameBrand));
+        return this;
+    }
 
 }

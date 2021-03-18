@@ -66,6 +66,7 @@ public class Search_page_Logic extends Search_page {
     @Step("compare Selector Values With File. Search_page")
     public Search_page_Logic compareSelectorValuesWithFile(String marke, String model, String carId, String file, String startUrl) throws IOException {
         CommonMethods commonMethods = new CommonMethods();
+        displayOfNavigationHeaderLinks();
         String markeFromSelector = markeFieldSelector().getSelectedValue();
         String modelFromSelector = modelFieldSelector().getSelectedValue();
         String motorFromSelector = motorFieldSelector().getSelectedValue();
@@ -104,7 +105,14 @@ public class Search_page_Logic extends Search_page {
             commonMethods.writerInFile(file, true, String.format("CarTitle not contains value from file. from File - %s, from Selector - %s . Url - %s",
                     carTitleFromFile, motorFromSelector, startUrl));
         }
+        return this;
+    }
 
+    @Step("display Of Navigation Header Links. Search_page")
+    public Search_page_Logic displayOfNavigationHeaderLinks() {
+        for (int i = 0; i < visibleNavigationHeaderLinks().size(); i++) {
+            visibleNavigationHeaderLinks().get(i).shouldBe(visible);
+        }
         return this;
     }
 }

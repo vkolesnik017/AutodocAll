@@ -3,6 +3,7 @@ package PKW;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -34,9 +35,19 @@ public class Search_page {
         return $$x("(//div[@class='prod_params_container'])[" + position + "]/ul/li");
     }
 
-    SelenideElement markeFieldSelector() {return $(byId("form_maker_id"));}
+    SelenideElement markeFieldSelector() {
+        return $(byId("form_maker_id"));
+    }
 
-    SelenideElement modelFieldSelector() {return $(byId("form_model_id"));}
+    SelenideElement modelFieldSelector() {
+        return $(byId("form_model_id"));
+    }
 
-    SelenideElement motorFieldSelector() {return $(byId("form_car_id"));}
+    SelenideElement motorFieldSelector() {
+        return $(byId("form_car_id"));
+    }
+
+    ElementsCollection visibleNavigationHeaderLinks() {
+        return $$x("//ul[@class='header__navigation-menu']/li").filter(visible);
+    }
 }

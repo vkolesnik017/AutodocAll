@@ -4,8 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class AGB_static_page {
 
@@ -61,8 +60,12 @@ public class AGB_static_page {
         return $(byXpath("//a[contains(@href,'consent')]"));
     }
 
-    SelenideElement europaLinkAgbSecond() {
+    SelenideElement europaLink() {
         return $(byXpath("//a[contains(@href,'europa')]"));
+    }
+
+    SelenideElement verbraucherSchlichterLink() {
+        return $x("//a[contains(@href,'verbraucher-schlichter')]");
     }
 
     ElementsCollection countryNamesOnSite() {
