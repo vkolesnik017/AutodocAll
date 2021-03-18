@@ -1668,4 +1668,11 @@ public class Product_page_Logic extends Product_page {
         Assert.assertEquals(brandSelector().getSelectedValue(), expectedMarke);
         return this;
     }
+
+    @Step("Gets any characteristic of product . Product_page")
+    public String getCharacteristicProduct( String nameCharacteristic ) {
+        return characteristicOfProduct(nameCharacteristic).getText();
+    }
+
+
 }

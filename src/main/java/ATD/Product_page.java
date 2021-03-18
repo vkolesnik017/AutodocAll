@@ -966,4 +966,6 @@ public class Product_page {
         return $x("//div[@class='product-feedback']");
     }
 
+    SelenideElement characteristicOfProduct(String nameCharacteristic) {return $x("//span[contains(text(),'" + nameCharacteristic + "')]/../span[2]");}
+
   }

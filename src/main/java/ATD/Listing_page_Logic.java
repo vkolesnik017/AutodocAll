@@ -35,6 +35,16 @@ public class Listing_page_Logic extends Listing_page {
         return characteristicsOfProduct(productArticle).shouldHave(sizeGreaterThan(10));
     }
 
+    @Step("Gets any characteristic of the desired product from listing. Listing_page")
+    public String getCharacteristicDesiredProduct(String productArticle, String nameCharacteristic ) {
+        return characteristicOfProduct(productArticle, nameCharacteristic).getText();
+    }
+
+    @Step("Gets title of the desired product from listing. Listing_page")
+    public String getTitleDesiredProduct(String productArticle) {
+        return titleDesiredProduct(productArticle).getText();
+    }
+
 
     @Step("Method gets price of all products on listing and parse it into float. Listing_page")
     private List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {

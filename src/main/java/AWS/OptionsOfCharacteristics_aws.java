@@ -7,8 +7,7 @@ import io.qameta.allure.Step;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -25,7 +24,7 @@ public class OptionsOfCharacteristics_aws {
     }
 
     private SelenideElement atdSkin() {
-        return $(byId("form_skin_chzn_o_5"));
+        return $(byId("form_skin_chzn_o_6"));
     }
 
     private SelenideElement genericField() {
@@ -46,6 +45,10 @@ public class OptionsOfCharacteristics_aws {
 
     private ElementsCollection idFromMainOptionsColumn() {return $$x("//td[@class='w-400']//tr//td[2]/input[@data-old-value='1']/ancestor::tr/td[@class='w-40']");}
 
+    private SelenideElement idParameter( String idNum) { return $x("//tr[@data-param-id='" + idNum + "']"); }
+
+    private SelenideElement idParameterAndCheckBoxOptionsVisibleInTitle( String idNum, String numCheckbox) { return $x("//tr[@data-param-id='" + idNum + "']//td[@class='center w-80'][" + numCheckbox + "]/input"); }
+
     @Step("open alternative categories page in aws. OptionsOfCharacteristics_aws")
     public OptionsOfCharacteristics_aws openOptionsOfCharacteristicsInAwsWithLogin() {
         open(currencyOptionsPageURL);
@@ -62,7 +65,7 @@ public class OptionsOfCharacteristics_aws {
         return this;
     }
 
-    @Step("select Skin. OptionsOfCharacteristics_aws")
+    @Step("select Generic. OptionsOfCharacteristics_aws")
     public OptionsOfCharacteristics_aws setGeneric(String generic) {
         genericField().shouldBe(visible).click();
         searchGenericField().shouldBe(visible).setValue(generic).pressEnter();
@@ -80,4 +83,18 @@ public class OptionsOfCharacteristics_aws {
       List<String> idOfMainParameters =idFromMainOptionsColumn().stream().map(n->n.getText()).collect(Collectors.toList());
         return idOfMainParameters;
     }
+
+    @Step("Check visible id parameter. OptionsOfCharacteristics_aws")
+    public OptionsOfCharacteristics_aws checkVisibleElement(String idNum) {
+        idParameter(idNum).scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check Selected CheckBox from Title Display Settings block. OptionsOfCharacteristics_aws")
+    public OptionsOfCharacteristics_aws checkSelectedCheckBox(String idNum, String numCheckbox) {
+        idParameterAndCheckBoxOptionsVisibleInTitle(idNum, numCheckbox).shouldHave(attribute("checked", "true"));
+        return this;
+    }
+
+
 }
