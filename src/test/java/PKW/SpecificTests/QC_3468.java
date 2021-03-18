@@ -47,8 +47,7 @@ public class QC_3468 extends Main_page {
         openPage(startUrl);
 
         try {
-            new Search_page_Logic().compareSelectorValuesWithFile(maker_id, model_id, car_id, result, startUrl)
-                    .compareCarTitleSelectorValueWithFile(carTitle, result, startUrl);
+            new Search_page_Logic().compareSelectorValuesWithFile(maker_id, model_id, car_id, result, startUrl);
         } catch (ElementNotFound element) {
             commonMethods.writerInFile(result, true, "Trouble with element in selector" + "#" + startUrl);
         }
