@@ -176,11 +176,11 @@ public class Motoroil_page_Logic extends Motoroil_page {
     }
 
     @Step("Check transfer to brand listing from the brand block on the Main Oil Page. Motoroil page")
-    public MotoroilBrand_page_Logic checkTransferToBrandListingFromTheBrandBlock(String oilBrandName) {
+    public Motoroil_brand_page_Logic checkTransferToBrandListingFromTheBrandBlock(String oilBrandName) {
         brandBlock().shouldBe(visible);
         itemInBrandBlock().click();
         checkingContainsUrl(oilBrandName);
-        return page(MotoroilBrand_page_Logic.class);
+        return page(Motoroil_brand_page_Logic.class);
     }
 
 
