@@ -1,6 +1,6 @@
 package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
-import ATD.MotoroilBrand_page_Logic;
+import ATD.Motoroil_brand_page_Logic;
 import ATD.Motoroil_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_3176 {
 
-    MotoroilBrand_page_Logic motoroilBrand_page_logic = new MotoroilBrand_page_Logic();
+    Motoroil_brand_page_Logic motoroilBrand_page_logic = new Motoroil_brand_page_Logic();
 
     @BeforeClass
     void setUp() {
