@@ -3,8 +3,12 @@ package ATD;
 import Common.DataBase;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static ATD.CommonMethods.mailinatorMailRandom;
 import static ATD.CommonMethods.openPage;
@@ -98,12 +102,12 @@ public class Versand_static_page_Logic extends Versand_static_page {
 
     @Step("Checks for the presence of a Oversize shipping product block and elements inside it. Versand_static_page")
     public Versand_static_page_Logic checkOversizeShippingProductBlock(){
-        shippingBlock().shouldBe(visible);
+        oversizeShippingBlock().shouldBe(visible);
         tabUnfoldingButton().click();
         fullPartsList().shouldBe(visible);
         tabMinimizingButton().click();
-        shippingTab2().click();
-        countryBlock().shouldBe(visible);
+        oversizeShippingTab().click();
+        oversizeCountryBlock().shouldBe(visible);
         return this;
     }
 
@@ -229,5 +233,21 @@ public class Versand_static_page_Logic extends Versand_static_page {
     @Step("Get safe order price. Versand_static_page")
     public String getSafeOrderPrice() {
         return safeOrderPrice().scrollIntoView("{block: \"center\"}").getText().replaceAll("[^0-9,]", "").replaceAll(",",".");
+    }
+
+    @Step("Checks title for island block. Versand_static_page")
+    public Versand_static_page_Logic checkPresenceTitleInIslandBlock(String expectedTitle) {
+        islandsBlockTitle().shouldBe(visible).shouldHave(text(expectedTitle));
+        return this;
+    }
+
+    @Step("Compares prices for shipping to islands with the price in the AWS. Versand_static_page")
+    public Versand_static_page_Logic comparesPricesForShippingToIslandWithPriceInAWS(List<String> priceWithAWS) {
+        ArrayList<String> priceWithFront = new ArrayList<>();
+        for (int i = 0; i < islandDeliveryPrices().size(); i++) {
+            priceWithFront.add(islandDeliveryPrices().get(i).getText().replaceAll("[^0-9,]", "").replaceAll(",","."));
+        }
+        Assert.assertEquals(priceWithAWS, priceWithFront);
+        return this;
     }
 }

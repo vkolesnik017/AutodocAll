@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 class Versand_static_page {
 
+    // Locators for top-block
     SelenideElement topBlock() {
         return $(By.cssSelector(".top-block"));
     }
@@ -26,6 +27,16 @@ class Versand_static_page {
         return $(By.cssSelector(".top-block__right-images"));
     }
 
+    // Locators for islands block
+    SelenideElement islandsBlockTitle() {
+        return $(".islands-block__title");
+    }
+
+    ElementsCollection islandDeliveryPrices() {
+        return $$x("//ul[@class='islands-block__list']//span[@class='price']");
+    }
+
+    // Locators for prices block
     SelenideElement pricesBlock() {
         return $(By.cssSelector(".prices-block"));
     }
@@ -39,13 +50,14 @@ class Versand_static_page {
     }
 
     SelenideElement deliveryPrice() {
-     return $x("//div[@class='prices-block__items-item']/span[@data-image='image1']");
+        return $x("//div[@class='prices-block__items-item']/span[@data-image='image1']");
     }
 
     SelenideElement vatBlock() {
         return $(By.cssSelector(".prices-block__text"));
     }
 
+    // Locators for country- prices block
     SelenideElement countryPricesBlock() {
         return $(By.cssSelector(".country-prices"));
     }
@@ -62,6 +74,44 @@ class Versand_static_page {
         return $(By.xpath("//*[@class='country-prices__pop country-prices-pop-js']"));
     }
 
+    SelenideElement deliveryPriceLocator(String country) {
+        return $x("//*[@class='country-prices__pop country-prices-pop-js']//span[contains (text(), '" + country + "')]/../../span");
+    }
+
+    SelenideElement deliveryPriceLocatorWithNameShop(String shop) {
+        return $x("(//img[contains(@src,'" + shop + "')]/../..//span)[2]");
+    }
+
+    // Locators for delivery page callback form
+    SelenideElement datenschutzerklarungLink() {
+        return $("#Delivery_privacy_policy > a");
+    }
+
+    SelenideElement sendShipFormMailField() {
+        return $x("//input[@id='form_Email']");
+    }
+
+    SelenideElement mailingCheckbox() {
+        return $("#isSubscribe_delivery");
+    }
+
+    SelenideElement submitButton() {
+        return $x("//*[@name='request_callback']");
+    }
+
+    SelenideElement sendShipFormSuccesPopup() {
+        return $(By.id("popup_update"));
+    }
+
+    SelenideElement sendShipFormSuccesPopupCloseBtn() {
+        return $x("//div[@id='popup_update']//div[@class='buttons-inner']/a");
+    }
+
+    SelenideElement countryDropdown() {
+        return $("#form_Land");
+    }
+
+    // Locators for delivery-time block
     SelenideElement deliveryTimeBlock() {
         return $(By.cssSelector(".delivery-time"));
     }
@@ -82,8 +132,14 @@ class Versand_static_page {
         return $(By.xpath("//*[@class='delivery-time__text']/span/a"));
     }
 
+    // Locators for recommendation block
     SelenideElement recommendationBlock() {
         return $(By.cssSelector(".recommendation-block"));
+    }
+
+    // Locators for  safe-order block
+    SelenideElement safeOrderBlock() {
+        return $(By.cssSelector(".safe-order"));
     }
 
     SelenideElement deliveryCheckboxClick() {
@@ -92,10 +148,6 @@ class Versand_static_page {
 
     SelenideElement deliveryCheckbox() {
         return $(By.name("security_delivery"));
-    }
-
-    SelenideElement safeOrderBlock() {
-        return $(By.cssSelector(".safe-order"));
     }
 
     SelenideElement safeOrderPrice() {
@@ -138,6 +190,7 @@ class Versand_static_page {
         return $(By.xpath("//*[@class='safe-order__return']"));
     }
 
+    // Locators for tyres-delivery block
     SelenideElement tyresDelivery() {
         return $(By.xpath("//*[@class='tyres-delivery']"));
     }
@@ -154,11 +207,12 @@ class Versand_static_page {
         return $x("//div[@class='tyres-delivery__row-item tyres-delivery__row-item--point']");
     }
 
-    SelenideElement shippingBlock() {
+    // Locators for oversize block
+    SelenideElement oversizeShippingBlock() {
         return $(By.xpath("//*[@class='oversize-block']"));
     }
 
-    SelenideElement shippingTab2() {
+    SelenideElement oversizeShippingTab() {
         return $(By.xpath("//*[@class='tabs-js']/li[2]"));
     }
 
@@ -174,93 +228,7 @@ class Versand_static_page {
         return $(By.xpath("//*[@class='oversize-block__tabs-list list-full']"));
     }
 
-    SelenideElement countryBlock() {
+    SelenideElement oversizeCountryBlock() {
         return $(By.xpath("//*[@class='oversize-block__tabs-wrap-country']"));
     }
-
-    SelenideElement chooseDeliveryBlock() {
-        return $(By.cssSelector(".choose-delivery"));
-    }
-
-    SelenideElement chooseDeliveryTitle() {
-        return $(By.xpath("//*[@class='choose-delivery__title']/span"));
-    }
-
-    SelenideElement glsCheckbox() {
-        return $(By.xpath("//div[1][@class='choose-delivery__wrap-item']/div/label/input"));
-    }
-
-    SelenideElement glsCheckboxClick() {
-        return $(By.xpath("//div[1][@class='choose-delivery__wrap-item']/div/label/span"));
-    }
-
-    SelenideElement dhlCheckbox() {
-        return $(By.xpath("//div[2][@class='choose-delivery__wrap-item']/div/label/input"));
-    }
-
-    SelenideElement dhlCheckboxClick() {
-        return $(By.xpath("//div[2][@class='choose-delivery__wrap-item']/div/label/span"));
-    }
-
-    SelenideElement noxCheckbox() {
-        return $(By.xpath("//div[3][@class='choose-delivery__wrap-item']/div/label/input"));
-    }
-
-    SelenideElement noxCheckboxClick() {
-        return $(By.xpath("//div[3][@class='choose-delivery__wrap-item']/div/label/span"));
-    }
-
-    SelenideElement dpdCheckbox() {
-        return $(By.xpath("//div[4][@class='choose-delivery__wrap-item']/div/label/input"));
-    }
-
-    SelenideElement dpdCheckboxClick() {
-        return $(By.xpath("//div[4][@class='choose-delivery__wrap-item']/div/label/span"));
-    }
-
-    SelenideElement pnordCheckbox() {
-        return $(By.xpath("//div[5][@class='choose-delivery__wrap-item']/div/label/input"));
-    }
-
-    SelenideElement pnordCheckboxClick() {
-        return $(By.xpath("//div[5][@class='choose-delivery__wrap-item']/div/label/span"));
-    }
-
-    SelenideElement chooseDeliveryInput() {
-        return $(By.xpath("//*[@class='choose-delivery__input']/input"));
-    }
-
-    SelenideElement chooseDeliveryButton() {
-        return $(By.xpath("//*[@class='delivery-button-js']"));
-    }
-
-    SelenideElement chooseDeliveryAnswerText() {
-        return $(By.xpath("//*[@class='choose-delivery__text delivery-text-js']"));
-    }
-
-    SelenideElement deliveryOptionsBlock() {
-        return $(By.xpath("//*[@class='choose-delivery__wrap delivery-wrap-js']"));
-    }
-
-    SelenideElement deliveryPriceLocator(String country) {
-        return $x("//*[@class='country-prices__pop country-prices-pop-js']//span[contains (text(), '" + country + "')]/../../span");
-    }
-
-    SelenideElement deliveryPriceLocatorWithNameShop(String shop) {
-        return $x("(//img[contains(@src,'" + shop + "')]/../..//span)[2]");
-    }
-
-    SelenideElement datenschutzerklarungLink() { return $("#Delivery_privacy_policy > a"); }
-
-    SelenideElement sendShipFormMailField() { return $x("//input[@id='form_Email']"); }
-
-    SelenideElement mailingCheckbox() { return $("#isSubscribe_delivery"); }
-
-    SelenideElement submitButton() { return $x("//*[@name='request_callback']"); }
-
-    SelenideElement sendShipFormSuccesPopup() { return $(By.id("popup_update")); }
-
-    SelenideElement sendShipFormSuccesPopupCloseBtn() { return $x("//div[@id='popup_update']//div[@class='buttons-inner']/a"); }
-
-    SelenideElement countryDropdown() { return $("#form_Land"); }
 }

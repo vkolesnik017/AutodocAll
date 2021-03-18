@@ -52,6 +52,9 @@
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_2663"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_3408"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_3406"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_3442"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_3443"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_3458"/>
         </classes>
     </test>
 
@@ -69,6 +72,7 @@
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_3145"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_1432"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_1433"/>
+            <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_3420"/>
         </classes>
     </test>
 
