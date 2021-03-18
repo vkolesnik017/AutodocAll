@@ -830,5 +830,16 @@ public class Search_page_Logic extends Search_page {
         }
         return this;
     }
+
+    @Step("absence Of Disabled Product. Search_page")
+    public Search_page_Logic absenceOfDisabledProduct(String artNumOfProduct) {
+        if (mainListingBlock().isDisplayed()) {
+            List<String> allArtNumbers = artNumOfProduct().stream().map(n -> n.getText().replaceAll("Artikelnummer: ", "")).collect(Collectors.toList());
+            Assert.assertFalse(allArtNumbers.contains(artNumOfProduct), String.format("List - %s contains disabled product - %s", url(), artNumOfProduct));
+        } else {
+            mainFormOfSoft404().shouldBe(visible);
+        }
+        return this;
+    }
 }
 

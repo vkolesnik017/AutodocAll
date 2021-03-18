@@ -3,8 +3,8 @@ package PKW;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Search_page {
     SelenideElement productListBlock() {
@@ -33,4 +33,10 @@ public class Search_page {
     ElementsCollection visibleCharacteristicsOfProducts(int position) {
         return $$x("(//div[@class='prod_params_container'])[" + position + "]/ul/li");
     }
+
+    SelenideElement markeFieldSelector() {return $(byId("form_maker_id"));}
+
+    SelenideElement modelFieldSelector() {return $(byId("form_model_id"));}
+
+    SelenideElement motorFieldSelector() {return $(byId("form_car_id"));}
 }

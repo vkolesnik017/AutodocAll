@@ -139,4 +139,33 @@ public class Tyres_page {
   ElementsCollection visibleBtnMoreOfLinkingBlock() {return $$x("//div[@class='most-popular']//span[@class='link']").filter(visible);}
 
   SelenideElement mainHeadline() {return $x("//h1[@class='title']");}
+
+
+//   Top car brand block
+
+  SelenideElement titleTopCarBrandBlock() {
+    return $x("//div[@class='title_list no_border_top']//b");
+  }
+
+  SelenideElement topCarBrandBlock() {
+    return $x("//div[@class='kategorie_top_autos']");
+  }
+
+  SelenideElement carBrandFromTopCarBrandBlock() {
+    return $x("//div[@class='kategorie_top_autos']//a");
+  }
+
+  ElementsCollection carBrandsFromTopCarBrandBlock() {
+    return $$x("//div[@class='kategorie_top_autos']//a");
+  }
+
+  SelenideElement btnMoreInTopCarBrandBlock() {
+    return $x("//div[@class='kategorie_top_autos']//div[@class='m_text show']");
+  }
+
+  SelenideElement btnLessInTopCarBrandBlock() {
+    return $x("//div[@class='kategorie_top_autos']//div[@class='m_text hide']");
+  }
+
+
 }

@@ -34,7 +34,7 @@ public class QC_3014 {
     @Description(value = "Test check counter of products in different tyres listings")
     public void testCheckCounterOfProductsInDifferentTyresListings(String route) {
         openPage(route);
-        new Tyres_dimension_page_Logic().defaultCountOfProduct(4).checkCounterOnDecreaseAndIncrease().minCountOfBuyProduct(2);
+        new Tyres_dimension_page_Logic().defaultCountOfProduct(4).checkCounterOnDecreaseAndIncrease().minCountOfBuyProduct(1);
     }
 
     @DataProvider(name = "routesDimension", parallel = true)
@@ -48,7 +48,7 @@ public class QC_3014 {
     @Description(value = "Test check counter of products in different tyres listings")
     public void testCheckCounterOfProductsInDifferentTyresListingsDimension(String route) {
         openPage(route);
-        new Tyres_dimension_page_Logic().defaultCountOfProduct(2).checkCounterOnDecreaseAndIncrease().minCountOfBuyProduct(2);
+        new Tyres_dimension_page_Logic().defaultCountOfProduct(2).checkCounterOnDecreaseAndIncrease().minCountOfBuyProduct(1);
     }
 
     @DataProvider(name = "routesSecond", parallel = true)
