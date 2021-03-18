@@ -44,7 +44,6 @@ public class QC_1466 {
                 .checkingFlagsInTheCountryList()
                 .checkingCountriesOnSiteAndOnAWS(countriesNameAws)
                 .checkingLinksInTheText();
-
     }
 
     @AfterMethod

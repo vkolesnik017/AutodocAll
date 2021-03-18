@@ -8,6 +8,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Motoroil_brand_page {
 
+    SelenideElement brandOilFilterBlock() {
+        return $x("//div[@id='selected-instalation__slider']");
+    }
+
     SelenideElement inhaltFilterInSideBar() {return $x("//div[@class='sidebar two']//div[text()='Inhalt [Liter]']/..");}
 
     SelenideElement oemFreigabeFilterInSideBar() {return $x("//div[@class='sidebar two']//div[text()='OEM-Freigabe']/..");}
@@ -51,4 +55,5 @@ public class Motoroil_brand_page {
     SelenideElement brandNameInListing() {
         return $x("//*[@class='js-product-item ovVisLi item_in_stock  '][1]//*[@class='name']//a");
     }
+
 }

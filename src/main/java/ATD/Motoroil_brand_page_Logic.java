@@ -200,6 +200,11 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
         return this;
     }
 
+    @Step("Check visiable filter brand block. Motoroil_brand_page")
+    public  Motoroil_brand_page_Logic checkVisibleFilterBrandBlock() {
+        brandOilFilterBlock().shouldBe(visible);
+        return this;
+    }
     @Step("Checks visibility of viscosity oil value in selector. Motoroil_brand_page")
     public Motoroil_brand_page_Logic checkVisibilityOfBrandNameOilValueInSelectorAndListingName(String nameBrand) {
         oilSelector().scrollTo().shouldBe(visible);

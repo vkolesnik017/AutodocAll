@@ -7,7 +7,6 @@ import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 
-
 class Index_accessories_page {
 
 
@@ -68,11 +67,11 @@ class Index_accessories_page {
         return $$x("//div[@class='accessories-catalog__row'][1]//div[@class='accessories-catalog__categories']//li/a");
     }
 
-    SelenideElement secondCategoryInLogicalUnion(){
+    SelenideElement secondCategoryInLogicalUnion() {
         return $x("//div[@class='accessories-catalog__categories' and @style='display: block;']//li[2]");
     }
 
-    ElementsCollection categoriesInLogicalUnion(){
+    ElementsCollection categoriesInLogicalUnion() {
         return $$x("//div[@class='accessories-catalog__categories' and @style='display: block;']//li");
     }
 
@@ -101,10 +100,10 @@ class Index_accessories_page {
 // Locators for top-product block
 
     SelenideElement blockTopProducts() {
-        return  $x("//div[@class='top-product-block']");
+        return $x("//div[@class='top-product-block']");
     }
 
-    ElementsCollection miniCardsInTop6ProductsBlock () {
+    ElementsCollection miniCardsInTop6ProductsBlock() {
         return $$x("//div[@class='top-product']//div[@class='product-list__item active']");
     }
 
@@ -153,7 +152,6 @@ class Index_accessories_page {
 
 
 // Locators for
-
 
 
 }
