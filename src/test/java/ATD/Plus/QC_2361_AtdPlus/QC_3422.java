@@ -28,7 +28,7 @@ public class QC_3422 {
     @Description(value = "Checking the absence of the 'Personal discount' option on the PLUS website of a user without a subscription to France")
     public void testCheckAbsencePersonalDiscountOption() throws SQLException {
         String mail = "qc_3422autotest@mailinator.com";
-        openPage(new DataBase("ATD").getFullRouteByRouteName("prod", "DE", "main"));
+        openPage(new DataBase("ATD").getFullRouteByRouteName("prod", "FR", "main"));
         new Main_page_Logic()
                 .loginAndTransitionToProfilePlusPage(mail)
                 .checkAbsencePersonalDiscountOption();
