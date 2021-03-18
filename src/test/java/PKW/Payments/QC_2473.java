@@ -62,7 +62,7 @@ public class QC_2473 {
                 .getTotalPriceAllDataPage(shop);
         new CartAllData_page_Logic().nextBtnClick();
         checkingContainsUrl("secure.przelewy24.pl");
-        float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+        float totalPriceOrderAws = new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Przelewy24")

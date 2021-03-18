@@ -64,7 +64,7 @@ public class QC_2469 {
         closeWindow();
         switchTo().window(0);
         new CartPayments_page_Logic().checkActivePaymentMethod("paypal");
-        float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+        float totalPriceOrderAws = new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("PayPal")

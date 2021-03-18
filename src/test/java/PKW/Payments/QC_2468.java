@@ -60,7 +60,7 @@ public class QC_2468 {
         new CartAllData_page_Logic().nextBtnClick();
         new Merchant_page().checkPresenceElementFromMerchantPageBraintreeCreditCardAndCancelOrder("5169307507657018", "1225", "658");
         new CartPayments_page_Logic().checkActivePaymentMethod("braintree_creditcards");
-        float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+        float totalPriceOrderAws = new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Braintree")
