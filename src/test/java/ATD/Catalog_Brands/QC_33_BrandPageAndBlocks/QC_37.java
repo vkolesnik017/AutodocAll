@@ -34,7 +34,10 @@ public class QC_37 {
     @Description(value = "Test checks visibility of top_brands block")
     public void testChecksVisibilityOfTopBrandsBlock(String route) {
         openPage(route);
-        new LKW_Category_maker_brand_page_Logic().visibilityOfTopBrandsBlock();
+        new LKW_Category_maker_brand_page_Logic()
+                .visibilityOfTopBrandsBlock()
+                .clickOnLinkMoreOfTopBrand()
+                .sizeOfBrandsMoreThen(6);
     }
 
     @DataProvider(name = "routesMakerCarList", parallel = true)
