@@ -12,32 +12,25 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Customer_view_aws {
 
-
+    // Link for open page
     private String url = "https://aws.autodoc.de/customer/view/";
 
-
+    // Locators for main_content block
     private SelenideElement customerIdBlock() {
         return $x("//*[@class='customer-id-cell']");
     }
 
+    private SelenideElement customerSubscriptionSelector() {
+        return $x("//select[@class='customer-subscription-update']");
+    }
+
+    // Locators for customer-order-form block
     private SelenideElement orderLink(String data) {
         return $x("//td[contains(text(),'" + data + "')]/..//a[@class='order_link']");
     }
 
-    private SelenideElement companyNumberLogsBlock() {
-        return $x("//div[@class='mt-20']");
-    }
-
-    private SelenideElement columnIdCompany(String id) {
-        return $x("//div[@class='mt-20']//tbody//tr//td[text()='" + id + "']");
-    }
-
-    private SelenideElement columnResponse(String status) {
-        return $x("(//div[@class='mt-20']//tbody//tr//td[text()='" + status + "                    '])[1]");
-    }
-
-    private SelenideElement columnBillingOrShipping(String billingOrShipping) {
-        return $x("//div[@class='mt-20']//tbody//tr//td[text()='" + billingOrShipping + "']");
+    private SelenideElement orderHistory() {
+        return $x("//form[@id='form-order']");
     }
 
     private SelenideElement errorNameStatus() {
@@ -48,6 +41,7 @@ public class Customer_view_aws {
         return $x("//div[@class='mt-20']//td[7]");
     }
 
+    // Locators for billing block
     private SelenideElement fieldNameInBilling() {
         return $x("//input[@id='form_rVorname']");
     }
@@ -84,38 +78,40 @@ public class Customer_view_aws {
         return $x("//input[@id='form_rTelefon']");
     }
 
-    private SelenideElement fieldNameInDeliveryAddress() {
+    // Locators for shipping block
+    private SelenideElement fieldNameInSippingAddress() {
         return $x("//input[@id='form_lVorname']");
     }
 
-    private SelenideElement fieldSurnameInDeliveryAddress() {
+    private SelenideElement fieldSurnameInSippingAddress() {
         return $x("//input[@id='form_lName']");
     }
 
-    private SelenideElement fieldStreetInDeliveryAddress() {
+    private SelenideElement fieldStreetInSippingAddress() {
         return $x("//input[@id='form_lStrasse']");
     }
 
-    private SelenideElement fieldHouseNumberInDeliveryAddress() {
+    private SelenideElement fieldHouseNumberInSippingAddress() {
         return $x("//input[@id='form_delivery_house']");
     }
 
-    private SelenideElement fieldPostcodeInDeliveryAddress() {
+    private SelenideElement fieldPostcodeInSippingAddress() {
         return $x("//input[@id='form_lPlz']");
     }
 
-    private SelenideElement fieldCityInDeliveryAddress() {
+    private SelenideElement fieldCityInSippingAddress() {
         return $x("//input[@id='form_lOrt']");
     }
 
-    private SelenideElement fieldCountryInDeliveryAddress() {
+    private SelenideElement fieldCountryInSippingAddress() {
         return $x("//select[@id='form_delivery_country_id']");
     }
 
-    private SelenideElement fieldPhoneInDeliveryAddress() {
+    private SelenideElement fieldPhoneInSippingAddress() {
         return $x("//input[@id='form_lTelefon']");
     }
 
+    // Locators for Bank. Customer Data block
     private SelenideElement fieldNameReceiver() {
         return $x("//input[@id='form_BankData[AccOwner]']");
     }
@@ -128,14 +124,29 @@ public class Customer_view_aws {
         return $x("//div[@id='bankData']");
     }
 
+    // Locators for subscription_box block
     private SelenideElement subscriptionBlock() {
         return $(".subscription_box");
+    }
+
+    private SelenideElement statusOkInSubscriptionTable() {
+        return $x("//table[contains(@class,'subscriptions_table')]//tr[1]//i[@class='splashy-okay']");
+    }
+
+    // Locator for Consent Logs on a call block
+    private  SelenideElement btnCancelSubscriptionConsentToCallLogs() {
+        return $(".cancel_survey_subscription");
+    }
+
+    private SelenideElement statusConsentToCall() {
+        return $x("//div[@class='col-sm-12 col-md-5']//tr[1]//td[4]");
     }
 
     private SelenideElement checkStatusOkayInSubscriptConsentLogs() {
         return $x("//div[@class='col-sm-12 col-md-5']//tr[1]//td[3]//i[@class='splashy-okay']");
     }
 
+    // Locators for Transaction History (Deposit) block
     private SelenideElement customerDepositTable() {
         return $x("//div[@class='col-sm-12 col-md-7']//div[8]");
     }
@@ -144,16 +155,21 @@ public class Customer_view_aws {
         return $x("//table[@class='table table-striped table-bordered table-condensed orders customer-deposit']//tr[1]//td[4]");
     }
 
-    private SelenideElement orderHistory() {
-        return $x("//form[@id='form-order']");
+    // Locators for the Check Number Logic Unit
+    private SelenideElement companyNumberLogsBlock() {
+        return $x("//div[@class='mt-20']");
     }
 
-    private SelenideElement customerSubscriptionSelector() {
-        return $x("//select[@class='customer-subscription-update']");
+    private SelenideElement columnIdCompany(String id) {
+        return $x("//div[@class='mt-20']//tbody//tr//td[text()='" + id + "']");
     }
 
-    private SelenideElement statusOkInSubscriptionTable() {
-        return $x("//table[contains(@class,'subscriptions_table')]//tr[1]//i[@class='splashy-okay']");
+    private SelenideElement columnResponse(String status) {
+        return $x("(//div[@class='mt-20']//tbody//tr//td[contains(text(),'" + status + "')])[1]");
+    }
+
+    private SelenideElement columnBillingOrShipping(String billingOrShipping) {
+        return $x("//div[@class='mt-20']//tbody//tr//td[text()='" + billingOrShipping + "']");
     }
 
 
@@ -168,11 +184,17 @@ public class Customer_view_aws {
         return this;
     }
 
-
     @Step("Checks that the last log has the status OK in the block subscription block. Customer_view_aws")
     public Customer_view_aws checkStatusOfLastLog() {
         subscriptionBlock().shouldHave(visible);
         checkStatusOkayInSubscriptConsentLogs().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Cancel consent to call. Customer_view_aws")
+    public Customer_view_aws cancelConsentToCall() {
+        btnCancelSubscriptionConsentToCallLogs().shouldBe(visible).click();
+        statusConsentToCall().shouldHave(text("Готово"));
         return this;
     }
 
@@ -195,9 +217,16 @@ public class Customer_view_aws {
 
 
     @Step("Open customer personal area {customerID}. Customer_view_aws")
-    public Customer_view_aws openCustomerPersonalArea(String customerID) {
+    public Customer_view_aws openCustomerView(String customerID) {
         open(url + customerID);
         new Login_aws().loginInAws();
+        customerIdBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Open customer personal area {customerID}. Customer_view_aws")
+    public Customer_view_aws openCustomerViewWithoutLogin(String customerID) {
+        open(url + customerID);
         customerIdBlock().shouldBe(visible);
         return this;
     }
@@ -213,14 +242,14 @@ public class Customer_view_aws {
         String countryText = fieldCountryInBilling().getText();
         String mailText = fieldMailInBilling().getValue();
         String phoneText = fieldPhoneInBilling().getValue();
-        String nameDeliveryAddressText = fieldNameInDeliveryAddress().getValue();
-        String surnameDeliveryAddressText = fieldSurnameInDeliveryAddress().getValue();
-        String streetDeliveryAddressText = fieldStreetInDeliveryAddress().getValue();
-        String houseDeliveryAddressNumberText = fieldHouseNumberInDeliveryAddress().getValue();
-        String postcodeDeliveryAddressText = fieldPostcodeInDeliveryAddress().getValue();
-        String cityDeliveryAddressText = fieldCityInDeliveryAddress().getValue();
-        String countryDeliveryAddressText = fieldCountryInDeliveryAddress().getText();
-        String phoneDeliveryAddressText = fieldPhoneInDeliveryAddress().getValue();
+        String nameDeliveryAddressText = fieldNameInSippingAddress().getValue();
+        String surnameDeliveryAddressText = fieldSurnameInSippingAddress().getValue();
+        String streetDeliveryAddressText = fieldStreetInSippingAddress().getValue();
+        String houseDeliveryAddressNumberText = fieldHouseNumberInSippingAddress().getValue();
+        String postcodeDeliveryAddressText = fieldPostcodeInSippingAddress().getValue();
+        String cityDeliveryAddressText = fieldCityInSippingAddress().getValue();
+        String countryDeliveryAddressText = fieldCountryInSippingAddress().getText();
+        String phoneDeliveryAddressText = fieldPhoneInSippingAddress().getValue();
         ArrayList <String> userData = new ArrayList<>();
         userData.add(nameText);
         userData.add(surnameText);
@@ -314,7 +343,5 @@ public class Customer_view_aws {
         statusOkInSubscriptionTable().shouldBe(visible);
         return this;
     }
-
-
 
 }

@@ -54,7 +54,7 @@ public class QC_1938 {
     public void testBlockingThePackstationWordInTheStrasseFieldForShopDE(String blockingWords) {
         cartAddress_page_logic.checkPresenceNotesAndTextInsideBlock("(Die Angabe einer DHL-Packstation, Postfiliale " +
                 "oder eines Paketshops u. a. m. ist nicht zulässig!)")
-                .strasse().setValue(blockingWords);
+                .fieldStreet().setValue(blockingWords);
         cartAddress_page_logic.nextBtnClick();
         cartAddress_page_logic.checkCorrectTextInErrorMessage("Die Angabe einer DHL-Packstation, Postfiliale oder " +
                 "eines Paketshops u. a. m. ist nicht zulässig!");

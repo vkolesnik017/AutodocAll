@@ -47,7 +47,7 @@ public class QC_173 {
     public void testCreatingOrderInAwsWithDangerousGoodsDeliveryToWrongCountry(String route) {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
-        userData = new Customer_view_aws().openCustomerPersonalArea(userID)
+        userData = new Customer_view_aws().openCustomerView(userID)
                 .getUserData();
         openPage(searchOrderPageURL);
         userDataInCreateOrder = new SearchOrders_page_aws().clickAddOrderBtn()

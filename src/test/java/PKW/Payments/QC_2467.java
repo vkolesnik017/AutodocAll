@@ -60,7 +60,7 @@ public class QC_2467 {
         new CartAllData_page_Logic().nextBtnClick();
         new Merchant_page().checkPresenceElementFromMerchantPageForPaymentKlarna();
         new CartPayments_page_Logic().checkActivePaymentMethod("klarna");
-        float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+        float totalPriceOrderAws = new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Klarna")

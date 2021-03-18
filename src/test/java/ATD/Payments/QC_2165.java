@@ -66,7 +66,7 @@ public class QC_2165 {
         new Merchant_page().fillsInFieldsForEnteringDataAndCancelsPayment("11111111", "11", "11");
         checkingContainsUrl("/basket/payments.html");
         new CartPayments_page_Logic().checkActivePaymentMethod("be2bill_mistercash");
-        float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+        float totalPriceOrderAws = new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Mister Cash - Be2bill")
