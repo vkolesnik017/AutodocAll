@@ -51,7 +51,7 @@ public class QC_565 {
         productArticleID = product_page_logic.getProductId();
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
         heavyLoadsArticleNun = product_page_logic.getArticleNumber();
-        userData = new Customer_view_aws().openCustomerPersonalArea(userID)
+        userData = new Customer_view_aws().openCustomerView(userID)
                 .getUserData();
         openPage(searchOrderPageURL);
         userDataInCreateOrder = new SearchOrders_page_aws().clickAddOrderBtn()

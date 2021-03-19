@@ -63,7 +63,7 @@ public class QC_2465 {
         new CartAllData_page_Logic().nextBtnClick();
         new Merchant_page().cancelOrderForSofortMethod()
                 .checkActivePaymentMethod("directbank");
-        float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+        float totalPriceOrderAws = new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Sofortüberweisung")

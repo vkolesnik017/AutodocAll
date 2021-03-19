@@ -67,7 +67,7 @@ public class QC_3064 {
         checkingContainsUrl("fr");
         mainPageLogic.cartClick();
         new Cart_page_Logic().deleteGoodFromCartPage();
-        new Customer_view_aws().openCustomerPersonalArea(userID)
+        new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkCurrentStatusInOrder("Abgebrochene");

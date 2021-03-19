@@ -64,7 +64,7 @@ public class QC_2154 {
         new CartAllData_page_Logic().nextBtnClick(3000);
         new Merchant_page().checkPresenceElementFromMerchantPageB2billCreditCardAndCancelOrder("5169307507657018", "1225", "658");
         new CartPayments_page_Logic().checkActivePaymentMethod("be2bill");
-        float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+        float totalPriceOrderAws = new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Be2bill")

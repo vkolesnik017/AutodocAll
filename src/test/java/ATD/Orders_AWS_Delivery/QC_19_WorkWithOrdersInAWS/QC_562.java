@@ -60,7 +60,7 @@ public class QC_562 {
         productDropCost = product_page_logic.getProductPrice();
         productDropArticleID = product_page_logic.getProductId();
         allProductCost.add(productDropCost);
-        userData = new Customer_view_aws().openCustomerPersonalArea(userID)
+        userData = new Customer_view_aws().openCustomerView(userID)
                 .getUserData();
         openPage(searchOrderPageURL);
         userDataInCreateOrder = new SearchOrders_page_aws().clickAddOrderBtn()

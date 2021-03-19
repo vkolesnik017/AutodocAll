@@ -40,7 +40,7 @@ public class QC_869 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the display of accrued deposit")
     public void testDepositAccrual(String route) throws SQLException {
-        sumDepositInAws = new Customer_view_aws().openCustomerPersonalArea(customerId)
+        sumDepositInAws = new Customer_view_aws().openCustomerView(customerId)
                 .checkPresenceCustomerDepositTable()
                 .getDepositBalanceAfterLastCrediting();
         openPage(route);

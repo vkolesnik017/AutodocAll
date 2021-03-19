@@ -43,7 +43,7 @@ public class QC_1940 {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .strasse().setValue("Packstation");
+                .fieldStreet().setValue("Packstation");
         new CartAddress_page_Logic().nextBtnClick();
         checkingContainsUrl("/basket/payments");
     }

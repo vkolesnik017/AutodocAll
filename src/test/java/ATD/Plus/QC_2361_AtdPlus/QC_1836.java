@@ -47,7 +47,7 @@ public class QC_1836 {
                 .clickBtnNoToClosePopUpUnsubscribe()
                 .checkPresenceUnsubscribeButton()
                 .getDigitClientId();
-        new Customer_view_aws().openCustomerPersonalArea(customerID)
+        new Customer_view_aws().openCustomerView(customerID)
                 .checkPresenceTextInCustomerSubscriptionSelector("B+ (BASIC plus) YEAR");
     }
 

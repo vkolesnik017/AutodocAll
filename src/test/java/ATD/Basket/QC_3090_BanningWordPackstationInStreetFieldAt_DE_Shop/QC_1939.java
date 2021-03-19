@@ -54,9 +54,9 @@ public class QC_1939 {
     @Flaky
     @Description(value = "Test checks of route Address permeability when entering Packstation into other inputs except Strasse")
     public void testCheckRouteAddressPermeabilityWenEnteringPackstationIntoOtherInputsExceptStrasse(String blockingWords) throws SQLException {
-        cartAddress_page_logic.vorname().shouldBe(visible).setValue(blockingWords);
-        cartAddress_page_logic.nameIn().shouldBe(visible).setValue(blockingWords);
-        cartAddress_page_logic.ort().shouldBe(visible).setValue(blockingWords);
+        cartAddress_page_logic.fieldName().shouldBe(visible).setValue(blockingWords);
+        cartAddress_page_logic.fieldLastName().shouldBe(visible).setValue(blockingWords);
+        cartAddress_page_logic.fieldCity().shouldBe(visible).setValue(blockingWords);
         cartAddress_page_logic.nextBtnClick();
         checkingContainsUrl("/basket/payments");
         cartPayments_page_logic.clickBtnReturnTheAddressPage();

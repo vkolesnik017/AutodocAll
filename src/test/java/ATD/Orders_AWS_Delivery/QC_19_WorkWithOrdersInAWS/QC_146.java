@@ -48,7 +48,7 @@ public class QC_146 {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
         productArticleID = product_page_logic.getProductId();
-        userData = new Customer_view_aws().openCustomerPersonalArea(userID)
+        userData = new Customer_view_aws().openCustomerView(userID)
                 .getUserData();
         openPage(searchOrderPageURL);
         userDataInCreateOrder = new SearchOrders_page_aws().clickAddOrderBtn()

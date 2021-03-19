@@ -39,7 +39,7 @@ public class QC_925 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks for elements of the Deposit tab")
     public void testDepositTabElementPR(String route) throws SQLException {
-        sumDepositInAws = new Customer_view_aws().openCustomerPersonalArea(customerId)
+        sumDepositInAws = new Customer_view_aws().openCustomerView(customerId)
                 .checkPresenceCustomerDepositTable()
                 .getDepositBalanceAfterLastCrediting();
         openPage(route);
