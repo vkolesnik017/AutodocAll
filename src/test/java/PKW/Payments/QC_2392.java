@@ -59,7 +59,7 @@ public class QC_2392 {
                 .nextBtnClick();
         new Merchant_page().checkPresenceElementFromMerchantPageB2billCreditCardAndCancelOrder("5169307507657018", "1225", "658");
         new CartPayments_page_Logic().checkActivePaymentMethod("be2bill");
-        new Customer_view_aws().openCustomerPersonalArea(userID)
+        new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Be2bill")

@@ -138,4 +138,10 @@
         </classes>
     </test>
 
+    <test name="QC_3395_CheckingCallConsent">
+        <classes>
+            <class name="ATD.GDRP.QC_3395"/>
+        </classes>
+    </test>
+
 </suite>

@@ -66,7 +66,7 @@ public class QC_2466 {
         checkingContainsUrl("routing.eps.or.at");
         new Merchant_page().abbrechenSubmit().click();
         new CartPayments_page_Logic().checkActivePaymentMethod("epsbank");
-        float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+        float totalPriceOrderAws = new Customer_view_aws().openCustomerView(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("EPS Bank")
