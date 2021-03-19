@@ -34,11 +34,13 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
     public LKW_Category_maker_brand_page_Logic checkLinkClickInBreadCrumbsBlock() throws SQLException {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick();  checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_parent_category"));
+        secondLinkClick();
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_parent_category"));
         back();
         thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         back();
-        fourthLinkClick(); checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_category_brand"));
+        fourthLinkClick();
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_category_brand"));
         return this;
     }
 
@@ -113,9 +115,9 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
 
     @Step("check successfully Category maker brand page loading .LKW_Category_maker_brand_page ")
     public LKW_Category_maker_brand_page_Logic availabilityOfCarBrandInSelectorFromUrl() {
-         markeInVerticalTruckSelector().shouldNotHave(exactValue("0"));
-         String selectedCarBrandFromSelector = markeInVerticalTruckSelector().getText().toLowerCase();
-         Assert.assertTrue(url().contains(selectedCarBrandFromSelector));
+        markeInVerticalTruckSelector().shouldNotHave(exactValue("0"));
+        String selectedCarBrandFromSelector = markeInVerticalTruckSelector().getText().toLowerCase();
+        Assert.assertTrue(url().contains(selectedCarBrandFromSelector));
         return this;
     }
 
@@ -154,6 +156,18 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
     @Step("visibility of headline .LKW_Category_maker_brand_page")
     public LKW_Category_maker_brand_page_Logic visibilityOfMainHeadline() {
         mainHeadline().shouldBe(visible).shouldHave(exactText("Ölfilter für VOLVO von MANN-FILTER"));
+        return this;
+    }
+
+    @Step("click On Link More Of TOP brand block .LKW_Category_maker_brand_page")
+    public LKW_Category_maker_brand_page_Logic clickOnLinkMoreOfTopBrand() {
+        linkMoreOfTopBrandsBlock().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("size of brand links more then {size} .LKW_Category_maker_brand_page")
+    public LKW_Category_maker_brand_page_Logic sizeOfBrandsMoreThen(int size) {
+        brandsOfTopBrandsBlock().shouldHave(sizeGreaterThan(size));
         return this;
     }
 }
