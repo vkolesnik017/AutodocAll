@@ -1674,5 +1674,11 @@ public class Product_page_Logic extends Product_page {
         return characteristicOfProduct(nameCharacteristic).getText();
     }
 
+    @Step("Check text product info price. Product_page")
+    public Product_page_Logic checkTextProductInfoPrice(String expectedText) {
+        productInfoPrice().shouldBe(visible).shouldHave(exactText(expectedText));
+        return this;
+    }
+
 
 }

@@ -13,7 +13,8 @@ import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
-public class ProductSearch_aws {
+public class
+ProductSearch_aws {
 
     public final String urlPage = "https://aws.autodoc.de/products";
 
@@ -96,6 +97,12 @@ public class ProductSearch_aws {
     private ElementsCollection titlesOfProducts() {
         return $$x("//table[@id='order_products_list']//tr/td[6]/a");
     }
+
+    private SelenideElement incomeAmountFilter() { return $x("//*[@id='form_filterSearch[incomeAmount]']");}
+
+    private SelenideElement productSetFilter() { return $x("//*[@id='form_filterSearch[isKitEnabled]']");}
+
+
 
     @Step
     public ProductSearch_aws openProductSearchPageAndLogin() {
@@ -264,5 +271,25 @@ public class ProductSearch_aws {
         searchBtn().click();
         return this;
     }
+
+    @Step("Select piece or set equipment. ProductSearch_aws")
+    public ProductSearch_aws selectPieceOrSetEquipment(String filer) {
+        incomeAmountFilter().selectOptionByValue(filer);
+        incomeAmountFilter().shouldHave(exactValue(filer));
+        return this;
+    }
+
+    @Step("Select products set filter. ProductSearch_aws")
+    public ProductSearch_aws selectProductsSetFilter(String filer) {
+        productSetFilter().selectOptionByValue(filer);
+        productSetFilter().shouldHave(exactValue(filer));
+        return this;
+    }
+
+    @Step("Get article product. ProductSearch_aws")
+    public String getArticleProduct() {
+       return articleProductInTable().getText();
+    }
+
 
 }
