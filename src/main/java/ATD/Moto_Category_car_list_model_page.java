@@ -52,4 +52,8 @@ public class Moto_Category_car_list_model_page {
     ElementsCollection analogProducts() {return $$x("//div[@class='top-small-products-items__item']").filter(visible);}
 
     ElementsCollection detailsBlockOfAnalogProduct() {return $$x("//div[@class='rec_prod_info_popup']").filter(visible);}
+
+    SelenideElement productList() {return $x("//ul[@class='list_products ']");}
+
+    ElementsCollection btnAddToBasket() {return $$x("//*[self::div[@class='button '] or self::div[@class='button not_active']]");}
 }

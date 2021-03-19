@@ -474,4 +474,13 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         }
         return this;
     }
+
+    @Step("check Listing With Selected  lamp filter. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkListingWithSelectedLampFilter(String lampType) {
+        List<String> lampValues = lampTypeInCharacteristicsBlock().stream().map(value -> value.getText()).collect(Collectors.toList());
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            Assert.assertTrue(lampValues.get(i).equals(lampType), String.format("Characteristic in listing - %s not equals to - %s, position - %d", lampValues.get(i), lampType, i));
+        }
+        return this;
+    }
 }

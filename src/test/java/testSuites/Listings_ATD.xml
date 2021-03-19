@@ -62,6 +62,8 @@
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_382"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_384"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2305"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3292"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3361"/>
         </classes>
     </test>
 

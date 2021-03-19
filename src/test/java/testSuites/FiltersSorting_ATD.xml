@@ -30,6 +30,7 @@
             <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_3250"/>
             <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_3253"/>
             <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_3258"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_3402"/>
         </classes>
     </test>
 

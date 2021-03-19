@@ -528,13 +528,32 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
 
     @Step("check position of brand in block. Category_car_list_page")
     public Category_car_list_page_Logic checkPositionOfBrandInBlockById(int position, String idOfBrand) {
-            activeVisibleBrands().get(position).shouldHave(attribute("value", idOfBrand));
+        activeVisibleBrands().get(position).shouldHave(attribute("value", idOfBrand));
         return this;
     }
 
     @Step("get Product Brands From List. Category_car_list_page")
     public List<String> getProductBrandsFromList() {
-       List<String> productBrands = activeBtnAddProductToBasket().stream().map(n->n.attr("data-brand-name")).collect(Collectors.toList());
+        List<String> productBrands = activeBtnAddProductToBasket().stream().map(n -> n.attr("data-brand-name")).collect(Collectors.toList());
         return productBrands;
+    }
+
+    @Step("display of Lamp Filter BLock. Category_car_list_page")
+    public Category_car_list_page_Logic displayLampFilterBLock() {
+        lampFilterBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("set Lamp Filter By Title. Category_car_list_page")
+    public Category_car_list_page_Logic setLampFilterByValue(String lampValue) {
+        lampDataValue(lampValue).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check work Of Mileage Recommendation Icon. Category_car_list_page")
+    public Category_car_list_page_Logic displayOfMileageRecommendationIcon() {
+        mileageRecommendationIcon().waitWhile(attribute("src", "https://www.autodoc.de/atd/img/gif/tools-odometer.gif"), 5000);
+        mileageRecommendationIcon().waitWhile(attribute("src", "https://www.autodoc.de/atd/img/tools-odometer.png"), 5000);
+        return this;
     }
 }

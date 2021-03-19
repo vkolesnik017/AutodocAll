@@ -377,4 +377,6 @@ public class LKW_Category_car_list_page {
         return $x("(//div[@class='description'])[" + position + "]//span[contains(text(),'Einbauseite:')]/following-sibling::*[self::span[contains(text(),'"+installSide+"')] or self::span//b[contains(text(),'"+installSide+"')]]");
     }
 
-    }
+    SelenideElement lampDataValue(String value) {return $x("//div[@class='lampenart-filter__slider']//label[@data-value='"+value+"']");}
+
+}
