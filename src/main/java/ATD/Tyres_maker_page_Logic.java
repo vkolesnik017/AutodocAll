@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.pageReload;
+import static Common.CommonMethods.waitWhileRouteBecomeExpected;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -147,5 +149,26 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
         }
         return this;
     }
+
+    @Step("Check all elements from car-group block. Tyres_maker")
+    public Tyres_maker_page_Logic checkAllElementsFromCarGroupBlock() {
+        carGroupBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        titleCarGroupBlock().shouldHave(exactText("Reifen für alle BMW Modelle"));
+        linkModelsBlocks().shouldHaveSize(4);
+        linkModels().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("Click and check correct transition by link from car-group block. Tyres_maker")
+    public Tyres_model_page_Logic clickOnLinkFromCarGroupBlock() {
+        String nameLink = linkModel().getText();
+        linkModel().shouldBe(visible).click();
+        waitWhileRouteBecomeExpected("tyres_model");
+        String nameTitle = new Tyres_model_page_Logic().getTextTitlePage();
+        Assert.assertTrue(nameTitle.contains(nameLink));
+        return page(Tyres_model_page_Logic.class);
+    }
+
+
 
 }
