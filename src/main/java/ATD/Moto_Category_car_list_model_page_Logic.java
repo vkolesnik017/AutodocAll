@@ -4,6 +4,8 @@ import Common.DataBase;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
@@ -113,5 +115,17 @@ public class Moto_Category_car_list_model_page_Logic extends Moto_Category_car_l
     public Moto_Category_car_list_model_page_Logic clickOnChildCategoryInSidebar(int position) {
         childCategoriesInSideBar().get(position).shouldBe(visible).click();
         return page(Moto_Category_car_list_model_page_Logic.class);
+    }
+
+    @Step("presence Of Product List .Moto_Category_car_list_model_page")
+    public Moto_Category_car_list_model_page_Logic presenceOfProductList() {
+        productList().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get id of product .Moto_Category_car_list_model_page")
+    public List<String> getIdOfProducts() {
+        List<String> id = btnAddToBasket().stream().map(n -> n.attr("id")).collect(Collectors.toList());
+        return id;
     }
 }

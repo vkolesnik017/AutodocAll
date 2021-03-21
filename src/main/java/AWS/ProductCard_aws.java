@@ -158,7 +158,9 @@ public class ProductCard_aws {
         return $$x("//div[@class='tab-content col-md-4 col-sm-12 main-description']//li");
     }
 
-    private SelenideElement  valueOfExactIdCharacteristic(String id) {return $x("//span[@class='param-id'][contains(text(),'"+id+"')]/following-sibling::span/span[2]");}
+    private SelenideElement valueOfExactIdCharacteristic(String id) {
+        return $x("//span[@class='param-id'][contains(text(),'" + id + "')]/following-sibling::span/span[2]");
+    }
 
     String productId;
 
@@ -441,10 +443,22 @@ public class ProductCard_aws {
         return url;
     }
 
-
     @Step("check Value Of Id Characteristic. ProductCard_aws")
     public ProductCard_aws checkValueOfIdCharacteristic(String id, String value) {
         valueOfExactIdCharacteristic(id).shouldBe(exist).shouldHave(exactText(value));
         return this;
     }
+
+
+    @Step("get product list of Generic. ProductCard_aws")
+    public List<String> getProductListOfGenerics(List<String> idOfProduct) {
+        List<String> idList = new ArrayList<>();
+        for (int i = 0; i < idOfProduct.size(); i++) {
+            openExactProductCardPageAndLogin(idOfProduct.get(i));
+            idList.add(getCategoryId());
+        }
+        return idList;
+    }
+
+
 }
