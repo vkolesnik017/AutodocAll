@@ -106,8 +106,6 @@
     <test name="QC_2795_VAT_Ireland_ATD" thread-count="1">
         <classes>
             <class name="ATD.Basket.QC_2795_VAT_Ireland_ATD.QC_2798"/>
-            <class name="ATD.Basket.QC_2795_VAT_Ireland_ATD.QC_2849"/>
-            <class name="ATD.Basket.QC_2795_VAT_Ireland_ATD.QC_2859"/>
         </classes>
     </test>
 
