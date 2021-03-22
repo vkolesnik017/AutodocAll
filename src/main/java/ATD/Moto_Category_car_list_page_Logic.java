@@ -483,4 +483,16 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         }
         return this;
     }
+
+    @Step("display of Generic filter block. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic displayGenericFilterBlock() {
+        genericFilterBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get Titles of generics. Moto_Category_car_list_page")
+    public List<String> getTitleOfGenerics() {
+        List<String> titles = titleOfGenericsFilter().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return titles;
+    }
 }

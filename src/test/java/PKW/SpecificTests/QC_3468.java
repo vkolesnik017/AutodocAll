@@ -43,7 +43,7 @@ public class QC_3468 extends Main_page {
         String carTitle = parseExcel(data)[7].trim();
 
 
-        String startUrl = "https://test.buycarparts.co.uk/search?&maker_id=" + maker_id + "&model_id=" + model_id + "&group_id=" + group_id + "&car_id=" + car_id;
+        String startUrl = "https://www.buycarparts.co.uk/search?&maker_id=" + maker_id + "&model_id=" + model_id + "&group_id=" + group_id + "&car_id=" + car_id;
         openPage(startUrl);
 
         try {
