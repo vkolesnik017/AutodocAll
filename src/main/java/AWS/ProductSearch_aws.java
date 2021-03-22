@@ -102,6 +102,8 @@ ProductSearch_aws {
 
     private SelenideElement productSetFilter() { return $x("//*[@id='form_filterSearch[isKitEnabled]']");}
 
+    private SelenideElement formControlFilter() { return  $x("//input[@id='form_filterSearch[siteAmount]']");}
+
 
 
     @Step
@@ -289,6 +291,12 @@ ProductSearch_aws {
     @Step("Get article product. ProductSearch_aws")
     public String getArticleProduct() {
        return articleProductInTable().getText();
+    }
+
+    @Step(" Set value in form Control Filter. ProductSearch_aws")
+    public ProductSearch_aws setValueInFormControl(String value) {
+        formControlFilter().shouldBe(visible).setValue(value);
+        return this;
     }
 
 

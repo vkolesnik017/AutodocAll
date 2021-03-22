@@ -48,6 +48,7 @@
     <test name="QC_3432_PresencePlatePricePerPieceOrSet">
         <classes>
             <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3433"/>
+            <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3434"/>
         </classes>
     </test>
 
