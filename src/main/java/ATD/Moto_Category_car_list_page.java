@@ -180,4 +180,14 @@ public class Moto_Category_car_list_page {
     SelenideElement genericFilterBlock() {return $x("//div[@class='filter-generics-tecdoc js-filter-generic js-filter-50001 js-filter-wrapper criteria-filter-block-js']");}
 
     ElementsCollection titleOfGenericsFilter() {return $$(".filter-generics-tecdoc__item-title");}
+
+    SelenideElement forwardNextPaginator() {return $x("//span[@class='next'][1]/a");}
+
+    ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div[1]");}
+
+    ElementsCollection subTitleOfProductInTecDocListing() {return $$x("//span[@class='subname']");}
+
+    ElementsCollection titleOfProductInTecDocListing() {return $$x("//div[@class='name']/*[self::a or self::span][1]");}
+
+    ElementsCollection priceOfProduct() {return $$x("//p[contains(@class,'actual_price')]");}
 }

@@ -103,6 +103,7 @@
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_254"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_2768"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_2770"/>
+            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_3400"/>
         </classes>
     </test>
 
