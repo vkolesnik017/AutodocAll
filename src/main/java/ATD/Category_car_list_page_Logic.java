@@ -40,7 +40,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         submitBtnSoftForm().click();
         successPopupSoftForm().shouldBe(appear);
         closeSuccessPopupSoftForm().shouldHave(text("Einkauf fortsetzen")).click();
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/ersatzteile/genesis/g90/g90/123335-3-3-t-gdi");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/ersatzteile/ford/c-max/c-max-ii/111767-2-0-tdci");
         return this;
     }
 

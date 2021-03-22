@@ -146,7 +146,7 @@ public class Maker_car_list_page {
     }
 
     ElementsCollection genericsOfTopProducts() {
-        return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box ']");
+        return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box']");
     }
 
     SelenideElement topCategoriesBlock() {
