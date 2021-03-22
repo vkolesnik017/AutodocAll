@@ -842,6 +842,13 @@ public class Listing_page {
         return $$x("//*[text()='" + productArticle + "']/../..//*[@class='about']//li");
     }
 
+    SelenideElement characteristicOfProduct(String productArticle, String nameCharacteristic) {
+        return $x("//*[text()='" + productArticle + "']/../..//*[@class='about']//span[contains(text(),'" + nameCharacteristic + "')]/..//span[2]");
+    }
+
+    SelenideElement titleDesiredProduct(String productArticle) {return $x("//*[text()='" + productArticle + "']/../..//a[@class='ga-click']"); }
+
+
     SelenideElement infoButton() {
         return $("#selected_car_info");
     }

@@ -105,7 +105,11 @@ public class CartAccount_page {
         return $x("//div[@class='cart-page-steps']//li[@class='complete link first_step']/a");
     }
 
-    SelenideElement infoTextOfCheckBockAtRegForm() {return $x("//label[@for='isSubscribe']");}
+    SelenideElement infoTextOfCheckBockAtRegForm() {
+        return $x("//label[@for='isSubscribe']");
+    }
 
-    SelenideElement infoTextUnderCheckBockAtRegForm() {return $x("//div[@class='subscribe-text']");}
+    SelenideElement infoTextUnderCheckBockAtRegForm() {
+        return $x("//div[@class='subscribe-text']");
+    }
 }

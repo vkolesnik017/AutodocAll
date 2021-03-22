@@ -130,10 +130,9 @@ public class Search_page {
         return $x("//a[contains(@class,'next')]");
     }
 
-    SelenideElement brandsLinkInSideBar(String idOfBrand) {
-        return $x("//div[@id='selected-instalation__slider']//ul//li//label[@for='cb-brand-" + idOfBrand + "']");
-    }
-
+  SelenideElement brandsLinkInSideBar(String idOfBrand) {
+      return $x("//*[self::li[@class='slick-slide slick-current slick-active'] or self::li[@class='slick-slide slick-active']]//label[@for='cb-brand-" + idOfBrand + "']");
+  }
     SelenideElement brandFromSideBar(String idOfBrand) { return $x("//label[@for='cb-brand-" + idOfBrand + "']");  }
 
     SelenideElement loaderInTecDocListing() {

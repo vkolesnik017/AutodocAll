@@ -40,7 +40,17 @@
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_527"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_528"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_529"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_3359"/>
         </classes>
     </test>
+
+
+    <test name="QC_3432_PresencePlatePricePerPieceOrSet">
+        <classes>
+            <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3433"/>
+        </classes>
+    </test>
+
+
 
 </suite>
