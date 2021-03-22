@@ -134,8 +134,13 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         String brand, generic, price, url, checkUrl, genericForList = null;
         for (int i = 0; i < activeBtnAddProductToBasket().size(); i++) {
             brand = activeBtnAddProductToBasket().get(i).getAttribute("data-brand-name");
-            generic = titleOfProductInTecDocListing().get(i).getText().replaceAll(brand + " ", " ")
-                    .replace("\n" + subTitleOfProductInTecDocListing().get(i).getText(), "");
+
+            if (subTitleOfProductInTecDocListing().get(i).isDisplayed()) {
+                generic = titleOfProductInTecDocListing().get(i).getText().replaceAll(brand + " ", " ")
+                        .replace("\n" + subTitleOfProductInTecDocListing().get(i).getText(), "");
+            } else {
+                generic = titleOfProductInTecDocListing().get(i).getText().replaceAll(brand + " ", " ");
+            }
             for (int j = 0; j < genericList.size(); j++) {
                 if (generic.contains(genericList.get(j))) {
                     genericForList = genericList.get(j);
@@ -552,8 +557,8 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
 
     @Step("check work Of Mileage Recommendation Icon. Category_car_list_page")
     public Category_car_list_page_Logic displayOfMileageRecommendationIcon() {
-        mileageRecommendationIcon().waitWhile(attribute("src", "https://www.autodoc.de/atd/img/gif/tools-odometer.gif"), 5000);
-        mileageRecommendationIcon().waitWhile(attribute("src", "https://www.autodoc.de/atd/img/tools-odometer.png"), 5000);
+        Wait().until(webDriver -> mileageRecommendationIcon().attr("src").contains("atd/img/gif/tools-odometer.gif"));
+        Wait().until(webDriver -> mileageRecommendationIcon().attr("src").contains("atd/img/tools-odometer.png"));
         return this;
     }
 }
