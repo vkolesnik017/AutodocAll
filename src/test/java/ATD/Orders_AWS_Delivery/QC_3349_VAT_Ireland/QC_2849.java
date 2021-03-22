@@ -1,4 +1,4 @@
-package ATD.Basket.QC_2795_VAT_Ireland_ATD;
+package ATD.Orders_AWS_Delivery.QC_3349_VAT_Ireland;
 
 import AWS.PageVAT_aws;
 import AWS.SearchOrders_page_aws;

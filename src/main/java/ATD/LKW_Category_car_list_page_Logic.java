@@ -917,6 +917,12 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         }
         return this;
     }
+
+    @Step("set Lamp Filter By value. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic setLampFilterByValue(String lampValue) {
+        lampDataValue(lampValue).shouldBe(visible).click();
+        return this;
+    }
 }
 
 

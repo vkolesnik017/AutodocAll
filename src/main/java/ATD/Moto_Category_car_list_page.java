@@ -176,4 +176,8 @@ public class Moto_Category_car_list_page {
     SelenideElement genericFilterByTitle(String title) {return $x("//div[@class='filter-generics-tecdoc__item-title'][text()='"+title+"']/ancestor::label");}
 
     public SelenideElement firstBrandInFilterButton() {return $x("(//ul[@class='no-margin']//label)[1]");}
+
+    SelenideElement genericFilterBlock() {return $x("//div[@class='filter-generics-tecdoc js-filter-generic js-filter-50001 js-filter-wrapper criteria-filter-block-js']");}
+
+    ElementsCollection titleOfGenericsFilter() {return $$(".filter-generics-tecdoc__item-title");}
 }

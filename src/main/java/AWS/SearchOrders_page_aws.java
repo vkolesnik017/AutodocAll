@@ -3,6 +3,7 @@ package AWS;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.checkingContainsUrl;
@@ -13,8 +14,10 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class SearchOrders_page_aws {
 
+    // Link for pages
     public static String searchOrderPageURL = "https://aws.autodoc.de/search-orders";
 
+    // Locator for form-inline search-order block
     private SelenideElement orderIdField() {
         return $x("//input[@id='form_Filter[orderId]']");
     }
@@ -39,14 +42,6 @@ public class SearchOrders_page_aws {
         return $x("//select[@name='Filter[groupList]']");
     }
 
-    private ElementsCollection orderLine() {
-        return $$x("//td[@class='w-20 select-row']//..//a[@class='printBillPopup']");
-    }
-
-    private SelenideElement orderLincInOrderLine(String orderId) {
-        return $x("//tr[@data-id='" + orderId + "']//a[@class='order_link']");
-    }
-
     private SelenideElement calendarDataFromBtn() {
         return $x("//div[@id='dp_start']//span[@class='input-group-addon']/i");
     }
@@ -57,14 +52,6 @@ public class SearchOrders_page_aws {
 
     private SelenideElement dayInCalendarDataFrom(String expectedDay) {
         return $x("(//div[@class='datepicker-days']//tbody//tr//td[@class='day'][text()='" + expectedDay + "'])[1]");
-    }
-
-    private SelenideElement nexPageBtnInPaginationBlock() {
-        return $x("//ul[@class='pagination']//li//a[text()='»']");
-    }
-
-    private ElementsCollection orderID() {
-        return $$x("//a[@class='order_link']");
     }
 
     private SelenideElement customerInfoField() {
@@ -81,6 +68,14 @@ public class SearchOrders_page_aws {
 
     private SelenideElement projectList(String project) {
         return $x("(//div[@class='chzn-drop']//ul//li[text()='" + project + "'])[2]");
+    }
+
+    public SelenideElement projectDesktopInSelector() {
+        return $x("//li[text()='desktop']");
+    }
+
+    public SelenideElement projectMobileInSelector() {
+        return $x("//li[text()='mobile']");
     }
 
     private SelenideElement countrySelector() {
@@ -109,6 +104,40 @@ public class SearchOrders_page_aws {
 
     private SelenideElement assemblyWarehouse() {
         return $x("//select[@name='Filter[warehouseId]']");
+    }
+
+    // Locators for table with orders
+    private ElementsCollection orderLine() {
+        return $$x("//td[@class='w-20 select-row']//..//a[@class='printBillPopup']");
+    }
+
+    private ElementsCollection allOrderLine() {
+        return $$x("//td[@class='w-20 select-row']");
+    }
+
+    private ElementsCollection greenOrderLine() {
+        return $$x("//tr[@class='green-bg']");
+    }
+
+    private ElementsCollection yellowOrderLine() {
+        return $$x("//tr[@class='yellow-bg']");
+    }
+
+    private ElementsCollection redOrderLine() {
+        return $$x("//tr[@class='red-bg']");
+    }
+
+    private SelenideElement orderLincInOrderLine(String orderId) {
+        return $x("//tr[@data-id='" + orderId + "']//a[@class='order_link']");
+    }
+
+    private ElementsCollection orderID() {
+        return $$x("//a[@class='order_link']");
+    }
+
+    // Locators for pagination block
+    private SelenideElement nexPageBtnInPaginationBlock() {
+        return $x("//ul[@class='pagination']//li//a[text()='»']");
     }
 
 
@@ -278,12 +307,25 @@ public class SearchOrders_page_aws {
         return this;
     }
 
-    @Step("Choosing project in selector {project}. SearchOrders_page_aws")
-    public SearchOrders_page_aws chooseProjectInSelector(String project) {
+    @Step("Open project selector. SearchOrders_page_aws")
+    public SearchOrders_page_aws openProjectSelector() {
         projectSelector().shouldBe(visible);
         projectSelector().click();
+        return this;
+    }
+
+    @Step("Choosing project in selector {project}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseProjectInSelector(String project) {
+        openProjectSelector();
         projectList(project).shouldBe(visible);
         projectList(project).click();
+        return this;
+    }
+
+    @Step("Choosing project in selector {expectedElement}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseProjectInSelector(SelenideElement expectedElement) {
+        openProjectSelector();
+        expectedElement.shouldBe(visible).click();
         return this;
     }
 
@@ -324,37 +366,58 @@ public class SearchOrders_page_aws {
     @Step("Selects any desired filter. SearchOrders_page_aws")
     public SearchOrders_page_aws choosingAllExpectedFilter(String expectedFilter, String expectedPayments, String expectedCurrency,
                                                            String expectedAssembly, String customerInfo) {
-            switch (expectedFilter) {
-                case "choosePaymentsMethods":
-                    choosePaymentsMethods(expectedPayments);
-                    break;
-                case "chooseCurrency":
-                    chooseCurrency(expectedCurrency);
-                    break;
-                case "chooseAssemblyWarehouse":
-                    chooseAssemblyWarehouse(expectedAssembly);
-                    break;
-                case "fillingFieldCustomerInfo":
-                    fillingFieldCustomerInfo(customerInfo);
-                    break;
-            }
-        return this;
+        switch (expectedFilter) {
+            case "choosePaymentsMethods":
+                choosePaymentsMethods(expectedPayments);
+                break;
+            case "chooseCurrency":
+                chooseCurrency(expectedCurrency);
+                break;
+            case "chooseAssemblyWarehouse":
+                chooseAssemblyWarehouse(expectedAssembly);
+                break;
+            case "fillingFieldCustomerInfo":
+                fillingFieldCustomerInfo(customerInfo);
+                break;
         }
+        return this;
+    }
 
     @Step("Gives an a randomly one payment method. SearchOrders_page_aws")
     public static String randomPaymentsMethod() {
-        String [] payments = {"PayPal", "Be2bill"};
+        String[] payments = {"PayPal", "Be2bill"};
         int minValue = 0;
-        int randomIndex = minValue + (int) (Math.random() *payments.length);
+        int randomIndex = minValue + (int) (Math.random() * payments.length);
         return payments[randomIndex];
     }
 
     @Step("Gives an a randomly one assembly warehouse. SearchOrders_page_aws")
     public static String randomAssemblyWarehouse() {
-        String [] AssemblyWarehouse = {"Основной склад", "Склад PL", "Склад PL A (M13)"};
+        String[] AssemblyWarehouse = {"Основной склад", "Склад PL", "Склад PL A (M13)"};
         int minValue = 0;
-        int randomIndex = minValue + (int) (Math.random() *AssemblyWarehouse.length);
+        int randomIndex = minValue + (int) (Math.random() * AssemblyWarehouse.length);
         return AssemblyWarehouse[randomIndex];
+    }
+
+    @Step("Checks the percentage of paid orders. SearchOrders_page_aws")
+    public SearchOrders_page_aws checkPercentageOfPaidOrders() {
+        int allOrders = allOrderLine().size();
+        int greenOrders = 0;
+        int yellowOrders = 0;
+        int redOrders = 0;
+        if (greenOrderLine().get(0).isDisplayed()) {
+            greenOrders = greenOrderLine().size();
+        }
+        if (yellowOrderLine().get(0).isDisplayed()) {
+            yellowOrders = yellowOrderLine().size();
+        }
+        if (redOrderLine().get(0).isDisplayed()) {
+            redOrders = redOrderLine().size();
+        }
+        int totalNumOfPaidOrders = greenOrders + yellowOrders + redOrders;
+        int minPercentageOfPaidOrders = (allOrders * 10 / 100);
+        Assert.assertTrue(totalNumOfPaidOrders >= minPercentageOfPaidOrders);
+        return this;
     }
 }
 

@@ -185,4 +185,10 @@ class Category_car_list_page {
     SelenideElement nextPagePagination() {return $x("//span[@class='next'][1]/a");}
 
     ElementsCollection activeVisibleBrands() {return $$x("//*[self::li[@class='slick-slide slick-active'] or self::li[@class='slick-slide slick-current slick-active']]//input");}
+
+    SelenideElement lampFilterBlock() {return $x("//div[@class='lampenart-filter js-filter-wrapper js-criteria-filter js-filter-criteria_437']");}
+
+    SelenideElement lampDataValue(String value) {return $x("//div[@class='lampenart-filter__slider']//li[@class='slick-slide slick-active']/label[@data-value='"+value+"']");}
+
+    SelenideElement mileageRecommendationIcon() {return $(".recommendation__icon img");}
 }
