@@ -474,4 +474,25 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         }
         return this;
     }
+
+    @Step("check Listing With Selected  lamp filter. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkListingWithSelectedLampFilter(String lampType) {
+        List<String> lampValues = lampTypeInCharacteristicsBlock().stream().map(value -> value.getText()).collect(Collectors.toList());
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            Assert.assertTrue(lampValues.get(i).equals(lampType), String.format("Characteristic in listing - %s not equals to - %s, position - %d", lampValues.get(i), lampType, i));
+        }
+        return this;
+    }
+
+    @Step("display of Generic filter block. Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic displayGenericFilterBlock() {
+        genericFilterBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get Titles of generics. Moto_Category_car_list_page")
+    public List<String> getTitleOfGenerics() {
+        List<String> titles = titleOfGenericsFilter().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return titles;
+    }
 }

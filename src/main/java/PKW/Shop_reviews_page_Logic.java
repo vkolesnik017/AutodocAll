@@ -55,7 +55,7 @@ public class Shop_reviews_page_Logic extends Shop_reviews_page {
         checkboxSubscribeAcceptInReviewForm().click();
         massageFieldInReviewForm().setValue("AutoTest AutoTest");
         btnSendInReviewForm().click();
-        successPopup().shouldHave(text("Es wird nach einer Überprüfung veröffentlicht"));
+        successPopup().shouldHave(text("Wir haben eine Bestätigungs-E-Mail an die von Ihnen angegebene Adresse gesendet"));
         successPopupCloseButton().click();
         return mail;
     }

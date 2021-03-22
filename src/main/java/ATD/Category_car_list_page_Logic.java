@@ -40,7 +40,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         submitBtnSoftForm().click();
         successPopupSoftForm().shouldBe(appear);
         closeSuccessPopupSoftForm().shouldHave(text("Einkauf fortsetzen")).click();
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/ersatzteile/genesis/g90/g90/123335-3-3-t-gdi");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/ersatzteile/ford/c-max/c-max-ii/111767-2-0-tdci");
         return this;
     }
 
@@ -134,8 +134,13 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         String brand, generic, price, url, checkUrl, genericForList = null;
         for (int i = 0; i < activeBtnAddProductToBasket().size(); i++) {
             brand = activeBtnAddProductToBasket().get(i).getAttribute("data-brand-name");
-            generic = titleOfProductInTecDocListing().get(i).getText().replaceAll(brand + " ", " ")
-                    .replace("\n" + subTitleOfProductInTecDocListing().get(i).getText(), "");
+
+            if (subTitleOfProductInTecDocListing().get(i).isDisplayed()) {
+                generic = titleOfProductInTecDocListing().get(i).getText().replaceAll(brand + " ", " ")
+                        .replace("\n" + subTitleOfProductInTecDocListing().get(i).getText(), "");
+            } else {
+                generic = titleOfProductInTecDocListing().get(i).getText().replaceAll(brand + " ", " ");
+            }
             for (int j = 0; j < genericList.size(); j++) {
                 if (generic.contains(genericList.get(j))) {
                     genericForList = genericList.get(j);
@@ -528,13 +533,32 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
 
     @Step("check position of brand in block. Category_car_list_page")
     public Category_car_list_page_Logic checkPositionOfBrandInBlockById(int position, String idOfBrand) {
-            activeVisibleBrands().get(position).shouldHave(attribute("value", idOfBrand));
+        activeVisibleBrands().get(position).shouldHave(attribute("value", idOfBrand));
         return this;
     }
 
     @Step("get Product Brands From List. Category_car_list_page")
     public List<String> getProductBrandsFromList() {
-       List<String> productBrands = activeBtnAddProductToBasket().stream().map(n->n.attr("data-brand-name")).collect(Collectors.toList());
+        List<String> productBrands = activeBtnAddProductToBasket().stream().map(n -> n.attr("data-brand-name")).collect(Collectors.toList());
         return productBrands;
+    }
+
+    @Step("display of Lamp Filter BLock. Category_car_list_page")
+    public Category_car_list_page_Logic displayLampFilterBLock() {
+        lampFilterBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("set Lamp Filter By Title. Category_car_list_page")
+    public Category_car_list_page_Logic setLampFilterByValue(String lampValue) {
+        lampDataValue(lampValue).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check work Of Mileage Recommendation Icon. Category_car_list_page")
+    public Category_car_list_page_Logic displayOfMileageRecommendationIcon() {
+        Wait().until(webDriver -> mileageRecommendationIcon().attr("src").contains("atd/img/gif/tools-odometer.gif"));
+        Wait().until(webDriver -> mileageRecommendationIcon().attr("src").contains("atd/img/tools-odometer.png"));
+        return this;
     }
 }

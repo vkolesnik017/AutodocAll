@@ -29,7 +29,7 @@ public class QC_1008 {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list19");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list9");
     }
 
     @Test(dataProvider = "route", enabled = true)

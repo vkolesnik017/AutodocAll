@@ -112,7 +112,7 @@ public class Product_page_Logic extends Product_page {
         checkboxSubscribeAcceptInReviewForm().click();
         massageFieldInReviewForm().setValue("AutoTest for task QC_1900");
         btnSendInReviewForm().click();
-        successPopup().shouldHave(text("Es wird nach einer Überprüfung veröffentlicht"));
+        successPopup().shouldHave(text("Wir haben eine Bestätigungs-E-Mail an die von Ihnen angegebene Adresse gesendet"));
         successPopupCloseButton().click();
         return mail;
     }
@@ -150,7 +150,7 @@ public class Product_page_Logic extends Product_page {
         checkboxSubscribeAcceptInRatingForm().click();
         massageFieldInRatingForm().setValue("AutoTest for task");
         btnSendCommentFromPopupRatingForm().click();
-        successPopup().shouldHave(text("Es wird nach einer Überprüfung veröffentlicht"));
+        successPopup().shouldHave(text("Wir haben eine Bestätigungs-E-Mail an die von Ihnen angegebene Adresse gesendet"));
         successPopupCloseButton().click();
         return mail;
     }
