@@ -15,8 +15,9 @@
 
     <test name="QC_429_Listing_OEN">
         <classes>
-            <class name="PKW.Listings.QC_429_Listing_OEN.QC_432"/>
+            <class name="PKW.Listings.QC_429_Listing_OEN.QC_430"/>
             <class name="PKW.Listings.QC_429_Listing_OEN.QC_431"/>
+            <class name="PKW.Listings.QC_429_Listing_OEN.QC_432"/>
         </classes>
     </test>
 
