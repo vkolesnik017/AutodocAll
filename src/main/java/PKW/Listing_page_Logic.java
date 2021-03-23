@@ -79,6 +79,14 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check absence expected article num {expectedArtNum}. Listing_page")
+    public Listing_page_Logic checkAbsenceArticleNum(String expectedArtNum) {
+        for (int i = 0; i < productArticlesInListing().size(); i++) {
+            productArticlesInListing().get(i).scrollIntoView(("{block: \"center\"}")).shouldNot(text(expectedArtNum));
+        }
+        return this;
+    }
+
     @Step("Goes to the product page and checks that the name of the characteristic 'Zustand' feature is as expected {expectedCharacteristicName}. Listing_page")
     public Listing_page_Logic goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(String expectedArticleNum,String expectedCharacteristicName, String nameCharacteristic) {
         for (int i = 0; i < productArticlesInListing().size(); i++) {

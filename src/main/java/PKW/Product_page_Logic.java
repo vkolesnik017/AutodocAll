@@ -285,6 +285,18 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Check presence button add to basket on the page. Product_page")
+    public Product_page_Logic checkPresenceBtnAddToBasket() {
+        btnAddProductToBasket().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check presence gray button on the page. Product_page")
+    public Product_page_Logic checkPresenceGrayBtn() {
+        grayBtn().shouldBe(visible);
+        return this;
+    }
+
     @Step("presence Refurbished Characteristic on product page. Product_page")
     public Product_page_Logic presenceRefurbishedCharacteristic(String expectedCharacteristic) {
         characteristicBlock().shouldBe(visible);

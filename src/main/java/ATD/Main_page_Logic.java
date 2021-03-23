@@ -53,6 +53,13 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("Check absence text {expectedArticle} in autocomplete. Main_page")
+    public Main_page_Logic checkTextInAutocomplete(String expectedArticle) {
+        inputTextInSearchBar(expectedArticle);
+        textInAutocomplete(expectedArticle).shouldNotBe(visible);
+        return this;
+    }
+
     @Step("Login in header with mail {mail}. Main_page")
     public Profile_page_Logic loginFromHeader(String mail) {
         loginBtnInHeader().click();

@@ -586,8 +586,12 @@ public class Listing_page {
         return $$(By.cssSelector(".name"));
     }
 
-    public ElementsCollection productArticlesInListing() {
+    public ElementsCollection productArticlesCollection() {
         return $$x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
+    }
+
+    SelenideElement productArticleOnListing() {
+        return $x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
     }
 
     public ElementsCollection produktreiheProductAttributeTecdocRoute() {
@@ -923,10 +927,6 @@ public class Listing_page {
 
     SelenideElement nextButtonInBrandFilter() {
         return $x("//a[@class='next slick-arrow']");
-    }
-
-    SelenideElement productArticleOnListing() {
-        return $x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
     }
 
     SelenideElement productName(String brandName) {

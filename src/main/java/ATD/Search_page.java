@@ -26,7 +26,7 @@ public class Search_page {
         return $(By.xpath("//div[@class='button ']/a[@id='search_page_product']"));
     }
 
-    SelenideElement detalisBtn() {
+    SelenideElement detailsBtn() {
         return $x("//div[@class='about']/button");
     }
 
