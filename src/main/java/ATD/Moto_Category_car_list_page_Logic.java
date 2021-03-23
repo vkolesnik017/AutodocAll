@@ -2,12 +2,14 @@ package ATD;
 
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
+import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -494,5 +496,65 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     public List<String> getTitleOfGenerics() {
         List<String> titles = titleOfGenericsFilter().stream().map(n -> n.getText()).collect(Collectors.toList());
         return titles;
+    }
+
+    @Step("checking TecDoc listing . Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkTecDocListing(List<String> expectedGenerics) {
+        List<Product> productList = new ArrayList<>();
+        addedProductsToList(productList, expectedGenerics);
+        while (forwardNextPaginator().isDisplayed()) {
+            forwardNextPaginator().click();
+            addedProductsToList(productList, expectedGenerics);
+        }
+        List<Product> listBeforeSorting = new ArrayList<>(productList);
+
+        Comparator<String> genericsComparator = (g1, g2) -> {
+            if (!expectedGenerics.contains(g1)) {
+                return 1;
+            }
+            if (!expectedGenerics.contains(g2)) {
+                return -1;
+            }
+            return expectedGenerics.indexOf(g1) - expectedGenerics.indexOf(g2);
+        };
+
+        Comparator<Product> productsComparator = Comparator
+                .comparing((Product p) -> "button ".equals(p.getAttributeOfButton()) ? -1 : 0)
+                .thenComparing((Product p) -> "RIDEX".equals(p.getBrandOfProduct()) ? -1 : 0)
+                .thenComparing(Product::getGenericOfProduct, genericsComparator)
+                .thenComparingDouble(Product::getPriceOfProduct);
+        productList.sort(productsComparator);
+        Assert.assertEquals(listBeforeSorting, productList);
+
+        return this;
+    }
+
+    @Step("added products to list . Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic addedProductsToList(List<Product> list, List<String> genericList) {
+        String brand, generic;
+        String genericForList = null;
+
+        for (int i = 0; i < attributeOfBtnAddedToBasket().size(); i++) {
+
+            brand = attributeOfBtnAddedToBasket().get(i).getAttribute("data-brand-name");
+
+            if (subTitleOfProductInTecDocListing().get(i).isDisplayed()) {
+                generic = titleOfProductInTecDocListing().get(i).getText().replaceAll(brand + " ", " ")
+                        .replace("\n" + subTitleOfProductInTecDocListing().get(i).getText(), "");
+            } else {
+                generic = titleOfProductInTecDocListing().get(i).getText().replaceAll(brand + " ", " ");
+            }
+            for (int j = 0; j < genericList.size(); j++) {
+                if (generic.contains(genericList.get(j))) {
+                    genericForList = genericList.get(j);
+                }
+            }
+            Product productPage = new Product();
+            productPage.setGenericOfProduct(genericForList);
+            productPage.setBrandOfProduct(brand);
+            productPage.setPriceOfProduct(Double.parseDouble(priceOfProduct().get(i).getText().replaceAll("[^0-9,]", "").replace(",", ".")));
+            list.add(productPage);
+        }
+        return this;
     }
 }

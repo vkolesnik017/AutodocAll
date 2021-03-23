@@ -131,7 +131,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
 
     @Step("added products to list .Category_car_list_page")
     public Category_car_list_page_Logic addedProductsToList(List<Product> list, List<String> genericList) {
-        String brand, generic, price, url, checkUrl, genericForList = null;
+        String brand, generic, genericForList = null;
         for (int i = 0; i < activeBtnAddProductToBasket().size(); i++) {
             brand = activeBtnAddProductToBasket().get(i).getAttribute("data-brand-name");
 
