@@ -18,6 +18,15 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class ProductCard_aws {
 
+    String productId;
+
+    public ProductCard_aws() {
+    }
+
+    public ProductCard_aws(String productId) {
+        this.productId = productId;
+    }
+
     private SelenideElement loginField() {
         return $(byId("login"));
     }
@@ -162,19 +171,48 @@ public class ProductCard_aws {
         return $x("//span[@class='param-id'][contains(text(),'" + id + "')]/following-sibling::span/span[2]");
     }
 
-    String productId;
-
-    public ProductCard_aws() {
-    }
-
-    public ProductCard_aws(String productId) {
-        this.productId = productId;
-    }
-
     public SelenideElement searchTextOnPage(String textForSearch) {
         return $x("//*[contains(text(),'" + textForSearch + "')]");
     }
 
+    //Locators for table-condensed products restrictions block
+    SelenideElement addToCountryExceptionField() {
+        return $x("//div[@id='form_resctrictOrigin_chzn']//li[@class='search-field']");
+    }
+
+    SelenideElement countryInDropDownException(String shop) {
+        return $x("//ul[@class='chzn-results']//li[text()='" + shop + "']");
+    }
+
+    SelenideElement btnRemoveFromSitesByCountry() {
+        return $x("//button[text()='Убрать с сайтов по стране']");
+    }
+
+    SelenideElement deleteBtnCountryFromExceptionDropDown(String shop) {
+        return $x("//ul[@class='chzn-choices']//span[text()='" + shop + "']/../a");
+    }
+
+    SelenideElement deleteBtnInCountryFromException(String shop) {
+        return $x("//td[@class='restrictOrigins restrictOriginsadd']//a[@data-origin='" + shop + "']/span");
+    }
+
+
+
+
+    @Step("Removes product from sites around the country {expectedCountry}. ProductCard_aws")
+    public ProductCard_aws removeGoodsFromSitesAcrossTheCountry(String expectedCountry) {
+        addToCountryExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
+        countryInDropDownException(expectedCountry).shouldBe(visible).click();
+        btnRemoveFromSitesByCountry().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Removes the country from the block of disabled products on the site, by country. ProductCard_aws")
+    public ProductCard_aws removeCountryFromBlockOfDisabledProductsByCountry(String expectedCountry) {
+        addToCountryExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        deleteBtnInCountryFromException(expectedCountry).shouldBe(visible).click();
+        return this;
+    }
 
     @Step("checking quantity Language in passport management block. ProductCard_aws")
     public ProductCard_aws quantityLanguageInPassportManagement() {
@@ -200,7 +238,7 @@ public class ProductCard_aws {
         return url;
     }
 
-    @Step(" open product card page")
+    @Step("open product card page")
     public ProductCard_aws openProductCardPageAndLogin() {
         open(currentUrl());
         if (loginField().isDisplayed()) {

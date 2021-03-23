@@ -310,6 +310,10 @@ public class Product_page {
         return $x("//button[@class='pkw-product__buy-btn basket_btn ']");
     }
 
+    SelenideElement grayBtn() {
+        return $x("//button[contains(@class,'basket_btn not_active')]");
+    }
+
     SelenideElement dropDownPopUpOfBasket() {
         return $x("//div[@class='cart-items-block ']");
     }
