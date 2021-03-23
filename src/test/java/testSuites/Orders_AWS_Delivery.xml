@@ -139,8 +139,12 @@
             <class name="ATD.Orders_AWS_Delivery.QC_3511_CheckingThePercentageOfPaid_UnpaidOrders.QC_3513"/>
             <class name="ATD.Orders_AWS_Delivery.QC_3511_CheckingThePercentageOfPaid_UnpaidOrders.QC_3514"/>
             <class name="ATD.Orders_AWS_Delivery.QC_3511_CheckingThePercentageOfPaid_UnpaidOrders.QC_3515"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_3511_CheckingThePercentageOfPaid_UnpaidOrders.QC_3516"/>
             <class name="ATD.Orders_AWS_Delivery.QC_3511_CheckingThePercentageOfPaid_UnpaidOrders.QC_3517"/>
             <class name="ATD.Orders_AWS_Delivery.QC_3511_CheckingThePercentageOfPaid_UnpaidOrders.QC_3518"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_3511_CheckingThePercentageOfPaid_UnpaidOrders.QC_3519"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_3511_CheckingThePercentageOfPaid_UnpaidOrders.QC_3520"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_3511_CheckingThePercentageOfPaid_UnpaidOrders.QC_3521"/>
         </classes>
     </test>
 
