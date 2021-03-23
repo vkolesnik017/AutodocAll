@@ -13,4 +13,10 @@
         </classes>
     </test>
 
+    <test name="QC_429_Listing_OEN">
+        <classes>
+            <class name="PKW.Listings.QC_429_Listing_OEN.QC_432"/>
+        </classes>
+    </test>
+
 </suite>
