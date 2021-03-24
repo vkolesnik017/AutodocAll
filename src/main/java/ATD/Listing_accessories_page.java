@@ -112,10 +112,10 @@ public class Listing_accessories_page {
 //Locators for listing-wrap block
 
     SelenideElement listingProductsDisplayedAsList() {
-        return $x("//div[@class='listing-wrap']//ul[@class='list_products ']");
+        return $x("//ul[contains(@class,'list_products')]");
     }
     SelenideElement listingProductsDisplayedAsGrid() {
-        return $x("//div[@class='listing-wrap']//div[@class='sub_catalog_grid']");
+        return $x("//div[@class='sub_catalog_grid']");
     }
 
     ElementsCollection titleNameProductsFromListing() {
