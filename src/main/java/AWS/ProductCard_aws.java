@@ -188,16 +188,26 @@ public class ProductCard_aws {
         return $x("//button[text()='Убрать с сайтов по стране']");
     }
 
-    SelenideElement deleteBtnCountryFromExceptionDropDown(String shop) {
-        return $x("//ul[@class='chzn-choices']//span[text()='" + shop + "']/../a");
+    SelenideElement addToGrayBtnByCountry() {
+        return $x("//button[text()='Добавить в серую кнопку на страну']");
     }
 
     SelenideElement deleteBtnInCountryFromException(String shop) {
         return $x("//td[@class='restrictOrigins restrictOriginsadd']//a[@data-origin='" + shop + "']/span");
     }
 
+    SelenideElement deleteBtnInCountryFromGray(String shop) {
+        return $x("//td[@class='restrictOrigins restrictOriginsgray']//a[@data-origin='" + shop + "']/span");
+    }
 
 
+    @Step("Add to the gray button by country {expectedCountry}. ProductCard_aws")
+    public ProductCard_aws addToGreyBtnByCountryMethod(String expectedCountry) {
+        addToCountryExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
+        countryInDropDownException(expectedCountry).shouldBe(visible).click();
+        addToGrayBtnByCountry().shouldBe(visible).click();
+        return this;
+    }
 
     @Step("Removes product from sites around the country {expectedCountry}. ProductCard_aws")
     public ProductCard_aws removeGoodsFromSitesAcrossTheCountry(String expectedCountry) {
@@ -211,6 +221,13 @@ public class ProductCard_aws {
     public ProductCard_aws removeCountryFromBlockOfDisabledProductsByCountry(String expectedCountry) {
         addToCountryExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         deleteBtnInCountryFromException(expectedCountry).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Removes the country from the block of disabled products on the site, by gray button. ProductCard_aws")
+    public ProductCard_aws removeCountryFromBlockOfDisabledProductsByGrayBtn(String expectedCountry) {
+        addToCountryExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        deleteBtnInCountryFromGray(expectedCountry).shouldBe(visible).click();
         return this;
     }
 

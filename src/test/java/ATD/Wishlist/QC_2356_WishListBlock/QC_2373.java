@@ -35,7 +35,12 @@ public class QC_2373 {
     public void testChecksLogicOfPairedProductsInWishlist(String route) {
         openPage(route);
 
-        new Search_page_Logic().presenceOfTecDocListing().addedProductToWishList(1).goToWishListPage().increaseQuantityOfProduct(1);
+        new Search_page_Logic()
+                .presenceOfTecDocListing()
+                .addedProductToWishList(1)
+                .checkVisibleBrands()
+                .goToWishListPage()
+                .increaseQuantityOfProduct(1);
     }
 
     @AfterMethod

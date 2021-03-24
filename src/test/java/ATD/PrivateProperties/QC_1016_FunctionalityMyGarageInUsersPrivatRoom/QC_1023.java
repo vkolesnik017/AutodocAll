@@ -33,7 +33,7 @@ public class QC_1023 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks transition to TecDoc catalog from personal client account ")
-    public void testCheckTransitionToTecDocFromPersonalClientAccount(String route) {
+    public void testCheckTransitionToTecDocFromPersonalClientAccount(String route) throws SQLException {
         openPage(route);
 
         new Main_page_Logic()
@@ -52,6 +52,7 @@ public class QC_1023 {
                 .openSelectorBlock()
                 .selectVehicleCarInSelector("BMW", "4343", "14801")
                 .checkCountOfAddedVehicleInMyGarageBlock(3)
+                .transitionToCatalog("maker_car_list11,lkw_maker_car_list6,moto_catalog6")
                 .openPopUpMyGarageInHeader()
                 .clearMyGarageListInPopUp();
     }

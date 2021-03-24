@@ -763,6 +763,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
         markeOfHorizontalMotoSelector().selectOption(topBrandsFront.get(0));
         Wait().until(webDriver -> markeOfHorizontalMotoSelector().getSelectedText().equals(topBrandsFront.get(0)));
         checkVisibleTopBrands();
+        modelFieldSelector().shouldHave(attribute("class", "slt-selectbox-wrapper moto-select__field filled active"));
         List<String> allMotoModels = new Excel().readFromExcel(file, language, 7);
         List<String> topModelsFile = allMotoModels.stream().filter(title -> !title.equals("")).skip(1).limit(10).map(title -> title.replaceAll("\\s\\(.+", "")).collect(Collectors.toList());
         List<String> topModelsFront = topModelValuesFromSelector().stream().map(n -> n.getText().replaceAll("\\s\\(.+", "")).collect(Collectors.toList());

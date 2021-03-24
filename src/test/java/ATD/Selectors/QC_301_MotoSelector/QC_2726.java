@@ -25,7 +25,7 @@ public class QC_2726 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "routes", parallel = false)
     Object[] dataProvider() {
         return new SetUp("ATD").setUpShopsWithMainRoute("subprod", "DE,AT,BG,CH,CZ,DK,EE,FI,EN,GR,HU,LD,LT,LV,NL,NO,PL,RO,SE,SI,SK", "moto_main");
     }
@@ -99,7 +99,7 @@ public class QC_2726 {
         List<String> topMotoBrands = mainPage.getTopMotoBrandsFromSelector();
         mainPage.presenceTopBrandsAndModelsInSelector(topMotoBrands, dataFile, "PT");
     }
-
+    
     @AfterMethod
     public void close() {
         closeWebDriver();

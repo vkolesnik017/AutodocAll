@@ -181,4 +181,6 @@ public class Profile_garage_page {
     ElementsCollection availabilityOfAddedVehicleInMyGarage() {return $$x("//div[@id='profile-cars-list']//li");}
 
     ElementsCollection titleOfVehicleInCarInfoBlock() {return $$x("//div[@class='leeft']/a");}
+
+    ElementsCollection findSpareParts() {return $$x("//div[@class='buttons profile_buttons']/a[1]");}
 }
