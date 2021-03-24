@@ -54,9 +54,16 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Check absence text {expectedArticle} in autocomplete. Main_page")
-    public Main_page_Logic checkTextInAutocomplete(String expectedArticle) {
+    public Main_page_Logic checkAbsenceTextInAutocomplete(String expectedArticle, String expectedText) {
         inputTextInSearchBar(expectedArticle);
-        textInAutocomplete(expectedArticle).shouldNotBe(visible);
+        textInAutocomplete(expectedText).shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Check presence text {expectedArticle} in autocomplete. Main_page")
+    public Main_page_Logic checkPresenceTextInAutocomplete(String expectedArticle, String expectedText) {
+        inputTextInSearchBar(expectedArticle);
+        textInAutocomplete(expectedText).shouldBe(visible);
         return this;
     }
 
