@@ -265,7 +265,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("The method saves the order of products on listing, switches to tile view and verifies that order of products remains the same. Listing_page")
     public Listing_page_Logic compareProductsOrderBetweenListModeAndTileMode() {
-        ElementsCollection elementsWithArticles = productArticlesInListing().first(12);
+        ElementsCollection elementsWithArticles = productArticlesCollection().first(12);
         ArrayList<String> articlesInListMode = new ArrayList<>();
         for (SelenideElement nameProduct : elementsWithArticles) {
             String name = nameProduct.text().split(": ")[1];
@@ -278,6 +278,14 @@ public class Listing_page_Logic extends Listing_page {
             String articleListMode = articlesInListMode.get(numberProductName);
             String articleNumberTileMode = articlesOnTileMode.get(numberProductName).text().split(": ")[1];
             assertEquals(articleNumberTileMode, articleListMode, "Product order " + articleListMode + " does not match between list mode and tile mode");
+        }
+        return this;
+    }
+
+    @Step("Check absence expected article num {expectedArtNum}. Listing_page")
+    public Listing_page_Logic checkAbsenceArticleNum(String expectedArtNum) {
+        for (int i = 0; i < productArticlesCollection().size(); i++) {
+            productArticlesCollection().get(i).scrollIntoView(("{block: \"center\"}")).shouldNot(text(expectedArtNum));
         }
         return this;
     }
@@ -773,6 +781,18 @@ public class Listing_page_Logic extends Listing_page {
             grayButton().shouldNot(exist);
             nextPageButton().click();
         } while (nextPageButton().is(visible));
+        return this;
+    }
+
+    @Step("Check presence gray button at expected product {idProduct. Listing_page")
+    public Listing_page_Logic checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
+        grayBtnAtExpectedProduct(idProduct).scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check absence gray button at expected product {idProduct. Listing_page")
+    public Listing_page_Logic checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
+        grayBtnAtExpectedProduct(idProduct).shouldNotBe(visible);
         return this;
     }
 
@@ -1393,8 +1413,8 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Checks the name of the feature state {expectedCharacteristicName} if the article number matches the expected one {expectedArticleNum}. Listing_page")
     public Listing_page_Logic checkNameOfFeatureStateIfArticleNumMatchesExpectedOne(String expectedArticleNum, String expectedCharacteristicName) {
-        for (int i = 0; i < productArticlesInListing().size(); i++) {
-            String articleNum = productArticlesInListing().get(i).getText().replaceAll("Artikelnummer: ", "");
+        for (int i = 0; i < productArticlesCollection().size(); i++) {
+            String articleNum = productArticlesCollection().get(i).getText().replaceAll("Artikelnummer: ", "");
             if (expectedArticleNum.equals(articleNum)) {
                 String characteristicName = characteristicZustand().getText();
                 Assert.assertEquals(expectedCharacteristicName, characteristicName);
@@ -1405,8 +1425,8 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Goes to the product page and checks that the name of the characteristic 'Zustand' feature is as expected {expectedCharacteristicName}. Listing_page")
     public Listing_page_Logic goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(String expectedArticleNum, String expectedCharacteristicName) {
-        for (int i = 0; i < productArticlesInListing().size(); i++) {
-            String articleNum = productArticlesInListing().get(i).getText().replaceAll("Artikelnummer: ", "");
+        for (int i = 0; i < productArticlesCollection().size(); i++) {
+            String articleNum = productArticlesCollection().get(i).getText().replaceAll("Artikelnummer: ", "");
             if (expectedArticleNum.equals(articleNum)) {
                 clickFirstProductOnListing()
                         .uncoverCharacteristics();
@@ -1527,6 +1547,28 @@ public class Listing_page_Logic extends Listing_page {
             valueOfInstallationSideInDescription().get(i).shouldHave(text(installationSide));
             valueOfCountInDescription().get(i).shouldHave(text(countOfProduct));
         }
+        return this;
+    }
+
+    @Step("checks for the presence of at least one element (Price per Set or Piece) on listing .Listing_page")
+    public Listing_page_Logic checkPresenceLeastOneElementPricePerSetOrPiece(String setOrPiece) {
+        if (setOrPiece.equals("set")) {
+            while (!productInfoPriceForSet().isDisplayed()) {
+                nextPageButton().click();
+            }
+            productInfoPriceForSet().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        }else if (setOrPiece.equals("piece")) {
+            while (!productInfoPriceForPiece().isDisplayed()) {
+                nextPageButton().click();
+            }
+            productInfoPriceForPiece().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step(":from Listing_page" )
+    public Listing_page_Logic checkingChangeDisplayProductsAsListAndGrid() {
+        new Listing_accessories_page_Logic().checkingChangeDisplayProductsAsListAndGrid();
         return this;
     }
 

@@ -1,6 +1,6 @@
-package ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual;
+package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
 
-import ATD.Group_list_page_Logic;
+import ATD.Moto_Category_car_list_model_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,25 +16,27 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2557 {
+public class QC_3399 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_maker,category_group,category_group_fuel4,category_group_year4,group_list,model_maker_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model11,moto_category_car_list19");
     }
 
-    @Test(dataProvider = "routes" , enabled = false) //TODO bug SEO-2549
+    @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Test checks elements in the PDF manuals block")
-    public void testChecksElementsInPDFManualBlock(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "test checks Sorting of TecDoc listing by default")
+    public void testCheckSortingInTecDocListingByDefault(String route) {
         openPage(route);
-        new Group_list_page_Logic().checkElementsInPDFManualBlock();
+
+        new Moto_Category_car_list_model_page_Logic()
+                .checkSortingOfProductByAvailableAndPrice();
     }
 
     @AfterMethod

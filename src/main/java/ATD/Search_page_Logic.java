@@ -139,7 +139,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("Clicking details. Search_page")
     public Product_page_Logic detailsClick() {
-        detalisBtn().scrollTo().click();
+        detailsBtn().scrollTo().click();
         return page(Product_page_Logic.class);
     }
 
@@ -839,6 +839,24 @@ public class Search_page_Logic extends Search_page {
         } else {
             mainFormOfSoft404().shouldBe(visible);
         }
+        return this;
+    }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkAbsenceArticleNum(String expectedArtNum) {
+        new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
+        new Listing_page_Logic().checkPresenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
+        new Listing_page_Logic().checkAbsenceGrayBtnAtExpectedProduct(idProduct);
         return this;
     }
 }

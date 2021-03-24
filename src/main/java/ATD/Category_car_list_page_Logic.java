@@ -561,4 +561,22 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         Wait().until(webDriver -> mileageRecommendationIcon().attr("src").contains("atd/img/tools-odometer.png"));
         return this;
     }
+
+    @Step(": for Category_car_list_page")
+    public  Category_car_list_page checkAbsenceArticleNum(String expectedArtNum) {
+        new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step(": for Category_car_list_page")
+    public Category_car_list_page checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
+        new Listing_page_Logic().checkPresenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
+
+    @Step(": for Category_car_list_page")
+    public Category_car_list_page checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
+        new Listing_page_Logic().checkAbsenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
 }

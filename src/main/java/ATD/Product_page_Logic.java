@@ -232,6 +232,21 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Check absence gray button on the page. Product_page")
+    public Product_page_Logic checkAbsenceGrayBtnOnPage() {
+        if (grayButton().isDisplayed()) {
+            refresh();
+            grayButton().shouldNotBe(visible);
+        }
+        return this;
+    }
+
+    @Step("Check presence gray button on the page. Product_page")
+    public Product_page_Logic checkPresenceGrayBtnOnPage() {
+        grayButton().shouldBe(visible);
+        return this;
+    }
+
     @Step(":in available form. Product_page")
     public Product_page_Logic checkingDatenschutzerklarungLinkBehaviorInAvailableForm() {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInAvailableForm(), "underline solid rgb(0, 0, 0)");
@@ -1677,6 +1692,12 @@ public class Product_page_Logic extends Product_page {
     @Step("Check text product info price. Product_page")
     public Product_page_Logic checkTextProductInfoPrice(String expectedText) {
         productInfoPrice().shouldBe(visible).shouldHave(exactText(expectedText));
+        return this;
+    }
+
+    @Step("Check absence text product info price. Product_page")
+    public Product_page_Logic checkAbsenceTextProductInfoPrice() {
+        productInfoPrice().shouldNotBe(visible);
         return this;
     }
 

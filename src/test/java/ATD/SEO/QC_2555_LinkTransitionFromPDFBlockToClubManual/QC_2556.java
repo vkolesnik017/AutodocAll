@@ -29,7 +29,7 @@ public class QC_2556 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_maker,category_group,category_group_fuel4");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routes", enabled = false)  //TODO bug SEO-2549
     @Flaky
     @Owner(value = "Sergey_QA")
     @Description(value = "Test checks Transition To Club Page from the PDF manuals block")
@@ -44,7 +44,7 @@ public class QC_2556 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_group_year4,group_list,model_maker_list");
     }
 
-    @Test(dataProvider = "routes2")
+    @Test(dataProvider = "routes2", enabled = false) //TODO bug SEO-2549
     @Flaky
     @Owner(value = "Sergey_QA")
     @Description(value = "Test checks Transition To Club Page from the PDF manuals block")

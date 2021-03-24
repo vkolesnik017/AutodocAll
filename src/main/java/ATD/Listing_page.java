@@ -586,8 +586,12 @@ public class Listing_page {
         return $$(By.cssSelector(".name"));
     }
 
-    public ElementsCollection productArticlesInListing() {
+    public ElementsCollection productArticlesCollection() {
         return $$x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
+    }
+
+    SelenideElement productArticleOnListing() {
+        return $x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
     }
 
     public ElementsCollection produktreiheProductAttributeTecdocRoute() {
@@ -712,6 +716,10 @@ public class Listing_page {
 
     public SelenideElement grayButton() {
         return $x("//*[contains(@class,'not_active')]/a");
+    }
+
+    public SelenideElement grayBtnAtExpectedProduct(String idProduct) {
+        return $x("//div[@data-article-id='" + idProduct + "']/..//*[contains(@class,'not_active')]/a");
     }
 
     ElementsCollection addToBasketButtons() {
@@ -925,10 +933,6 @@ public class Listing_page {
         return $x("//a[@class='next slick-arrow']");
     }
 
-    SelenideElement productArticleOnListing() {
-        return $x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
-    }
-
     SelenideElement productName(String brandName) {
         return $x("//*[@class='name']/a[contains (text(),'" + brandName + "')]");
     }
@@ -1038,4 +1042,9 @@ public class Listing_page {
     ElementsCollection valueOfInstallationSideInDescription() {return $$x("//span[text()='Einbauseite:  ']/following-sibling::span");}
 
     ElementsCollection valueOfCountInDescription() {return $$x("//span[text()='Menge:  ']/following-sibling::span");}
+
+    SelenideElement productInfoPriceForSet() { return $x("//p[@class='product-info-price' and text()='(Preis pro Satz)']");}
+
+    SelenideElement productInfoPriceForPiece() { return $x("//p[@class='product-info-price' and text()='(Artikelpreis)']");}
+
 }
