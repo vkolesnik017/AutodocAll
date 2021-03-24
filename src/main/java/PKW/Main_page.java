@@ -21,7 +21,7 @@ public class Main_page {
         return $x("//a[@class='show_cart ga-click']");
     }
 
-    public By tooltipsToSearch = byCssSelector(".autocomplete-suggestions>div");
+    private By tooltipsToSearch = byCssSelector(".autocomplete-suggestions>div");
 
     public SelenideElement tooltipToSearch() {
         return $(tooltipsToSearch);

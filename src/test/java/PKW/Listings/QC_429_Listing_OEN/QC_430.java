@@ -1,9 +1,11 @@
 package PKW.Listings.QC_429_Listing_OEN;
 
 import PKW.Main_page_Logic;
+import PKW.Oe_number_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,8 +18,6 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_430 {
 
 
-    private Main_page_Logic mainPageLogic = new Main_page_Logic();
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,7 +25,7 @@ public class QC_430 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() {
-        return new Common.SetUp("PKW").setUpShopsWithMainRoute("prod", "DE", "main");
+        return new Common.SetUp("PKW").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "routes")
@@ -34,10 +34,11 @@ public class QC_430 {
     @Description(value = "Test checks redirect to Oen listing from search input")
     public void testChecksRedirectToOenListingFromSearchInput(String route) {
         openPage(route);
-        mainPageLogic.inputTextInSearchBar("1j0615124a")
+        new Main_page_Logic().inputTextInSearchBar("1j0615124a")
                 .clickTooltipInSearchByExactText("OEN 1J0615124A");
         waitWhileRouteBecomeExpected("oe_number");
-
+        String nameTitle = new Oe_number_page_Logic().checksTextInTitlePage();
+        Assert.assertEquals(nameTitle, "Ähnliche Produkte von Bremssattel 1J0615124A OE Nummer");
     }
 
     @AfterMethod

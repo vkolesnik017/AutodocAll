@@ -15,6 +15,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 
 public class QC_431 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -28,8 +29,8 @@ public class QC_431 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Chebanenko")
-    @Description(value = "Test checks the redirection from Product page to the OEN listing after clicking the OEN number")
-    public void testChecksTheRedirectionFromProductPageToTheOenListing(String route) {
+    @Description(value = "Test checks the redirection from Product page to the OEN listing after clicking on the OEN number")
+    public void testChecksRedirectionFromProductPageToOenListing(String route) {
         openPage(route);
         new Product_page_Logic().closeBtnOFPopupReviewIfYes().checkingTheTransitionToTheOENListingPageAfterClickingTheOenTab();
     }
