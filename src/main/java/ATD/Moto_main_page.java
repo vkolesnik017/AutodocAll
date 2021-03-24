@@ -36,6 +36,10 @@ class Moto_main_page {
         return $x("//a[@class='submit search_button ripple-out']");
     }
 
+    protected SelenideElement modelFieldSelector() {
+        return $("#model-select");
+    }
+
     SelenideElement mainSearchField() {
         return $x("//div[@class='header-search__input-row']/input");
     }

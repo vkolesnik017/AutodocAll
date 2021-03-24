@@ -849,5 +849,17 @@ public class Search_page_Logic extends Search_page {
         new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
         return this;
     }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
+        new Listing_page_Logic().checkPresenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
+        new Listing_page_Logic().checkAbsenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
 }
 
