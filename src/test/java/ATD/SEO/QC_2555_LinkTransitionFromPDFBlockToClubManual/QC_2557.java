@@ -28,7 +28,7 @@ public class QC_2557 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_maker,category_group,category_group_fuel4,category_group_year4,group_list,model_maker_list");
     }
 
-    @Test(dataProvider = "routes" )
+    @Test(dataProvider = "routes" , enabled = false) //TODO bug SEO-2549
     @Flaky
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Test checks elements in the PDF manuals block")
