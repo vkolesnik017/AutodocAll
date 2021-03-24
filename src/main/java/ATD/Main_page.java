@@ -84,6 +84,10 @@ public class Main_page {
         return $$(tooltipsToSearch);
     }
 
+    public SelenideElement textInAutocomplete(String expectedArticle) {
+        return $x("//div[@class='autocomplete-suggestions']//div[contains(text(),'(" + expectedArticle + ")')]");
+    }
+
     public SelenideElement counterQuantityProductsInSearch() {
         return $x("//div[@class='autocomplete-suggestions']//span[@class='right']");
     }

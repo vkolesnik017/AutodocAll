@@ -115,4 +115,10 @@ public class Search_page_Logic extends Search_page {
         }
         return this;
     }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkAbsenceArticleNum(String expectedArtNum) {
+        new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
+        return this;
+    }
 }

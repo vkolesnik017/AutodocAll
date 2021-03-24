@@ -1,9 +1,13 @@
 package ATD;
 
 import Common.DataBase;
+import files.Product;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -127,5 +131,34 @@ public class Moto_Category_car_list_model_page_Logic extends Moto_Category_car_l
     public List<String> getIdOfProducts() {
         List<String> id = btnAddToBasket().stream().map(n -> n.attr("id")).collect(Collectors.toList());
         return id;
+    }
+
+    @Step("check Sorting Of Product By Available And Price . Moto_Category_car_list_model_page")
+    public Moto_Category_car_list_model_page_Logic checkSortingOfProductByAvailableAndPrice() {
+        List<Product> productList = new ArrayList<>();
+        addedProductsToList(productList);
+        while (forwardNextPaginator().isDisplayed()) {
+            forwardNextPaginator().click();
+            addedProductsToList(productList);
+        }
+        List<Product> listBeforeSorting = new ArrayList<>(productList);
+
+        Comparator<Product> productsComparator = Comparator
+                .comparing((Product p) -> "button ".equals(p.getAttributeOfButton()) ? -1 : 0)
+                .thenComparingDouble(Product::getPriceOfProduct);
+        productList.sort(productsComparator);
+        Assert.assertEquals(listBeforeSorting, productList);
+        return this;
+    }
+
+    @Step("added products to list . Moto_Category_car_list_model_page")
+    public Moto_Category_car_list_model_page_Logic addedProductsToList(List<Product> list) {
+        for (int i = 0; i < attributeOfBtnAddedToBasket().size(); i++) {
+            Product productPage = new Product();
+            productPage.setAttributeOfButton(attributeOfBtnAddedToBasket().get(i).getAttribute("class"));
+            productPage.setPriceOfProduct(Double.parseDouble(priceOfProduct().get(i).getText().replaceAll("[^0-9,]", "").replace(",", ".")));
+            list.add(productPage);
+        }
+        return this;
     }
 }

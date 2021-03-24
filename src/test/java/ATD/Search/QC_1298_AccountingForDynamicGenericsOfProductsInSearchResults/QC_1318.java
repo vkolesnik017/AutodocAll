@@ -40,7 +40,7 @@ public class QC_1318 {
         openPage(route);
         new Main_page_Logic().useSearch("Ölfilter");
         listingPageLogic.checkListingWithSelectingFilterByBrand("665", "UFI")
-                        .checkProductTitleOnListing("25.406.01", false, listingPageLogic.productArticlesInListing());
+                        .checkProductTitleOnListing("25.406.01", false, listingPageLogic.productArticlesCollection());
     }
 
     @AfterMethod
