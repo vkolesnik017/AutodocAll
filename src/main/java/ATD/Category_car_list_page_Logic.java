@@ -40,7 +40,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         submitBtnSoftForm().click();
         successPopupSoftForm().shouldBe(appear);
         closeSuccessPopupSoftForm().shouldHave(text("Einkauf fortsetzen")).click();
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/ersatzteile/genesis/g90/g90/123335-3-3-t-gdi");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/ersatzteile/ford/c-max/c-max-ii/111767-2-0-tdci");
         return this;
     }
 
@@ -131,7 +131,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
 
     @Step("added products to list .Category_car_list_page")
     public Category_car_list_page_Logic addedProductsToList(List<Product> list, List<String> genericList) {
-        String brand, generic, price, url, checkUrl, genericForList = null;
+        String brand, generic, genericForList = null;
         for (int i = 0; i < activeBtnAddProductToBasket().size(); i++) {
             brand = activeBtnAddProductToBasket().get(i).getAttribute("data-brand-name");
 
@@ -559,6 +559,12 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     public Category_car_list_page_Logic displayOfMileageRecommendationIcon() {
         Wait().until(webDriver -> mileageRecommendationIcon().attr("src").contains("atd/img/gif/tools-odometer.gif"));
         Wait().until(webDriver -> mileageRecommendationIcon().attr("src").contains("atd/img/tools-odometer.png"));
+        return this;
+    }
+
+    @Step(": for  Category_car_list_page")
+    public  Category_car_list_page checkAbsenceArticleNum(String expectedArtNum) {
+        new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
         return this;
     }
 }

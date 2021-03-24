@@ -56,4 +56,10 @@ public class Moto_Category_car_list_model_page {
     SelenideElement productList() {return $x("//ul[@class='list_products ']");}
 
     ElementsCollection btnAddToBasket() {return $$x("//*[self::div[@class='button '] or self::div[@class='button not_active']]");}
+
+    ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div[1]");}
+
+    SelenideElement forwardNextPaginator() {return $x("//span[@class='next'][1]/a");}
+
+    ElementsCollection priceOfProduct() {return $$x("//p[contains(@class,'actual_price')]");}
 }

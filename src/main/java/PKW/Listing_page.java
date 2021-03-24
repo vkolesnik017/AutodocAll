@@ -29,8 +29,8 @@ public class Listing_page {
         return $$x("//div[@class='description']/*[self::a or self::span][1]");
     }
 
-    public ElementsCollection productArticlesInListing() {
-        return $$x("//div[@class='description']//span[contains(text(),'Art. Nr.:')]");
+    ElementsCollection productArticlesInListing() {
+        return $$x("//div[@class='nr']/span[1]");
     }
 
     SelenideElement moreBtnInProduct() {
