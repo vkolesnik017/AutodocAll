@@ -22,7 +22,7 @@ public class QC_431 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product4");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product15");
     }
 
     @Test(dataProvider = "routes")
@@ -31,7 +31,7 @@ public class QC_431 {
     @Description(value = "Test checks the redirection from Product page to the OEN listing after clicking the OEN number")
     public void testChecksTheRedirectionFromProductPageToTheOenListing(String route) {
         openPage(route);
-        new Product_page_Logic().checkingTheTransitionToTheOENListingPageAfterClickingTheOenTab();
+        new Product_page_Logic().closeBtnOFPopupReviewIfYes().checkingTheTransitionToTheOENListingPageAfterClickingTheOenTab();
     }
 
     @AfterMethod
