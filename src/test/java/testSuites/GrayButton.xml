@@ -21,4 +21,11 @@
             <!--<class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2081"/> - inactive-->
         </classes>
     </test>
+
+    <!--<test name="QC_3355_ProductDisableFunctionalityInAWS">
+        <classes>
+
+        </classes>
+    </test>-->
+
 </suite>
