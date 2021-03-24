@@ -191,4 +191,9 @@ class Category_car_list_page {
     SelenideElement lampDataValue(String value) {return $x("//div[@class='lampenart-filter__slider']//li[@class='slick-slide slick-active']/label[@data-value='"+value+"']");}
 
     SelenideElement mileageRecommendationIcon() {return $(".recommendation__icon img");}
+
+    ElementsCollection visibleFilterBrands() {return $$x("//*[self::li[contains(@class,'slick-active')] or self::li]//label").filter(visible);}
+
+    ElementsCollection visibleBrandsId() {return $$x("//li[contains(@class,'slick-active')]//label").filter(visible);}
+
 }
