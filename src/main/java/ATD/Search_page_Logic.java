@@ -188,9 +188,11 @@ public class Search_page_Logic extends Search_page {
             appearsOfLoader();
         } else {
             brandsFilterBlock().shouldBe(visible);
+            String articleOfFirstBrand = visibleFilterBrands().get(0).getAttribute("for");
             while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
                 forwardLinkAtBrandsFilter().click();
                 checkVisibleBrands();
+                visibleFilterBrands().get(0).shouldNotHave(attribute("for", articleOfFirstBrand));
             }
             brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
             appearsOfLoader();

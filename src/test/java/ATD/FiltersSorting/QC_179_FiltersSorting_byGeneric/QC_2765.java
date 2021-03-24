@@ -29,7 +29,7 @@ public class QC_2765 {
 
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list4,search45");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list4");
     }
 
     @Test(dataProvider = "routesCarList")
@@ -37,6 +37,20 @@ public class QC_2765 {
     @Owner(value = "Kolesnik")
     @Description(value = "Test check lack of 5xx after reselecting vehicle with selected filter ")
     public void testCheckLackOf5xxAfterReselectingVehicleWithSelectedFilter(String route) throws IOException {
+        openPage(route);
+        new Category_car_list_page_Logic().setBrandFilter("194").selectCarInSelector("CHEVROLET", "30675", "112550").checkResponseOfServer(200);
+    }
+
+    @DataProvider(name = "routesCarListSearch", parallel = true)
+    Object[] dataProviderCarListSearch() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search45");
+    }
+
+    @Test(dataProvider = "routesCarListSearch")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test check lack of 5xx after reselecting vehicle with selected filter ")
+    public void testCheckLackOf5xxAfterReselectingVehicleWithSelectedFilterSearch(String route) throws IOException {
         openPage(route);
         new Category_car_list_page_Logic().selectBrandInBlock("194").selectCarInSelector("CHEVROLET", "30675", "112550").checkResponseOfServer(200);
     }
