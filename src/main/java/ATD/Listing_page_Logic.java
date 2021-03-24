@@ -1541,9 +1541,15 @@ public class Listing_page_Logic extends Listing_page {
     @Step("checks for the presence of at least one element (Price per Set or Piece) on listing .Listing_page")
     public Listing_page_Logic checkPresenceLeastOneElementPricePerSetOrPiece(String setOrPiece) {
         if (setOrPiece.equals("set")) {
-            productInfoPriceForSet().shouldBe(visible);
+            while (!productInfoPriceForSet().isDisplayed()) {
+                nextPageButton().click();
+            }
+            productInfoPriceForSet().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         }else if (setOrPiece.equals("piece")) {
-            productInfoPriceForPiece().shouldBe(visible);
+            while (!productInfoPriceForPiece().isDisplayed()) {
+                nextPageButton().click();
+            }
+            productInfoPriceForPiece().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         }
         return this;
     }
