@@ -45,6 +45,7 @@
             <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2344"/>
             <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2345"/>
             <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1027"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1023"/>
         </classes>
     </test>
 
