@@ -784,6 +784,18 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check presence gray button at expected product {idProduct. Listing_page")
+    public Listing_page_Logic checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
+        grayBtnAtExpectedProduct(idProduct).scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check absence gray button at expected product {idProduct. Listing_page")
+    public Listing_page_Logic checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
+        grayBtnAtExpectedProduct(idProduct).shouldNotBe(visible);
+        return this;
+    }
+
     @Step("Check add to basket buttons sorting with pagination. Listing_page")
     public Listing_page_Logic checkAddToBasketButtonsSortingWithPagination() {
         do {

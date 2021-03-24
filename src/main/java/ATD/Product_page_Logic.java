@@ -234,7 +234,10 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Check absence gray button on the page. Product_page")
     public Product_page_Logic checkAbsenceGrayBtnOnPage() {
-        grayButton().shouldNotBe(visible);
+        if (grayButton().isDisplayed()) {
+            refresh();
+            grayButton().shouldNotBe(visible);
+        }
         return this;
     }
 

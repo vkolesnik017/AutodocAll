@@ -46,7 +46,7 @@ public class QC_3358 {
         new ProductCard_aws(productID).openProductCardPageAndLogin()
                 .removeGoodsFromSitesAcrossTheCountry("DE");
         openPage(dataBaseATD.getFullRouteByRouteName("prod", "DE", "main"));
-        new Main_page_Logic().checkTextInAutocomplete("JGT243T");
+        new Main_page_Logic().checkAbsenceTextInAutocomplete("JGT243T", "JGT243T");
         openPage(dataBaseATD.getFullRouteByRouteAndSubroute("prod", "DE", "main", "search50"));
         new Search_page_Logic().checkAbsenceArticleNum("JGT243T");
         openPage(dataBaseATD.getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list70"));
