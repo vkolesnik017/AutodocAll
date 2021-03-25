@@ -13,6 +13,12 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class Listing_page_Logic extends Listing_page {
 
+    @Step("Checks presence add to cart button for a specific item {productID}. Listing_page")
+    public Listing_page_Logic checkPresenceAddToCartBtnForSpecificItem(String productID) {
+        addToCartBtnForSpecificItem(productID).scrollIntoView(("{block: \"center\"}")).shouldBe(visible);
+        return this;
+    }
+
     @Step("Method checks that expected text is present in title of all products on listing. Listing_page")
     public Listing_page_Logic checkProductTitleOnListing(String expectedTextInTitle, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
         titleViewMode.shouldHave(sizeGreaterThan(0));

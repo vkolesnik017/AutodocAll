@@ -851,6 +851,12 @@ public class Search_page_Logic extends Search_page {
     }
 
     @Step(": for Listing_page")
+    public Search_page_Logic checkPresenceArticleNum(String expectedArtNum) {
+        new Listing_page_Logic().checkPresenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step(": for Listing_page")
     public Search_page_Logic checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
         new Listing_page_Logic().checkPresenceGrayBtnAtExpectedProduct(idProduct);
         return this;
@@ -859,6 +865,12 @@ public class Search_page_Logic extends Search_page {
     @Step(": for Listing_page")
     public Search_page_Logic checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
         new Listing_page_Logic().checkAbsenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkPresenceAddToCartBtnForSpecificItem(String productID) {
+        new Listing_page_Logic().checkPresenceAddToCartBtnForSpecificItem(productID);
         return this;
     }
 }
