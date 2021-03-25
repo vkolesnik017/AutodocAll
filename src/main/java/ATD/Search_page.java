@@ -340,5 +340,7 @@ public class Search_page {
     ElementsCollection mainProducts() {return $$x("//ul[@class='list_products']/li[not(contains(@class,'recommended'))]");}
 
     ElementsCollection recommendedProducts()  {return $$x("//ul[@class='list_products']/li[contains(@class,'recommended')]");}
+
+    ElementsCollection visibleFilterBrands() {return $$x("//li[contains(@class,'slick-active')]//label").filter(visible);}
 }
 

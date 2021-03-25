@@ -188,9 +188,11 @@ public class Search_page_Logic extends Search_page {
             appearsOfLoader();
         } else {
             brandsFilterBlock().shouldBe(visible);
+            String articleOfFirstBrand = visibleFilterBrands().get(0).getAttribute("for");
             while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
                 forwardLinkAtBrandsFilter().click();
                 checkVisibleBrands();
+                visibleFilterBrands().get(0).shouldNotHave(attribute("for", articleOfFirstBrand));
             }
             brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
             appearsOfLoader();
@@ -835,6 +837,18 @@ public class Search_page_Logic extends Search_page {
     @Step(": for Listing_page")
     public Search_page_Logic checkAbsenceArticleNum(String expectedArtNum) {
         new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
+        new Listing_page_Logic().checkPresenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
+        new Listing_page_Logic().checkAbsenceGrayBtnAtExpectedProduct(idProduct);
         return this;
     }
 }

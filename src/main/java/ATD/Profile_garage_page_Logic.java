@@ -1,15 +1,19 @@
 package ATD;
 
+import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static Common.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.CollectionCondition.*;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -296,9 +300,11 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
             sleep(3000);
             if (activeCarTab().isDisplayed()) {
                 selectVehicleCarInSelector("AUDI", "433", "1040");
-            } if (activeTrucksTab().isDisplayed()) {
+            }
+            if (activeTrucksTab().isDisplayed()) {
                 selectTruckInSelector("132", "5549", "1008471");
-            } if (activeMotoTab().isDisplayed()) {
+            }
+            if (activeMotoTab().isDisplayed()) {
                 selectVehicleInSelector("4057", "12027", "101565");
             }
             sleep(3000);
@@ -335,6 +341,31 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
     @Step("check title in car info block. Profile_garage_page")
     public Profile_garage_page_Logic checkTitleInCarInfoBlock(String titleOfVehicle) {
         titleOfVehicleInCarInfoBlock().get(0).shouldHave(text(titleOfVehicle));
+        return this;
+    }
+
+    @Step("transition To Catalog. Profile_garage_page")
+    public Profile_garage_page_Logic transitionToCatalog(String expectedRoutes) throws SQLException {
+        DataBase db = new DataBase("ATD");
+        List<String> routes = Arrays.asList(expectedRoutes.split(","));
+        for (int i = 0; i < routes.size(); i++) {
+            findSpareParts().get(i).shouldBe(visible).click();
+            switch (i) {
+                case 0:
+                    checkingContainsUrl(db.getRouteByRouteName("DE", routes.get(i)));
+                    break;
+                case 1:
+                    checkingContainsUrl(db.getRouteByRouteName("DE", routes.get(i)));
+                    break;
+                case 2:
+                    checkingContainsUrl(db.getRouteByRouteName("DE", routes.get(i)));
+                    break;
+                default:
+                    break;
+            }
+            back();
+        }
+
         return this;
     }
 
