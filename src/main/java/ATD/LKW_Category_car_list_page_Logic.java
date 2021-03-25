@@ -923,6 +923,30 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         lampDataValue(lampValue).shouldBe(visible).click();
         return this;
     }
+
+    @Step("Check presence top products block. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkPresenceTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step(":from LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic displaySoft404Form() {
+        new Category_car_list_page_Logic().displaySoft404Form();
+        return this;
+    }
+
+    @Step("checks presence element (Price per Set or Piece) in top products block. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkPresenceElementPricePerSetOrPiece(String setOrPiece) {
+        if (setOrPiece.equals("set")) {
+            infoPriceForSetFromtopProduct().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        }else if (setOrPiece.equals("piece")) {
+            infoPriceForPieceFromtopProduct().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        }
+        return this;
+    }
+
+
 }
 
 
