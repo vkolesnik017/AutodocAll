@@ -1565,4 +1565,26 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("checks for the presence of at least one element (Price per Set or Piece) on listing .Listing_page")
+    public Listing_page_Logic checkPresenceLeastOneElementPricePerSetOrPiece(String setOrPiece) {
+        if (setOrPiece.equals("set")) {
+            while (!productInfoPriceForSet().isDisplayed()) {
+                nextPageButton().click();
+            }
+            productInfoPriceForSet().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        }else if (setOrPiece.equals("piece")) {
+            while (!productInfoPriceForPiece().isDisplayed()) {
+                nextPageButton().click();
+            }
+            productInfoPriceForPiece().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step(":from Listing_page" )
+    public Listing_page_Logic checkingChangeDisplayProductsAsListAndGrid() {
+        new Listing_accessories_page_Logic().checkingChangeDisplayProductsAsListAndGrid();
+        return this;
+    }
+
 }

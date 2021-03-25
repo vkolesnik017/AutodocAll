@@ -59,8 +59,10 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     @Step("select brand in brands block. Category_car_list_page")
     public Category_car_list_page_Logic selectBrandInBlock(String idOfBrand) {
         brandsFilterBlock().shouldBe(visible);
+        String articleOfFirstBrand = visibleFilterBrands().get(0).getAttribute("for");
         while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
             forwardLinkAtBrandsFilter().click();
+            visibleFilterBrands().get(0).shouldNotHave(attribute("for", articleOfFirstBrand));
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
@@ -565,6 +567,19 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     @Step(": for Category_car_list_page")
     public  Category_car_list_page_Logic checkAbsenceArticleNum(String expectedArtNum) {
         new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step("set brand filter. Category_car_list_page")
+    public Category_car_list_page_Logic setBrandFilter(String idOfBrand) {
+        brandsFilterBlock().shouldBe(visible);
+        String articleOfFirstBrand = visibleBrandsId().get(0).getAttribute("for");
+        while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
+            forwardLinkAtBrandsFilter().click();
+            visibleBrandsId().get(0).shouldNotHave(attribute("for", articleOfFirstBrand));
+        }
+        brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
+        appearsOfLoader();
         return this;
     }
 

@@ -49,8 +49,10 @@ public class Category_oen_Page_Logic extends Category_oen_Page {
     @Step("select brand in brands block. Category_oen_Page")
     public Category_oen_Page_Logic selectBrandInBlock(String idOfBrand) {
         brandsFilterBlock().shouldBe(visible);
+        String articleOfFirstBrand = visibleFilterBrands().get(0).getAttribute("for");
         while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
             forwardLinkAtBrandsFilter().click();
+            visibleFilterBrands().get(0).shouldNotHave(attribute("for", articleOfFirstBrand));
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();

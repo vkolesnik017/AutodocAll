@@ -1046,4 +1046,9 @@ public class Listing_page {
     ElementsCollection valueOfInstallationSideInDescription() {return $$x("//span[text()='Einbauseite:  ']/following-sibling::span");}
 
     ElementsCollection valueOfCountInDescription() {return $$x("//span[text()='Menge:  ']/following-sibling::span");}
+
+    SelenideElement productInfoPriceForSet() { return $x("//p[@class='product-info-price' and text()='(Preis pro Satz)']");}
+
+    SelenideElement productInfoPriceForPiece() { return $x("//p[@class='product-info-price' and text()='(Artikelpreis)']");}
+
 }
