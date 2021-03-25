@@ -177,7 +177,7 @@ public class Product_page {
     }
 
     public SelenideElement pdfTutorialsBlock() {
-        return $(".product-video-tutorial__tutorials");
+        return $(".product-video-tutorial__col");
     }
 
     ElementsCollection pdfLinksForDownload() {

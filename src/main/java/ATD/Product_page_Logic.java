@@ -632,7 +632,7 @@ public class Product_page_Logic extends Product_page {
         reviewsMessageInput().sendKeys(reviewMessage);
         subscribeAcceptCheckbox().click();
         reviewsSubmitButton().click();
-        faqPopupText().shouldHave(text("Danke für Ihre Beurteilung."));
+        faqPopupText().shouldHave(text("Vielen Dank für Ihre Bewertung!"));
         return this;
     }
 
