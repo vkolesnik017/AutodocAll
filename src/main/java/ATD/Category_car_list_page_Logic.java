@@ -563,20 +563,32 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
     @Step(": for Category_car_list_page")
-    public  Category_car_list_page checkAbsenceArticleNum(String expectedArtNum) {
+    public  Category_car_list_page_Logic checkAbsenceArticleNum(String expectedArtNum) {
         new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
         return this;
     }
 
     @Step(": for Category_car_list_page")
-    public Category_car_list_page checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
+    public Category_car_list_page_Logic checkPresenceArticleNum(String expectedArtNum) {
+        new Listing_page_Logic().checkPresenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step(": for Category_car_list_page")
+    public Category_car_list_page_Logic checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
         new Listing_page_Logic().checkPresenceGrayBtnAtExpectedProduct(idProduct);
         return this;
     }
 
     @Step(": for Category_car_list_page")
-    public Category_car_list_page checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
+    public Category_car_list_page_Logic checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
         new Listing_page_Logic().checkAbsenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
+
+    @Step(": for Category_car_list_page")
+    public Category_car_list_page_Logic checkPresenceAddToCartBtnForSpecificItem(String idProduct) {
+        new Listing_page_Logic().checkPresenceAddToCartBtnForSpecificItem(idProduct);
         return this;
     }
 }

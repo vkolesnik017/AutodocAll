@@ -22,10 +22,13 @@
         </classes>
     </test>
 
-    <!--<test name="QC_3355_ProductDisableFunctionalityInAWS">
+    <test name="QC_3355_ProductDisableFunctionalityInAWS">
         <classes>
-
+            <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3351"/>
+            <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3354"/>
+            <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3358"/>
+            <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3365"/>
         </classes>
-    </test>-->
+    </test>
 
 </suite>
