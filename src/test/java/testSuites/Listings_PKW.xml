@@ -21,4 +21,9 @@
         </classes>
     </test>
 
+    <test name="QC_3110_ListingSortingAndPrioritization">
+        <classes>
+            <class name="PKW.Listings.QC_3110_ListingSortingAndPrioritization.QC_2086"/>
+        </classes>
+    </test>
 </suite>
