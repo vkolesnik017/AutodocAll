@@ -89,7 +89,7 @@ public class QC_121 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks side filter in tile mode")
-    public void testSideFilterInTileModeAccessories(String route) throws Exception {
+    public void testSideFilterInTileModeAccessories(String route) {
         openPage(route);
         listingPage
                 .setCountFilterByPosition(4)
