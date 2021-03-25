@@ -11,6 +11,7 @@ import java.util.List;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static Common.CommonMethods.waitWhileRouteContainsExpected;
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -249,7 +250,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
     @Step("open of characteristic block .LKW_Product_page")
     public LKW_Product_page_Logic openCharacteristicBlock() {
         openBlockOfCharacteristic().click();
-        listOfCharacteristics().shouldHaveSize(12);
+        listOfCharacteristics().shouldHave(sizeGreaterThan(10));
         return this;
     }
 

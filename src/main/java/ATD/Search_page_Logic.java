@@ -353,16 +353,6 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
-    @Step("add Product to WishList with selected car. Search_page")
-    public Search_page_Logic addedProductToWishListWithSelectedCar(int positionOfProduct) {
-        for (int i = 0; i < positionOfProduct; i++) {
-            btnAddedProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
-            btnAddedProductToWishList().get(i).shouldBe(visible).click();
-            addedProductToWishList().get(i).shouldBe(exist);
-        }
-        return this;
-    }
-
     @Step("add active Product to WishList with selected car. Search_page")
     public Search_page_Logic addedActiveProductToWishListWithSelectedCar(int positionOfProduct) {
         for (int i = 0; i < positionOfProduct; i++) {
@@ -631,7 +621,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("presence of visible parent categories. Search_page")
     public Search_page_Logic presenceOfVisibleParentCategories() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i <  visibleParentCategories().size(); i++) {
             visibleParentCategories().get(i).shouldBe(visible);
         }
         return this;
