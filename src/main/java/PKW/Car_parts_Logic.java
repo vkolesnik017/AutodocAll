@@ -9,6 +9,7 @@ import java.util.List;
 
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.refresh;
 
 
 public class Car_parts_Logic extends Car_parts {
@@ -27,6 +28,7 @@ public class Car_parts_Logic extends Car_parts {
 
     @Step("Checking success popup with click checkbox in soft 404 block. Car_parts")
     public String checkingSuccessPopupClickCheckbox(String qc) {
+        refresh();
         String mail = qc + PKW.CommonMethods.mailRandom();
         subscriptionMailFieldInSoft404Block().setValue(mail);
         subscriptionMailCheckboxInSoft404Block().click();

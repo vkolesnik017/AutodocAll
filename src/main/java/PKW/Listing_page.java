@@ -45,5 +45,7 @@ public class Listing_page {
         return $x("//span[contains(@class,'rc')][contains(text(),'" + nameCharacteristic + "')]");
     }
 
-    SelenideElement firstProductTitleOnListing() { return $x("(//div[@class='description']//a)[1]"); }
+    SelenideElement firstProductTitleOnListing() {
+        return $x("(//div[@class='description']//a)[1]");
+    }
 }
