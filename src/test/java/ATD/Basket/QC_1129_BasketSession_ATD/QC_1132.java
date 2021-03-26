@@ -10,8 +10,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.sql.SQLException;
-
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -39,7 +37,7 @@ public class QC_1132 {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description("Test checks synchronization of the mob session of the basket on the web version")
-    public void testSynchronizationMobSessionOnWebVersion(String route) throws SQLException {
+    public void testSynchronizationMobSessionOnWebVersion(String route) {
         openPage("https://m.autodoc.de/?force=mobile");
         main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
@@ -64,7 +62,7 @@ public class QC_1132 {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description("Test checks synchronization of the mob session of the basket on the web version when login through FaceBook")
-    public void testSynchronizationMobSessionOnWebVersionLoginFromFB(String route) throws SQLException {
+    public void testSynchronizationMobSessionOnWebVersionLoginFromFB(String route) {
         openPage("https://m.autodoc.de/?force=mobile");
         main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()

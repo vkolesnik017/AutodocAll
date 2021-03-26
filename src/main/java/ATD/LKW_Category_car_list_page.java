@@ -385,4 +385,6 @@ public class LKW_Category_car_list_page {
 
     SelenideElement lampDataValue(String value) {return $x("//div[@class='lampenart-filter__slider']//label[@data-value='"+value+"']");}
 
+    ElementsCollection visibleFilterBrands() {return $$x("//ul[@class='no-margin']//label");}
+
 }

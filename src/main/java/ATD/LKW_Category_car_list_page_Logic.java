@@ -924,6 +924,21 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
+    @Step("select brand in brands block. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectBrandInBlock(String idOfBrand) {
+        brandsFilterBlock().shouldBe(visible);
+        String articleOfFirstBrand = visibleFilterBrands().get(0).getAttribute("for");
+        while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
+            forwardLinkAtBrandsFilter().click();
+            visibleFilterBrands().get(0).shouldNotHave(attribute("for", articleOfFirstBrand));
+        }
+        brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
+        appearsOfLoader();
+        return this;
+    }
+
+
+
     @Step("Check presence top products block. LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkPresenceTopProductsBlock() {
         topProductsBlock().shouldBe(visible);

@@ -1,4 +1,4 @@
-package ATD.GrayButton.QC_1014_OutOfStockProducts.QC_3355_ProductDisableFunctionalityInAWS;
+package ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS;
 
 import ATD.Category_car_list_page_Logic;
 import ATD.Main_page_Logic;
@@ -21,10 +21,10 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_3351 {
 
-    private DataBase db = new DataBase("ATD");
-    private Product_page_Logic productPageLogic = new Product_page_Logic();
-    private Search_page_Logic searchPageLogic = new Search_page_Logic();
-    private Category_car_list_page_Logic categoryCarListPageLogic = new Category_car_list_page_Logic();
+    private final DataBase db = new DataBase("ATD");
+    private final Product_page_Logic productPageLogic = new Product_page_Logic();
+    private final Search_page_Logic searchPageLogic = new Search_page_Logic();
+    private final Category_car_list_page_Logic categoryCarListPageLogic = new Category_car_list_page_Logic();
     private String productID;
 
     @BeforeClass

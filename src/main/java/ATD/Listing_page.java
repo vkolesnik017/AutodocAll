@@ -726,8 +726,12 @@ public class Listing_page {
         return $$x("//*[@class='add_info']/div[2]");
     }
 
-    ElementsCollection redButtons() {
+    ElementsCollection redButtonsAddToBasket() {
         return $$x("//*[@class='button ']");
+    }
+
+    SelenideElement addToBasketBtnForSpecificItem(String productID) {
+        return $x("//div[@id='" + productID + "']/a[contains(@onclick,('AddToCart'))]");
     }
 
     public ElementsCollection vorderachseAttributeInTileMode() {

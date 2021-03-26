@@ -353,16 +353,6 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
-    @Step("add Product to WishList with selected car. Search_page")
-    public Search_page_Logic addedProductToWishListWithSelectedCar(int positionOfProduct) {
-        for (int i = 0; i < positionOfProduct; i++) {
-            btnAddedProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
-            btnAddedProductToWishList().get(i).shouldBe(visible).click();
-            addedProductToWishList().get(i).shouldBe(exist);
-        }
-        return this;
-    }
-
     @Step("add active Product to WishList with selected car. Search_page")
     public Search_page_Logic addedActiveProductToWishListWithSelectedCar(int positionOfProduct) {
         for (int i = 0; i < positionOfProduct; i++) {
@@ -631,7 +621,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("presence of visible parent categories. Search_page")
     public Search_page_Logic presenceOfVisibleParentCategories() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i <  visibleParentCategories().size(); i++) {
             visibleParentCategories().get(i).shouldBe(visible);
         }
         return this;
@@ -851,6 +841,12 @@ public class Search_page_Logic extends Search_page {
     }
 
     @Step(": for Listing_page")
+    public Search_page_Logic checkPresenceArticleNum(String expectedArtNum) {
+        new Listing_page_Logic().checkPresenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step(": for Listing_page")
     public Search_page_Logic checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
         new Listing_page_Logic().checkPresenceGrayBtnAtExpectedProduct(idProduct);
         return this;
@@ -859,6 +855,12 @@ public class Search_page_Logic extends Search_page {
     @Step(": for Listing_page")
     public Search_page_Logic checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
         new Listing_page_Logic().checkAbsenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkPresenceAddToCartBtnForSpecificItem(String productID) {
+        new Listing_page_Logic().checkPresenceAddToCartBtnForSpecificItem(productID);
         return this;
     }
 }

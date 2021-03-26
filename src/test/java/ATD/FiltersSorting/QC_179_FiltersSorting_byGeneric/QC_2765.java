@@ -57,7 +57,7 @@ public class QC_2765 {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list43,lkw_search17");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search17");
     }
 
     @Test(dataProvider = "routesLKW")
@@ -68,6 +68,23 @@ public class QC_2765 {
         openPage(route);
         carListPage.selectBrandInBlock("11091");
         new LKW_Category_car_list_page_Logic().selectTruckInSelector("2242", "8959", "1012748");
+        carListPage.checkResponseOfServer(200);
+    }
+
+    @DataProvider(name = "routesLKWCar", parallel = true)
+    Object[] dataProviderLKWCar() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list43");
+    }
+
+    @Test(dataProvider = "routesLKWCar")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test check lack of 5xx after reselecting vehicle with selected filter ")
+    public void testCheckLackOf5xxAfterReselectingVehicleWithSelectedFilterLKWCar(String route) throws IOException {
+        openPage(route);
+        new LKW_Category_car_list_page_Logic()
+                .selectBrandInBlock("11091")
+                .selectTruckInSelector("2242", "8959", "1012748");
         carListPage.checkResponseOfServer(200);
     }
 
