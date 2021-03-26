@@ -52,8 +52,10 @@
             <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3435"/>
             <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3436"/>
             <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3437"/>
+            <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3438"/>
             <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3439"/>
             <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3440"/>
+            <class name="ATD.Characteristics.QC_3432_PresencePlatePricePerPieceOrSet.QC_3441"/>
         </classes>
     </test>
 

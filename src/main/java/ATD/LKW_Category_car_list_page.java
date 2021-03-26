@@ -157,10 +157,6 @@ public class LKW_Category_car_list_page {
         return $$x("(//div[@class='top-small-products__title'])[" + position + "]/following-sibling::div//div[@class='top-small-products-items__item']");
     }
 
-    SelenideElement infoPriceForSetFromtopProduct() { return $x("//div[contains(@class,'slick-active')]/div//p[text()='(Preis pro Satz)']");}
-
-    SelenideElement infoPriceForPieceFromtopProduct() { return $x("//div[contains(@class,'slick-active')]/div//p[text()='(Artikelpreis)']");}
-
     SelenideElement topProductsBlock() { return $x("//div[@class='top-small-products']");}
 
     ElementsCollection titleOfAnalogBlock() {

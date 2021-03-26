@@ -2,6 +2,7 @@ package ATD;
 
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -952,12 +953,8 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     }
 
     @Step("checks presence element (Price per Set or Piece) in top products block. LKW_Category_car_list_page")
-    public LKW_Category_car_list_page_Logic checkPresenceElementPricePerSetOrPiece(String setOrPiece) {
-        if (setOrPiece.equals("set")) {
-            infoPriceForSetFromtopProduct().scrollIntoView("{block: \"center\"}").shouldBe(visible);
-        }else if (setOrPiece.equals("piece")) {
-            infoPriceForPieceFromtopProduct().scrollIntoView("{block: \"center\"}").shouldBe(visible);
-        }
+    public LKW_Category_car_list_page_Logic checkPresenceElementPricePerSetOrPiece(SelenideElement setOrPieceElement) {
+        setOrPieceElement.scrollIntoView("{block: \"center\"}").shouldBe(visible);
         return this;
     }
 
