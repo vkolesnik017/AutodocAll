@@ -119,11 +119,12 @@
 
     <test name="QC_2336_BlackList">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_2336_BlackList.QC_2340"/>
             <class name="ATD.Orders_AWS_Delivery.QC_2336_BlackList.QC_2338"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_2336_BlackList.QC_2339"/>
             <class name="ATD.Orders_AWS_Delivery.QC_2336_BlackList.QC_2355"/>
             <class name="ATD.Orders_AWS_Delivery.QC_2336_BlackList.QC_2358"/>
             <class name="ATD.Orders_AWS_Delivery.QC_2336_BlackList.QC_2359"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_2336_BlackList.QC_2340"/>
         </classes>
     </test>
 

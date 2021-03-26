@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_1880 {
 
     private String mail = "qc_1880_autotest@mailinator.com", prodID;
-    private Product_page_Logic product_page_logic = new Product_page_Logic();
+    private final Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass
     void setUp() {
