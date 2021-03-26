@@ -263,7 +263,7 @@ public class Search_page_Logic extends Search_page {
     @Step("added products to basket .Search_page")
     public Search_page_Logic addedProductsToBasket(int countOfAddedProducts) {
         for (int i = 0; i < countOfAddedProducts; i++) {
-            activeBtnAddProductToBasket().get(i).click();
+            activeBtnAddProductToBasket().get(i).scrollTo().click();
             basketDropMenu().shouldBe(visible);
             basketDropMenu().should(disappear);
             if (closeAnotherPartsOfCarPopUp().isDisplayed()) {
