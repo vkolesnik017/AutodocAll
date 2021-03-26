@@ -23,9 +23,9 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1053 {
 
-    private Listing_page_Logic listing_page = new Listing_page_Logic();
-    private Cart_page_Logic cart_page_logic = new Cart_page_Logic();
-    private CartAllData_page cartAllDataPage = new CartAllData_page();
+    private final Listing_page_Logic listing_page = new Listing_page_Logic();
+    private final Cart_page_Logic cart_page_logic = new Cart_page_Logic();
+    private final CartAllData_page cartAllDataPage = new CartAllData_page();
 
     @BeforeClass
     void setUp() {
@@ -55,7 +55,7 @@ public class QC_1053 {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .uncoverPriceInHead().click();
+                .btnOpenUpperBlockWithSummary().click();
         cartAllDataPage.pfandPriceInHead().shouldHave(exactText(pfandPrice));
         cartAllDataPage.pfandPriceInProductBlock().shouldHave(exactText(pfandPrice));
         cartAllDataPage.pfandPriceInTotalPriceBlock().shouldHave(exactText(pfandPrice));
