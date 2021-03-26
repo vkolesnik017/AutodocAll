@@ -111,7 +111,7 @@ public class Cart_page_Logic extends Cart_page {
             String expectedCurrency = new DataBase("ATD").getCurrency(shop);
             getCurrencyAndVerify(priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
             getCurrencyAndVerify(priceWithDiscount(), "priceWithDiscount", shop, expectedCurrency);
-            getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);
+            getCurrencyAndVerify(sunDiscount(), "discount", shop, expectedCurrency);
         }
         return this;
     }
@@ -228,7 +228,7 @@ public class Cart_page_Logic extends Cart_page {
     public Cart_page_Logic checkAbsenceOfQuantityCharacteristicInProductDescriptionBlock(List<String> idOfOrder) {
         for (int i = 0; i < idOfOrder.size(); i++) {
             btnMoreInfoOfProduct(idOfOrder.get(i)).shouldBe(visible).click();
-            moreInfoBlock().get(i).shouldBe(visible);
+            collectionMoreInfoBlockInProduct().get(i).shouldBe(visible);
             for (int j = 0; j < characteristicListOfProduct(idOfOrder.get(i)).size(); j++) {
                 characteristicListOfProduct(idOfOrder.get(i)).get(j).shouldNotHave(exactText("Menge"));
             }
@@ -256,8 +256,8 @@ public class Cart_page_Logic extends Cart_page {
     public List<String> getIdAddedProductsToList() {
         listOfAddedProductsBlock().shouldBe(visible);
         List<String> idOfAddedProducts = new ArrayList<>();
-        for (int i = 1; i < listOfAddedProducts().size(); i++) {
-            idOfAddedProducts.add(listOfAddedProducts().get(i).getAttribute("data-article_id"));
+        for (int i = 1; i < collectionListOfAddedProducts().size(); i++) {
+            idOfAddedProducts.add(collectionListOfAddedProducts().get(i).getAttribute("data-article_id"));
         }
 
         return idOfAddedProducts;
@@ -342,11 +342,11 @@ public class Cart_page_Logic extends Cart_page {
     @Step("remove all products from basket. Cart_page")
     public Cart_page_Logic removeAllProductsFromBasket() {
         int countOfProduct = 0;
-        while (btnRemoveProduct().get(0).isDisplayed()) {
-            countOfProduct = btnRemoveProduct().size();
-            btnRemoveProduct().get(0).click();
+        while (collectionBtnRemoveProduct().get(0).isDisplayed()) {
+            countOfProduct = collectionBtnRemoveProduct().size();
+            collectionBtnRemoveProduct().get(0).click();
             confirmationDeleteGoodsBtn().click();
-            btnRemoveProduct().shouldHaveSize(countOfProduct - 1);
+            collectionBtnRemoveProduct().shouldHaveSize(countOfProduct - 1);
         }
         closeBtnPopupOfEmptyBasket().shouldBe(visible).click();
         return this;
