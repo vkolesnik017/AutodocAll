@@ -35,7 +35,7 @@ public class QC_1032 {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the block of passenger cars from customer orders on the Garage page in PR")
-    public void testBlockPassengerCarsFromCustomerOrdersOnGaragePageInPR(String route) throws SQLException {
+    public void testBlockPassengerCarsFromCustomerOrdersOnGaragePageInPR(String route) {
         String mail = CommonMethods.mailinatorMailRandom("1032");
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
