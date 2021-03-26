@@ -297,6 +297,12 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Check absence gray button on the page. Product_page")
+    public Product_page_Logic checkAbsenceGrayBtn() {
+        grayBtn().shouldNotBe(visible);
+        return this;
+    }
+
     @Step("presence Refurbished Characteristic on product page. Product_page")
     public Product_page_Logic presenceRefurbishedCharacteristic(String expectedCharacteristic) {
         characteristicBlock().shouldBe(visible);

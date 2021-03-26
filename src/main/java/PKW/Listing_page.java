@@ -9,6 +9,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Listing_page {
 
+    SelenideElement addToCartBtnForSpecificItem(String productID) {
+        return $x("//div[@id='" + productID + "']/a[contains(@onclick,('AddToCart'))]");
+    }
+
     SelenideElement searchPageTitle() {
         return $x("//div[@class='search-page__title-wrapper']");
     }
@@ -41,5 +45,7 @@ public class Listing_page {
         return $x("//span[contains(@class,'rc')][contains(text(),'" + nameCharacteristic + "')]");
     }
 
-    SelenideElement firstProductTitleOnListing() { return $x("(//div[@class='description']//a)[1]"); }
+    SelenideElement firstProductTitleOnListing() {
+        return $x("(//div[@class='description']//a)[1]");
+    }
 }

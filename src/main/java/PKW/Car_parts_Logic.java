@@ -152,5 +152,10 @@ public class Car_parts_Logic extends Car_parts {
         return this;
     }
 
+    @Step(": for Car_parts")
+    public Car_parts_Logic checkPresenceAddToCartBtnForSpecificItem(String productID) {
+        new Listing_page_Logic().checkPresenceAddToCartBtnForSpecificItem(productID);
+        return this;
+    }
 
 }
