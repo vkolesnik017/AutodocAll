@@ -9,8 +9,12 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAccount_page {
 
+    // Locators for cart-page-head cart-page-head--steps block
+    SelenideElement btnReturnToCart() {
+        return $x("//div[@class='cart-page-steps']//li[@class='complete link first_step']/a");
+    }
 
-    // locators in registration form
+    // locators for registerForm (registration)
     public SelenideElement registrationFormEmailInput() {
         return $(By.xpath("//form[@class='registerForm']//input[@name='Email']"));
     }
@@ -27,7 +31,31 @@ public class CartAccount_page {
         return $(By.cssSelector("#privacy_policy1>a"));
     }
 
-    // locators in login form
+    public SelenideElement errorPopUpForRegisteringAndRecovery() {
+        return $x("//div[@class='cart-popup js-error-popup ']");
+    }
+
+    SelenideElement passwordRecoveryLinc() {
+        return $x("//a[@class='reg versegen']");
+    }
+
+    SelenideElement passwordRecoveryPopUp() {
+        return $x("//div[@class='recovery-popup cart-popup']");
+    }
+
+    SelenideElement sendingEmailBtnForPasswordChange() {
+        return $x("//div[@class='recovery-popup cart-popup']//a[@class='submit color']");
+    }
+
+    SelenideElement infoTextOfCheckBockAtRegForm() {
+        return $x("//label[@for='isSubscribe']");
+    }
+
+    SelenideElement infoTextUnderCheckBockAtRegForm() {
+        return $x("//div[@class='subscribe-text']");
+    }
+
+    // locators for loginForm (login)
     public SelenideElement emailFieldInLoginForm() {
         return $(byXpath("//*[@class='loginForm']//*[@id='form_Email']"));
     }
@@ -44,6 +72,15 @@ public class CartAccount_page {
         return $(byCssSelector(".login"));
     }
 
+    SelenideElement errorPopUpWhenLogin() {
+        return $x("//div[@class='cart-popup  ']");
+    }
+
+    public SelenideElement closeErrorPopUpBtn() {
+        return $x("//a[@class='color close_popup']");
+    }
+
+    // Locators for login with Facebook
     SelenideElement facebookLoginBtn() {
         return $x("//form[@class='loginForm']//a[@class='social-auth__link']//img");
     }
@@ -75,41 +112,5 @@ public class CartAccount_page {
 
     public SelenideElement closePopupMessageSentForChangePassword() {
         return $(byXpath("//*[@class='cart-popup']//*[contains(text(),'Um Ihr Passwort zu ändern')]/../..//a"));
-    }
-
-    SelenideElement errorPopUpWhenLogin() {
-        return $x("//div[@class='cart-popup  ']");
-    }
-
-    public SelenideElement errorPopUpForRegisteringAndRecovery() {
-        return $x("//div[@class='cart-popup js-error-popup ']");
-    }
-
-    public SelenideElement closeErrorPopUpBtn() {
-        return $x("//a[@class='color close_popup']");
-    }
-
-    SelenideElement passwordRecoveryLinc() {
-        return $x("//a[@class='reg versegen']");
-    }
-
-    SelenideElement passwordRecoveryPopUp() {
-        return $x("//div[@class='recovery-popup cart-popup']");
-    }
-
-    SelenideElement sendingEmailBtnForPasswordChange() {
-        return $x("//div[@class='recovery-popup cart-popup']//a[@class='submit color']");
-    }
-
-    SelenideElement btnReturnToCart() {
-        return $x("//div[@class='cart-page-steps']//li[@class='complete link first_step']/a");
-    }
-
-    SelenideElement infoTextOfCheckBockAtRegForm() {
-        return $x("//label[@for='isSubscribe']");
-    }
-
-    SelenideElement infoTextUnderCheckBockAtRegForm() {
-        return $x("//div[@class='subscribe-text']");
     }
 }

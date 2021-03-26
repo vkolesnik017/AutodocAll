@@ -24,9 +24,9 @@ public class QC_2912 {
     private Float  deliveryPrice, allDataDeliveryPrice;
     private DataBase db = new DataBase("ATD");
     private String mail = "qc_2912_plusProAutotest@mailinator.com";
-    private CartAllData_page_Logic cartAllDataPageLogic = new CartAllData_page_Logic();
-    private Delivery_prices_aws deliveryPricesAws = new Delivery_prices_aws();
-    private Order_aws orderAws = new Order_aws();
+    private final CartAllData_page_Logic cartAllDataPageLogic = new CartAllData_page_Logic();
+    private final Delivery_prices_aws deliveryPricesAws = new Delivery_prices_aws();
+    private final Order_aws orderAws = new Order_aws();
 
 
     @BeforeClass
@@ -60,7 +60,7 @@ public class QC_2912 {
                 .nextBtnClick();
         cartAllDataPageLogic.clickSafeOrderCheckbox()
                 .checkThatSafeOrderCheckboxIsNotSelected();
-        cartAllDataPageLogic.securityDeliveryPrice().waitUntil(Condition.not(Condition.visible), 5000);
+        cartAllDataPageLogic.securityDeliveryPriceSO().waitUntil(Condition.not(Condition.visible), 5000);
         allDataDeliveryPrice = cartAllDataPageLogic.getRegularDeliveryPrice();
         Assert.assertEquals(deliveryPrice, allDataDeliveryPrice);
         cartAllDataPageLogic.nextBtnClick();
