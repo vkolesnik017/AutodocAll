@@ -1593,5 +1593,12 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check presence products list block and product. Listing_page")
+    public Listing_page_Logic checkPresenceProductsListBlock() {
+        listProducts().shouldBe(visible);
+        productTitleInListMode().shouldHave(sizeGreaterThan(1));
+        return this;
+    }
+
 
 }
