@@ -1584,4 +1584,11 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check presence title list. Listing_page")
+    public Listing_page_Logic checkPresenceTitleList() {
+        titleOfAdditionalListingForTecDoc().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+
 }
