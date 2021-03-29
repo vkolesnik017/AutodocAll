@@ -2,7 +2,6 @@ package PKW;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -19,6 +18,26 @@ public class Listing_page {
 
     public SelenideElement preloader() {
         return $x("//body/div[@class='preloader_wrapper']");
+    }
+
+    SelenideElement listProductBlock() {
+        return $x("//div[@class='listing_items']");
+    }
+
+    ElementsCollection activeBtnAddToBasket() {
+        return $$x("//div[@class='basket_btn button active_red_button ']");
+    }
+
+    ElementsCollection titleOfProductIOnListing() {
+        return $$x("//div[@class='prod_link']/*[self::a or self::span]");
+    }
+
+    ElementsCollection priceOfProduct() {
+        return $$x("//div[@class='price']");
+    }
+
+    ElementsCollection btnAddToBasketWithBrand(String brand) {
+        return $$x("//div[@class='basket_btn button active_red_button '][@data-brand-name='" + brand + "']");
     }
 
     SelenideElement moreBtnInBrandBloc() {
