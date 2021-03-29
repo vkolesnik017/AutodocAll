@@ -97,4 +97,8 @@ public class Category_name_page {
     SelenideElement markeFieldInSelector() {return $(byId("form_maker_id"));}
 
     ElementsCollection  titleOfTopProducts() {return $$(".product-list__item__title span");}
+
+   public SelenideElement infoPriceForSetFromTopProduct() { return $x("//div[contains(@class,'slick-active')]//p[text()='(Preis pro Satz)']");}
+
+    public SelenideElement infoPriceForPieceFromTopProduct() { return $x("//div[contains(@class,'slick-active')]//p[text()='(Artikelpreis)']");}
 }

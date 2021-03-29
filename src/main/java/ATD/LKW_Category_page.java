@@ -187,4 +187,8 @@ class LKW_Category_page {
     ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block js-products-item ']/div[1]");}
 
     ElementsCollection urlOfTopProduct() {return $$x("//div[@class='rec_products_image']/a");}
+
+   public SelenideElement infoPriceForSetFromTopProduct() { return $x("//div[@class='recommended_products']/div//p[text()='(Preis pro Satz)']");}
+
+    public SelenideElement infoPriceForPieceFromTopProduct() { return $x("//div[@class='recommended_products']/div//p[text()='(Artikelpreis)']");}
 }

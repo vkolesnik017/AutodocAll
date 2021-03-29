@@ -21,14 +21,16 @@ public class Main_page {
         return $x("//a[@class='show_cart ga-click']");
     }
 
-    private By tooltipsToSearch = byCssSelector(".autocomplete-suggestions>div");
+    private By tooltipOfSearch = byCssSelector(".autocomplete-suggestions");
 
-    public SelenideElement tooltipToSearch() {
-        return $(tooltipsToSearch);
+    private By tooltipsOfSearchElement = byCssSelector(".autocomplete-suggestions>div");
+
+    public SelenideElement tooltipOfSearch() {
+        return $(tooltipOfSearch);
     }
 
-    public ElementsCollection tooltipsToSearch() {
-        return $$(tooltipsToSearch);
+    public ElementsCollection tooltipOfElementsSearch() {
+        return $$(tooltipsOfSearchElement);
     }
 
     SelenideElement loginBtnInHeader() {

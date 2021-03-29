@@ -2,6 +2,7 @@ package ATD;
 
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -934,6 +935,26 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
+        return this;
+    }
+
+
+
+    @Step("Check presence top products block. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkPresenceTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step(":from LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic displaySoft404Form() {
+        new Category_car_list_page_Logic().displaySoft404Form();
+        return this;
+    }
+
+    @Step("checks presence element (Price per Set or Piece) in top products block. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkPresenceElementPricePerSetOrPiece(SelenideElement setOrPieceElement) {
+        setOrPieceElement.scrollIntoView("{block: \"center\"}").shouldBe(visible);
         return this;
     }
 

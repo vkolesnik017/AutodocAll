@@ -27,6 +27,7 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
 
     @Step("Getting order number. Payment_handler_page")
     public String getOrderNumber() {
+        closePopupAfterOrder();
         return orderNumber().getText();
     }
 
@@ -102,6 +103,7 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
 
     @Step(": for Payment_handler_page")
     public Profile_plus_page_Logic profilePlusBtnClickInHeader() {
+        closePopupAfterOrder();
         new Main_page_Logic().profilePlusBtnClickInHeader();
         return page(Profile_plus_page_Logic.class);
     }
