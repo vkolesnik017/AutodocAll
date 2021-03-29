@@ -64,10 +64,10 @@ public class QC_3365 {
         new ProductCard_aws(productID).openProductCardPageAndLogin()
                 .removeCountryFromBlockOfDisabledProductsBySkin();
         openPage(dataBaseATD.getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list73"));
-        new Category_car_list_page_Logic().checkPresenceArticleNum("50-307044-50")
+        new Category_car_list_page_Logic().checkPresenceSpecificArticleNumOnListing("50-307044-50")
                 .checkPresenceAddToCartBtnForSpecificItem(productID);
         openPage(dataBaseATD.getFullRouteByRouteAndSubroute("prod", "DE", "main", "search55"));
-        new Search_page_Logic().checkPresenceArticleNum("50-307044-50")
+        new Search_page_Logic().checkPresenceSpecificArticleNumOnListing("50-307044-50")
                 .checkPresenceAddToCartBtnForSpecificItem(productID);
         openPage(dataBaseATD.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         productPageLogicATD.checkAbsenceGrayBtnOnPage();

@@ -34,7 +34,7 @@ public class QC_1027 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)  // TODO отключен из за дефекта SHOP-155
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the editing a vehicle on the My garage page in PR")
