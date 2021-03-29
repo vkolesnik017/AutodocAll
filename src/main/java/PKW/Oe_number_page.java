@@ -8,4 +8,5 @@ public class Oe_number_page {
     SelenideElement titlePage() {
         return $x("//h2/span");
     }
+
 }

@@ -200,6 +200,61 @@ public class ProductCard_aws {
         return $x("//td[@class='restrictOrigins restrictOriginsgray']//a[@data-origin='" + shop + "']/span");
     }
 
+    //Locator for table table-condensed products skinRestrictions block
+    SelenideElement addToSkinExceptionField() {
+        return $x("//div[@id='form_resctrictSkin_chzn']//li[@class='search-field']");
+    }
+
+    SelenideElement skinInDropDownException(String skin) {
+        return $x("//ul[@class='chzn-results']//li[text()='" + skin + "']");
+    }
+
+    SelenideElement addToGrayBtnBySkin() {
+        return $x("//button[text()='Добавить в серую кнопку по скину']");
+    }
+
+    SelenideElement btnRemoveFromSitesBySkin() {
+        return $x("//button[text()='Убрать с сайтов по скину']");
+    }
+
+    SelenideElement deleteBtnInSkinFromGray() {
+        return $x("//td[@class='restrictSkins restrictSkinsgray']//span");
+    }
+
+    SelenideElement deleteBtnInSkinFromException() {
+        return $x("//td[@class='restrictSkins restrictSkinsadd']//span");
+    }
+
+
+    @Step("Removes product from sites around the country {expectedSkin}. ProductCard_aws")
+    public ProductCard_aws removeGoodsFromSitesAcrossTheSkin(String expectedSkin) {
+        addToSkinExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
+        skinInDropDownException(expectedSkin).shouldBe(visible).click();
+        btnRemoveFromSitesBySkin().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Removes the country from the block of disabled products on the site, by country. ProductCard_aws")
+    public ProductCard_aws removeCountryFromBlockOfDisabledProductsBySkin() {
+        addToSkinExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        deleteBtnInSkinFromException().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Add to the gray button by skin {expectedSkin}. ProductCard_aws")
+    public ProductCard_aws addToGreyBtnBySkinMethod(String expectedSkin) {
+        addToSkinExceptionField() .scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
+        skinInDropDownException(expectedSkin).shouldBe(visible).click();
+        addToGrayBtnBySkin().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Removes the skin from the block of disabled products on the site, by gray button. ProductCard_aws")
+    public ProductCard_aws removeSkinFromBlockOfDisabledProductsByGrayBtn() {
+        addToSkinExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        deleteBtnInSkinFromGray().shouldBe(visible).click();
+        return this;
+    }
 
     @Step("Add to the gray button by country {expectedCountry}. ProductCard_aws")
     public ProductCard_aws addToGreyBtnByCountryMethod(String expectedCountry) {
@@ -217,14 +272,14 @@ public class ProductCard_aws {
         return this;
     }
 
-    @Step("Removes the country from the block of disabled products on the site, by country. ProductCard_aws")
+    @Step("Removes the country {expectedCountry} from the block of disabled products on the site, by country. ProductCard_aws")
     public ProductCard_aws removeCountryFromBlockOfDisabledProductsByCountry(String expectedCountry) {
         addToCountryExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         deleteBtnInCountryFromException(expectedCountry).shouldBe(visible).click();
         return this;
     }
 
-    @Step("Removes the country from the block of disabled products on the site, by gray button. ProductCard_aws")
+    @Step("Removes the country {expectedCountry} from the block of disabled products on the site, by gray button. ProductCard_aws")
     public ProductCard_aws removeCountryFromBlockOfDisabledProductsByGrayBtn(String expectedCountry) {
         addToCountryExceptionField().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         deleteBtnInCountryFromGray(expectedCountry).shouldBe(visible).click();

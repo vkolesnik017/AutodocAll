@@ -39,6 +39,8 @@ public class QC_1845 {
         new Main_page_Logic()
                 .loginAndTransitionToProfilePlusPage(email)
                 .goToMyVehiclesBlock()
+                .openPopUpMyGarageInHeader()
+                .clearMyGarageListInPopUp()
                 .openSelectorBlock()
                 .selectVehicleCarInSelector("AUDI", "433", "1040")
                 .checkCountOfAddedVehicleInMyGarageBlock(1)

@@ -1,20 +1,20 @@
-package PKW.Product_Page.QC_3031_ProductPage_Car;
+package PKW.Listings.QC_429_Listing_OEN;
 
 import PKW.Product_page_Logic;
 import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1868 {
+
+public class QC_431 {
 
     @BeforeClass
     void setUp() {
@@ -23,15 +23,16 @@ public class QC_1868 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts2");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product15");
     }
 
-    @Test(dataProvider = "routes", enabled = false)  //TODO Waiting for a reply from a reporter
-    @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Checking the displaying to the OEN numbers with the selected car in the selector")
-    public void testCheckingTheDisplayingOenNumber(String route) {
+    @Test(dataProvider = "routes")
+    @Flaky
+    @Owner(value = "Chebanenko")
+    @Description(value = "Test checks the redirection from Product page to the OEN listing after clicking on the OEN number")
+    public void testChecksRedirectionFromProductPageToOenListing(String route) {
         openPage(route);
-        new Product_page_Logic().checkingTheDisplayingTheOENNumbers();
+        new Product_page_Logic().closeBtnOFPopupReviewIfYes().checkingTheTransitionToTheOENListingPageAfterClickingTheOenTab();
     }
 
     @AfterMethod

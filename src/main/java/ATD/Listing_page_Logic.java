@@ -290,6 +290,12 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check presence expected article num {expectedArtNum}. Listing_page")
+    public Listing_page_Logic checkPresenceSpecificArticleNumOnListing(String expectedArtNum) {
+        specificArticleNumOnListing(expectedArtNum).scrollIntoView(("{block: \"center\"}")).shouldBe(visible);
+        return this;
+    }
+
     @Step("Method checks product attribute on listing in tile mode. Listing_page")
     public Listing_page_Logic checkProductAttributeOnListingInTileMode2(String attributeSelectedInSideFilter, int productWithFiler) {
         ElementsCollection characS = $$x("//*[contains(text(),'Einbauseite:')]/ancestor :: li[1]/span[2]");
@@ -365,7 +371,7 @@ public class Listing_page_Logic extends Listing_page {
                 System.out.println("Products are sorted by price in increasing order");
             }
         } else {
-            for (int i = redButtons().size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
+            for (int i = redButtonsAddToBasket().size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
                 if (price.get(i) <= price.get(i + 1)) {
                     System.out.println(price.get(i));
                 } else {
@@ -404,7 +410,7 @@ public class Listing_page_Logic extends Listing_page {
                 }
             }
         } else {
-            for (int i = redButtons().size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
+            for (int i = redButtonsAddToBasket().size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
                 if (price.get(i) <= price.get(i + 1)) {
                     System.out.println(price.get(i));
                 } else {
@@ -1550,6 +1556,12 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Checks presence add to cart button for a specific item {productID}. Listing_page")
+    public Listing_page_Logic checkPresenceAddToCartBtnForSpecificItem(String productID) {
+        addToBasketBtnForSpecificItem(productID).scrollIntoView(("{block: \"center\"}")).shouldBe(visible);
+        return this;
+    }
+
     @Step("checks for the presence of at least one element (Price per Set or Piece) on listing .Listing_page")
     public Listing_page_Logic checkPresenceLeastOneElementPricePerSetOrPiece(String setOrPiece) {
         if (setOrPiece.equals("set")) {
@@ -1571,5 +1583,12 @@ public class Listing_page_Logic extends Listing_page {
         new Listing_accessories_page_Logic().checkingChangeDisplayProductsAsListAndGrid();
         return this;
     }
+
+    @Step("Check presence title list. Listing_page")
+    public Listing_page_Logic checkPresenceTitleList() {
+        titleOfAdditionalListingForTecDoc().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
 
 }

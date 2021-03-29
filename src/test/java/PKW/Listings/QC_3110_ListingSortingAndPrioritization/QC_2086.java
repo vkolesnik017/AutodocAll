@@ -1,20 +1,20 @@
-package PKW.Product_Page.QC_3031_ProductPage_Car;
+package PKW.Listings.QC_3110_ListingSortingAndPrioritization;
 
-import PKW.Product_page_Logic;
+import PKW.Oe_number_page_Logic;
 import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1868 {
+public class QC_2086 {
+    private Oe_number_page_Logic oenListing = new Oe_number_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -23,20 +23,22 @@ public class QC_1868 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts2");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "oe_number");
     }
 
-    @Test(dataProvider = "routes", enabled = false)  //TODO Waiting for a reply from a reporter
-    @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Checking the displaying to the OEN numbers with the selected car in the selector")
-    public void testCheckingTheDisplayingOenNumber(String route) {
+    @Test(dataProvider = "routes")
+    @Flaky
+    @Owner(value = "Chebanenko")
+    @Description(value = "Test checks Ridex product prioritization in OEN listing")
+    public void testCheckRidexProductPrioritizationInOENListing(String route) {
         openPage(route);
-        new Product_page_Logic().checkingTheDisplayingTheOENNumbers();
+        int activeRidexProducts = oenListing.getSizeOfActiveProductsWithBrand("RIDEX");
+        oenListing.checkListingBrand(activeRidexProducts, "RIDEX");
     }
+
 
     @AfterMethod
     public void close() {
         closeWebDriver();
     }
 }
-
