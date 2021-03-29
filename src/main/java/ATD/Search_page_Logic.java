@@ -841,8 +841,8 @@ public class Search_page_Logic extends Search_page {
     }
 
     @Step(": for Listing_page")
-    public Search_page_Logic checkPresenceArticleNum(String expectedArtNum) {
-        new Listing_page_Logic().checkPresenceArticleNum(expectedArtNum);
+    public Search_page_Logic checkPresenceSpecificArticleNumOnListing(String expectedArtNum) {
+        new Listing_page_Logic().checkPresenceSpecificArticleNumOnListing(expectedArtNum);
         return this;
     }
 

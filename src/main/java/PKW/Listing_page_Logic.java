@@ -3,7 +3,9 @@ package PKW;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.or;
@@ -94,7 +96,7 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Goes to the product page and checks that the name of the characteristic 'Zustand' feature is as expected {expectedCharacteristicName}. Listing_page")
-    public Listing_page_Logic goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(String expectedArticleNum,String expectedCharacteristicName, String nameCharacteristic) {
+    public Listing_page_Logic goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(String expectedArticleNum, String expectedCharacteristicName, String nameCharacteristic) {
         for (int i = 0; i < productArticlesInListing().size(); i++) {
             String articleNum = productArticlesInListing().get(i).getText().replaceAll("Art. Nr.: ", "");
             if (expectedArticleNum.equals(articleNum)) {
@@ -106,5 +108,36 @@ public class Listing_page_Logic extends Listing_page {
             }
         }
         return this;
+    }
+
+    @Step("Check additional listing.Listing_page")
+    public Listing_page_Logic checkListingBrand(int sizeOfCheckingBrand, String brand) {
+        List<Double> priceRidex = new ArrayList<>();
+        List<Double> priceOfAnotherBrands = new ArrayList<>();
+        for (int i = 0; i < sizeOfCheckingBrand; i++) {
+            titleOfProductIOnListing().get(i).shouldHave(text(brand));
+            priceRidex.add(Double.parseDouble(priceOfProduct().get(i).getText().replaceAll("[^0-9,]", "").replace(",", ".")));
+        }
+        for (int i = sizeOfCheckingBrand; i < activeBtnAddToBasket().size(); i++) {
+            titleOfProductIOnListing().get(i).shouldNotHave(text(brand));
+            priceOfAnotherBrands.add(Double.parseDouble(priceOfProduct().get(i).getText().replaceAll("[^0-9,]", "").replace(",", ".")));
+        }
+        Assert.assertEquals(priceRidex, getExpectedSortedPrices(priceRidex));
+        Assert.assertEquals(priceOfAnotherBrands, getExpectedSortedPrices(priceOfAnotherBrands));
+        return this;
+    }
+
+    @Step("Get Expected sorted prices.Listing_page")
+    public List<Double> getExpectedSortedPrices(List<Double> pricesList) {
+        List<Double> expectedSortedPrices = new ArrayList<>(pricesList);
+        Collections.sort(expectedSortedPrices);
+        return expectedSortedPrices;
+    }
+
+    @Step("Get size of active Products with brand.Listing_page")
+    public int getSizeOfActiveProductsWithBrand(String brand) {
+        listProductBlock().shouldBe(visible);
+        int countOfActiveExactBrand = btnAddToBasketWithBrand(brand).size();
+        return countOfActiveExactBrand;
     }
 }

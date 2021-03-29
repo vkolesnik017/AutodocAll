@@ -196,8 +196,8 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Click tooltip in search by exact text {exactTooltipText}. Main_page")
     public Oe_number_page_Logic clickTooltipInSearchByExactText(String exactTooltipText) {
-        tooltipToSearch().shouldBe(visible);
-        tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
+        tooltipOfSearch().shouldBe(visible);
+        tooltipOfElementsSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
         return page(Oe_number_page_Logic.class);
     }
 
