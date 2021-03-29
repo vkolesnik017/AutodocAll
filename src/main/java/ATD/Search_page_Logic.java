@@ -263,7 +263,7 @@ public class Search_page_Logic extends Search_page {
     @Step("added products to basket .Search_page")
     public Search_page_Logic addedProductsToBasket(int countOfAddedProducts) {
         for (int i = 0; i < countOfAddedProducts; i++) {
-            activeBtnAddProductToBasket().get(i).click();
+            activeBtnAddProductToBasket().get(i).scrollTo().click();
             basketDropMenu().shouldBe(visible);
             basketDropMenu().should(disappear);
             if (closeAnotherPartsOfCarPopUp().isDisplayed()) {
@@ -347,16 +347,6 @@ public class Search_page_Logic extends Search_page {
                 closePopUpSelector().shouldBe(visible).click();
                 popUpSelector().shouldNotBe(visible);
             }
-            btnAddedProductToWishList().get(i).shouldBe(visible).click();
-            addedProductToWishList().get(i).shouldBe(exist);
-        }
-        return this;
-    }
-
-    @Step("add Product to WishList with selected car. Search_page")
-    public Search_page_Logic addedProductToWishListWithSelectedCar(int positionOfProduct) {
-        for (int i = 0; i < positionOfProduct; i++) {
-            btnAddedProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
             btnAddedProductToWishList().get(i).shouldBe(visible).click();
             addedProductToWishList().get(i).shouldBe(exist);
         }
@@ -631,7 +621,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("presence of visible parent categories. Search_page")
     public Search_page_Logic presenceOfVisibleParentCategories() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i <  visibleParentCategories().size(); i++) {
             visibleParentCategories().get(i).shouldBe(visible);
         }
         return this;
@@ -851,6 +841,12 @@ public class Search_page_Logic extends Search_page {
     }
 
     @Step(": for Listing_page")
+    public Search_page_Logic checkPresenceArticleNum(String expectedArtNum) {
+        new Listing_page_Logic().checkPresenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step(": for Listing_page")
     public Search_page_Logic checkPresenceGrayBtnAtExpectedProduct(String idProduct) {
         new Listing_page_Logic().checkPresenceGrayBtnAtExpectedProduct(idProduct);
         return this;
@@ -859,6 +855,12 @@ public class Search_page_Logic extends Search_page {
     @Step(": for Listing_page")
     public Search_page_Logic checkAbsenceGrayBtnAtExpectedProduct(String idProduct) {
         new Listing_page_Logic().checkAbsenceGrayBtnAtExpectedProduct(idProduct);
+        return this;
+    }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkPresenceAddToCartBtnForSpecificItem(String productID) {
+        new Listing_page_Logic().checkPresenceAddToCartBtnForSpecificItem(productID);
         return this;
     }
 }

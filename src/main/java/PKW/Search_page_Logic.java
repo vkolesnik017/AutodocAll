@@ -116,9 +116,15 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
-    @Step(": for Listing_page")
+    @Step(": for Search_page")
     public Search_page_Logic checkAbsenceArticleNum(String expectedArtNum) {
         new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step(": for Search_page")
+    public Search_page_Logic checkPresenceAddToCartBtnForSpecificItem(String productID) {
+        new Listing_page_Logic().checkPresenceAddToCartBtnForSpecificItem(productID);
         return this;
     }
 }

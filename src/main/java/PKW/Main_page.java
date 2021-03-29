@@ -4,8 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page {
@@ -20,6 +19,18 @@ public class Main_page {
 
     public SelenideElement cartIcon() {
         return $x("//a[@class='show_cart ga-click']");
+    }
+
+    private By tooltipOfSearch = byCssSelector(".autocomplete-suggestions");
+
+    private By tooltipsOfSearchElement = byCssSelector(".autocomplete-suggestions>div");
+
+    public SelenideElement tooltipOfSearch() {
+        return $(tooltipOfSearch);
+    }
+
+    public ElementsCollection tooltipOfElementsSearch() {
+        return $$(tooltipsOfSearchElement);
     }
 
     SelenideElement loginBtnInHeader() {

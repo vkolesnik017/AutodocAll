@@ -196,7 +196,7 @@ class Category_car_list_page {
 
     SelenideElement mileageRecommendationIcon() {return $(".recommendation__icon img");}
 
-    ElementsCollection visibleFilterBrands() {return $$x("//*[self::li[contains(@class,'slick-active')] or self::li]//label").filter(visible);}
+    ElementsCollection visibleFilterBrands() {return $$x("//li[contains(@class,'slick-active')]//label").filter(visible);}
 
     ElementsCollection visibleBrandsId() {return $$x("//li[contains(@class,'slick-active')]//label").filter(visible);}
 

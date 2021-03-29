@@ -157,6 +157,8 @@ public class LKW_Category_car_list_page {
         return $$x("(//div[@class='top-small-products__title'])[" + position + "]/following-sibling::div//div[@class='top-small-products-items__item']");
     }
 
+    SelenideElement topProductsBlock() { return $x("//div[@class='top-small-products']");}
+
     ElementsCollection titleOfAnalogBlock() {
         return $$x("//div[@class='top-small-products__title']");
     }
@@ -378,5 +380,7 @@ public class LKW_Category_car_list_page {
     }
 
     SelenideElement lampDataValue(String value) {return $x("//div[@class='lampenart-filter__slider']//label[@data-value='"+value+"']");}
+
+    ElementsCollection visibleFilterBrands() {return $$x("//ul[@class='no-margin']//label");}
 
 }

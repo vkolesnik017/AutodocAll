@@ -43,9 +43,15 @@ public class CartAccount_page_Logic extends CartAccount_page {
 
     @Step("Login with email: {email} and password: {password}. CartAccount_page")
     public CartAddress_page_Logic signIn(String email, String password) {
-        emailFieldInLoginForm().setValue(email);
-        passwordFieldInLoginForm().setValue(password);
-        loginButton().click();
+        emailFieldInLoginForm().shouldBe(visible).setValue(email);
+        passwordFieldInLoginForm().shouldBe(visible).setValue(password);
+        loginButton().shouldBe(visible).click();
+        if (errorPopUpWhenLogin().isDisplayed()) {
+            closeErrorPopUpBtn().shouldBe(visible).click();
+            emailFieldInLoginForm().shouldBe(visible).setValue(email);
+            passwordFieldInLoginForm().shouldBe(visible).setValue(password);
+            loginButton().shouldBe(visible).click();
+        }
         return page(CartAddress_page_Logic.class);
     }
 

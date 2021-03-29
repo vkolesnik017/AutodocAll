@@ -2,12 +2,15 @@ package PKW;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 
 public class Listing_page {
+
+    SelenideElement addToCartBtnForSpecificItem(String productID) {
+        return $x("//div[@id='" + productID + "']/a[contains(@onclick,('AddToCart'))]");
+    }
 
     SelenideElement searchPageTitle() {
         return $x("//div[@class='search-page__title-wrapper']");
@@ -15,6 +18,26 @@ public class Listing_page {
 
     public SelenideElement preloader() {
         return $x("//body/div[@class='preloader_wrapper']");
+    }
+
+    SelenideElement listProductBlock() {
+        return $x("//div[@class='listing_items']");
+    }
+
+    ElementsCollection activeBtnAddToBasket() {
+        return $$x("//div[@class='basket_btn button active_red_button ']");
+    }
+
+    ElementsCollection titleOfProductIOnListing() {
+        return $$x("//div[@class='prod_link']/*[self::a or self::span]");
+    }
+
+    ElementsCollection priceOfProduct() {
+        return $$x("//div[@class='price']");
+    }
+
+    ElementsCollection btnAddToBasketWithBrand(String brand) {
+        return $$x("//div[@class='basket_btn button active_red_button '][@data-brand-name='" + brand + "']");
     }
 
     SelenideElement moreBtnInBrandBloc() {
@@ -41,5 +64,7 @@ public class Listing_page {
         return $x("//span[contains(@class,'rc')][contains(text(),'" + nameCharacteristic + "')]");
     }
 
-    SelenideElement firstProductTitleOnListing() { return $x("(//div[@class='description']//a)[1]"); }
+    SelenideElement firstProductTitleOnListing() {
+        return $x("(//div[@class='description']//a)[1]");
+    }
 }

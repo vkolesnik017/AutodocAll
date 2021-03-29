@@ -157,9 +157,6 @@ public class QC_54 {
         listingPageLogic.checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInListMode());
     }
 
-
-
-
     @AfterMethod
     private void close() {
         closeWebDriver();

@@ -106,10 +106,10 @@ public class QC_2450 {
 
     @DataProvider(name = "routesListBody", parallel = true)
     Object[] dataProviderListBody() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "group_list_body2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "group_list_body2");  // ОТКЛЮЧЁН, ТАК КАК ОТСУТСТВУЮТ ОПАСНЫЕ ТОВАРЫ
     }
 
-    @Test(dataProvider = "routesListBody")
+    @Test(dataProvider = "routesListBody", enabled = false)
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test check displaying and click by Dangerous products block")

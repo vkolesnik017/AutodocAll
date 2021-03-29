@@ -37,9 +37,17 @@ public class QC_2402 {
     public void testChecksRemoveProductsFromWishListAndBasket(String route) {
         openPage(route);
 
-        searchPage.addedProductToWishList(1).addedProductsToBasket(1).goToBasket().clickOnWishListLabel().presenceAndCloseAddProductToWishList()
-                .clickOnWishListLabel().presenceAndRemoveAddedProductToWishList().goToMainPage().goToWishListPage().presenceOfEmptyWishListBlock();
-        System.out.println();
+        searchPage
+                .addedProductToWishList(1)
+                .addedProductsToBasket(1)
+                .goToBasket()
+                .clickOnWishListLabel()
+                .presenceAndCloseAddProductToWishList()
+                .clickOnWishListLabel()
+                .presenceAndRemoveAddedProductToWishList()
+                .goToMainPage()
+                .goToWishListPage()
+                .presenceOfEmptyWishListBlock();
     }
 
     @AfterMethod

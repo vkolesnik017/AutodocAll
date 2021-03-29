@@ -194,6 +194,13 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("Click tooltip in search by exact text {exactTooltipText}. Main_page")
+    public Oe_number_page_Logic clickTooltipInSearchByExactText(String exactTooltipText) {
+        tooltipOfSearch().shouldBe(visible);
+        tooltipOfElementsSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
+        return page(Oe_number_page_Logic.class);
+    }
+
     @Step("Click the Zahlung link in the footer. Main_page")
     public Zahlung_static_page_Logic clickFooterZahlungLink() {
         footerZahlungLink().click();

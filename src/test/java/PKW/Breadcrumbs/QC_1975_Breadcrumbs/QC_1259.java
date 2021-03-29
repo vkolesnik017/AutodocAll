@@ -154,7 +154,7 @@ public class QC_1259 {
         return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
     }
 
-    @Test(dataProvider = "routesCarParts")
+    @Test(dataProvider = "routesCarParts", enabled = false)
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks transition by click on breadCrumbs links")
