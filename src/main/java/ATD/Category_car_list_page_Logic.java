@@ -512,10 +512,12 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         return this;
     }
 
-    @Step("click on product in TecDoc Listing .Category_car_list_page")
+    @Step("click on product in Listing and check presence Of Phrase About Compatibility.Category_car_list_page")
     public Category_car_list_page_Logic selectProductInTecDocListing() {
-        for (int i = 1; i <= productsOnPage().size(); i++) {
-            clickOnProductInTecDocListing(i).presenceOfPhraseAboutCompatibilityProductAndVehicle();
+        for (int i = 0; i < productsOnPage().size(); i++) {
+            /*System.out.println(artNumOfProduct().get(i).getText() + " (index = " + i + ")");*/   // Use when fail
+            imageOfProductTecDocListingBlock().get(i).scrollIntoView("{block: \"center\"}").click();
+           new Product_page_Logic().presenceOfPhraseAboutCompatibilityProductAndVehicle();
             back();
         }
         return this;
