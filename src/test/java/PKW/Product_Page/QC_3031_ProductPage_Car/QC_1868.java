@@ -26,7 +26,7 @@ public class QC_1868 {
         return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts2");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routes", enabled = false)  //TODO Waiting for a reply from a reporter
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Checking the displaying to the OEN numbers with the selected car in the selector")
     public void testCheckingTheDisplayingOenNumber(String route) {
