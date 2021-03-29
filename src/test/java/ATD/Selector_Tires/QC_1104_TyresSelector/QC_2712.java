@@ -48,7 +48,7 @@ public class QC_2712 {
     @Description(value = "Test checks displaying of default parameters in selector at main page")
     public void testCheckDisplayOfDefaultParametersInSelectorOffRoad(String route) {
         openPage(route);
-        new Tyres_page_Logic().defaultValuesOfSelector("235", "65", "17").checkOfSeasonSelector();
+        new Tyres_page_Logic().defaultValuesOfSelector("215", "65", "16").checkOfSeasonSelector();
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
@@ -62,7 +62,7 @@ public class QC_2712 {
     @Description(value = "Test checks displaying of default parameters in selector at main page")
     public void testCheckDisplayOfDefaultParametersInSelectorLKW(String route) {
         openPage(route);
-        new Tyres_page_Logic().defaultValuesOfSelector("235", "65", "0").checkOfSeasonSelector();
+        new Tyres_page_Logic().defaultValuesOfSelector("235", "65", "16").checkOfSeasonSelector();
     }
 
     @DataProvider(name = "routesMoto", parallel = true)
