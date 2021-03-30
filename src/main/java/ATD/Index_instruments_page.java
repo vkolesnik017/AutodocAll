@@ -2,8 +2,8 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+
+import static com.codeborne.selenide.Selenide.*;
 
 
 class Index_instruments_page {
@@ -144,9 +144,6 @@ class Index_instruments_page {
         return $x("//div[@class='advantages__item'][3]//div[@class='advantages__item-popup']");
     }
 
-
-//Locators for
-
-
+    SelenideElement seoText() {return $(".features");}
 
 }
