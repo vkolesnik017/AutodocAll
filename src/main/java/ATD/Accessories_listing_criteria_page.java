@@ -28,7 +28,7 @@ public class Accessories_listing_criteria_page {
 
     SelenideElement selectedMaterialFilterByName(String filter) {return $x("//div[@class='filter-disk__form']//label[contains(text(),'"+filter+"')]");}
 
-    SelenideElement materialFilterByName(String filter) {return $x("//li[@class='js-filter-wrapper-item']//label[text()='"+filter+"']");}
+    SelenideElement materialFilterByName(String filter) {return $x("//li[@class='js-filter-wrapper-item']//a[text()='"+filter+"']");}
 
     ElementsCollection materialCharacteristicOfProduct() {return $$x("//span[@class='lf'][text()='Material:  ']/following-sibling::span");}
 
