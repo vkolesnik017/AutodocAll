@@ -39,6 +39,8 @@
             <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3477"/>
             <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3478"/>
             <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3479"/>
+            <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3473"/>
+            <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3472"/>
         </classes>
     </test>
 </suite>

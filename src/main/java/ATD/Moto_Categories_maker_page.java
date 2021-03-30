@@ -151,4 +151,6 @@ public class Moto_Categories_maker_page {
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
 
     SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+
+    SelenideElement seoText() {return $(".moto-cars-features");}
 }
