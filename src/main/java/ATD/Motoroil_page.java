@@ -3,8 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Motoroil_page {
 
@@ -197,6 +196,8 @@ public class Motoroil_page {
     SelenideElement regInput() {
         return $x("//input[@id='kba1']");
     }
+
+    SelenideElement seoText() {return $(".about_motorole");}
 
 
 }
