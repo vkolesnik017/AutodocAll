@@ -24,4 +24,6 @@ public class MotoroilViscosity_page {
         return $x("//*[@class='subname']");
     }
 
+    SelenideElement allEngineOilPropertiesText() {return $x("//span[@class='more_text']");}
+
 }

@@ -234,4 +234,12 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return page(Moto_Catalog_page_Logic.class);
     }
+
+    @Step("check Seo Text Block. Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic checkSeoTextBlock(String value) throws SQLException {
+        String frontText = seoText().shouldBe(visible).getText().replaceAll("\\W", "");
+        String bdText = new DataBase("ATD").getTranslate("seo_text", "DE", value).replaceAll("\\W", "");
+        Assert.assertEquals(frontText, bdText);
+        return this;
+    }
 }

@@ -114,4 +114,8 @@ class LKW_Category_maker {
     ElementsCollection imageOfTopProduct() {return $$x("//a[@class='ga-click']/img");}
 
     ElementsCollection btnDetails() {return $$x("//span[@class='details js-product-link pointer']");}
+
+    SelenideElement linksBlock() {return $(".block_links");}
+
+    ElementsCollection topAutoLinks() {return $$x("//b[text()='Top LKW-Marken:']/..//a");}
 }

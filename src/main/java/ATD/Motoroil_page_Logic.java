@@ -1,11 +1,13 @@
 package ATD;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Objects;
 
 import static Common.CommonMethods.checkingContainsUrl;
@@ -193,7 +195,7 @@ public class Motoroil_page_Logic extends Motoroil_page {
         kbaSelectorSecondInput().sendKeys(secondValueOfKbaNumber);
         kbaSelectorSendButton().click();
         sleep(3000);
-        if(mainPageLogic.selectorPopup().isDisplayed()) {
+        if (mainPageLogic.selectorPopup().isDisplayed()) {
             mainPageLogic.closeBtnInCarSelectorPopup().shouldBe(visible).click();
             mainPageLogic.selectorPopup().shouldNotBe(visible);
             kbaSelectorFirstInput().clear();
@@ -228,6 +230,14 @@ public class Motoroil_page_Logic extends Motoroil_page {
             regSelectorSendButton().click();
         }
         return page(Category_car_list_page_Logic.class);
+    }
+
+    @Step("check Seo Text Block. Motoroil page")
+    public Motoroil_page_Logic checkSeoTextBlock(String value) throws SQLException {
+        String frontText = seoText().shouldBe(visible).getText().replaceAll("\\W", "");
+        String bdText = new DataBase("ATD").getTranslate("seo_text", "DE", value).replaceAll("\\W", "");
+        Assert.assertEquals(frontText, bdText);
+        return this;
     }
 
 }
