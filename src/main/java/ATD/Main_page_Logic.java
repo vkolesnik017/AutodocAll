@@ -53,7 +53,25 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Check absence text {expectedArticle} in autocomplete. Main_page")
+    @Step("Checking for absence product names {expectedText} in the Autocomplete list. Main_page")
+    public Main_page_Logic checkAbsenceProductNamesInAutocompleteList(String expectedArticle, String expectedText) {
+        inputTextInSearchBar(expectedArticle);
+        for (int i = 0; i < tooltipsToSearch().size(); i++) {
+            tooltipsToSearch().get(i).shouldNot(text(expectedText));
+        }
+        return this;
+    }
+
+    @Step("Checking for presence product names {expectedText} in the Autocomplete list. Main_page")
+    public Main_page_Logic checkPresenceProductNamesInAutocompleteList(String expectedArticle, String expectedText) {
+        inputTextInSearchBar(expectedArticle);
+        for (int i = 0; i < tooltipsToSearch().size(); i++) {
+            tooltipsToSearch().get(i).shouldHave(text(expectedText));
+        }
+        return this;
+    }
+
+    @Step("Check absence text {expectedText} in autocomplete. Main_page")
     public Main_page_Logic checkAbsenceTextInAutocomplete(String expectedArticle, String expectedText) {
         inputTextInSearchBar(expectedArticle);
         textInAutocomplete(expectedText).shouldNotBe(visible);

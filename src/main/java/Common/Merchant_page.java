@@ -78,7 +78,7 @@ public class Merchant_page {
 
     //Elements from the Trustly merchant
     SelenideElement allBank() {
-        return $x("//div[@class='sc-fznMAR dGIjYT']");
+        return $x("//div[contains(@data-testid,'list-item')]/div");
     }
     SelenideElement formForDataInMerchant() {
         return $x("//div[@class='sc-oUAoT kVASKi']");
@@ -256,9 +256,7 @@ public class Merchant_page {
     public CartPayments_page_Logic checkPresenceElementFromMerchantPageTrustlyAndCancelOrder() {
         checkingContainsUrl("/trustly");
         switchTo().frame(frame());
-        sleep(5000);
-        allBank().click();
-        sleep(3000);
+        allBank().waitUntil(visible, 10000).click();
         headerBackBtn().waitUntil(visible, 10000).click();
         cancelTransactionBtnTrustly().waitUntil(visible, 10000).click();
         checkingContainsUrl("/basket/payments");

@@ -26,4 +26,22 @@ public class MotoroilViscosity_page_Logic extends MotoroilViscosity_page{
         Assert.assertEquals(frontText, bdText);
         return this;
     }
+
+    @Step(": for MotoroilViscosity_page_Logic")
+    public MotoroilViscosity_page_Logic checkPresenceSpecificProductInGrayBtnInLiterBlock(String idProduct) {
+        new Motoroil_brand_page_Logic().checkPresenceSpecificProductInGrayBtnInLiterBlock(idProduct);
+        return this;
+    }
+
+    @Step(": for MotoroilViscosity_page_Logic")
+    public MotoroilViscosity_page_Logic checkAbsenceArticleNum(String expectedArtNum) {
+        new Listing_page_Logic().checkAbsenceArticleNum(expectedArtNum);
+        return this;
+    }
+
+    @Step(": for MotoroilViscosity_page_Logic")
+    public MotoroilViscosity_page_Logic checkPresenceSpecificArticleNumOnListing(String expectedArtNum) {
+        new Listing_page_Logic().checkPresenceSpecificArticleNumOnListing(expectedArtNum);
+        return this;
+    }
 }
