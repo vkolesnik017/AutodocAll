@@ -56,6 +56,9 @@ public class Motoroil_brand_page {
         return $x("//*[@class='js-product-item ovVisLi item_in_stock  '][1]//*[@class='name']//a");
     }
 
+    SelenideElement specificProductInGrayBtnInLiterBlock(String idProduct) {
+        return $x("//div[@class='select-displacement not_active']//*[contains(@id,'" + idProduct + "')]");
+    }
     SelenideElement btnAddToBasketFromDisplacementBlock() { return $x("//div[@class='select-displacement ']/a");}
 
     SelenideElement displacementFromProduct() {return $x("//div[@class='select-displacement ']");}

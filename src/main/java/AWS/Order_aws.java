@@ -1465,9 +1465,7 @@ public class Order_aws {
     @Step("Calculates goods amount by multiplying product price {sellingCostOneProduct} " +
             "by number of goods {productQuantity} and plus the delivery{costDelivery}. Order_aws")
     public Float multiplyPriceByQuantityAndPlusDeliveryCost(Float sellingCostOneProduct, Float productQuantity, Float costDelivery) {
-        Float cost = sellingCostOneProduct * productQuantity + costDelivery;
-        float actualTotalCost = getTotalPriceOrderAWS();
-        return roundOfTheCost(cost, actualTotalCost);
+        return sellingCostOneProduct * productQuantity + costDelivery;
     }
 
     @Step("Checking correct text in input field. Order_aws")

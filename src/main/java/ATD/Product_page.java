@@ -970,6 +970,4 @@ public class Product_page {
 
     SelenideElement productInfoPrice() { return $x("//p[@class='product-info-price']");}
 
-
-
   }
