@@ -1562,6 +1562,12 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Checks absence add to cart button for a specific item {productID}. Listing_page")
+    public Listing_page_Logic checkAbsenceAddToCartBtnForSpecificItem(String productID) {
+        addToBasketBtnForSpecificItem(productID).shouldNotBe(visible);
+        return this;
+    }
+
     @Step("checks for the presence of at least one element (Price per Set or Piece) on listing .Listing_page")
     public Listing_page_Logic checkPresenceLeastOneElementPricePerSetOrPiece(String setOrPiece) {
         if (setOrPiece.equals("set")) {
