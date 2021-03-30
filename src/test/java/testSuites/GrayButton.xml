@@ -28,6 +28,7 @@
             <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3354"/>
             <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3358"/>
             <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3365"/>
+            <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3420"/>
         </classes>
     </test>
 
