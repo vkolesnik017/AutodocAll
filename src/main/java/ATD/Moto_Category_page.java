@@ -117,4 +117,6 @@ public class Moto_Category_page {
     ElementsCollection genericsInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
 
     ElementsCollection btnAddProductToWishList() {return $$x("//div[@class='add-to-wishlist add-article']");}
+
+    SelenideElement seoText() {return $(".block_youtube_video");}
 }

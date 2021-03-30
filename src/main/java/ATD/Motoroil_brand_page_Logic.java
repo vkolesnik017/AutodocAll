@@ -201,10 +201,11 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
     }
 
     @Step("Check visiable filter brand block. Motoroil_brand_page")
-    public  Motoroil_brand_page_Logic checkVisibleFilterBrandBlock() {
+    public Motoroil_brand_page_Logic checkVisibleFilterBrandBlock() {
         brandOilFilterBlock().shouldBe(visible);
         return this;
     }
+
     @Step("Checks visibility of viscosity oil value in selector. Motoroil_brand_page")
     public Motoroil_brand_page_Logic checkVisibilityOfBrandNameOilValueInSelectorAndListingName(String nameBrand) {
         oilSelector().scrollTo().shouldBe(visible);
@@ -213,4 +214,15 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
         return this;
     }
 
+    @Step("Check presence a specific product in the gray button in the liter block. Motoroil_brand_page")
+    public Motoroil_brand_page_Logic checkPresenceSpecificProductInGrayBtnInLiterBlock(String idProduct) {
+        specificProductInGrayBtnInLiterBlock(idProduct).scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check absence a specific product in the gray button in the liter block. Motoroil_brand_page")
+    public Motoroil_brand_page_Logic checkAbsenceSpecificProductInGrayBtnInLiterBlock(String idProduct) {
+        specificProductInGrayBtnInLiterBlock(idProduct).shouldNotBe(visible);
+        return this;
+    }
 }

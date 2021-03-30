@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static Common.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
+import static Common.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -388,6 +388,14 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
             idCategory.add(productCardAws.openExactProductCardPageAndLogin(idOfTopProduct.get(i)).getCategoryId());
         }
         Assert.assertTrue(idCategory.contains(generic));
+        return this;
+    }
+
+    @Step("check Seo Text Block. Moto_Category_page")
+    public Moto_Category_page_Logic checkSeoTextBlock(String value) throws SQLException {
+        String frontText = seoText().shouldBe(visible).getText().replaceAll("\\W", "");
+        String bdText = new DataBase("ATD").getTranslate("seo_text", "DE", value).replaceAll("\\W", "");
+        Assert.assertEquals(frontText, bdText);
         return this;
     }
 }

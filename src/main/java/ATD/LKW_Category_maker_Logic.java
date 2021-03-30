@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -210,5 +211,24 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
     public List<String> getProductUrls() {
         List<String> urls = btnDetails().stream().map(n -> getAttributeFromUnVisibleElement(n, "url")).collect(Collectors.toList());
         return urls;
+    }
+
+    @Step("check Titles Of TOP Auto Links. LKW_Category_maker")
+    public LKW_Category_maker_Logic checkTitlesOfTopAutoLinks(List<String> expectedAutoLinks) {
+        linksBlock().shouldBe(visible);
+        Assert.assertEquals(topAutoLinks().size(), expectedAutoLinks.size());
+        List<String> titleOfTopAutoLinks = topAutoLinks().stream().map(n -> n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(titleOfTopAutoLinks, expectedAutoLinks);
+        return this;
+    }
+
+    @Step("check Transition Of TOP Auto Links. LKW_Category_maker")
+    public LKW_Category_maker_Logic checkTransitionOfTopAutoLinks() throws IOException {
+        for (int i = 0; i < topAutoLinks().size(); i++) {
+            topAutoLinks().get(i).shouldBe(visible).click();
+            new Category_car_list_page_Logic().checkResponseOfServer(200);
+            back();
+        }
+        return this;
     }
 }

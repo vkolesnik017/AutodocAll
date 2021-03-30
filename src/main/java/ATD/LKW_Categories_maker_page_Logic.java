@@ -1,9 +1,11 @@
 package ATD;
 
+import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -350,6 +352,14 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
     @Step("presence Of TOP Block. LKW_Categories_maker_page")
     public LKW_Categories_maker_page_Logic presenceOfTopBlock() {
        topBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check Seo Text Block. LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic checkSeoTextBlock(String value) throws SQLException {
+        String frontText = seoText().shouldBe(visible).getText().replaceAll("\\W", "");
+        String bdText = new DataBase("ATD").getTranslate("seo_text", "DE", value).replaceAll("\\W", "");
+        Assert.assertEquals(frontText, bdText);
         return this;
     }
 }

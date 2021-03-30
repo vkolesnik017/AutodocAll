@@ -590,6 +590,10 @@ public class Listing_page {
         return $$x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
     }
 
+    public SelenideElement specificArticleNumOnListing(String expectedArticle) {
+        return $x("(//li[contains(@class,'ovVisLi ')]//span[contains(text(),'" +  expectedArticle + "')])[1]");
+    }
+
     SelenideElement productArticleOnListing() {
         return $x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
     }
@@ -719,7 +723,7 @@ public class Listing_page {
     }
 
     public SelenideElement grayBtnAtExpectedProduct(String idProduct) {
-        return $x("//div[@data-article-id='" + idProduct + "']/..//*[contains(@class,'not_active')]/a");
+        return $x("//div[@class='button not_active']//a[contains(@onclick,'" + idProduct + "')]");
     }
 
     ElementsCollection addToBasketButtons() {

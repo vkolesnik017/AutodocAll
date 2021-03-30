@@ -291,11 +291,8 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Check presence expected article num {expectedArtNum}. Listing_page")
-    public Listing_page_Logic checkPresenceArticleNum(String expectedArtNum) {
-        for (int i = 0; i < productArticlesCollection().size(); i++) {
-            productArticlesCollection().get(i).scrollIntoView(("{block: \"center\"}")).shouldHave(text(expectedArtNum));
-            break;
-        }
+    public Listing_page_Logic checkPresenceSpecificArticleNumOnListing(String expectedArtNum) {
+        specificArticleNumOnListing(expectedArtNum).scrollIntoView(("{block: \"center\"}")).shouldBe(visible);
         return this;
     }
 
@@ -1562,6 +1559,12 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Checks presence add to cart button for a specific item {productID}. Listing_page")
     public Listing_page_Logic checkPresenceAddToCartBtnForSpecificItem(String productID) {
         addToBasketBtnForSpecificItem(productID).scrollIntoView(("{block: \"center\"}")).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks absence add to cart button for a specific item {productID}. Listing_page")
+    public Listing_page_Logic checkAbsenceAddToCartBtnForSpecificItem(String productID) {
+        addToBasketBtnForSpecificItem(productID).shouldNotBe(visible);
         return this;
     }
 

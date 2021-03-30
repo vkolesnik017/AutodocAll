@@ -57,23 +57,41 @@ public class Motoroil_viscosity_page {
         return $x("//div[contains(text(),'Herstellerfreigabe')]/..");
     }
 
-     SelenideElement visibleLinksOfToleranceBlock(String expectedFilter) {return $x("//div[contains(text(),'Herstellerfreigabe')]/../div/div//label[contains(text(),'"+expectedFilter+"')]");}
+    SelenideElement visibleLinksOfToleranceBlock(String expectedFilter) {
+        return $x("//div[contains(text(),'Herstellerfreigabe')]/../div/div//label[contains(text(),'" + expectedFilter + "')]");
+    }
 
-    SelenideElement presenceAttributeOfCheckBox(String expectedFilter) {return $x("//div[contains(text(),'Herstellerfreigabe')]/../div/div//label[contains(text(),'"+expectedFilter+"')]/preceding-sibling::input");}
+    SelenideElement presenceAttributeOfCheckBox(String expectedFilter) {
+        return $x("//div[contains(text(),'Herstellerfreigabe')]/../div/div//label[contains(text(),'" + expectedFilter + "')]/preceding-sibling::input");
+    }
 
-    SelenideElement toleranceFieldInSelector() {return $(byName("releases_id"));}
+    SelenideElement toleranceFieldInSelector() {
+        return $(byName("releases_id"));
+    }
 
-    ElementsCollection toleranceCharacteristicsInProductDescription() {return $$x("//span[contains(text(),'Herstellerfreigabe:')]/following-sibling::span");}
+    ElementsCollection toleranceCharacteristicsInProductDescription() {
+        return $$x("//span[contains(text(),'Herstellerfreigabe:')]/following-sibling::span");
+    }
 
-    ElementsCollection selectedToleranceFilter() {return $$x("//div[contains(text(),'Herstellerfreigabe')]/..//input[@class='checkbox' and @checked]/../label");}
+    ElementsCollection selectedToleranceFilter() {
+        return $$x("//div[contains(text(),'Herstellerfreigabe')]/..//input[@class='checkbox' and @checked]/../label");
+    }
 
-    SelenideElement viscosityGradeInSelector() {return $(byName("viscosity_id"));}
+    SelenideElement viscosityGradeInSelector() {
+        return $(byName("viscosity_id"));
+    }
 
-    SelenideElement selectedViscosityLink(String viscosityLink) {return $x("//div[contains(text(),'"+viscosityLink+"')]/ancestor::span[contains(@class,'active')]"); }
+    SelenideElement selectedViscosityLink(String viscosityLink) {
+        return $x("//div[contains(text(),'" + viscosityLink + "')]/ancestor::span[contains(@class,'active')]");
+    }
 
-    ElementsCollection btnAddedProductToBasket() {return $$x("//div[@class='basket_btn button active_red_button ']/a");}
+    ElementsCollection btnAddedProductToBasket() {
+        return $$x("//div[@class='basket_btn button active_red_button ']/a");
+    }
 
-    ElementsCollection activeValueOfVolumeAtProduct() { return $$x("//div[contains(@class,'right_side')]/div[1]");    }
+    ElementsCollection activeValueOfVolumeAtProduct() {
+        return $$x("//div[contains(@class,'right_side')]/div[1]");
+    }
 
     SelenideElement basketDropMenu() {
         return $x("//div[@class='cart-items-block ']");
