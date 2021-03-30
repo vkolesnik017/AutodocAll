@@ -586,8 +586,8 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
     @Step(": for Category_car_list_page")
-    public Category_car_list_page_Logic checkPresenceArticleNum(String expectedArtNum) {
-        new Listing_page_Logic().checkPresenceArticleNum(expectedArtNum);
+    public Category_car_list_page_Logic checkPresenceSpecificArticleNumOnListing(String expectedArtNum) {
+        new Listing_page_Logic().checkPresenceSpecificArticleNumOnListing(expectedArtNum);
         return this;
     }
 

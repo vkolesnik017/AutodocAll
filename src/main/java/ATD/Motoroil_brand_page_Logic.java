@@ -213,4 +213,9 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
         return this;
     }
 
+    @Step("Check presence a specific product in the gray button in the liter block. Motoroil_brand_page")
+    public Motoroil_brand_page_Logic checkPresenceSpecificProductInGrayBtnInLiterBlock(String idProduct) {
+        specificProductInGrayBtnInLiterBlock(idProduct).scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
 }
