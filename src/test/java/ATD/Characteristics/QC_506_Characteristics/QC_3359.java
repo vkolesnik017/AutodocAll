@@ -64,7 +64,7 @@ public class QC_3359 {
     public void test2CheckingOutputCharacteristic30003InProductName(String route) {
         openPage(route);
         String nameCharacteristic = new Product_page_Logic().getCharacteristicProduct("Modell");
-        String titleName = new Product_page_Logic().getTitleNameForProductPageAccessories();
+        String titleName = new Product_page_Logic().getTitleNameProduct();
         Assert.assertTrue(titleName.contains(nameCharacteristic));
     }
 

@@ -1,14 +1,15 @@
 package ATD;
 
 import com.codeborne.selenide.SelenideElement;
-
+import org.openqa.selenium.By;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class MotoroilViscosity_page {
 
 
-    SelenideElement selectorViscosityBlock() {
-        return $x("//*[@class='selector-oil selector-oil--white']");
+    SelenideElement selectorOil() {
+        return $(By.id("oil-top-select"));
     }
 
     SelenideElement viscosityOilNameInSelector() {

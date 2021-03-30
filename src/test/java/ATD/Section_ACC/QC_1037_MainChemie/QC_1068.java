@@ -42,7 +42,7 @@ public class QC_1068 {
         openPage(route);
         nameProduct = index_chemicals_page_logic.getNameProductInBlockTopProducts();
         index_chemicals_page_logic.checkingTransitionOnProductPageAfterClickDetails();
-        nameTitleProduct = new Product_page_Logic().getTitleNameForProductPageChemicals();
+        nameTitleProduct = new Product_page_Logic().getTitleNameProduct();
         Assert.assertEquals(nameProduct, nameTitleProduct);
     }
 

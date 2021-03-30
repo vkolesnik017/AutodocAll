@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_151 {
 
@@ -34,6 +35,7 @@ public class QC_151 {
     @Description(value = "Test check Durchmesser and by side filter interaction")
     public void testCheckDurchmesserAndBySideFilterInteraction(String route) {
         openPage(route);
+        refresh();
         String criteriaFrontAxle = carPartsLogic.getNameFrontAxle().toLowerCase();
         carPartsLogic.clickFrontAxle();
         String criteriaDiameter = carPartsLogic.getTextCriteriaDiameter();

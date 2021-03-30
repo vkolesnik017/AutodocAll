@@ -362,6 +362,10 @@ public class Listing_page {
         return $$x("//div[@class='image']/span[1]/img");
     }
 
+    public SelenideElement brandOfProduct() { return $x("//div[@class='image']/span[1]");}
+
+    public SelenideElement imgProduct() {return $x("//div[@class='image']/span[2]");}
+
     public SelenideElement resetBlock() {
         return $x("//div[@class='reset-buttons']/ul");
     }
@@ -893,7 +897,7 @@ public class Listing_page {
         return $$x("//*[@class='selected_car_info_popap']//li");
     }
 
-    SelenideElement firstProductTitleOnListing() {
+    public SelenideElement firstProductTitleOnListing() {
         return $x("(//div[@class='name']/a)[1]");
     }
 

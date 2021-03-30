@@ -43,7 +43,7 @@ public class QC_1331 {
         openPage(route);
         nameProduct = index_instruments_page_logic.getProductName();
         index_instruments_page_logic.clickFirstProductInTopBlock();
-        nameTitle = new Product_page_Logic().getTitleNameForProductPageInstruments();
+        nameTitle = new Product_page_Logic().getTitleNameProduct();
         Assert.assertEquals(nameProduct, nameTitle);
     }
 
