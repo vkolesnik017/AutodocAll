@@ -45,7 +45,6 @@ public class Listing_page_Logic extends Listing_page {
         return titleDesiredProduct(productArticle).getText();
     }
 
-
     @Step("Method gets price of all products on listing and parse it into float. Listing_page")
     private List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
         List<Float> listOfFloatPrices = new ArrayList<>();
@@ -1574,12 +1573,12 @@ public class Listing_page_Logic extends Listing_page {
             while (!productInfoPriceForSet().isDisplayed()) {
                 nextPageButton().click();
             }
-            productInfoPriceForSet().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+            productInfoPriceForSet().shouldBe(visible);
         }else if (setOrPiece.equals("piece")) {
             while (!productInfoPriceForPiece().isDisplayed()) {
                 nextPageButton().click();
             }
-            productInfoPriceForPiece().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+            productInfoPriceForPiece().shouldBe(visible);
         }
         return this;
     }
@@ -1594,6 +1593,24 @@ public class Listing_page_Logic extends Listing_page {
     public Listing_page_Logic checkPresenceTitleList() {
         titleOfAdditionalListingForTecDoc().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         return this;
+    }
+
+    @Step("Check presence products list block and product. Listing_page")
+    public Listing_page_Logic checkPresenceProductsListBlock() {
+        listProducts().shouldBe(visible);
+        productTitleInListMode().shouldHave(sizeGreaterThan(1));
+        return this;
+    }
+
+    @Step("get any link from product. Listing_page")
+    public String getLinkFromProduct(SelenideElement element , String urlOrHref) {
+        return element.getAttribute(urlOrHref);
+    }
+
+    @Step("Click any element from product. Listing_page")
+    public Product_page_Logic clickAnyElementFromProduct(SelenideElement clickElement) {
+        clickElement.shouldBe(visible).click();
+        return page(Product_page_Logic.class);
     }
 
 

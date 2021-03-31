@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="GrayButton" parallel="methods" thread-count="2" data-provider-thread-count="2">
+<suite name="GrayButton" parallel="methods" thread-count="3" data-provider-thread-count="3">
 
     <listeners>
         <listener class-name="Common.ProjectListener"/>
@@ -22,14 +22,16 @@
         </classes>
     </test>
 
-    <test name="QC_3355_ProductDisableFunctionalityInAWS">
+    <test name="QC_3355_ProductDisableFunctionalityInAWS"> <!--//TODO данный сет нужно запускать только в буднии дни-->
         <classes>
             <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3351"/>
             <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3354"/>
             <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3358"/>
             <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3365"/>
+            <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3419"/>
             <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3420"/>
             <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3578"/>
+            <class name="ATD.GrayButton.QC_3355_ProductDisableFunctionalityInAWS.QC_3579"/>
         </classes>
     </test>
 
