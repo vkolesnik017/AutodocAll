@@ -863,5 +863,11 @@ public class Search_page_Logic extends Search_page {
         new Listing_page_Logic().checkPresenceAddToCartBtnForSpecificItem(productID);
         return this;
     }
+
+    @Step(": for Listing_page")
+    public Search_page_Logic checkAbsenceAddToCartBtnForSpecificItem(String productID) {
+        new Listing_page_Logic().checkAbsenceAddToCartBtnForSpecificItem(productID);
+        return this;
+    }
 }
 

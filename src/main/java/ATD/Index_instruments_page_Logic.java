@@ -255,6 +255,13 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
+    @Step("check Seo Text Block. Index_instruments_page")
+    public Index_instruments_page_Logic checkSeoTextBlock(String value) throws SQLException {
+        String frontText = seoText().shouldBe(visible).getText().replaceAll("\\W", "");
+        String bdText = new DataBase("ATD").getTranslate("seo_text", "DE", value).replaceAll("\\W", "");
+        Assert.assertEquals(frontText, bdText);
+        return this;
+    }
 
 
 }

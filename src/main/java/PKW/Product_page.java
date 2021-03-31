@@ -307,7 +307,7 @@ public class Product_page {
     }
 
     SelenideElement btnAddProductToBasket() {
-        return $x("//button[@class='pkw-product__buy-btn basket_btn ']");
+        return $x("//button[contains(@class,'buy-btn basket_btn ')]");
     }
 
     SelenideElement grayBtn() {

@@ -1,8 +1,10 @@
 package ATD;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -406,10 +408,18 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         return page(LKW_Category_car_list_page_Logic.class);
     }
 
-    @Step("click on Oil child category with out of motor value in from selector.LKW_maker_car_list")
+    @Step("click on Oil child category with out of motor value in from selector. LKW_maker_car_list")
     public LKW_maker_car_list_Logic clickOnOilChildCategoryWithOutMotor() {
         visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
         verticalTruckSelectorInOpenState().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check Seo Text Block. LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkSeoTextBlock(String value) throws SQLException {
+        String frontText = seoText().shouldBe(visible).getText().replaceAll("\\W", "");
+        String bdText = new DataBase("ATD").getTranslate("seo_text", "DE", value).replaceAll("\\W", "");
+        Assert.assertEquals(frontText, bdText);
         return this;
     }
 }
