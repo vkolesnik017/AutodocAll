@@ -1,11 +1,13 @@
 package ATD;
 
+import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -163,4 +165,11 @@ public class Supplier_page_Logic extends Supplier_page {
         return this;
     }
 
+    @Step("check Seo Text Block. Supplier_page")
+    public Supplier_page_Logic checkSeoTextBlock(String value) throws SQLException {
+        String frontText = seoText().shouldBe(visible).getText().replaceAll("\\W", "");
+        String bdText = new DataBase("ATD").getTranslate("seo_text", "DE", value).replaceAll("\\W", "");
+        Assert.assertEquals(frontText, bdText);
+        return this;
+    }
 }
