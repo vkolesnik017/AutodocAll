@@ -672,18 +672,7 @@ public class Product_page {
         return $x("//*[@class='car-match-block']/p");
     }
 
-    // locators for instruments products page
-    SelenideElement titleProductPageInstruments() {
-        return $x("//h2/span[@class='title']");
-    }
-
-    // locators for chemicals products page
-    SelenideElement titleNameProductPageChemicals() {
-        return $x("//h2/span[@class='title']");
-    }
-
-    // locators for accessories page
-    SelenideElement titleNameProductPageAccessories() {
+    SelenideElement titleProduct() {
         return $x("//h2/span[@class='title']");
     }
 

@@ -41,7 +41,7 @@ public class Main_page {
     }
 
     // Locators for basket preview
-    SelenideElement previewBasket() {
+    public SelenideElement previewBasket() {
         return $x("//div[@class='cart-items-block ']");
     }
 

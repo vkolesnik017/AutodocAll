@@ -9,6 +9,7 @@
     <test name="QC_3174_AvailabilityOfOilSelectors">
         <classes>
             <class name="ATD.Selector_Oil.QC_3174_AvailabilityOfOilSelectors.QC_3173"/>
+            <class name="ATD.Selector_Oil.QC_3174_AvailabilityOfOilSelectors.QC_3482"/>
         </classes>
     </test>
 
