@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_3480 {
 
@@ -38,8 +39,9 @@ public class QC_3480 {
     @Description(value = "test check Adding a product from displacement block on oil listing ")
     public void testCheckAddingProductFromDisplacementBlock(String route) {
         openPage(route);
-        String idDisplacement = motoroilBrandPageLogic.getIdFromProductDisplacement();
-        motoroilBrandPageLogic.clickAddProductToBasketFromDisplacementBlock()
+        refresh();
+        String idDisplacement = motoroilBrandPageLogic.getIdFromLitreCapacityBlock();
+        motoroilBrandPageLogic.clickAddProductToBasketFromLitreCapacityBlock()
                 .cartClick();
         String idProduct = new Cart_page_Logic().getIdAddedProduct();
         Assert.assertEquals(idDisplacement, idProduct);

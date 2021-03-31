@@ -59,13 +59,9 @@ public class Motoroil_brand_page {
     SelenideElement specificProductInGrayBtnInLiterBlock(String idProduct) {
         return $x("//div[@class='select-displacement not_active']//*[contains(@id,'" + idProduct + "')]");
     }
-    SelenideElement btnAddToBasketFromDisplacementBlock() { return $x("//div[@class='select-displacement ']/a");}
+    SelenideElement btnAddToBasketFromLitreCapacityBlock() { return $x("//div[@class='select-displacement ']/a");}
 
-    SelenideElement displacementFromProduct() {return $x("//div[@class='select-displacement ']");}
-
-    SelenideElement popupBasketAddedProducts() {
-        return $x("//div[@class='cart-items-block ']");
-    }
+    SelenideElement litreCapacityBlockFromProduct() {return $x("//div[@class='select-displacement ']");}
 
 
 }
