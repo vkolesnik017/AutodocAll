@@ -169,7 +169,7 @@ public class QC_3414 {
     @DataProvider(name = "routesGroupList", parallel = true)
     Object[] dataProviderGroupList() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main",
-                "group_list,model_maker_list,category_name_parent,category_maker_brand,group_list_body,categories_maker");
+                "group_list,model_maker_list,category_name_parent,group_list_body,categories_maker");
     }
 
     @Test(dataProvider = "routesGroupList")
