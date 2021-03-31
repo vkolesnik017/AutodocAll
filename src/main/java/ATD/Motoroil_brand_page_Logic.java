@@ -219,4 +219,29 @@ public class Motoroil_brand_page_Logic extends Motoroil_brand_page {
         specificProductInGrayBtnInLiterBlock(idProduct).scrollIntoView("{block: \"center\"}").shouldBe(visible);
         return this;
     }
+
+    @Step("Check absence a specific product in the gray button in the liter block. Motoroil_brand_page")
+    public Motoroil_brand_page_Logic checkAbsenceSpecificProductInGrayBtnInLiterBlock(String idProduct) {
+        specificProductInGrayBtnInLiterBlock(idProduct).shouldNotBe(visible);
+        return this;
+    }
+    @Step("Click btn add product to basket from litre capacity block. Motoroil_brand_page")
+    public Motoroil_brand_page_Logic clickAddProductToBasketFromLitreCapacityBlock() {
+        btnAddToBasketFromLitreCapacityBlock().shouldBe(visible).click();
+       new Main_page_Logic().previewBasket().waitUntil(attribute("style", "visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step("Get id from litre capacity block. Motoroil_brand_page")
+    public String getIdFromLitreCapacityBlock() {
+        return litreCapacityBlockFromProduct().getAttribute("id");
+    }
+
+    @Step(":from Motoroil_brand_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
+
 }

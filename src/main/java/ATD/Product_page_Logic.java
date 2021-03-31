@@ -709,22 +709,9 @@ public class Product_page_Logic extends Product_page {
         return productId().getAttribute("id");
     }
 
-    //Method for instruments product page
-    @Step("Get title name product page instruments. Product_page")
-    public String getTitleNameForProductPageInstruments() {
-        return titleProductPageInstruments().getText();
-    }
-
-    //Method for chemicals product page
-    @Step("Get title name product page chemicals. Product_page")
-    public String getTitleNameForProductPageChemicals() {
-        return titleNameProductPageChemicals().getText();
-    }
-
-    //Method for accessories product page
-    @Step("Get title name product page accessories. Product_page")
-    public String getTitleNameForProductPageAccessories() {
-        return titleNameProductPageAccessories().getText();
+    @Step("Get title name product. Product_page")
+    public String getTitleNameProduct() {
+        return titleProduct().getText();
     }
 
 

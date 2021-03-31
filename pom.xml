@@ -29,8 +29,8 @@
                     <suiteXmlFiles>
                         <!--suppress UnresolvedMavenProperty -->
                         <suiteXmlFile>${basedir}${TEST_SUITE}.xml</suiteXmlFile>
-                        <!--                        <suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite.xml</suiteXmlFile>-->
-                        <!--                        <suiteXmlFile>${basedir}/src/test/java/testSuites/Specific/ATD/Selector/QC_2228_DisplayStatusNewForMapcoGoodsATD.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>${basedir}/src/test/java/testSuites/Specific/ATD/Selector/QC_2228_DisplayStatusNewForMapcoGoodsATD.xml</suiteXmlFile>-->
                     </suiteXmlFiles>
                     <properties>
                         <property>
