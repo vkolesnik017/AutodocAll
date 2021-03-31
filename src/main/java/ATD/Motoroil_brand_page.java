@@ -59,4 +59,9 @@ public class Motoroil_brand_page {
     SelenideElement specificProductInGrayBtnInLiterBlock(String idProduct) {
         return $x("//div[@id='" + idProduct + "']//a[contains(@class,'select-displacement__btn--blue')]");
     }
+    SelenideElement btnAddToBasketFromLitreCapacityBlock() { return $x("//div[@class='select-displacement ']/a");}
+
+    SelenideElement litreCapacityBlockFromProduct() {return $x("//div[@class='select-displacement ']");}
+
+
 }

@@ -229,4 +229,6 @@ class LKW_Categories_maker_page {
     ElementsCollection btnDetails() {return $$x("//*[self::div[@class='top-small-products__items slick-slide'] or self::div[@class='top-small-products__items slick-slide slick-current slick-active']]//span[@class='details link']");}
 
     SelenideElement topBlock() {return $(".top-small-products");}
+
+    SelenideElement seoText() {return $(".search_n_text");}
 }
