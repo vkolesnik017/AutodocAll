@@ -55,4 +55,6 @@ public class Supplier_page {
    public ElementsCollection categoriesCatalog() {
         return $$x("//div[@class='catalog-block']//div[@class='catalog-block__wrap']//ul/li//*[2]");
     }
+
+    SelenideElement seoText() {return $(".brand-features__wrap");}
 }
