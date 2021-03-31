@@ -727,7 +727,7 @@ public class Listing_page {
     }
 
     public SelenideElement grayBtnAtExpectedProduct(String idProduct) {
-        return $x("//div[@data-article-id='" + idProduct + "']/..//*[contains(@class,'not_active')]/a");
+        return $x("//div[@class='button not_active']//a[contains(@onclick,'" + idProduct + "')]");
     }
 
     ElementsCollection addToBasketButtons() {
