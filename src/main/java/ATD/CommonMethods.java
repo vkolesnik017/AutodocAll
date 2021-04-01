@@ -31,7 +31,6 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static java.lang.String.format;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -236,7 +235,12 @@ public class CommonMethods {
             }
             sleep(3000); // TODO try delete this sleep if fixed SITES-2830
             if (universalElementOfBuyBtnForAllPages().isDisplayed()) {
-                universalElementOfBuyBtnForAllPages().click();
+                try {
+                    universalElementOfBuyBtnForAllPages().scrollIntoView("{block: \"center\"}").click();
+                } catch (ElementShould e) {
+                    productBlockForHover.hover();
+                    universalElementOfBuyBtnForAllPages().click();
+                }
             } else {
                 addBasketBtnFromBlockTop.click();
             }
@@ -246,7 +250,7 @@ public class CommonMethods {
                 thirdProductInBlockForHover.hover();
                 thirdProductBuyButton.click();
             }
-        } catch (ElementShould e) {
+        } catch (ElementShould e1) {
             try {
                 $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).waitUntil(visible, 3000).click();
             } catch (ElementNotFound e2) {

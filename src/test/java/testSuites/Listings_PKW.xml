@@ -23,8 +23,12 @@
 
     <test name="QC_3110_ListingSortingAndPrioritization">
         <classes>
-            <class name="PKW.Listings.QC_3110_ListingSortingAndPrioritization.QC_2086"/>
             <class name="PKW.Listings.QC_3110_ListingSortingAndPrioritization.QC_194"/>
+            <class name="PKW.Listings.QC_3110_ListingSortingAndPrioritization.QC_467"/>
+            <class name="PKW.Listings.QC_3110_ListingSortingAndPrioritization.QC_468"/>
+            <class name="PKW.Listings.QC_3110_ListingSortingAndPrioritization.QC_475"/>
+            <class name="PKW.Listings.QC_3110_ListingSortingAndPrioritization.QC_2086"/>
+            <class name="PKW.Listings.QC_3110_ListingSortingAndPrioritization.QC_2974"/>
         </classes>
     </test>
 </suite>

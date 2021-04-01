@@ -39,7 +39,7 @@ public class QASYS_274 {
 
     @Test(dataProvider = "routesMain")
     @Flaky
-    @Owner(value = "Evlentiev")
+    @Owner(value = "Chelombitko")
     @Description(value = "The test checks the addition of products to the basket from all root main")
     public void testAddingProductToBasketFromAllRoutesMain(String route) {
         openPage(route);
@@ -60,7 +60,7 @@ public class QASYS_274 {
 
     @Test(dataProvider = "routesLKW")
     @Flaky
-    @Owner(value = "Evlentiev")
+    @Owner(value = "Chelombitko")
     @Description(value = "The test checks the addition of products to the basket from all root LKW")
     public void testAddingProductToBasketFromAllRoutesLKW(String route) {
         openPage(route);
@@ -82,7 +82,7 @@ public class QASYS_274 {
 
     @Test(dataProvider = "routesMoto")
     @Flaky
-    @Owner(value = "Evlentiev")
+    @Owner(value = "Chelombitko")
     @Description(value = "The test checks the addition of products to the basket from all root Moto")
     public void testAddingProductToBasketFromAllRoutesMoto(String route) {
         openPage(route);

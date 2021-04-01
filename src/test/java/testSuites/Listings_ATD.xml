@@ -112,4 +112,13 @@
         </classes>
     </test>
 
+    <test name="QC_3503_Oil_Listing_MainProductsBlock">
+        <classes>
+            <class name="ATD.Listings.QC_3503_Oil_Listing_MainProductsBlock.QC_3480"/>
+            <class name="ATD.Listings.QC_3503_Oil_Listing_MainProductsBlock.QC_3504"/>
+            <class name="ATD.Listings.QC_3503_Oil_Listing_MainProductsBlock.QC_3505"/>
+        </classes>
+    </test>
+
+
 </suite>
