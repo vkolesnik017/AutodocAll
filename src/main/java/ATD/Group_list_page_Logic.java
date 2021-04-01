@@ -8,8 +8,11 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static Common.CommonMethods.checkingContainsUrl;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
@@ -81,4 +84,16 @@ public class Group_list_page_Logic extends Group_list_page {
         return this;
     }
 
+    @Step("display of Headline Of Seo Block. Group_list_page")
+    public Group_list_page_Logic displayHeadlineOfSeoBlock(String expectedHeadline) {
+        headlineSeoText().shouldBe(visible).shouldHave(text(expectedHeadline));
+        return this;
+    }
+
+    @Step("check Titles Of Seo Block. Group_list_page")
+    public Group_list_page_Logic checkTitlesOfSeoBlock(List<String> expectedTitles) {
+        List<String> frontSeoTitles = titlesOfSeoBlock().stream().map(n -> n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(frontSeoTitles, expectedTitles);
+        return this;
+    }
 }

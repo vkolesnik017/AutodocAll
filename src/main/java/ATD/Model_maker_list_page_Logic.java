@@ -24,7 +24,7 @@ public class Model_maker_list_page_Logic extends Model_maker_list_page{
     @Step("check Transition Of TOP Auto Links. Model_maker_list_page")
     public Model_maker_list_page_Logic checkTransitionOfTopAutoLinks() throws IOException {
         for (int i = 0; i < topAutoLinks().size(); i++) {
-            topAutoLinks().get(i).shouldBe(visible).click();
+            topAutoLinks().get(i).shouldBe(visible).scrollTo().click();
             new Category_car_list_page_Logic().checkResponseOfServer(200);
             back();
         }

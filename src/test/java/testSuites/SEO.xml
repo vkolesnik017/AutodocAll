@@ -53,6 +53,14 @@
             <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3460"/>
             <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3459"/>
             <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3457"/>
+            <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3456"/>
+            <!--<class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3455"/>-->
+            <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3454"/>
+            <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3453"/>
+            <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3452"/>
+            <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3451"/>
+            <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3450"/>
+            <class name="ATD.SEO.QC_3430_SEO_Blocks.QC_3449"/>
         </classes>
     </test>
 </suite>

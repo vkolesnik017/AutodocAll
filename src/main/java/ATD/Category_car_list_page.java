@@ -200,4 +200,8 @@ class Category_car_list_page {
 
     ElementsCollection visibleBrandsId() {return $$x("//li[contains(@class,'slick-active')]//label").filter(visible);}
 
+    SelenideElement linksBlock() {return $(".block_links");}
+
+    ElementsCollection topAutoLinks() {return $$(".block_links a");}
+
 }

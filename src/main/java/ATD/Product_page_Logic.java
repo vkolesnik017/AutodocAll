@@ -1688,5 +1688,23 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("check Titles Of Interest Article Links. Product_page")
+    public Product_page_Logic checkTitlesOfInterestArticleLinks(List<String> expectedAutoLinks) {
+        linksBlock().shouldBe(visible);
+        Assert.assertEquals(interestArticles().size(), expectedAutoLinks.size());
+        List<String> titleOfTopAutoLinks = interestArticles().stream().map(n -> n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(titleOfTopAutoLinks, expectedAutoLinks);
+        return this;
+    }
+
+    @Step("check Transition Of Interest Article Links. Product_page")
+    public Product_page_Logic checkTransitionOfTopAutoLinks() throws IOException {
+        for (int i = 0; i < interestArticles().size(); i++) {
+            interestArticles().get(i).shouldBe(visible).click();
+            new Category_car_list_page_Logic().checkResponseOfServer(200);
+            back();
+        }
+        return this;
+    }
 
 }

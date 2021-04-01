@@ -959,4 +959,8 @@ public class Product_page {
 
     SelenideElement productInfoPrice() { return $x("//p[@class='product-info-price']");}
 
+    SelenideElement  linksBlock() {return $(".product-anchor-links");}
+
+    ElementsCollection interestArticles() {return $$(".product-anchor-links a"); }
+
   }

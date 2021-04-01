@@ -3,8 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Group_list_page {
 
@@ -37,4 +36,8 @@ public class Group_list_page {
     }
 
     SelenideElement topProductsBlock() {return $x("//div[@class='product-list product-list--4items js-product-list-slider--4group js-product-list-animation slick-initialized slick-slider']");}
+
+    SelenideElement headlineSeoText() {return $(".block_youtube_video h3");}
+
+    ElementsCollection titlesOfSeoBlock() {return $$(".block_youtube_video strong");}
 }

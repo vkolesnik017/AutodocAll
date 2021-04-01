@@ -608,4 +608,15 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         new Listing_page_Logic().checkPresenceAddToCartBtnForSpecificItem(idProduct);
         return this;
     }
+
+    @Step("check Titles Of TOP Auto Links. Category_car_list_page")
+    public Category_car_list_page_Logic checkTitlesOfTopCarLinks(List<String> expectedAutoLinks) {
+        linksBlock().shouldBe(visible);
+        Assert.assertEquals(topAutoLinks().size(), expectedAutoLinks.size());
+        List<String> titleOfTopAutoLinks = topAutoLinks().stream().map(n -> n.getText()).collect(Collectors.toList());
+        Collections.sort(titleOfTopAutoLinks);
+        Collections.sort(expectedAutoLinks);
+        Assert.assertEquals(titleOfTopAutoLinks, expectedAutoLinks);
+        return this;
+    }
 }
