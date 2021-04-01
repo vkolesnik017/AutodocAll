@@ -426,7 +426,7 @@ public class Listing_page_Logic extends Listing_page {
     public Listing_page_Logic checksProductTitlesContainExpectedTextGoingAllPagination(String expectedText) {
         checkProductTitleOnListing(expectedText, true, productTitleInListMode());
         while (nextPageButton().is(visible)) {
-            nextPageButton().hover().click();
+            nextPageButton().scrollIntoView("{block: \"center\"}").click();
             checkProductTitleOnListing(expectedText, true, productTitleInListMode());
         }
         return this;

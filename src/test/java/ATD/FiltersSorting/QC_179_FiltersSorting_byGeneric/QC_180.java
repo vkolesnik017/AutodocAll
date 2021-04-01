@@ -31,7 +31,7 @@ public class QC_180 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "accessories_listing_criteria,category_car_list4,search,listing_accessories,search23,search40,search41");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list4,search,listing_accessories,search23,search40,search41");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
