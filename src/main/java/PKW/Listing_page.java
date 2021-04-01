@@ -70,11 +70,11 @@ public class Listing_page {
     //Filters locators (Side/Criteria/Brand)
 
     SelenideElement blockOfBrandFilters() {
-        return $x("//div[@class='listing-brand-filters__list-brands brand-filters-selected-brand delay-overflow']");
+        return $x("//ul[@class='listing-brand-filters-slider__list-brands js-brands-filter-slider delay-overflow brand-filters-selected-brand slick-initialized slick-slider']");
     }
 
     SelenideElement blockOfBrandFiltersSearchListing() {
-        return $x("//div[@class='listing-brand-filters__list-brands delay-overflow']");
+        return $x("//ul[@class='listing-brand-filters-slider__list-brands js-brands-filter-slider delay-overflow  slick-initialized slick-slider']");
     }
 
     SelenideElement blockOfBySideFilters() { // By side installation TecDoc
