@@ -146,9 +146,9 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Checks elements on listing (Side filters block, Brand filter block, Pagination blocks). Listing_page")
     public Listing_page_Logic checksElementsOnListing() {
+        blockOfBrandFilters().shouldBe(visible);
         blockOfBySideFilters().shouldBe(visible);
         blockOfBySideFiltersSecond().shouldBe(visible);
-        blockOfBrandFilters().shouldBe(visible);
         blockOfPagination().shouldBe(visible);
         return this;
     }
@@ -174,8 +174,8 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Checks elements on search listing (Side filters block, Brand filter block, Pagination blocks). Listing_page")
     public Listing_page_Logic checksElementsOnSearchListing() {
-        blockOfBySideFiltersSearchListing().shouldBe(visible);
         blockOfBrandFiltersSearchListing().shouldBe(visible);
+        blockOfBySideFiltersSearchListing().shouldBe(visible);
         blockOfPagination().shouldBe(visible);
         return this;
     }
