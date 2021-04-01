@@ -82,7 +82,7 @@ public class Motoroil_viscosity_page {
     }
 
     SelenideElement selectedViscosityLink(String viscosityLink) {
-        return $x("//div[contains(text(),'" + viscosityLink + "')]/ancestor::span[contains(@class,'active')]");
+        return $x("//div[contains(text(),'" + viscosityLink + "')]/ancestor::li[contains(@class,'slick-active')]");
     }
 
     ElementsCollection btnAddedProductToBasket() {

@@ -42,7 +42,7 @@
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3207"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3212"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3218"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3008"/>
+            <!--<class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3008"/>-->
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_709"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3076"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3102"/>
