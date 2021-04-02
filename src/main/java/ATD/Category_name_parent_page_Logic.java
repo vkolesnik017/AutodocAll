@@ -1,9 +1,12 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Category_name_parent_page_Logic extends Category_name_parent_page {
@@ -39,5 +42,18 @@ public class Category_name_parent_page_Logic extends Category_name_parent_page {
     public Category_car_list_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return page(Category_car_list_page_Logic.class);
+    }
+
+    @Step("check Headlines Of Seo Text. Category_name_parent_page")
+    public Category_name_parent_page_Logic checkHeadlinesOfSeoText(List<String> expectedTitles) {
+        List<String> frontTitlesOfSeoBlock = titlesOfSeoBlock().stream().map(n -> n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(frontTitlesOfSeoBlock, expectedTitles);
+        return this;
+    }
+
+    @Step("check Headlines Of Seo Text. Category_name_parent_page")
+    public Category_name_parent_page_Logic displayHeadlineOfSeoBlock(String expectedHeadLine) {
+        headlineOfSeoText().shouldBe(visible).shouldHave(text(expectedHeadLine));
+        return this;
     }
 }

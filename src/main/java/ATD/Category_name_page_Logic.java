@@ -385,10 +385,30 @@ public class Category_name_page_Logic extends Category_name_page {
         return this;
     }
 
-    @Step("click on TOP Product Title. Categories_page")
+    @Step("click on TOP Product Title. Category_name_page")
     public Product_page_Logic clickOnTopProductTitle(int position) {
         titleOfTopProducts().get(position).click();
         return page(Product_page_Logic.class);
+    }
+
+    @Step("display of Headline at Summary Table. Category_name_page")
+    public Category_name_page_Logic displayHeadlineOfSummaryTable() {
+        Assert.assertTrue(headlineOfSummaryTable().shouldBe(visible).getText().matches("KEILRIPPENRIEMEN: WÄHLEN SIE AUS\\s\\d+\\sARTIKELN IM AUTODOC-SORTIMENT"));
+        return this;
+    }
+
+    @Step("check Titles Of Summary Table. Category_name_page")
+    public Category_name_page_Logic checkTitlesOfSummaryTable(List<String> expectedTitles) {
+        List<String> frontTitlesOfSummaryTable = titlesOfSummaryTable().stream().map(n -> n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(frontTitlesOfSummaryTable, expectedTitles);
+        return this;
+    }
+
+    @Step("check Headlines Of Seo Text. Category_name_page")
+    public Category_name_page_Logic checkHeadlinesOfSeoText(List<String> expectedTitles) {
+        List<String> frontTitlesOfSeoBlock = titlesOfSeoBlock().stream().map(n -> n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(frontTitlesOfSeoBlock, expectedTitles);
+        return this;
     }
 
 }

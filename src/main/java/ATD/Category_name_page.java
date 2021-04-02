@@ -101,4 +101,10 @@ public class Category_name_page {
    public SelenideElement infoPriceForSetFromTopProduct() { return $x("//div[contains(@class,'slick-active')]//p[text()='(Preis pro Satz)']");}
 
     public SelenideElement infoPriceForPieceFromTopProduct() { return $x("//div[contains(@class,'slick-active')]//p[text()='(Artikelpreis)']");}
+
+    SelenideElement headlineOfSummaryTable() {return $x("//div[@class='summary-table']/preceding-sibling::div[1]/b");}
+
+    ElementsCollection titlesOfSummaryTable() {return $$(".summary-table th");}
+
+    ElementsCollection titlesOfSeoBlock() {return $$x("//div[contains(@class,'block_youtube_video')]//*[self::h3 or self::strong]");}
 }
