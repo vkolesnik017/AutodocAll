@@ -411,4 +411,10 @@ public class Category_name_page_Logic extends Category_name_page {
         return this;
     }
 
+    @Step("display Headline Of Brands Block. Category_name_page")
+    public Category_name_page_Logic displayHeadlineOfBrandsBlock(String expectedTitle) {
+        titleOfBrandsBlock().shouldBe(visible).shouldHave(text(expectedTitle));
+        return this;
+    }
+
 }

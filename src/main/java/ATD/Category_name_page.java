@@ -107,4 +107,6 @@ public class Category_name_page {
     ElementsCollection titlesOfSummaryTable() {return $$(".summary-table th");}
 
     ElementsCollection titlesOfSeoBlock() {return $$x("//div[contains(@class,'block_youtube_video')]//*[self::h3 or self::strong]");}
+
+    SelenideElement titleOfBrandsBlock() {return $x("//div[@class='kategorie_top_brands']/preceding-sibling::div[1]/b");}
 }

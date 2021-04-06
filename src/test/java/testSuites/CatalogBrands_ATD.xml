@@ -9,7 +9,7 @@
     <test name="QC_33_BrandPageAndBlocks">
         <classes>
             <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_2628"/>
-            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_2629"/>
+            <!--<class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_2629"/>-->
             <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_2630"/>
             <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_2631"/>
             <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3175"/>
@@ -31,6 +31,10 @@
             <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3530"/>
             <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3529"/>
             <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3528"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3527"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3526"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3500"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPageAndBlocks.QC_3499"/>
         </classes>
     </test>
 
