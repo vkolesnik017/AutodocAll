@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QC_3592_ChangedTitleOfModelNameInSelectorPKW" parallel="true" data-provider-thread-count="4">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+       <!-- <test name="QC_3592_ChangedTitleOfModelNameInSelectorPKW">
+            <classes>
+                <class name="PKW.SpecificTests.Selector.QC_3592">
+                </class>
+            </classes>
+        </test>-->
+
+</suite>
