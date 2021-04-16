@@ -6,13 +6,11 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-<!--
     <test name="QC_3468_AddNewAutoToSelectorPKW">
         <classes>
             <class name="PKW.SpecificTests.QC_3468">
             </class>
         </classes>
     </test>
--->
 
 </suite>

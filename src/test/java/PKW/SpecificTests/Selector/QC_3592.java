@@ -1,5 +1,6 @@
 package PKW.SpecificTests.Selector;
 
+import Common.Excel;
 import PKW.CommonMethods;
 import PKW.Search_page_Logic;
 import com.codeborne.selenide.Configuration;
@@ -11,9 +12,11 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static Common.Excel.parseExcel;
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class QC_3592 {
 
@@ -35,18 +38,36 @@ public class QC_3592 {
         Configuration.pageLoadStrategy = "normal";
     }
 
-    @DataProvider(name = "data", parallel = true)
+    @DataProvider(name = "data", parallel = false)
     Object[] dataProvider() {
 
-        //   return new Excel().setUpAllCellFromExcel(dataFile);
-        return new Object[][]{{"https://test.pkwteile.de/"}};
+       //    return new Excel().setUpAllCellFromExcel(dataFile);
+        return new Object[][]{{"https://wwww.pkwteile.de" , "https://www.avtochastionline24.bg"},{new Excel().setUpAllCellFromExcel(dataFile)}};
     }
 
 
     @Test(dataProvider = "data")
     @Description(value = "test Check Changed Title Of Model Name In Selector")
-    public void testCheckChangedTitleOfModelNameInSelector(String data) throws Exception {
-        openPage(data);
+    public void testCheckChangedTitleOfModelNameInSelector(List<String> data, String ex) throws Exception {
+    //    openPage(data);
+
+        System.out.println(data);
+        String currentUrl = data.get(0).replaceAll("^.+\\.", "").toUpperCase();
+        String maker_id = parseExcel(currentUrl)[0].trim();
+        String model_id = parseExcel(currentUrl)[4].trim();
+        String group_id = parseExcel(currentUrl)[2].trim();
+
+
+
+        String startUrl = data+"/search?&maker_id=" + maker_id + "&model_id=" + model_id + "&group_id=" + group_id ;
+        openPage(startUrl);
+
+
+
+
+
+
+
         new Search_page_Logic().compareSelectorWithFile(languages, dataFile, result);
         closeWebDriver();
     }

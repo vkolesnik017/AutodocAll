@@ -6,11 +6,11 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-       <!-- <test name="QC_3592_ChangedTitleOfModelNameInSelectorPKW">
+        <test name="QC_3592_ChangedTitleOfModelNameInSelectorPKW">
             <classes>
                 <class name="PKW.SpecificTests.Selector.QC_3592">
                 </class>
             </classes>
-        </test>-->
+        </test>
 
 </suite>

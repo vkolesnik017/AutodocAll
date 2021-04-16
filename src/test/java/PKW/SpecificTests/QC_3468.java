@@ -27,7 +27,7 @@ public class QC_3468 extends Main_page {
         Configuration.pageLoadStrategy = "normal";
     }
 
-    @DataProvider(name = "data", parallel = true)
+    @DataProvider(name = "data", parallel = false)
     Object[] dataProvider() {
         return new Excel().setUpAllCellFromExcel(dataFile);
     }
