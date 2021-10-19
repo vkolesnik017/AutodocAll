@@ -32,7 +32,8 @@ public class QC_1568 {
     @Description(value = "Test checks text blocks in page footer")
     public void checkTextBlocksInPageFooter(String route) {
         openPage(route);
-        new Main_page_Logic().checkTextBlocksInFooter()
+        new Main_page_Logic()
+                .checkTextBlocksInFooter()
                 .checksBlockPromotionalFootnotes();
     }
     @AfterMethod

@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 
 import java.io.IOException;
 
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.back;
 
@@ -36,7 +37,7 @@ public class Category_model_brand_page_Logic extends Category_model_brand_page {
             if (btnMoreOfBrandsBlock().isDisplayed()) {
                 btnMoreOfBrandsBlock().click();
             }
-            visibleBrands().shouldHave(CollectionCondition.sizeGreaterThan(6));
+            visibleBrands().shouldHave(sizeGreaterThan(6));
             visibleBrands().get(i).click();
             new Category_car_list_page_Logic().checkResponseOfServer(200);
             back();

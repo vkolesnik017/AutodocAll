@@ -33,6 +33,13 @@ import static org.testng.Assert.assertEquals;
 public class Main_page_Logic extends Main_page {
 
     @Step("Checking number of product in cart. Main_page")
+   public Main_page_Logic setValue() {
+executeJavaScript("document.languageElement().setAttribute('aria-activedescendant','contact-form_preferredLanguage_list_1')");
+        languageElement().shouldBe(visible).click();
+       return this;
+    }
+
+    @Step("Checking number of product in cart. Main_page")
     void checkingNumberOfProductInCart(int expectedNumber) {
         int actualNumber = Integer.parseInt(numberOfProductInCart().getText());
         Assert.assertEquals(actualNumber, expectedNumber);

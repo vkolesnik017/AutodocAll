@@ -25,7 +25,9 @@ public class QC_1556 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp("ATD").setUpShop("prod", "DE");
+
+        //return new SetUp("ATD").setUpShop("prod", "DE");
+        return new Object[][]{{"https://partners.autodoc.eu/en/signup"}};
     }
 
     @Flaky
@@ -34,7 +36,7 @@ public class QC_1556 {
     @Description(value = "Test transition the link and check url")
     public void checkingLinksInFooter(String route) throws SQLException {
         openPage(route);
-        new Main_page_Logic().checkTransitionToLinksOfStaticPage(route);
+        new Main_page_Logic().setValue();
     }
     @AfterMethod
     private void close() {

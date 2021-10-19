@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class Main_page {
-
+public SelenideElement languageElement() {return $x("//span[@id='preferredLanguage']/../../following-sibling::div//input");}
     //Header
     public SelenideElement logoInHeader() {
         return $(".header__logo-main");
